@@ -41,9 +41,8 @@
                     </li>
                 @endcan
 
-                <div  class="div">
                 @can('order.index')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                             href="{{ route('order.index') }}">
                             <i class="fa fa-shopping-cart text-orange"></i>
@@ -53,7 +52,7 @@
                 @endcan
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('service.*', 'variant.*', 'product.*', 'coupon.*') ? 'active' : '' }}"
                             href="#product_manage" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
@@ -111,7 +110,7 @@
                 @endcan
 
                 @can('revenue.index')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('revenue.*') ? 'active' : '' }}"
                             href="{{ route('revenue.index', ['from' => now()->subMonth(1)->format('Y-m-d'),'to' => now()->addDay(1)->format('Y-m-d')]) }}">
                             <i class="fa fa-file text-red"></i>
@@ -121,7 +120,7 @@
                 @endcan
 
                 @can('banner.promotional')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
                             href="{{ route('banner.promotional') }}">
                             <i class="fas fa-image text-dark"></i>
@@ -131,7 +130,7 @@
                 @endcan
 
                 @can('driver.index')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('driver.*') ? 'active' : '' }}"
                             href="{{ route('driver.index') }}">
                             <i class="fas fa-shipping-fast text-orange"></i>
@@ -141,7 +140,7 @@
                 @endcan
 
                 @can('contact')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">
                             <i class="fa fa-comment text-purple"></i>
@@ -151,7 +150,7 @@
                 @endcan
 
                 @role('root|visitor')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                             href="{{ route('admin.index') }}">
                             <i class="fas fa-user-secret"></i>
@@ -273,7 +272,6 @@
                     </li>
                 @endcan
 
-                </div>
 
                 <li class="nav-item">
                     <a class="nav-link"
