@@ -51,7 +51,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
                             href="{{ route('customer.index') }}">
-                            <i class="fa fa-users text-red"></i>
+                            <i class="fas fa-list text-green"></i>
                             <span class="nav-link-text">{{ __('Report Klaim') }}</span>
                         </a>
                     </li>
