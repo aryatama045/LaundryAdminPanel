@@ -31,6 +31,17 @@
                     </a>
                 </li>
 
+                @can('customer.index')
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
+                            href="{{ route('customer.index') }}">
+                            <i class="fa fa-users text-red"></i>
+                            <span class="nav-link-text">{{ __('Customer') }}</span>
+                        </a>
+                    </li>
+                @endcan
+
+                <div hidden class="div">
                 @can('order.index')
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
@@ -115,16 +126,6 @@
                             href="{{ route('banner.promotional') }}">
                             <i class="fas fa-image text-dark"></i>
                             <span class="nav-link-text">{{ __('App_Banners') }}</span>
-                        </a>
-                    </li>
-                @endcan
-
-                @can('customer.index')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
-                            href="{{ route('customer.index') }}">
-                            <i class="fa fa-users text-red"></i>
-                            <span class="nav-link-text">{{ __('Customer') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -271,6 +272,8 @@
                         </a>
                     </li>
                 @endcan
+
+                </div>
 
                 <li class="nav-item">
                     <a class="nav-link"
