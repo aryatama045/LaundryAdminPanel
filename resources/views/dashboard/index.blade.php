@@ -17,7 +17,7 @@
                 </div>
             </div>
             <!-- Card stats -->
-            <div class="row">
+            <div hidden class="row">
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
@@ -119,7 +119,7 @@
     </div>
 </div>
 
-<div class="container-fluid mt-4">
+<div hidden class="container-fluid mt-4">
     <div class="row">
         <div class="col-12 col-lg-8">
 
