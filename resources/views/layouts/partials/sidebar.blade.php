@@ -39,7 +39,24 @@
                             <span class="nav-link-text">{{ __('Customer') }}</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
+                            href="{{ route('customer.index') }}">
+                            <i class="fa fa-users text-red"></i>
+                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
+                            href="{{ route('customer.index') }}">
+                            <i class="fa fa-users text-red"></i>
+                            <span class="nav-link-text">{{ __('Report Klaim') }}</span>
+                        </a>
+                    </li>
                 @endcan
+
 
                 @can('order.index')
                     <li hidden class="nav-item">
