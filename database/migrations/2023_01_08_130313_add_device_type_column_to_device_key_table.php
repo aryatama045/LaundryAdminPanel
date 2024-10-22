@@ -1,0 +1,33 @@
+<?php
+
+use App\Models\DeviceKey;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddDeviceTypeColumnToDeviceKeyTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table((new DeviceKey())->getTable(), function (Blueprint $table) {
+            $table->string('device_type')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table((new DeviceKey())->getTable(), function (Blueprint $table) {
+            $table->dropColumn('device_type');
+        });
+    }
+}
