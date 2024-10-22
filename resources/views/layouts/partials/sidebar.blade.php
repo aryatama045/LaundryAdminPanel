@@ -41,7 +41,7 @@
                     </li>
                 @endcan
 
-                <div hidden class="div">
+                <div  class="div">
                 @can('order.index')
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
