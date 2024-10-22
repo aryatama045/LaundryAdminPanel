@@ -289,7 +289,7 @@
             </ul>
         </div>
         <div class="footer_bottom">
-            <div class="local">
+            <div hidden class="local">
                 <i class="fa fa-language lanIcon"></i>
                 <select id="language" name="ln" class="form-control">
                     <option value="en" {{ session()->get('local') == 'en' ? 'selected' : '' }}>English
