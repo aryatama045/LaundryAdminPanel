@@ -169,7 +169,7 @@
                 @endcan
 
                 @role('root|visitor')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                             href="{{ route('admin.index') }}">
                             <i class="fas fa-user-secret"></i>
@@ -232,11 +232,6 @@
                                     <span class="nav-link-text">{{ __('D. Schedules') }}</span>
                                 </a>
 
-                                <a class="nav-link sub-menu {{ request()->routeIs('webSetting.*') ? 'active' : '' }}"
-                                    href="{{ route('webSetting.index') }}">
-                                    <i class="fas fa-globe"></i>
-                                    <span class="nav-link-text">{{ __('Web Setting') }}</span>
-                                </a>
                                 <a hidden class="nav-link sub-menu {{ request()->routeIs('stripeKey.*') ? 'active' : '' }}"
                                     href="{{ route('stripeKey.index') }}">
                                     <i class="fab fa-cc-stripe"></i>
@@ -264,6 +259,19 @@
                                     <i class="fas fa-cloud"></i>
                                     <span class="nav-link-text">{{ __('FCM Config') }}</span>
                                 </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('areas.*') ? 'active' : '' }}"
+                                    href="{{ route('areas.index') }}">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span class="nav-link-text">{{ __('Areas') }}</span>
+                                </a>
+
+
+
+                                <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
+                                    href="{{ route('admin.index') }}">
+                                    <i class="fas fa-user-secret"></i>
+                                    <span class="nav-link-text">{{ __('Data Admins') }}</span>
+                                </a>
 
                                 <a class="nav-link sub-menu {{ request()->routeIs('mail-config.*') ? 'active' : '' }}"
                                     href="{{ route('mail-config.index') }}">
@@ -271,10 +279,10 @@
                                     <span class="nav-link-text">{{ __('Mail Config') }}</span>
                                 </a>
 
-                                <a hidden class="nav-link sub-menu {{ request()->routeIs('areas.*') ? 'active' : '' }}"
-                                    href="{{ route('areas.index') }}">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span class="nav-link-text">{{ __('Areas') }}</span>
+                                <a class="nav-link sub-menu {{ request()->routeIs('webSetting.*') ? 'active' : '' }}"
+                                    href="{{ route('webSetting.index') }}">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="nav-link-text">{{ __('Web Setting') }}</span>
                                 </a>
                             </ul>
                         </div>
