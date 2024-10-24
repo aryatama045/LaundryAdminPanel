@@ -32,6 +32,7 @@ class UserRepository extends Repository
         $user = $this->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'company' => $request->company ? $request->company : null,
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
