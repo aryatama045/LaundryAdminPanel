@@ -31,14 +31,10 @@ class CustomerRepository extends Repository
 
     public function storeByUser(User $user): Customer
     {
-        $stripeCustomer = null;
-        $stripe = StripeKey::take(1)->first();
-        if ($stripe?->public_key && $stripe?->secret_key) {
-            $stripeCustomer = (new PaymentRepository())->makeCustomer(name:$user->name, email:$user->email);
-        }
+
         return $this->create([
             'user_id' => $user->id,
-            'stripe_customer' => $stripeCustomer?->id
+            'stripe_customer' => ''
         ]);
     }
 
@@ -46,10 +42,9 @@ class CustomerRepository extends Repository
     {
         $user = $customer->user;
 
-        $stripeCustomer = (new PaymentRepository())->makeCustomer(name:$user->name, email:$user->email);
         $this->update($customer,[
             'user_id' => $user->id,
-            'stripe_customer' => $stripeCustomer?->id
+            'stripe_customer' => ''
         ]);
         return $customer;
     }
