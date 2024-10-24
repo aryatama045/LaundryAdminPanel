@@ -169,9 +169,16 @@
                 @endcan
 
                 @role('root|visitor')
+                    <li hidden class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
+                            href="{{ route('admin.index') }}">
+                            <i class="fas fa-user-secret"></i>
+                            <span class="nav-link-text">{{ __('Admins') }}</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
-                        <a class="nav-link  {{ request()->routeIs('setting.*', 'deliveryCost', 'mobileApp', 'socialLink.*', 'webSetting.*', 'stripeKey.*', 'notification.manage', 'fcm.*', 'mail-config.*') ? 'active' : '' }}"
+                        <a class="nav-link  {{ request()->routeIs('setting.*','admin.*', 'deliveryCost', 'mobileApp', 'socialLink.*', 'webSetting.*', 'stripeKey.*', 'notification.manage', 'fcm.*', 'mail-config.*') ? 'active' : '' }}"
                             href="#setting" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
                             <i class="fa fa-cog text-red"></i>
