@@ -2,9 +2,9 @@
     <div class="container-fluid" style="min-height:0">
 
         @php
-            $websettingsrc = App\Models\WebSetting::first();
-            $id = $websettingsrc->logo;
-            $websetting = App\Models\Media::where('id', $id)->first();
+            $websetting = App\Models\WebSetting::first();
+            <!-- $id = $websettingsrc->logo;
+            $websetting = App\Models\Media::where('id', $id)->first(); -->
         @endphp
         <!-- Brand -->
         <a class="navbar-brand " href="{{ route('root') }}">
