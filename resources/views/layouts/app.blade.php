@@ -37,7 +37,7 @@
 
     <div class="main-content">
         <div class="main-header shadow-sm">
-            <div class="btn-group dropdown">
+            <div hidden class="btn-group dropdown">
                 <button type="button" class="notificationBell dropdown-toggle" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell Icon"></i>

@@ -2,7 +2,9 @@
     <div class="container-fluid" style="min-height:0">
 
         @php
-            $websetting = App\Models\WebSetting::first();
+            $websettingsrc = App\Models\WebSetting::first();
+            $id = $websettingsrc->logo;
+            $websetting = App\Models\Media::where('id', $id)->first();
         @endphp
         <!-- Brand -->
         <a class="navbar-brand " href="{{ route('root') }}">
@@ -117,7 +119,7 @@
                 @endcanany
 
                 @can('notification.index')
-                    <li class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('notification.*') ? 'active' : '' }}"
                             href="{{ route('notification.index') }}">
                             <i class="fas fa-bell text-primary"></i>
@@ -167,7 +169,7 @@
                 @endcan
 
                 @role('root|visitor')
-                    <li hidden class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                             href="{{ route('admin.index') }}">
                             <i class="fas fa-user-secret"></i>

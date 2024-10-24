@@ -17,7 +17,11 @@ use App\Http\Controllers\Web\Products\ProductController;
 use App\Http\Controllers\Web\Revenues\RevenueController;
 use App\Http\Controllers\Web\Services\ServiceController;
 use App\Http\Controllers\Web\Variants\VariantController;
+
 use App\Http\Controllers\Web\Customers\CustomerController;
+use App\Http\Controllers\Web\Customers\GaransiController;
+use App\Http\Controllers\Web\Customers\KlaimController;
+
 use App\Http\Controllers\Web\DeliveryCost\DeliveryCostController;
 use App\Http\Controllers\Web\Driver\DriverController;
 use App\Http\Controllers\Web\InvoiceManageController;
@@ -87,7 +91,31 @@ Route::middleware(['auth', 'role:admin|visitor|root', 'permission_check'])->grou
     Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customer.update');
 
+    // Route::get('/customer/{customer}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
+
     Route::get('/user/{user}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('user.status.toggle');
+
+
+    // Garansi routes
+    Route::get('/garansi', [GaransiController::class, 'index'])->name('garansi.index');
+    Route::get('/garansi/{garansi}/show', [GaransiController::class, 'show'])->name('garansi.show');
+    Route::get('/garansi/create', [GaransiController::class, 'create'])->name('garansi.create');
+    Route::post('/garansi', [GaransiController::class, 'store'])->name('garansi.store');
+    Route::get('/garansi/{garansi}/edit', [GaransiController::class, 'edit'])->name('garansi.edit');
+    Route::put('/garansi/{garansi}', [GaransiController::class, 'update'])->name('garansi.update');
+    Route::get('/garansi/{garansi}/delete', [GaransiController::class, 'delete'])->name('garansi.delete');
+
+
+    // Klaim routes
+    Route::get('/klaim', [KlaimController::class, 'index'])->name('klaim.index');
+    Route::get('/klaim/{klaim}/show', [KlaimController::class, 'show'])->name('klaim.show');
+    Route::get('/klaim/create', [KlaimController::class, 'create'])->name('klaim.create');
+    Route::post('/klaim', [KlaimController::class, 'store'])->name('klaim.store');
+    Route::get('/klaim/{klaim}/edit', [KlaimController::class, 'edit'])->name('klaim.edit');
+    Route::put('/klaim/{klaim}', [KlaimController::class, 'update'])->name('klaim.update');
+    Route::get('/klaim/{klaim}/delete', [KlaimController::class, 'delete'])->name('klaim.delete');
+
+
 
     // Product routes
     Route::controller(ProductController::class)->group(function () {

@@ -16,7 +16,9 @@ use App\Http\Controllers\API\Service\ServiceController;
 use App\Http\Controllers\API\Setting\SettingController;
 use App\Http\Controllers\API\Variant\VariantController;
 use App\Http\Controllers\API\Contacts\ContactController;
+
 use App\Http\Controllers\API\Customers\CustomerController;
+
 use App\Http\Controllers\API\Auth\ForgotPasswordController;
 use App\Http\Controllers\API\Promotion\PromotionController;
 use App\Http\Controllers\API\Additional\AdditionalServiceController;

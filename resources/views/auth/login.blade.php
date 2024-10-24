@@ -82,11 +82,7 @@
 
             </div>
 
-            <div class="col-12 col-md-6 d-none d-md-block"
-                style="background: url({{ asset('web/bg/login.jpg') }});overflow: hidden;
-            background-size: cover;
-            background-position: center;">
-            </div>
+
         </div>
     </div>
     <script>
