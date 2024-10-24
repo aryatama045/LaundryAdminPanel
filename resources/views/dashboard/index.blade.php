@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
-                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Income')}}</h4>
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim Garansi')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
                                         @can('dashboard.calculation')
                                         {{ currencyPosition($income) }}
@@ -34,7 +34,8 @@
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img width="80" height="80" src="{{ asset('images/icons/earning.svg') }}" alt="">
+                                        <img hidden width="80" height="80" src="{{ asset('images/icons/earning.svg') }}" alt="">
+                                        <img width="80" src="{{ asset('images/icons/services.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
