@@ -26,7 +26,7 @@
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim ')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
                                         @can('dashboard.calculation')
-                                        {{ currencyPosition($income) }}
+                                        {{ $income }}
                                         @else
                                         {{ currencyPosition('0.00') }}
                                         @endcan
