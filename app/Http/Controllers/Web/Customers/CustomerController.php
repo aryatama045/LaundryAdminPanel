@@ -66,18 +66,18 @@ class CustomerController extends Controller
         $orders = $customer->orders;
 
         foreach ($orders as $order) {
-            $order->payment?->delete();
+            $order->payment->delete();
             $order->products()->detach();
-            $order->rating?->delete();
-            $order->additionals()?->detach();
+            $order->rating->delete();
+            $order->additionals()->detach();
             $order->delete();
         }
-        $customer->devices()?->delete();
-        $customer->addresses()?->delete();
+        $customer->devices()->delete();
+        $customer->addresses()->delete();
 
-        $customer->cards()?->delete();
+        $customer->cards()->delete();
 
-        $customer->notifications()?->delete();
+        $customer->notifications()->delete();
 
         $customer->delete();
 
