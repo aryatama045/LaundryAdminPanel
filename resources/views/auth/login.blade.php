@@ -18,7 +18,7 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-7 col-lg-6 login-form-section">
                 <div class="login">
                     <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('login') }}">
@@ -82,7 +82,11 @@
 
             </div>
 
-
+            <!-- <div class="col-12 col-md-6 d-none d-md-block"
+                style="background: url({{ asset('web/bg/login.jpg') }});overflow: hidden;
+            background-size: cover;
+            background-position: center;">
+            </div> -->
         </div>
     </div>
     <script>
