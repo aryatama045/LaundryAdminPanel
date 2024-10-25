@@ -19,21 +19,17 @@
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Customer') }} <strong class="text-danger">*</strong> </label>
-
                                     <select class="form-control" name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
-
                                         @foreach ($customer as $customers)
                                             <option value="{{ $customers->customer_id }}"> {{ $customers->user->first_name.' '.$customers->user->last_name }}  </option>
                                         @endforeach
                                     </select>
-
-
                                     @error('customer_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-
+                                <!-- Nota -->
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('No. Nota') }} <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="no_nota"
@@ -50,7 +46,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-
+                                <!-- Pemasangan -->
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('No. Pemasangan') }} <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="no_pemasangan"
@@ -67,21 +63,13 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                            </div>
 
-                                <div class="col-12 col-md-12 mb-2">
-                                    <label for="">{{ __('Keterangan') }} </label>
-                                    <input type="text" class="form-control" name="keterangan"
-                                        value="{{ old('keterangan') }}" placeholder="{{ __('Keterangan') }}">
-                                    @error('keterangan')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
+                            <div class="row">
                                 <div class="col-12 col-md-6 mb-2 py-2">
                                     <label for="">{{ __('Profile_Photo') }}</label>
                                     <input type="file[]"  class="form-control-file" name="garansi_photo">
                                 </div>
-
                             </div>
 
 
