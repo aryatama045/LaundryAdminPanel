@@ -8,7 +8,7 @@
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers Garansi') }}</h2>
                         <div>
-                            <form action="{{ route('customer.index') }}" method="GET">
+                            <form action="{{ route('garansi.index') }}" method="GET">
                                 <ul class=" nav d-flex justify-content-end">
                                     <li class="nav-item ml-2 mr-md-0">
                                         <input type="text" name='search' placeholder="Search"
@@ -21,8 +21,8 @@
                                     </li>
                                     @can('customer.create')
                                     <li class="nav-item ml-2 mr-md-0">
-                                        <a href="{{ route('customer.create') }}" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer') }}
+                                        <a href="{{ route('garansi.create') }}" class="btn btn-primary">
+                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer Garansi') }}
                                         </a>
                                     </li>
                                     @endcan
