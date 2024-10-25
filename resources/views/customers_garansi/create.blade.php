@@ -79,15 +79,12 @@
 
                                 <div class="col-12 col-md-6 mb-2 py-2">
                                     <label for="">{{ __('Profile_Photo') }}</label>
-                                    <input type="file" class="form-control-file" name="garansi_photo">
+                                    <input type="file[]"  class="form-control-file" name="garansi_photo">
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-3 col-md-3 mt-4 mb-2 py-2">
-                                        <label for=""></label>
-                                        <button class="btn btn-primary w-100 mt-2  ">{{ __('Submit') }}</button>
-                                    </div>
-                                </div>
+
+                                <button class="float-left btn btn-primary mt-2  ">{{ __('Submit') }}</button>
+
                             </div>
                         </form>
                     </div>
