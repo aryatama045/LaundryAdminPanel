@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Nota') }} <strong class="text-danger">*</strong></label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ date('d/m/Y') }}" >
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ now()->toDateString('d/m/Y') }}" >
                                     @error('tanggal_nota')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
