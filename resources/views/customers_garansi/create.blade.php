@@ -72,7 +72,6 @@
                                 </div>
                             </div>
 
-
                             <button class="float-left btn btn-primary mt-2  ">{{ __('Submit') }}</button>
                         </form>
                     </div>
