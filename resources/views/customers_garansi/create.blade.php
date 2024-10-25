@@ -73,7 +73,7 @@
                                         <div class="input-group">
                                             <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary tambah-bukti" type="button">
+                                                <button class="btn btn-info tambah-bukti" type="button">
                                                     <i class="fa fa-plus-square"></i> Add
                                                 </button>
                                             </div>
@@ -82,7 +82,7 @@
                                         <div class="input-group">
                                             <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary tambah-bukti" type="button">
+                                                <button class="btn btn-info tambah-bukti" type="button">
                                                     <i class="fa fa-plus-square"></i> Add
                                                 </button>
                                             </div>
@@ -91,7 +91,7 @@
                                         <div class="input-group">
                                             <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary tambah-bukti" type="button">
+                                                <button class="btn btn-info tambah-bukti" type="button">
                                                     <i class="fa fa-plus-square"></i> Add
                                                 </button>
                                             </div>
