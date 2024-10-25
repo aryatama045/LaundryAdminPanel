@@ -69,7 +69,11 @@
 
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
-                                    <label>{{ __('Bukti Foto') }}</label>
+                                    <label>{{ __('Bukti Foto') }}
+                                    <span name="add" class="float-right btn btn-primary default add">
+                                        <i class="fa fa-plus"></i> Tambah
+                                    </span>
+                                    </label>
 
                                     <div class="item_table" id="item_table">
 
