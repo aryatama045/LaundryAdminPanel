@@ -35,27 +35,44 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="first_name"
-                                        value="{{ old('first_name') }}" placeholder="{{ __('First_Name') }}">
-                                    @error('first_name')
+                                    <label for="">{{ __('No. Nota') }} <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="no_nota"
+                                        value="{{ old('no_nota') }}" placeholder="{{ __('No. Nota') }}">
+                                    @error('no_nota')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Last_Name') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="last_name"
-                                        value="{{ old('last_name') }}" placeholder="{{ __('Last_Name') }}">
-                                    @error('last_name')
+                                    <label for="">{{ __('Tanggal Nota') }} <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="tanggal_nota"
+                                        value="{{ old('tanggal_nota') }}" placeholder="{{ __('Tanggal Nota') }}">
+                                    @error('tanggal_nota')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-md-6 mb-2">
+                                    <label for="">{{ __('No. Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="no_pemasangan"
+                                        value="{{ old('no_pemasangan') }}" placeholder="{{ __('No. Pemasangan') }}">
+                                    @error('no_pemasangan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-md-6 mb-2">
+                                    <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="tanggal_pemasangan"
+                                        value="{{ old('tanggal_pemasangan') }}" placeholder="{{ __('Tanggal Pemasangan') }}">
+                                    @error('tanggal_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="col-12 col-md-12 mb-2">
-                                    <label for="">{{ __('Company') }} </label>
-                                    <input type="text" class="form-control" name="company"
-                                        value="{{ old('company') }}" placeholder="{{ __('Company') }}">
-                                    @error('company')
+                                    <label for="">{{ __('Keterangan') }} </label>
+                                    <input type="text" class="form-control" name="keterangan"
+                                        value="{{ old('keterangan') }}" placeholder="{{ __('Keterangan') }}">
+                                    @error('keterangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
