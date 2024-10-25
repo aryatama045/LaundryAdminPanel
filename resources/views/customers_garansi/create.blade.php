@@ -66,14 +66,22 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-12 col-md-6 mb-2 py-2">
+                                <div class="col-12 col-md-8 mb-2">
                                     <div class="div">
-                                        <label>{{ __('Bukti Foto') }}</label>
-                                        <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
-                                        <button class="float-right btn btn-primary "><i class="fa fa-plus-square"></i> Add</button>
+                                        <div class="input-group">
+                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary tambah-bukti" type="button">
+                                                    <i class="fa fa-plus-square"></i> Add
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
+
+
 
                             <button class="float-left btn btn-primary mt-2  ">{{ __('Submit') }}</button>
                         </form>
