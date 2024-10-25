@@ -129,7 +129,7 @@
 
             }
 
-            $('#item_table').prepend(add_input_field(1));
+            $('#item_table').append(add_input_field(1));
 
 
             $(document).on('click', '.add', function() {
