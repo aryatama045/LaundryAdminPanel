@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal_pemasangan" value="{{ old('tanggal_pemasangan') }}" >
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal_pemasangan" value="{{ now()->toDateString('d/m/Y') }}" >
                                     @error('tanggal_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
