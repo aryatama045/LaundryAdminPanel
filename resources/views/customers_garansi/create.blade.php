@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body">
                         <form @role('root|admin') @can('customer.store') action="{{ route('customer.store') }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
-                            <div class="row">
+                            <div class="row mb-4">
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Customer') }} <strong class="text-danger">*</strong> </label>
@@ -82,10 +82,10 @@
                                     <input type="file[]"  class="form-control-file" name="garansi_photo">
                                 </div>
 
-
-                                <button class="float-left btn btn-primary mt-2  ">{{ __('Submit') }}</button>
-
                             </div>
+
+
+                            <button class="float-left btn btn-primary mt-2  ">{{ __('Submit') }}</button>
                         </form>
                     </div>
                 </div>
