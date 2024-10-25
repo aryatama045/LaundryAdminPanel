@@ -70,7 +70,7 @@
                                     <div class="div">
                                         <label>{{ __('Bukti Foto') }}</label>
                                         <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
-                                        <button class="float-right btn btn-primary ">{{ __('Submit') }}</button>
+                                        <button class="float-right btn btn-primary "><i class="fa fa-plus-square"></i> Add</button>
                                     </div>
                                 </div>
                             </div>
