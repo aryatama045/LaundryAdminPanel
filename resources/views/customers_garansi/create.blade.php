@@ -148,12 +148,12 @@
 
             }
 
-            $('#item_table').append(add_input_field(1));
+            $('#item_table').prepend(add_input_field(1));
 
 
             $(document).on('click', '.add', function() {
                 count++;
-                $('#item_table').append(add_input_field(count));
+                $('#item_table').prepend(add_input_field(count));
             });
 
             $(document).on('click', '.remove', function() {
