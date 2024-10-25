@@ -87,8 +87,8 @@
                                 </div>
                             </div>
 
-
-                            <button class="float-left btn btn-primary mt-6  ">{{ __('Submit') }}</button>
+                            <hr class="mt-6">
+                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
                         </form>
                     </div>
                 </div>
