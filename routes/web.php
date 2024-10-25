@@ -100,13 +100,13 @@ Route::middleware(['auth', 'role:admin|visitor|root', 'permission_check'])->grou
 
 
     // Garansi routes
-    Route::get('/garansi', [GaransiController::class, 'index'])->name('garansi.index');
-    Route::get('/garansi/{garansi}/show', [GaransiController::class, 'show'])->name('garansi.show');
-    Route::get('/garansi/create', [GaransiController::class, 'create'])->name('garansi.create');
-    Route::post('/garansi', [GaransiController::class, 'store'])->name('garansi.store');
-    Route::get('/garansi/{garansi}/edit', [GaransiController::class, 'edit'])->name('garansi.edit');
-    Route::put('/garansi/{garansi}', [GaransiController::class, 'update'])->name('garansi.update');
-    Route::get('/garansi/{garansi}/delete', [GaransiController::class, 'delete'])->name('garansi.delete');
+    Route::get('/garansi', [CustomerGaransiController::class, 'index'])->name('garansi.index');
+    Route::get('/garansi/{garansi}/show', [CustomerGaransiController::class, 'show'])->name('garansi.show');
+    Route::get('/garansi/create', [CustomerGaransiController::class, 'create'])->name('garansi.create');
+    Route::post('/garansi', [CustomerGaransiController::class, 'store'])->name('garansi.store');
+    Route::get('/garansi/{garansi}/edit', [CustomerGaransiController::class, 'edit'])->name('garansi.edit');
+    Route::put('/garansi/{garansi}', [CustomerGaransiController::class, 'update'])->name('garansi.update');
+    Route::get('/garansi/{garansi}/delete', [CustomerGaransiController::class, 'delete'])->name('garansi.delete');
 
 
     // Klaim routes
