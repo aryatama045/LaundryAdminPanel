@@ -69,7 +69,7 @@
 
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
-                                    <label>{{ __('Bukti Foto') }}</label>
+                                    <label><b>{{ __('Bukti Foto') }}</b> <strong class="text-danger">*</strong></label>
 
                                     <span name="add" class="float-right btn btn-primary btn-sm default add">
                                         <i class="fa fa-plus"></i> Tambah
