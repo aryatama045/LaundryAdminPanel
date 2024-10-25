@@ -119,7 +119,7 @@
                 var remove_button = '';
 
                 if (count > 1) {
-                    remove_button = '<div class="input-group-append"><span style="height:100% !important" name="remove" class="input-group-text btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Remove</span></div>';
+                    remove_button = '<div class="input-group-append"><button style="height:100% !important" name="remove" class="input-group-text btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-trash"></i> Remove</button></div>';
                 }
 
                 html += remove_button +
