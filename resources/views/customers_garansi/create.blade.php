@@ -67,39 +67,32 @@
 
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
-
                                     <div class="div">
+                                        <label>{{ __('Bukti Foto') }}</label>
 
-                                        <div class="input-group">
-                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-info tambah-bukti" type="button">
-                                                    <i class="fa fa-plus-square"></i> Add
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group">
-                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-info tambah-bukti" type="button">
-                                                    <i class="fa fa-plus-square"></i> Add
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group">
-                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-info tambah-bukti" type="button">
-                                                    <i class="fa fa-plus-square"></i> Add
-                                                </button>
-                                            </div>
-                                        </div>
-
+                                        <button class="float-right btn btn-primary "><i class="fa fa-plus-square"></i> Add</button>
                                     </div>
-
                                 </div>
+
+                            </div>
+
+                            <div class="item_table" id="item_table">
+
+                                <div class="form-group mb-3" id="dtTgl">
+                                    <div class="input-group typeahead-container" >
+                                        <div class="input-group">
+                                            <span class="input-group-text input-group-append input-group-addon typeahead"><i class="simple-icon-calendar"></i></span>
+                                            <input type='text' class="form-control" id='dtfirst' name="tgl_tdk_masuk[]" placeholder="Pilih Tanggal"  />
+
+                                            <div class="input-group-append">
+                                                <button type="button" name="add" class="btn btn-primary default add">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
 
