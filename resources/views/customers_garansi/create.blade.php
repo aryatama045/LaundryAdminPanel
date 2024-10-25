@@ -72,8 +72,8 @@
                                     <div class="item_table" id="item_table">
 
                                         <div class="input-group input-group-sm mb-3" id="dtTgl">
-                                            <input type="file" multiple="" class="form-control" name="garansi_photo[]"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                            <div class="input-group-append"><span name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Add</span></div>
+                                            <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            <div style="height:100% !important" class="input-group-append"><span name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Add</span></div>
                                         </div>
 
                                     </div>
@@ -112,12 +112,12 @@
                 if (count > 1) {
 
                     html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
-                        '<input type="file" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                        '<input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
                 }
                 var remove_button = '';
 
                 if (count > 1) {
-                    remove_button = '<div class="input-group-append"><span name="remove" class="input-group-text btn-danger  default remove" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Remove</span></div>';
+                    remove_button = '<div style="height:100% !important" class="input-group-append"><span name="remove" class="input-group-text btn-danger  default remove" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Remove</span></div>';
                 }
 
                 html += remove_button +
