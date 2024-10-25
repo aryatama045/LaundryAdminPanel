@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers\Web\Customers;
 
-use App\Models\Customer;
+use App\Models\CustomerGaransis;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
-use App\Repositories\CustomerRepository;
+use App\Repositories\CustomerGaransiRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 
-class GaransiController extends Controller
+
+class CustomerGaransiController extends Controller
 {
     public function index()
     {
-        $customers = (new CustomerRepository())->getAllOrFindBySearch();
-        return view('customers.index', compact('customers'));
+        $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+        return view('customers_garansi.index', compact('garansis'));
     }
 
     public function show(Customer $customer)
     {
-        return view('customers.show', [
+        return view('customers_garansi.show', [
             'customer' => $customer
         ]);
     }
 
     public function create()
     {
-        return view('customers.create');
+        return view('customers_garansi.create');
     }
 
     public function store(RegistrationRequest $request)
@@ -43,7 +44,7 @@ class GaransiController extends Controller
 
     public function edit(Customer $customer)
     {
-        return view('customers.edit', compact('customer'));
+        return view('customers_garansi.edit', compact('customer'));
     }
 
     public function update(Request $request, Customer $customer)
@@ -63,21 +64,9 @@ class GaransiController extends Controller
     public function delete(Customer $customer)
     {
         $user = $customer->user;
-        $orders = $customer->orders;
 
-        foreach ($orders as $order) {
-            $order->payment?->delete();
-            $order->products()->detach();
-            $order->rating?->delete();
-            $order->additionals()?->detach();
-            $order->delete();
-        }
-        $customer->devices()?->delete();
-        $customer->addresses()?->delete();
-
-        $customer->cards()?->delete();
-
-        $customer->notifications()?->delete();
+        $customer->devices()->delete();
+        $customer->addresses()->delete();
 
         $customer->delete();
 
