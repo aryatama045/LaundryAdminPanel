@@ -70,19 +70,12 @@
                                     <label>{{ __('Bukti Foto') }}</label>
 
                                     <div class="item_table" id="item_table">
-                                        <div class="form-group mb-3" id="dtTgl">
-                                            <div class="input-group typeahead-container" >
-                                                <div class="input-group">
-                                                    <span class="input-group-text input-group-append input-group-addon typeahead"><i class="fa fa-file-image-o"></i></span>
-                                                    <input type="file" multiple="" class="form-control-file" name="garansi_photo[]" />
-                                                    <div class="input-group-append">
-                                                        <button type="button" name="add" class="btn btn-primary default add">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                        <div class="input-group input-group-sm mb-3" id="dtTgl">
+                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]" />
+                                            <div class="input-group-prepend"><button type="button" name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Add</button></div>
                                         </div>
+
                                     </div>
 
                                 </div>
@@ -118,25 +111,19 @@
 
                 if (count > 1) {
 
-                    html += ' <div class="form-group mb-3" id="dtTgl"><div class="input-group typeahead-container" id="dtTgl">'+
-                                '<div class="input-group">'+
-                                    '<span class="input-group-text input-group-append input-group-addon typeahead"><i class="fa fa-file-image-o"></i></span>'+
-                                    '<input type="file" multiple="" class="form-control-file" name="garansi_photo[]"  />'
+                    html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
+                                '<input type="file" multiple="" class="form-control-file" name="garansi_photo[]" />'+
+
                     ;
                 }
                 var remove_button = '';
 
                 if (count > 1) {
-                    remove_button = '<div class="input-group-append">'+
-                                        '<button type="button" name="remove" class="btn btn-danger default remove">'+
-                                            '<i class="fa fa-trash"></i>'+
-                                        '</button>'+
-                                    '</div>';
+                    remove_button = '<div class="input-group-prepend"><button type="button" name="remove" class="input-group-text btn-danger  default remove" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Remove</button></div>';
                 }
 
                 html += remove_button +
-                                '</div>'+
-                            '</div></div>';
+                            '</div>';
 
                 return html;
 
