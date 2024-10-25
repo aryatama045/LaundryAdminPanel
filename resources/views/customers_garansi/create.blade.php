@@ -72,7 +72,7 @@
                                     <div class="item_table" id="item_table">
 
                                         <div class="input-group input-group-sm mb-3" id="dtTgl">
-                                            <input type="file" multiple="" class="form-control-file" name="garansi_photo[]"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            <input type="file" multiple="" class="form-control" name="garansi_photo[]"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                             <div class="input-group-append"><span name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Add</span></div>
                                         </div>
 
@@ -112,7 +112,7 @@
                 if (count > 1) {
 
                     html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
-                        '<input type="file" multiple="" class="form-control-file" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                        '<input type="file" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
                 }
                 var remove_button = '';
 
