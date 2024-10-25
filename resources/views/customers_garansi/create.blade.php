@@ -67,7 +67,9 @@
 
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
+
                                     <div class="div">
+
                                         <div class="input-group">
                                             <input type="file" multiple="" class="form-control-file" name="garansi_photo[]">
                                             <div class="input-group-append">
@@ -76,9 +78,10 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
+                                    </div>
+
+                                </div>
                             </div>
 
 
