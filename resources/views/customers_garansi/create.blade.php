@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    input#tanggal {
+        display: inline-block;
+        position: relative;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+</style>
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-lg-12">
@@ -40,7 +60,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Nota') }} <strong class="text-danger">*</strong></label>
-                                    <input type="date" class="form-control" name="tanggal_nota" value="{{ date('d/m/Y') }}" >
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ date('d/m/Y') }}" >
                                     @error('tanggal_nota')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -56,7 +76,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="date" class="form-control" name="tanggal_pemasangan" value="{{ old('tanggal_pemasangan') }}" >
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal_pemasangan" value="{{ old('tanggal_pemasangan') }}" >
                                     @error('tanggal_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
