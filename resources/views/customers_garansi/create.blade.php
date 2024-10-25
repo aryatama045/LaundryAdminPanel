@@ -40,8 +40,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Nota') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="tanggal_nota"
-                                        value="{{ old('tanggal_nota') }}" placeholder="{{ __('Tanggal Nota') }}">
+                                    <input type="date" class="form-control" name="tanggal_nota" value="{{ date('d/m/Y') }}" >
                                     @error('tanggal_nota')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -57,8 +56,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="tanggal_pemasangan"
-                                        value="{{ old('tanggal_pemasangan') }}" placeholder="{{ __('Tanggal Pemasangan') }}">
+                                    <input type="date" class="form-control" name="tanggal_pemasangan" value="{{ old('tanggal_pemasangan') }}" >
                                     @error('tanggal_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
