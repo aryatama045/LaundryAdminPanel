@@ -112,8 +112,7 @@
                 if (count > 1) {
 
                     html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
-                        '<input type="file" multiple="" class="form-control-file" name="garansi_photo[]" />'+
-                    ;
+                        '<input type="file" multiple="" class="form-control-file" name="garansi_photo[]" />';
                 }
                 var remove_button = '';
 
