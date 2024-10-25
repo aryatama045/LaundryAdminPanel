@@ -31,7 +31,7 @@ class CustomerGaransiController extends Controller
 
     public function create()
     {
-        $customer = Customer::first();
+        $customer = Customer::get();
         return view('customers_garansi.create', compact('customer'));
     }
 
