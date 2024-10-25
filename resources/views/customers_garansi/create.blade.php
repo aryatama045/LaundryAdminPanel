@@ -20,7 +20,7 @@
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Customer') }} </label>
 
-                                    <select class="form-control"  name="customer_id" >
+                                    <select class="form-control"  name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
 
                                         @foreach ($customer as $customers)
