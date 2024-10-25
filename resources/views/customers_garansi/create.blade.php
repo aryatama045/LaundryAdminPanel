@@ -82,11 +82,11 @@
                                     <input type="file"  class="form-control-file" name="profile_photo">
                                 </div>
 
-                                @can('customer.store')
-                                <div class="col-12 col-md-12 mt-4 mb-2 py-2">
-                                    <label for=""></label>
-                                    <button class="btn btn-primary w-100 mt-2  @role('visitor') visitorMessage @endrole">{{ __('Submit') }}</button>
-                                    @endcan
+                                <div class="row">
+                                    <div class="col-3 col-md-3 mt-4 mb-2 py-2">
+                                        <label for=""></label>
+                                        <button class="btn btn-primary w-100 mt-2  ">{{ __('Submit') }}</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
