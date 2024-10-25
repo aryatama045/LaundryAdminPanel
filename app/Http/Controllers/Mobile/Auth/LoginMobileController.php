@@ -42,7 +42,7 @@ class LoginMobileController extends Controller
         return false;
     }
 
-    public function logout()
+    public function mlogout()
     {
         $user = auth()->user();
         Auth::logout($user);
