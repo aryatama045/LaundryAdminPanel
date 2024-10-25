@@ -75,7 +75,7 @@
 
                                         <div class="input-group input-group-sm mb-3" id="dtTgl">
                                             <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                            <div class="input-group-append"><span style="height:100% !important" name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Add</span></div>
+                                            <div class="input-group-append"><span style="height:100% !important" name="add" class="input-group-text btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Tambah</span></div>
                                         </div>
 
                                     </div>
@@ -119,7 +119,7 @@
                 var remove_button = '';
 
                 if (count > 1) {
-                    remove_button = '<div class="input-group-append"><button style="height:100% !important" name="remove" class="input-group-text btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-trash"></i> Remove</button></div>';
+                    remove_button = '<div class="input-group-append"><span style="height:100% !important" name="remove" class="btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-trash"></i>  Hapus</span></div>';
                 }
 
                 html += remove_button +
