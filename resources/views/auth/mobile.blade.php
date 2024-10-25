@@ -34,7 +34,7 @@
                                 {{ $message }} 79789
                             @enderror
 
-                            <h3>Admin Login</h3>
+                            <h3>Mobile Login</h3>
                             <p>This is a secure system and you will need to provide tour login detalis to access the
                                 site</p>
                         </div>
