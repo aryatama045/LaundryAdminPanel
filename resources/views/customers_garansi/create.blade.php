@@ -153,7 +153,7 @@
 
             $(document).on('click', '.add', function() {
                 count++;
-                $('#item_table').prepend(add_input_field(count));
+                $('#item_table').append(add_input_field(count));
             });
 
             $(document).on('click', '.remove', function() {
