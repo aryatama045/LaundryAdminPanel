@@ -41,11 +41,14 @@ use App\Http\Controllers\Web\WebSettingController;
 use Illuminate\Support\Facades\App;
 use Spatie\Permission\Contracts\Role;
 
+use App\Http\Controllers\Mobile\Auth\LoginMobileController;
+
 /*
 +--------------------------------------------------------------------------
 + Web Routes
 +--------------------------------------------------------------------------
 */
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -295,3 +298,8 @@ Route::get('change-language', function () {
     session()->put('local', \request()->ln);
     return back();
 })->name('change.local');
+
+
+// Mobile
+Route::get('/mobile', [LoginMobileController::class, 'index'])->name('login');
+Route::post('/mobile', [LoginMobileController::class, 'login'])->name('login');
