@@ -77,57 +77,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Mobile_number') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"
-                                        placeholder="{{ __('Mobile_number') }}">
-                                    @error('mobile')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Email') }}</label>
-                                    <input type="text" class="form-control" name="email" value="{{ old('email') }}"
-                                        placeholder="{{ __('Email') }}">
-                                    @error('email')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
-                                    <div class="d-flex  align-items-center inputBox">
-                                        <div class="input w-100 position-relative">
-                                            <input type="password" id="password" class="form-control" name="password"
-                                                placeholder="******">
-                                            <span class="eye" onclick="myFunction()">
-                                                <i class="fa fa-eye-slash"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    @error('password')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Confirm_Password') }}</label>
-                                    <div class="d-flex  align-items-center inputBox">
-                                        <div class="input w-100 position-relative">
-                                            <input type="password" class="form-control" name="password_confirmation"
-                                                placeholder="******" id="confirmPassword">
-                                            <span class="eye" onclick="confirmPassword()">
-                                                <i class="fa fa-eye-slash"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-12 col-md-6 mb-2 py-2">
                                     <label for="">{{ __('Profile_Photo') }}</label>
-                                    <input type="file" class="form-control-file" name="profile_photo">
+                                    <input type="file"  class="form-control-file" name="profile_photo">
                                 </div>
 
                                 @can('customer.store')
-                                <div class="col-12 col-md-6 mb-2 py-2">
+                                <div class="col-12 col-md-12 mt-4 mb-2 py-2">
                                     <label for=""></label>
                                     <button class="btn btn-primary w-100 mt-2  @role('visitor') visitorMessage @endrole">{{ __('Submit') }}</button>
                                     @endcan
