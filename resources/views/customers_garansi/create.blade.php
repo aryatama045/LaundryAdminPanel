@@ -65,6 +65,8 @@
                                 </div>
                             </div>
 
+                            <hr>
+
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
                                     <label>{{ __('Bukti Foto') }}</label>
