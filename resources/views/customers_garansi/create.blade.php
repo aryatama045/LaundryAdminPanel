@@ -23,8 +23,8 @@
                                     <select class="form-control"  name="customer_id" >
                                         <option value=""> -- Select Customers --</option>
 
-                                        @foreach ()
-                                        <option value="{{ old('customer_id') }}"> {{ __('Company') }}  </option>
+                                        @foreach ($customer as $customers)
+                                            <option value="{{ old($customers->customer_id) }}"> {{ $customers->user->first_name }}  </option>
                                         @endforeach
                                     </select>
 
