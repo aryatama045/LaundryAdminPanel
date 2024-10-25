@@ -19,7 +19,7 @@ use App\Http\Controllers\Web\Services\ServiceController;
 use App\Http\Controllers\Web\Variants\VariantController;
 
 use App\Http\Controllers\Web\Customers\CustomerController;
-use App\Http\Controllers\Web\Customers\GaransiController;
+use App\Http\Controllers\Web\Customers\CustomerGaransiController;
 use App\Http\Controllers\Web\Customers\KlaimController;
 
 use App\Http\Controllers\Web\DeliveryCost\DeliveryCostController;
