@@ -21,7 +21,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-7 col-lg-6 login-form-section">
                 <div class="login">
-                    <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('login') }}">
+                    <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('mobile') }}">
                         @csrf
                         <div class="header text-center">
                             @php

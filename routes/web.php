@@ -301,5 +301,6 @@ Route::get('change-language', function () {
 
 
 // Mobile
-Route::get('/mobile', [LoginMobileController::class, 'index'])->name('login');
-Route::post('/mobile', [LoginMobileController::class, 'login'])->name('login');
+Route::get('/mobile', [LoginMobileController::class, 'index'])->name('mobile');
+Route::post('/mobile', [LoginMobileController::class, 'login'])->name('mobile');
+Route::post('/logout', [LoginController::class, 'logout'])->name('mlogout');
