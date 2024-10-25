@@ -68,7 +68,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-6 mb-2 py-2">
                                     <label for="">{{ __('Profile_Photo') }}</label>
-                                    <input type="file[]"  class="form-control-file" name="garansi_photo">
+                                    <input type="file[]" multiple="multiple" class="form-control-file" name="garansi_photo">
                                 </div>
                             </div>
 
