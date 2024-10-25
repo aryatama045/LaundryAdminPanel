@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form @role('root|admin') @can('customer.store') action="{{ route('customer.store') }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
+                        <form @role('root|admin')  action="{{ route('garansi.store') }}"  @endrole method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
