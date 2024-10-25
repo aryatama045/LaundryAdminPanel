@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Web\Customers;
 
-use App\Models\CustomerGaransis;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\CustomerGaransiRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
+use App\Models\Customer;
+use App\Models\CustomerGaransis;
 
 
 class CustomerGaransiController extends Controller
@@ -16,6 +18,7 @@ class CustomerGaransiController extends Controller
     public function index()
     {
         $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+
         return view('customers_garansi.index', compact('garansis'));
     }
 
@@ -28,7 +31,8 @@ class CustomerGaransiController extends Controller
 
     public function create()
     {
-        return view('customers_garansi.create');
+        $customer = Customer::first();
+        return view('customers_garansi.create', compact('customer'));
     }
 
     public function store(RegistrationRequest $request)

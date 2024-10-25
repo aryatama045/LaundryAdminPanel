@@ -16,6 +16,24 @@
                     <div class="card-body">
                         <form @role('root|admin') @can('customer.store') action="{{ route('customer.store') }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
+                                <!-- Select Customer -->
+                                <div class="col-12 col-md-12 mb-2">
+                                    <label for="">{{ __('Customer') }} </label>
+
+                                    <select class="form-control"  name="customer_id" >
+                                        <option value=""> -- Select Customers --</option>
+
+                                        @foreach ()
+                                        <option value="{{ old('customer_id') }}"> {{ __('Company') }}  </option>
+                                        @endforeach
+                                    </select>
+
+
+                                    @error('customer_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="first_name"
@@ -32,6 +50,16 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                <div class="col-12 col-md-12 mb-2">
+                                    <label for="">{{ __('Company') }} </label>
+                                    <input type="text" class="form-control" name="company"
+                                        value="{{ old('company') }}" placeholder="{{ __('Company') }}">
+                                    @error('company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Mobile_number') }} <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"
@@ -40,6 +68,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Email') }}</label>
                                     <input type="text" class="form-control" name="email" value="{{ old('email') }}"
