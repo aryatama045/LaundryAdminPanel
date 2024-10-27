@@ -74,10 +74,8 @@ class CustomerGaransiController extends Controller
                 shuffle($data_kode);
                 $kode       = implode("",$data_kode);
 
-                dd($kode);
 
-
-                $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
+                $kode_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
                 
                 dd($kode_bukti);
 
