@@ -43,7 +43,7 @@ class CustomerGaransiController extends Controller
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
 
-            $garansiFoto = count($request->hasFile('garansi_photo'));
+            $garansiFoto = count($request->garansi_photo);
             dd($garansiFoto);
 
             $thumbnail = (new MediaRepository())->storeByRequest(
