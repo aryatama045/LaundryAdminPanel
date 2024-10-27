@@ -50,20 +50,19 @@ class CustomerGaransiController extends Controller
 
             for ($x=0; $x<$garansiFoto; $x++){
 
-                
                 $date = now()->toDateString('d-m-Y h:i:s');
                 
                 $jam    =  date('h',strtotime($date));
                 $menit  =  date('i',strtotime($date));
                 $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
-                $rk = array_rand($data_kode);
+                $rk = array_rand($data_kode, 8);
                 $kode = $data_kode[$rk];
                 $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
+                
+                dd($file_name);
 
-                dd($file_name, $request->garansi_photo);
-            
                 $thumbnail = (new MediaRepository())->storeByGaransi(
-                    $file_name,
+                    $request->garansi_photo,
                     $this->path,
                     'garansi images',
                     'image'
