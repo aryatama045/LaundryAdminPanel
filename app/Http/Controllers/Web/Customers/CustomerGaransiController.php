@@ -38,6 +38,26 @@ class CustomerGaransiController extends Controller
         return view('customers_garansi.create', compact('customer'));
     }
 
+
+    // Function getNewFileName 
+    public function getNewFileName($filename, $extension, $path)
+    {
+        $date   = now()->toDateTimeString();
+        $jam    =  date('h',strtotime($date));
+        $menit  =  date('i',strtotime($date));
+        $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
+        $rk = array_rand($data_kode, 8);
+        $kode = $data_kode[$rk];
+        $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
+
+        $i = 1;
+        $new_filename = $filename . '.' . $extension;
+        while (File::exists($path . $new_filename))
+            $new_filename = $kode_name . '_' . $i++ . '.' . $extension;
+        return $new_filename;
+
+    }
+
     public function store(Request $request)
     {
 
@@ -50,14 +70,17 @@ class CustomerGaransiController extends Controller
 
             for ($x=0; $x<$garansiFoto; $x++){
 
-                $date = now()->toDateString('d-m-Y h:i:s');
+                $file = $request->garansi_photo;
+
+                $originalName = $file->getClientOriginalName();
+                $filename = str_slug(pathinfo($originalName, PATHINFO_FILENAME), "-");
+                $extension = pathinfo($originalName, PATHINFO_EXTENSION);
                 
-                $jam    =  date('h',strtotime($date));
-                $menit  =  date('i',strtotime($date));
-                $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
-                $rk = array_rand($data_kode, 8);
-                $kode = $data_kode[$rk];
-                $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
+                //Call getNewFileName function 
+                $finalFullName = $this->getNewFileName($filename, $extension, $path);
+                
+
+                
                 
                 dd($file_name);
 
