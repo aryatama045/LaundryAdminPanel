@@ -57,7 +57,9 @@ class CustomerGaransiController extends Controller
                 $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
                 $rk = array_rand($data_kode);
                 $kode = $data_kode[$rk];
-                $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit;
+                $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
+
+                $request->garansi_photo['originalName'] =$file_name;
 
                 dd($file_name, $request->garansi_photo);
             
