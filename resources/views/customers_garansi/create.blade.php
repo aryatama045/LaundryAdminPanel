@@ -27,9 +27,9 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="w-100">
-                            <h2 class="float-left">{{ __('Add_New'). ' '. __('Customer') }}</h2>
+                            <h2 class="float-left">{{ __('Add_New'). ' '. __('Garansi') }}</h2>
                             <div class="text-right">
-                                <a class="btn btn-light" href="{{ route('customer.index') }}"> {{ __('Back') }} </a>
+                                <a class="btn btn-light" href="{{ route('garansi.index') }}"> {{ __('Back') }} </a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <div class="row">
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
-                                    <label for="">{{ __('Customer') }} <strong class="text-danger">*</strong> </label>
+                                    <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
                                     <select class="form-control" name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
                                         @foreach ($customer as $customers)
@@ -51,7 +51,7 @@
                                 </div>
                                 <!-- Nota -->
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('No. Nota') }} <strong class="text-danger">*</strong></label>
+                                    <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="no_nota"
                                         value="{{ old('no_nota') }}" placeholder="{{ __('No. Nota') }}">
                                     @error('no_nota')
@@ -59,7 +59,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Tanggal Nota') }} <strong class="text-danger">*</strong></label>
+                                    <label for=""><b>{{ __('Tanggal Nota') }}</b> <strong class="text-danger">*</strong></label>
                                     <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ now()->toDateString('d/m/Y') }}" >
                                     @error('tanggal_nota')
                                         <span class="text-danger">{{ $message }}</span>
@@ -87,7 +87,7 @@
 
                             <div class="row">
                                 <div class="col-12 col-md-8 mb-2">
-                                    <label><b>{{ __('Bukti Foto') }}</b> <strong class="text-danger">*</strong></label>
+                                    <label><b>{{ __('Bukti Foto') }}</b> </label>
                                     <span name="add" class="float-right btn btn-primary btn-sm default add">
                                         <i class="fa fa-plus"></i> Tambah
                                     </span>
