@@ -16,6 +16,15 @@
                     <div class="card-body">
                         <form @role('root|admin') @can('customer.store') action="{{ route('customer.store') }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
+                                <div class="col-12 col-md-12 mb-2">
+                                    <label for="">{{ __('Company') }} </label>
+                                    <input type="text" class="form-control" name="company"
+                                        value="{{ old('company') }}" placeholder="{{ __('Company') }}">
+                                    @error('company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="first_name"
@@ -29,15 +38,6 @@
                                     <input type="text" class="form-control" name="last_name"
                                         value="{{ old('last_name') }}" placeholder="{{ __('Last_Name') }}">
                                     @error('last_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-12 col-md-12 mb-2">
-                                    <label for="">{{ __('Company') }} </label>
-                                    <input type="text" class="form-control" name="company"
-                                        value="{{ old('company') }}" placeholder="{{ __('Company') }}">
-                                    @error('company')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

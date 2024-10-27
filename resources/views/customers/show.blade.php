@@ -23,6 +23,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <th>{{ __('Company') }}</th>
+                                    <td>{{ $customer->user->company ? $customer->user->company : 'N/A' }}</td>
+                                </tr>
 
                                 <tr>
                                     <th>{{ __('Name') }}</th>
