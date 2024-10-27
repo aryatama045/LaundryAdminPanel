@@ -114,6 +114,7 @@ class UserRepository extends Repository
         $thumbnail = $this->profileImageUpdate($request, $user);
 
         $user->update([
+            "company" => $request->company,
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
             "email" => $request->email,
