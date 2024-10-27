@@ -50,9 +50,18 @@ class CustomerGaransiController extends Controller
 
             for ($x=0; $x<$garansiFoto; $x++){
 
+                $jam    =  now()->toDateString('h');
+                $menit  =  now()->toDateString('i');
+                $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
+                $rk = array_rand($data_kode);
+                $kode = $data_kode[$rk];
+                $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit;
+
+                $request->garansi_photo->originalName = $file_name;
+
                 dd($garansiFoto, $request->garansi_photo);
             
-                $thumbnail = (new MediaRepository())->storeByRequest(
+                $thumbnail = (new MediaRepository())->storeByGaransi(
                     $request->garansi_photo,
                     $this->path,
                     'garansi images',
