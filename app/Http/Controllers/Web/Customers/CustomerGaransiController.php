@@ -69,12 +69,12 @@ class CustomerGaransiController extends Controller
                     'images/garansi/',
                     'garansi images',
                     'image',
-                    'urutan'
+                    $urutan
                 );
             }
         }
 
-        dd('salah');
+        dd('uploaded');
 
 
         $user = (new UserRepository())->registerUser($request);
