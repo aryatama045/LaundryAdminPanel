@@ -63,12 +63,10 @@ class CustomerGaransiController extends Controller
                 $file = $request->garansi_photo[$x];
 
                 $urutan = $x;
-
-                $path = 'images/garansi/';
                 
                 $thumbnail = (new MediaRepository())->storeByGaransi(
                     $file,
-                    $path,
+                    'images/garansi/',
                     'garansi images',
                     'image',
                     'urutan'
