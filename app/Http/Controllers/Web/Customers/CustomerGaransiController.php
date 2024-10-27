@@ -78,11 +78,10 @@ class CustomerGaransiController extends Controller
                 $file = $request->garansi_photo[$x];
 
                 $originalName = $file->getClientOriginalName();
-                $filename = str_slug(pathinfo($originalName, PATHINFO_FILENAME), "-");
                 $extension = pathinfo($originalName, PATHINFO_EXTENSION);
                 
                 //Call getNewFileName function 
-                $kode_bukti = $this->getNewFileName($filename, $extension);
+                $kode_bukti = $this->getNewFileName($originalName, $extension);
                 
 
                 
