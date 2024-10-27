@@ -74,10 +74,8 @@ class CustomerGaransiController extends Controller
                 shuffle($data_kode);
                 $kode       = implode("",$data_kode);
 
-
                 $kode_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
                 
-                dd($kode_bukti);
 
                 $thumbnail = (new MediaRepository())->storeByGaransi(
                     $kode_bukti,
