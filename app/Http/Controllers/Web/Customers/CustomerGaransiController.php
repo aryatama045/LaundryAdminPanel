@@ -45,9 +45,14 @@ class CustomerGaransiController extends Controller
         $date   = now()->toDateTimeString();
         $jam    =  date('h',strtotime($date));
         $menit  =  date('i',strtotime($date));
-        $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
-        $rk = array_rand($data_kode, 8);
-        $kode = $data_kode[$rk];
+
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        $r_r        = array_random($data_kode, 8);
+        $kode       = implode("",$r_r);
+
+        // $rk = array_rand($data_kode);
+        // $kode = $data_kode[$rk];
+
         $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
 
         $i = 1;
