@@ -72,8 +72,6 @@ class MediaRepository extends Repository
         $kode       = implode("",$data_kode);
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan;
-
-        $nama_foto = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
         
         $path = Storage::put('/'. trim($path, '/'), $foto_bukti, 'public');
         $extension = $file->extension();
@@ -84,7 +82,7 @@ class MediaRepository extends Repository
 
         return $this->model()::create([
             'type' => $type,
-            'name' => $foto_bukti,
+            'name' => $foto_bukti.'.'.$extension,
             'src' =>  $path,
             'extension' => $extension,
             'path' => $path,
