@@ -22,10 +22,10 @@ class CustomerGaransiController extends Controller
         return view('customers_garansi.index', compact('garansis'));
     }
 
-    public function show(Customer $customer)
+    public function show(CustomerGaransis $garansi)
     {
         return view('customers_garansi.show', [
-            'customer' => $customer
+            'garansi' => $garansi
         ]);
     }
 
@@ -35,15 +35,19 @@ class CustomerGaransiController extends Controller
         return view('customers_garansi.create', compact('customer'));
     }
 
-    public function store(RegistrationRequest $request)
+    public function store(Request $request)
     {
+
+        dd($request);
         $user = (new UserRepository())->registerUser($request);
         (new CustomerRepository())->storeByUser($user);
         $user->assignRole('customer');
         $user->update([
             'mobile_verified_at' => now()
         ]);
-        return redirect()->route('customer.index')->with('success', 'Customer create successfully');
+
+        
+        return redirect()->route('customer_garansi.index')->with('success', 'Garansi create successfully');
     }
 
     public function edit(Customer $customer)
