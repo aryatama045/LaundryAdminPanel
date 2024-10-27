@@ -77,15 +77,15 @@ class CustomerGaransiController extends Controller
                 $extension = pathinfo($originalName, PATHINFO_EXTENSION);
                 
                 //Call getNewFileName function 
-                $finalFullName = $this->getNewFileName($filename, $extension, $path);
+                $kode_bukti = $this->getNewFileName($filename, $extension);
                 
 
                 
                 
-                dd($file_name);
+                dd($kode_bukti);
 
                 $thumbnail = (new MediaRepository())->storeByGaransi(
-                    $request->garansi_photo,
+                    $kode_bukti,
                     $this->path,
                     'garansi images',
                     'image'
