@@ -92,7 +92,7 @@ class MediaRepository extends Repository
 
     public function updateByGaransi(UploadedFile $file,string $path, string $type = null, Media $media): Media
     {
-        $path = Storage::put('/'. trim($path, '/'), $file, 'public');
+        $path = Storage::put('/'. 'images/garansi/', $file, 'public');
         $extension = $file->extension();
         if(!$type){
             $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif']) ? 'image' : $extension;
