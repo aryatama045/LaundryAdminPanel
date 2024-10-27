@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             $userId = $this->userId;
         }
         $rule = [
+            'company' => 'nullable',
             'first_name' => 'required|string',
             'last_name' => 'nullable|string',
             'mobile' => ['nullable', 'numeric', "unique:users,mobile,$userId,id"],
