@@ -73,8 +73,7 @@ class MediaRepository extends Repository
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
 
-        $path = Storage::put('/images/garansi/', $file, 'public');
-
+        $path = Storage::put('/'. trim($path, '/'), $file, 'public');
         if(!$type){
             $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif']) ? 'image' : $extension;
         }
