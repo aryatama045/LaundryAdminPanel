@@ -50,8 +50,10 @@ class CustomerGaransiController extends Controller
 
             for ($x=0; $x<$garansiFoto; $x++){
 
-                $jam    =  now()->toDayDateTimeString('h');
-                $menit  =  now()->toDayDateTimeString('i');
+                $date = now()->toDateString('d-m-Y h:i:s');
+                
+                $jam    =  date('h',strtotime($date));
+                $menit  =  date('i',strtotime($date));
                 $data_kode = ['M','E','T','A','L','I','N','D','O','P'];
                 $rk = array_rand($data_kode);
                 $kode = $data_kode[$rk];
