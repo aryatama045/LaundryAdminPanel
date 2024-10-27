@@ -79,6 +79,8 @@ class CustomerGaransiController extends Controller
 
                 $originalName = $file->getClientOriginalName();
                 $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+
+                dd($originalName, $extension);
                 
                 //Call getNewFileName function 
                 $kode_bukti = $this->getNewFileName($originalName, $extension);
