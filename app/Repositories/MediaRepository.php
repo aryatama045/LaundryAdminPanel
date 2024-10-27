@@ -57,7 +57,7 @@ class MediaRepository extends Repository
 
 
 
-    public function storeByGaransi(UploadedFile $file, string $path, string $description = null, string $type = null): Media
+    public function storeByGaransi(UploadedFile $file, string $path, string $description = null, string $type = null, $urutan): Media
     {
 
         $date           = now()->toDateTimeString();
@@ -71,7 +71,7 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
         
         $path = Storage::put('/'. trim($path, '/'), $foto_bukti, 'public');
         $extension = $file->extension();
