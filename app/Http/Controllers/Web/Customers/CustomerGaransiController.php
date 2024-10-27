@@ -57,12 +57,10 @@ class CustomerGaransiController extends Controller
                 $kode = $data_kode[$rk];
                 $file_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit;
 
-                $request->garansi_photo->originalName = $file_name;
-
-                dd($garansiFoto, $request->garansi_photo);
+                dd($file_name, $request->garansi_photo);
             
                 $thumbnail = (new MediaRepository())->storeByGaransi(
-                    $request->garansi_photo,
+                    $file_name,
                     $this->path,
                     'garansi images',
                     'image'
