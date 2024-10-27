@@ -16,7 +16,7 @@ use App\Models\CustomerGaransis;
 
 class CustomerGaransiController extends Controller
 {
-    private $path = 'images/customers/';
+    
 
     public function index()
     {
@@ -63,6 +63,8 @@ class CustomerGaransiController extends Controller
                 $file = $request->garansi_photo[$x];
 
                 $urutan = $x;
+
+                $path = 'images/garansi/';
                 
                 $thumbnail = (new MediaRepository())->storeByGaransi(
                     $file,
