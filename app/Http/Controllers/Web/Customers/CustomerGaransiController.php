@@ -38,7 +38,25 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+        
+
+        $thumbnail = null;
+        if ($request->hasFile('garansi_photo')) {
+
+            $garansiFoto = count($request->hasFile('garansi_photo'));
+            dd($garansiFoto);
+
+            $thumbnail = (new MediaRepository())->storeByRequest(
+                $request->garansi_photo,
+                $this->path,
+                'customer images',
+                'image'
+            );
+        }
+
+        dd('salah');
+
+
         $user = (new UserRepository())->registerUser($request);
         (new CustomerRepository())->storeByUser($user);
         $user->assignRole('customer');
