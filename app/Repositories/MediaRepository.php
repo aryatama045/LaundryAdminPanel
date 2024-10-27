@@ -71,7 +71,9 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan;
+
+        $nama_foto = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
         
         $path = Storage::put('/'. trim($path, '/'), $foto_bukti, 'public');
         $extension = $file->extension();
