@@ -68,7 +68,7 @@ class CustomerGaransiController extends Controller
                 
                 $thumbnail = (new MediaRepository())->storeByGaransi(
                     $file,
-                    $this->path,
+                    $path,
                     'garansi images',
                     'image',
                     'urutan'
