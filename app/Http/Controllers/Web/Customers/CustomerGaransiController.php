@@ -71,11 +71,10 @@ class CustomerGaransiController extends Controller
                 $menit  =  date('i',strtotime($date));
 
                 $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
-                // $r_r        = array_random($data_kode, 8);
-                $randomized_keys = array_rand($data_kode, count($data_kode)); 
-                dd($randomized_keys);
+                shuffle($data_kode);
+                $kode       = implode("",$data_kode);
 
-                $kode       = implode("",$r_r);
+                dd($kode);
 
 
                 $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
