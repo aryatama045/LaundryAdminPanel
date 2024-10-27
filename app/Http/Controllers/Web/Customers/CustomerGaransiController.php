@@ -40,7 +40,7 @@ class CustomerGaransiController extends Controller
 
 
     // Function getNewFileName 
-    public function getNewFileName($filename, $extension, $path)
+    public function getNewFileName($filename, $extension)
     {
         $date   = now()->toDateTimeString();
         $jam    =  date('h',strtotime($date));
