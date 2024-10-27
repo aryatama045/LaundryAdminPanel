@@ -72,8 +72,8 @@ class CustomerGaransiController extends Controller
 
                 $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
                 // $r_r        = array_random($data_kode, 8);
-                $r_r        = $this->shuffle_me($data_kode);
-                dd($r_r);
+                $randomized_keys = array_rand($data_kode, count($data_kode)); 
+                dd($randomized_keys);
 
                 $kode       = implode("",$r_r);
 
