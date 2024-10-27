@@ -39,29 +39,14 @@ class CustomerGaransiController extends Controller
     }
 
 
-    // Function getNewFileName 
-    public function getNewFileName($filename, $extension)
-    {
-        $date   = now()->toDateTimeString();
-        $jam    =  date('h',strtotime($date));
-        $menit  =  date('i',strtotime($date));
-
-        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
-        $r_r        = array_random($data_kode, 8);
-        $kode       = implode("",$r_r);
-
-        // $rk = array_rand($data_kode);
-        // $kode = $data_kode[$rk];
-
-        $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x;
-
-        $i = 1;
-        $new_filename = $filename . '.' . $extension;
-        while (File::exists($path . $new_filename))
-            $new_filename = $kode_name . '_' . $i++ . '.' . $extension;
-        return $new_filename;
-
-    }
+    public function shuffle_me($shuffle_me) { 
+        $randomized_keys = array_rand($shuffle_me, count($shuffle_me)); 
+        foreach($randomized_keys as $current_key) { 
+            $shuffled_me[$current_key] = $shuffle_me[$current_key]; 
+        } 
+        return $shuffled_me; 
+    } 
+    
 
     public function store(Request $request)
     {
@@ -82,11 +67,19 @@ class CustomerGaransiController extends Controller
 
                 dd($originalName, $extension);
                 
-                //Call getNewFileName function 
-                $kode_bukti = $this->getNewFileName($originalName, $extension);
-                
+                $date   = now()->toDateTimeString();
+                $jam    =  date('h',strtotime($date));
+                $menit  =  date('i',strtotime($date));
 
-                
+                $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+                // $r_r        = array_random($data_kode, 8);
+                $r_r        = $this->shuffle_me($data_kode);
+                dd($r_r);
+
+                $kode       = implode("",$r_r);
+
+
+                $kode_name = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
                 
                 dd($kode_bukti);
 
