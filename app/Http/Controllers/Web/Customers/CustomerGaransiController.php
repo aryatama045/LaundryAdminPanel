@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web\Customers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use App\Repositories\MediaRepository;
 use App\Repositories\CustomerGaransiRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
@@ -15,6 +16,8 @@ use App\Models\CustomerGaransis;
 
 class CustomerGaransiController extends Controller
 {
+    private $path = 'images/customers/';
+
     public function index()
     {
         $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
@@ -44,14 +47,18 @@ class CustomerGaransiController extends Controller
         if ($request->hasFile('garansi_photo')) {
 
             $garansiFoto = count($request->garansi_photo);
-            dd($garansiFoto);
 
-            $thumbnail = (new MediaRepository())->storeByRequest(
-                $request->garansi_photo,
-                $this->path,
-                'customer images',
-                'image'
-            );
+            for ($x=0; $x<$garansiFoto; $x++){
+
+                dd($garansiFoto, $request->garansi_photo);
+            
+                $thumbnail = (new MediaRepository())->storeByRequest(
+                    $request->garansi_photo,
+                    $this->path,
+                    'garansi images',
+                    'image'
+                );
+            }
         }
 
         dd('salah');
