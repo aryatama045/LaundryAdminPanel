@@ -62,23 +62,9 @@ class CustomerGaransiController extends Controller
 
                 $file = $request->garansi_photo[$x];
 
-                $originalName = $file->getClientOriginalName();
-                $extension = pathinfo($originalName, PATHINFO_EXTENSION);
-
                 
-                $date   = now()->toDateTimeString();
-                $jam    =  date('h',strtotime($date));
-                $menit  =  date('i',strtotime($date));
-
-                $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
-                shuffle($data_kode);
-                $kode       = implode("",$data_kode);
-
-                $kode_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$x.'.'.$extension;
-                
-
                 $thumbnail = (new MediaRepository())->storeByGaransi(
-                    $kode_bukti,
+                    $file,
                     $this->path,
                     'garansi images',
                     'image'
