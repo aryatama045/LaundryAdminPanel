@@ -75,7 +75,7 @@ class CustomerGaransiController extends Controller
 
             for ($x=0; $x<$garansiFoto; $x++){
 
-                $file = $request->garansi_photo;
+                $file = $request->garansi_photo[$x];
 
                 $originalName = $file->getClientOriginalName();
                 $filename = str_slug(pathinfo($originalName, PATHINFO_FILENAME), "-");
