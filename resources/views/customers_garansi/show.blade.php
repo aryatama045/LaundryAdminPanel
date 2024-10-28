@@ -99,6 +99,11 @@
                                                                     <td>{{ __('No Nota') }}</td>
                                                                     <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ $garansi->tanggal_nota_nota }} </small></td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <img width="100" src="{{ $garansi->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
+
+                                                                </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
