@@ -104,7 +104,6 @@
 
                                                                 <tr>
                                                                     <?php
-                                                                        Illuminate\Support\Facades\Storage;
                                                                         App\Models\Media;
 
                                                                         $get_media = Media::where($bukti->foto_id)->get();
