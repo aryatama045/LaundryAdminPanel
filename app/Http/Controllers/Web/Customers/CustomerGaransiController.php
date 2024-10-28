@@ -12,6 +12,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\CustomerGaransis;
+use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
 use Image;
@@ -45,9 +46,6 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
-
-        // $garansi_data = (new CustomerGaransiRepository())->storeByGaransi($request);
-
         $garansi_fill = [
             'customer_id' => $request->customer_id,
             'no_nota' => $request->no_nota,
@@ -56,8 +54,7 @@ class CustomerGaransiController extends Controller
             'tanggal_pemasangan' => $request->tanggal_pemasangan,
         ];
 
-        dd($garansi_fill);
-        $garansi_data = Category::create($garansi_fill);
+        $garansi_data = CustomerGaransis::create($garansi_fill);
 
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
@@ -79,6 +76,15 @@ class CustomerGaransiController extends Controller
                 );
 
                 (new CustomerBuktiRepository())->storeBuktiFoto($garansi_data,$thumbnail);
+
+                $bukti_foto = [
+                    'garansi_id'            => $garansi_data->id,
+                    'customer_id'           => $garansi_data->customer_id,
+                    'foto_id'               => $thumbnail->id,
+                    'kode_foto'             => $thumbnail->name,
+                    'created_ny'            => $garansi_data->customer_id
+                ];
+                CustomerBuktiFotos::create($bukti_foto);
 
             }
         }
