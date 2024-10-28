@@ -75,7 +75,7 @@ class CustomerGaransiController extends Controller
                     $urutan
                 );
 
-                (new CustomerBuktiRepository())->storeBuktiFoto($garansi_data,$thumbnail);
+                // (new CustomerBuktiRepository())->storeBuktiFoto($garansi_data,$thumbnail);
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
