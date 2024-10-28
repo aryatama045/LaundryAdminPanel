@@ -104,15 +104,11 @@
 
                                                                 <tr>
                                                                     <?php
-
                                                                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
-
-
-
                                                                     ?>
-                                                                    <td colspan="2">
-                                                                        <img width="100%" src="{{ Storage::url($get_media->src);  }}" alt="{{ $bukti->kode_foto }}">
 
+                                                                    <td colspan="2">
+                                                                        <img width="100%" src="{{ Storage::url($get_media->path);  }}" alt="{{ $bukti->kode_foto }}">
                                                                     </td>
 
                                                                 </tr>

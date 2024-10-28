@@ -82,7 +82,7 @@ class MediaRepository extends Repository
         return $this->model()::create([
             'type' => $type,
             'name' => $foto_bukti,
-            'src' =>  $path,
+            'src' =>  $file->getClientOriginalName(),
             'extension' => $extension,
             'path' => $path,
             'description' => $description,

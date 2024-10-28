@@ -75,7 +75,21 @@ class CustomerGaransiController extends Controller
                     $urutan
                 );
 
-                // (new CustomerBuktiRepository())->storeBuktiFoto($garansi_data,$thumbnail);
+
+                $img = Image::make(storage_path('app/public/' . $thumbnail->src));  //GET FILE YANG SUDAH DISIMPAN
+                //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT DAENGWEB.ID
+                //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
+                $img->text('SMP', 200, 150, function($font) {
+                    // $font->file(public_path('milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    $font->size(50);
+                    $font->color('#e74c3c');
+                    $font->align('center');
+                    $font->valign('middle');
+                    $font->angle(0);
+                });
+                $filenameWatermark = $filenameWithoutEx . '_watermark.' . $file->getClientOriginalExtension(); //GENERATE NAMA FILE YANG SUDAH BERISI WATERMARK
+                $img->save(storage_path('app/public/products/' . $filenameWatermark)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
