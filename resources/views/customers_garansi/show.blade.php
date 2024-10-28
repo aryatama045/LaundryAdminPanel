@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="w-100">
-                        <h2 class="float-left">{{ __('Customer').' '.__('Details') }}</h2>
+                        <h2 class="float-left">{{ __('Garansi').' '.__('Details') }}</h2>
                         <div class="text-right">
                             <a class="btn btn-light" href="{{ url()->previous() }}"> {{ __('Back') }} </a>
                         </div>
@@ -26,20 +26,20 @@
 
                                 <tr>
                                     <th>{{ __('Name') }}</th>
-                                    <td>{{ $customer->user->first_name ? $customer->user->name : 'N/A' }}</td>
+                                    <td>{{ $garansi->user->first_name ? $garansi->user->name : 'N/A' }}</td>
                                 </tr>
                                 <tr>
                                     <th>{{ __('Profile_Photo') }}</th>
                                 <td>
-                                    <img width="100" src="{{ $customer->user->profilePhotoPath }}" alt="{{ $customer->user->name }}">
+                                    <img width="100" src="{{ $garansi->user->profilePhotoPath }}" alt="{{ $garansi->user->name }}">
                                 </td>
                                 </tr>
                                 <tr>
                                     <th>{{ __('Email') }}</th>
                                     <td>
-                                        {{ $customer->user->email }}
-                                        @if ($customer->user->email_verified_at)
-                                            <span class="bg-success btn py-0 px-1">{{ $customer->user->email_verified_at->format('M d, Y') }}</span>
+                                        {{ $garansi->user->email }}
+                                        @if ($garansi->user->email_verified_at)
+                                            <span class="bg-success btn py-0 px-1">{{ $garansi->user->email_verified_at->format('M d, Y') }}</span>
                                             @else
                                             <span class="bg-warning btn py-0 px-1">{{ __('Unverified') }}</span>
                                         @endif
@@ -48,8 +48,8 @@
                                 <tr>
                                     <th>{{ __('Mobile') }}</th>
                                     <td>
-                                        {{ $customer->user->mobile }}
-                                        @if ($customer->user->mobile_verified_at)
+                                        {{ $garansi->user->mobile }}
+                                        @if ($garansi->user->mobile_verified_at)
                                             <span class="bg-success btn py-0 px-1">{{ __('verified') }}</span>
                                             @else
                                             <span class="bg-warning btn py-0 px-1">{{ __('Unverified') }}</span>
@@ -59,14 +59,14 @@
 
                                 <tr>
                                     <th>{{ __('Date_of_Birth') }}</th>
-                                    <td>{{ Carbon\Carbon::parse($customer->user->dob)->format('M d, Y') }}</td>
+                                    <td>{{ Carbon\Carbon::parse($garansi->user->dob)->format('M d, Y') }}</td>
                                 </tr>
 
-                                @if (!$customer->addresses->isEmpty())
+                                @if (!$garansi->addresses->isEmpty())
                                 <tr>
                                     <th>{{ __('Address') }}</th>
                                     <td>
-                                        @foreach ($customer->addresses as $key => $address)
+                                        @foreach ($garansi->addresses as $key => $address)
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
@@ -126,7 +126,7 @@
                                 </tr>
                                 @endif
 
-                                @if (!$customer->orders->isEmpty())
+                                @if (!$garansi->orders->isEmpty())
                                 <tr>
                                     <th>{{ __('Orders') }}</th>
                                     <td>
@@ -146,7 +146,7 @@
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    @foreach ($customer->orders as $key => $order)
+                                                    @foreach ($garansi->orders as $key => $order)
                                                     <div class="position-relative">
                                                         {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
                                                         @if (session()->get('local') == 'ar')
