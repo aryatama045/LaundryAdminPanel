@@ -76,7 +76,7 @@ class CustomerGaransiController extends Controller
                 );
 
 
-                $img = Image::make(storage_path('app/public/' . $thumbnail->src));  //GET FILE YANG SUDAH DISIMPAN
+                $img = Image::make(storage_path('app/public/' . $thumbnail->path));  //GET FILE YANG SUDAH DISIMPAN
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT DAENGWEB.ID
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
                 $img->text('SMP', 200, 150, function($font) {
@@ -87,8 +87,8 @@ class CustomerGaransiController extends Controller
                     $font->valign('middle');
                     $font->angle(0);
                 });
-                $filenameWatermark = $filenameWithoutEx . '_watermark.' . $file->getClientOriginalExtension(); //GENERATE NAMA FILE YANG SUDAH BERISI WATERMARK
-                $img->save(storage_path('app/public/products/' . $filenameWatermark)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+                $filenameWatermark = $thumbnail->src; //GENERATE NAMA FILE YANG SUDAH BERISI WATERMARK
+                $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
 
                 $bukti_foto = [
