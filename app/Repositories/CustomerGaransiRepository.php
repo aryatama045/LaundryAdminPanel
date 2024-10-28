@@ -9,6 +9,13 @@ use App\Models\CustomerGaransis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+
+use App\Models\Media;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+
 class CustomerGaransiRepository extends Repository
 {
     private $path = 'images/garansi/';
@@ -142,11 +149,4 @@ class CustomerGaransiRepository extends Repository
         return $thumbnail;
     }
 
-    public function toggleStatus(Garansi $garansi)
-    {
-        $garansi->update([
-            'is_active' => !$garansi->is_active
-        ]);
-        return $garansi;
-    }
 }

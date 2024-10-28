@@ -46,7 +46,18 @@ class CustomerGaransiController extends Controller
     {
 
 
-        $garansi_data = (new CustomerGaransiRepository())->storeByGaransi($request);
+        // $garansi_data = (new CustomerGaransiRepository())->storeByGaransi($request);
+
+        $garansi_fill = [
+            'customer_id' => $request->customer_id,
+            'no_nota' => $request->no_nota,
+            'tanggal_nota' => $request->tanggal_nota,
+            'no_pemasangan' => $request->no_pemasangan,
+            'tanggal_pemasangan' => $request->tanggal_pemasangan,
+        ];
+
+        dd($garansi_fill);
+        $garansi_data = Category::create($garansi_fill);
 
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
