@@ -103,14 +103,14 @@
                                                                 </tr>
 
                                                                 <tr>
-                                                                    @php
-                                                                        use Illuminate\Support\Facades\Storage;
-                                                                        use App\Models\Media;
+                                                                    <?php
+                                                                        Illuminate\Support\Facades\Storage;
+                                                                        App\Models\Media;
 
                                                                         $get_media = Media::where($bukti->foto_id)->get();
 
 
-                                                                    @endphp
+                                                                    ?>
                                                                     <td colspan="2">
                                                                         <img width="100" src="{{ Storage::url($get_media->src);  }}" alt="{{ $bukti->kode_foto }}">
 
