@@ -79,7 +79,7 @@ class CustomerGaransiController extends Controller
                 $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
                 $logo = public_path('logo.png');
-                $img->place($logo, 'center', 10, 10);
+                $img->place($logo, 'center', 15, 15);
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
 
