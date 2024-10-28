@@ -10,9 +10,11 @@ class CustomerGaransis extends Model
     use HasFactory;
     protected $guarded = ['id'];
     // ----------------- Relations
+
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
     public function bukti_foto()
@@ -20,26 +22,6 @@ class CustomerGaransis extends Model
         return $this->hasMany(CustomerBuktiFotos::class);
     }
 
-    public function addresses()
-    {
-        return $this->hasMany(Address::class);
-    }
-
-    public function devices()
-    {
-        return $this->hasMany(DeviceKey::class);
-    }
-
-
-    public function cards()
-    {
-        return $this->hasMany(CardInfo::class);
-    }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
 
     // ----------------- Attribute
     public function getProfilePhotoPathAttribute()
