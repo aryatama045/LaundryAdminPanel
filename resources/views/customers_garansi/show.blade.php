@@ -101,8 +101,9 @@
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <img width="100" src="{{ $garansi->bukti_foto->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
-
+                                                                    @if (!$bukti->getBuktiFotoPathGaransi->isEmpty())
+                                                                        <img width="100" src="{{ $bukti->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
+                                                                    @endif
                                                                 </tr>
                                                             </tbody>
                                                         </table>
