@@ -105,7 +105,7 @@
                                                                 <tr>
                                                                     <?php
 
-                                                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->get();
+                                                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
 
 
 
