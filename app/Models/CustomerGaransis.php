@@ -28,7 +28,7 @@ class CustomerGaransis extends Model
 
     public function bukti_foto_get()
     {
-        return $this->belongsTo(CustomerBuktiFotos::class, 'foto_id');
+        return $this->belongsTo(CustomerBuktiFotos::class, 'garansi_id');
     }
 
 
