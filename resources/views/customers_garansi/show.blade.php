@@ -99,7 +99,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>{{ __('No Nota') }}</td>
-                                                                    <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ $garansi->tanggal_nota }} </small></td>
+                                                                    <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small></td>
                                                                 </tr>
 
                                                                 <tr>
