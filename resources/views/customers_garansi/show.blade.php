@@ -97,12 +97,12 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>{{ __('No Nota') }}</td>
-                                                                    <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ $garansi->tanggal_nota_nota }} </small></td>
+                                                                    <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ $garansi->tanggal_nota }} </small></td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td collspan="2">
-                                                                        <img width="100" src="{{ $bukti->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
+                                                                    <td colspan="2">
+                                                                        <img width="100" src="{{ $bukti->getBuktiFotoPathGaransi }}" alt="{{ $bukti->kode_foto }}">
 
                                                                     </td>
 
