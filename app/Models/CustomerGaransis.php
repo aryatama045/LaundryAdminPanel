@@ -26,9 +26,15 @@ class CustomerGaransis extends Model
         return $this->hasMany(CustomerBuktiFotos::class, 'garansi_id');
     }
 
+    public function bukti_foto_get()
+    {
+        return $this->belongsTo(CustomerBuktiFotos::class, 'foto_id');
+    }
+
+
     public function getBuktiFotoPathGaransi()
     {
-        return $this->bukti_foto->getBuktiFotoGaransi;
+        return $this->bukti_foto_get->getBuktiFotoGaransi;
     }
 
 

@@ -101,7 +101,10 @@
                                                                 </tr>
 
                                                                 <tr>
+                                                                    <td collspan="2">
                                                                         <img width="100" src="{{ $bukti->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
+
+                                                                    </td>
 
                                                                 </tr>
                                                             </tbody>
