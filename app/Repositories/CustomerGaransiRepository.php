@@ -33,15 +33,16 @@ class CustomerGaransiRepository extends Repository
         return $garansis->latest('id')->get();
     }
 
-    public function storeGaransi(CustomerGaransis $garansi): CustomerGaransis
+    public function storeGaransi(CustomerGaransis $request): CustomerGaransis
     {
 
+        dd($request);
         return $this->create([
-            'customer_id' => $garansi->customer_id,
-            'no_nota' => $garansi->no_nota,
-            'tanggal_nota' => $garansi->tanggal_nota,
-            'no_pemasangan' => $garansi->no_pemasangan,
-            'tanggal_pemasangan' => $garansi->tanggal_pemasangan,
+            'customer_id' => $request->customer_id,
+            'no_nota' => $request->no_nota,
+            'tanggal_nota' => $request->tanggal_nota,
+            'no_pemasangan' => $request->no_pemasangan,
+            'tanggal_pemasangan' => $request->tanggal_pemasangan,
         ]);
 
     }
