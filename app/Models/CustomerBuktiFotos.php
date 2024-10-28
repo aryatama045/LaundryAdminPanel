@@ -5,6 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
+
 class CustomerBuktiFotos extends Model
 {
 
@@ -16,28 +27,25 @@ class CustomerBuktiFotos extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
-    public static function getTime($time)
+    public function garansi()
     {
-        $times = [
-            '8' => '08 - 09:59',
-            '9' => '08 - 09:59',
-            '10' => '10 - 11:59',
-            '11' => '10 - 11:59',
-            '12' => '12 - 13:59',
-            '13' => '12 - 13:59',
-            '14' => '14 - 15:59',
-            '15' => '14 -1 5:59',
-            '16' => '16 - 17:59',
-            '17' => '16 - 17:59',
-            '18' => '18 - 19:59',
-            '19' => '18 - 19:59',
-            '20' => '20 - 21:59',
-            '21' => '20 - 21:59',
-        ];
-        foreach($times as $key => $item){
-            if($key == $time){
-                return $item;
-            }
-        }
+        return $this->belongsTo(CustomerGaransis::class, 'garansi_id');
     }
+
+    public function klaim()
+    {
+        return $this->belongsTo(CustomerKlaims::class, 'klaim_id');
+    }
+
+    public function getBuktiFotoPathGaransi()
+    {
+        return $this->garansi->profilePhotoPath;
+    }
+
+    public function getBuktiFotoPathKlaim()
+    {
+        return $this->klaim->profilePhotoPath;
+    }
+
+
 }

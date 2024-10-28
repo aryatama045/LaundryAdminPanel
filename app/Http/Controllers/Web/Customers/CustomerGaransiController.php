@@ -13,10 +13,13 @@ use App\Models\User;
 use App\Models\Customer;
 use App\Models\CustomerGaransis;
 
+use Illuminate\Support\Str;
+use Image;
+use DB;
+
 
 class CustomerGaransiController extends Controller
 {
-    
 
     public function index()
     {
@@ -39,19 +42,10 @@ class CustomerGaransiController extends Controller
     }
 
 
-    public function shuffle_me($shuffle_me) { 
-        $randomized_keys = array_rand($shuffle_me, count($shuffle_me)); 
-        foreach($randomized_keys as $current_key) { 
-            $shuffled_me[$current_key] = $shuffle_me[$current_key]; 
-        } 
-        return $shuffled_me; 
-    } 
-    
-
     public function store(Request $request)
     {
 
-        
+        $garansi = (new CustomerGaransiRepository())->storeGaransi($request);
 
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
@@ -63,7 +57,7 @@ class CustomerGaransiController extends Controller
                 $file = $request->garansi_photo[$x];
 
                 $urutan = $x;
-                
+
                 $thumbnail = (new MediaRepository())->storeByGaransi(
                     $file,
                     'images/garansi/',
@@ -71,20 +65,12 @@ class CustomerGaransiController extends Controller
                     'image',
                     $urutan
                 );
+
+                $bukti = (new CustomerBuktiRepository())->storeBuktiFoto($garansi,$thumbnail);
+
             }
         }
 
-        dd('uploaded');
-
-
-        $user = (new UserRepository())->registerUser($request);
-        (new CustomerRepository())->storeByUser($user);
-        $user->assignRole('customer');
-        $user->update([
-            'mobile_verified_at' => now()
-        ]);
-
-        
         return redirect()->route('customer_garansi.index')->with('success', 'Garansi create successfully');
     }
 

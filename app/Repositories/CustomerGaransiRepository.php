@@ -33,40 +33,18 @@ class CustomerGaransiRepository extends Repository
         return $garansis->latest('id')->get();
     }
 
-    public function storeByUser(CustomerGaransis $garansi): CustomerGaransis
+    public function storeGaransi(CustomerGaransis $garansi): CustomerGaransis
     {
 
         return $this->create([
-            'user_id' => $garansi->id,
-            'stripe_customer' => ''
-        ]);
-    }
-
-    public function registerGaransi(Request $request)
-    {
-        $thumbnail = null;
-        if ($request->hasFile('garansi_photo')) {
-            $thumbnail = (new MediaRepository())->storeByRequest(
-                $request->garansi_photo,
-                $this->path,
-                'garansi images',
-                'image'
-            );
-        }
-
-        $garansi = $this->create([
-            'customer_id'           => $customer->customer_id,
-            'no_nota'               => $customer->no_nota,
-            'tanggal_nota'          => $customer->tanggal_nota,
-            'no_pemasangan'         => $customer->no_pemasangan,
-            'tanggal_pemasangan'    => $customer->tanggal_pemasangan,
-
+            'customer_id' => $garansi->customer_id,
+            'no_nota' => $garansi->no_nota,
+            'tanggal_nota' => $garansi->tanggal_nota,
+            'no_pemasangan' => $garansi->no_pemasangan,
+            'tanggal_pemasangan' => $garansi->tanggal_pemasangan,
         ]);
 
-        return $garansi;
     }
-
-
 
 
 
