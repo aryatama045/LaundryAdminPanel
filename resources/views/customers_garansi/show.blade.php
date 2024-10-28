@@ -101,7 +101,7 @@
                                                                 </tr>
 
                                                                 <tr>
-                                                                        <img width="100" src="{{ $bukti->foto_id->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
+                                                                        <img width="100" src="{{ $bukti->getBuktiFotoPathGaransi }}" alt="{{ $garansi->kode_foto }}">
 
                                                                 </tr>
                                                             </tbody>

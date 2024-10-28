@@ -40,11 +40,6 @@ class CustomerBuktiFotos extends Model
 
 
 
-    public function getBuktiFotoPathGaransi()
-    {
-        return $this->getBuktiFotoGaransi;
-    }
-
     public function GaransiPhoto(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'foto_id');
