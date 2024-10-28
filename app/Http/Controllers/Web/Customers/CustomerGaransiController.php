@@ -90,7 +90,7 @@ class CustomerGaransiController extends Controller
             }
         }
 
-        return redirect()->route('customer_garansi.index')->with('success', 'Garansi create successfully');
+        return redirect()->route('garansi.index')->with('success', 'Garansi create successfully');
     }
 
     public function edit(Customer $customer)
