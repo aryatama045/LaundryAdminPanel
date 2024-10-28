@@ -65,6 +65,10 @@
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
+                                                <a href="{{ route('garansi.delete', $garansi->id) }}"
+                                                    class="btn btn-danger py-1 px-2">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
                                             </td>
                                             @endcanany
                                         </tr>
