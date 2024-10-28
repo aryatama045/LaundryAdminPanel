@@ -111,7 +111,7 @@
 
                                                                     ?>
                                                                     <td colspan="2">
-                                                                        <img width="100" src="{{ Storage::url($get_media->src);  }}" alt="{{ $bukti->kode_foto }}">
+                                                                        <img width="100%" src="{{ Storage::url($get_media->src);  }}" alt="{{ $bukti->kode_foto }}">
 
                                                                     </td>
 
