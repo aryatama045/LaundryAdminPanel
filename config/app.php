@@ -208,7 +208,7 @@ return [
 
         Spatie\Permission\PermissionServiceProvider::class,
 
-        Intervention\Image\ImageServiceProvider::class,
+        Intervention\Image\Laravel\ServiceProvider::class,
 
     ],
 
