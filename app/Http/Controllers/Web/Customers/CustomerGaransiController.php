@@ -15,8 +15,7 @@ use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
-
-use Image;
+use Intervention\Image\Laravel\Facades\Image;
 use DB;
 
 
@@ -77,20 +76,13 @@ class CustomerGaransiController extends Controller
                 );
 
 
-                $img = \Image::make(storage_path('app/public/' . $thumbnail->path));  //GET FILE YANG SUDAH DISIMPAN
-                //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT DAENGWEB.ID
-                //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
-                $img->text('SMP', 200, 150, function($font) {
-                    // $font->file(public_path('milkyroad.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
-                    $font->size(50);
-                    $font->color('#e74c3c');
-                    $font->align('center');
-                    $font->valign('middle');
-                    $font->angle(0);
-                });
-                $filenameWatermark = $thumbnail->src; //GENERATE NAMA FILE YANG SUDAH BERISI WATERMARK
+                $img = Image::read(storage_path('app/public/' . $thumbnail->path));
+
+                $logo = public_path('logo.png');
+                $img->place($logo, 'center', 10, 10);
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
+                $img->save(public_path('images/'). $imageName);
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
