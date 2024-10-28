@@ -79,7 +79,7 @@ class CustomerGaransiController extends Controller
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
-                    'klaim_id'              => '',
+                    'klaim_id'              => '0',
                     'customer_id'           => $garansi_data->customer_id,
                     'foto_id'               => $thumbnail->id,
                     'kode_foto'             => $thumbnail->name,
