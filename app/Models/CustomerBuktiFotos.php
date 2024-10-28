@@ -34,19 +34,13 @@ class CustomerBuktiFotos extends Model
         return $this->belongsTo(CustomerKlaims::class, 'klaim_id');
     }
 
-    public function GaransiPhoto(): BelongsTo
+
+
+    public function getBuktiFotoPathGaransi()
     {
-        return $this->belongsTo(Media::class, 'garansi_id');
+        return $this->CustomerGaransis->getBuktiFotoPathGaransi;
     }
 
-    public function getBuktiFotoPathGaransi(): string
-    {
-        if ($this->GaransiPhoto && Storage::exists($this->GaransiPhoto->src)) {
-            return Storage::url($this->GaransiPhoto->src);
-        }
-
-        return asset('images/dummy/dummy-user.png');
-    }
 
 
 }
