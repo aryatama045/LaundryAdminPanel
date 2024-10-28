@@ -20,13 +20,6 @@ class CustomerGaransis extends Model
         return $this->hasMany(CustomerBuktiFotos::class);
     }
 
-
-    public function devices()
-    {
-        return $this->hasMany(DeviceKey::class);
-    }
-
-
     // ----------------- Attribute
     public function getGaransiPhotoPathAttribute()
     {

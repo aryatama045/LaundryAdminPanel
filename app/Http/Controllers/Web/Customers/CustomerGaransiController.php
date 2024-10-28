@@ -45,7 +45,8 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
-        $garansi = (new CustomerGaransiRepository())->storeGaransi($request);
+        dd($request);
+        $garansi_data = (new CustomerGaransiRepository())->storeByGaransi($request);
 
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
@@ -66,7 +67,7 @@ class CustomerGaransiController extends Controller
                     $urutan
                 );
 
-                $bukti = (new CustomerBuktiRepository())->storeBuktiFoto($garansi,$thumbnail);
+                (new CustomerBuktiRepository())->storeBuktiFoto($garansi_data,$thumbnail);
 
             }
         }
