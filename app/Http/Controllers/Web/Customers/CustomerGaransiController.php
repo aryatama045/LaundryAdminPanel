@@ -16,7 +16,7 @@ use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
 
-use Intervention\Image\Facades\Image as Image;
+use Image;
 use DB;
 
 
@@ -77,7 +77,7 @@ class CustomerGaransiController extends Controller
                 );
 
 
-                $img = Image::make(storage_path('app/public/' . $thumbnail->path));  //GET FILE YANG SUDAH DISIMPAN
+                $img = \Image::make(storage_path('app/public/' . $thumbnail->path));  //GET FILE YANG SUDAH DISIMPAN
                 //KEMUDIAN KITA SISIPKAN WATERMARK DENGAN TEXT DAENGWEB.ID
                 //X = 200, Y = 150. SILAHKAN DISESUAIKAN UNTUK POSISINYA
                 $img->text('SMP', 200, 150, function($font) {
