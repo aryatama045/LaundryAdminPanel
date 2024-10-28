@@ -42,8 +42,6 @@ class CustomerGaransiRepository extends Repository
 
     public function storeByGaransi(CustomerGaransis $request): CustomerGaransis
     {
-
-        dd($request);
         return $this->create([
             'customer_id' => $request->customer_id,
             'no_nota' => $request->no_nota,
