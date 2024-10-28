@@ -82,7 +82,6 @@ class CustomerGaransiController extends Controller
                 $img->place($logo, 'center', 10, 10);
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
-                $img->save(public_path('images/'). $imageName);
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
