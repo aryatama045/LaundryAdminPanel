@@ -15,7 +15,8 @@ use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
-use Image;
+
+use Intervention\Image\Facades\Image as Image;
 use DB;
 
 
