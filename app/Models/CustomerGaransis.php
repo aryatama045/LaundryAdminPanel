@@ -20,10 +20,31 @@ class CustomerGaransis extends Model
         return $this->hasMany(CustomerBuktiFotos::class);
     }
 
-    // ----------------- Attribute
-    public function getGaransiPhotoPathAttribute()
+    public function addresses()
     {
-        return $this->bukti_foto->GaransiPhotoPath;
+        return $this->hasMany(Address::class);
+    }
+
+    public function devices()
+    {
+        return $this->hasMany(DeviceKey::class);
+    }
+
+
+    public function cards()
+    {
+        return $this->hasMany(CardInfo::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    // ----------------- Attribute
+    public function getProfilePhotoPathAttribute()
+    {
+        return $this->user->profilePhotoPath;
     }
 
     public function getNameAttribute()
