@@ -45,7 +45,7 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
-        dd($request);
+
         $garansi_data = (new CustomerGaransiRepository())->storeByGaransi($request);
 
         $thumbnail = null;

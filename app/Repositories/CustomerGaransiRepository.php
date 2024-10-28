@@ -33,7 +33,7 @@ class CustomerGaransiRepository extends Repository
         return $garansis->latest('id')->get();
     }
 
-    public function storeGaransi(CustomerGaransis $request): CustomerGaransis
+    public function storeByGaransi(CustomerGaransis $request): CustomerGaransis
     {
 
         dd($request);
