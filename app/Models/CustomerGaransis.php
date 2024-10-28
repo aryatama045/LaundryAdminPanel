@@ -34,7 +34,7 @@ class CustomerGaransis extends Model
         return $this->user->first_name . ' ' . $this->user->last_name;
     }
 
-    public function GaransiPhoto(): BelongsTo
+    public function GaransiPhoto()
     {
         return $this->belongsTo(Media::class, 'foto_id');
     }
