@@ -19,7 +19,7 @@ class CustomerGaransis extends Model
 
     public function bukti_foto()
     {
-        return $this->hasMany(CustomerBuktiFotos::class);
+        return $this->hasMany(CustomerBuktiFotos::class );
     }
 
 

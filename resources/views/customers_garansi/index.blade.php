@@ -66,7 +66,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="{{ route('garansi.delete', $garansi->id) }}"
-                                                    class="btn btn-danger py-1 px-2">
+                                                    class="btn btn-danger py-1 px-2 delete-confirm" >
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

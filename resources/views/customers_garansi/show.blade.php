@@ -57,32 +57,28 @@
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <th>{{ __('Date_of_Birth') }}</th>
-                                    <td>{{ Carbon\Carbon::parse($garansi->user->dob)->format('M d, Y') }}</td>
-                                </tr>
 
-                                @if (!$garansi->addresses->isEmpty())
+                                @if (!$garansi->bukti_foto->isEmpty())
                                 <tr>
-                                    <th>{{ __('Address') }}</th>
+                                    <th>{{ __('Bukti Foto') }}</th>
                                     <td>
-                                        @foreach ($garansi->addresses as $key => $address)
+                                        @foreach ($garansi->bukti_foto as $key => $bukti)
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            <span>{{ $address->address_line . ',' . $address->address_line2 }}</span>
+                                            <span>{{ $bukti->kode_foto }}</span>
 
-                                            <a href="#address_show_{{ $address->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
+                                            <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
                                                 <i class="fa fa-eye"></i>
                                             </a>
 
                                             <hr class="my-2">
                                             <!-- Modal -->
-                                            <div class="modal fade" id="address_show_{{ $address->id }}">
+                                            <div class="modal fade" id="bukti_foto_show_{{ $bukti->id }}">
                                                 <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $address->address_line }}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $garansi->no_pemasangan }}</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -96,20 +92,12 @@
                                                                     <th scope="col">{{ __('Details') }}</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>{{ __('Post_Code') }}</td>
-                                                                    <td>{{ $address->post_code }}</td>
+                                                                    <td>{{ __('Kode Foto') }}</td>
+                                                                    <td>{{ $bukti->kode_foto }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>{{ __('Address_line') }} 1</td>
-                                                                    <td>{{ $address->address_line }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>{{ __('Address_line') }} 2</td>
-                                                                    <td>{{ $address->address_line2 }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>{{ __('Delivery').' '.__('Note') }}</td>
-                                                                    <td>{{ $address->delivery_note }}</td>
+                                                                    <td>{{ __('No Nota') }}</td>
+                                                                    <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ $garansi->tanggal_nota_nota }} </small></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -126,53 +114,6 @@
                                 </tr>
                                 @endif
 
-                                @if (!$garansi->orders->isEmpty())
-                                <tr>
-                                    <th>{{ __('Orders') }}</th>
-                                    <td>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                                            {{ __('Show_all_Orders') }}
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="staticBackdrop">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">{{ __('All') .' '.__('Orders') }}</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    @foreach ($garansi->orders as $key => $order)
-                                                    <div class="position-relative">
-                                                        {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
-                                                        @if (session()->get('local') == 'ar')
-                                                        <span> {{ $order->products->count() }} :{{ __('Products') }}</span>,
-                                                        <span>{{ Carbon\Carbon::parse($order->delivery_at)->format('M d, Y') }} :{{ __('Delivery_Date') }}</span>,
-
-                                                        @else
-                                                        <span>{{ __('Delivery_Date') }}: {{ Carbon\Carbon::parse($order->delivery_at)->format('M d, Y') }}</span>,
-                                                        <span>{{ __('Products') }}: {{ $order->products->count() }}</span>
-                                                        @endif
-                                                        <a href="{{ route('order.show', $order->id) }}" class="btn btn-info p-1 px-2 ml-2 position-absolute" style="right:0; bottom:5px">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                        <hr class="my-2">
-                                                    </div>
-                                                    @endforeach
-                                                </div>
-                                                <div class="modal-footer">
-                                                <button type="button" class="btn btn-dark" data-dismiss="modal">{{ __('Close') }}</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endif
 
                             </tbody>
                         </table>
