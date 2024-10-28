@@ -104,9 +104,9 @@
 
                                                                 <tr>
                                                                     <?php
-                                                                        App\Models\Media;
 
-                                                                        $get_media = Media::where($bukti->foto_id)->get();
+                                                                        $get_media = DB::table('media')->where('foto_id', $bukti->foto_id)->get();
+
 
 
                                                                     ?>
