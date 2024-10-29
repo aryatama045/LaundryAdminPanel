@@ -27,36 +27,12 @@
                             <tbody>
 
                                 <tr>
-                                    <th>{{ __('Name') }}</th>
-                                    <td>{{ $garansi->user->first_name ? $garansi->user->name : 'N/A' }}</td>
+                                    <th>{{ __('No Nota') }}</th>
+                                    <td>{{ $garansi->no_nota }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_nota)) ?></small></td>
                                 </tr>
                                 <tr>
-                                    <th>{{ __('Profile_Photo') }}</th>
-                                <td>
-                                    <img width="100" src="{{ $garansi->user->profilePhotoPath }}" alt="{{ $garansi->user->name }}">
-                                </td>
-                                </tr>
-                                <tr>
-                                    <th>{{ __('Email') }}</th>
-                                    <td>
-                                        {{ $garansi->user->email }}
-                                        @if ($garansi->user->email_verified_at)
-                                            <span class="bg-success btn py-0 px-1">{{ $garansi->user->email_verified_at->format('M d, Y') }}</span>
-                                            @else
-                                            <span class="bg-warning btn py-0 px-1">{{ __('Unverified') }}</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>{{ __('Mobile') }}</th>
-                                    <td>
-                                        {{ $garansi->user->mobile }}
-                                        @if ($garansi->user->mobile_verified_at)
-                                            <span class="bg-success btn py-0 px-1">{{ __('verified') }}</span>
-                                            @else
-                                            <span class="bg-warning btn py-0 px-1">{{ __('Unverified') }}</span>
-                                        @endif
-                                    </td>
+                                    <th>{{ __('No Pemasangan') }}</th>
+                                    <td>{{ $garansi->no_pemasangan }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small></td>
                                 </tr>
 
 
