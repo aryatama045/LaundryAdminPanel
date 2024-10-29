@@ -54,7 +54,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'role:admin|visitor|root', 'permission_check'])->group(function () {
+Route::middleware(['auth', 'role:admin|visitor|root|customer', 'permission_check'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('root');
 
     // Service routes
