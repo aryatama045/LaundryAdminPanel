@@ -118,16 +118,13 @@ class CustomerGaransiController extends Controller
         return redirect()->route('customer.index')->with('success', 'Customer Update successfully');
     }
 
-    public function delete(Customer $customer)
+    public function delete(Request $request, CustomerGaransis $garansi, CustomerBuktiFotos $bukti)
     {
-        $user = $customer->user;
 
-        $customer->devices()->delete();
-        $customer->addresses()->delete();
+        dd($request);
 
-        $customer->delete();
+        $garansi->delete();
 
-        $user->delete();
 
         return back()->with('success', 'User deleted successfully');
     }
