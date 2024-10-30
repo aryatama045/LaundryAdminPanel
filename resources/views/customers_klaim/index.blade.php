@@ -8,7 +8,7 @@
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers Klaims') }}</h2>
                         <div>
-                            <form action="{{ route('garansi.index') }}" method="GET">
+                            <form action="{{ route('klaim.index') }}" method="GET">
                                 <ul class=" nav d-flex justify-content-end">
                                     <li class="nav-item ml-2 mr-md-0">
                                         <input type="text" name='search' placeholder="Search"
@@ -21,7 +21,7 @@
                                     </li>
                                     @can('customer.create')
                                     <li class="nav-item ml-2 mr-md-0">
-                                        <a href="{{ route('garansi.create') }}" class="btn btn-primary">
+                                        <a href="{{ route('klaim.create') }}" class="btn btn-primary">
                                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer Klaims') }}
                                         </a>
                                     </li>
@@ -57,15 +57,15 @@
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
-                                                <a href="{{ route('garansi.show', $garansi->id) }}"
+                                                <a href="{{ route('klaim.show', $garansi->id) }}"
                                                     class="btn btn-primary py-1 px-2">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('garansi.edit', $garansi->id) }}"
+                                                <a href="{{ route('klaim.edit', $garansi->id) }}"
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('garansi.delete', $garansi->id) }}"
+                                                <a href="{{ route('klaim.delete', $garansi->id) }}"
                                                     class="btn btn-danger py-1 px-2 delete-confirm" >
                                                     <i class="fa fa-trash"></i>
                                                 </a>
