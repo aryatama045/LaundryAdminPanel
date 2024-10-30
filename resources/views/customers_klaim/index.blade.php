@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
-                        <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers Klaims') }}</h2>
+                        <h2 class="card-title m-0">{{ __('All'). ' '.__('Klaims') }}</h2>
                         <div>
                             <form action="{{ route('klaim.index') }}" method="GET">
                                 <ul class=" nav d-flex justify-content-end">
@@ -22,7 +22,7 @@
                                     @can('customer.create')
                                     <li class="nav-item ml-2 mr-md-0">
                                         <a href="{{ route('klaim.create') }}" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer Klaims') }}
+                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Klaims') }}
                                         </a>
                                     </li>
                                     @endcan
