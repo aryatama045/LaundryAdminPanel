@@ -215,6 +215,7 @@
 
                                 @if ($garansi->bukti_foto->isEmpty())
                                 <tr>
+                                    <td colspan="2">
                                         @foreach ($garansi->bukti_foto as $key => $bukti)
 
                                         @endforeach
@@ -258,6 +259,7 @@
                                             </div>
 
                                         </div>
+                                    </td>
                                 </tr>
                                 @endif
 
