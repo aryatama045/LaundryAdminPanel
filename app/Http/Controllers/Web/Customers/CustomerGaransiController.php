@@ -122,11 +122,11 @@ class CustomerGaransiController extends Controller
     {
 
         if($id){
-            $garansi = CustomerGaransis::where('id', $id);
+            $garansi = CustomerGaransis::where('id', $id)->first();
 
-            $bukti = CustomerBuktiFotos::where('garansi_id', $garansi->id);
+            $bukti = CustomerBuktiFotos::where('garansi_id', $garansi->id)->get();
 
-            $foto = Media::whereIn('id', array($bukti->foto_id));
+            $foto = Media::whereIn('id', array($bukti->foto_id))->get();
 
             dd($garansi, $bukti, $foto);
         }
