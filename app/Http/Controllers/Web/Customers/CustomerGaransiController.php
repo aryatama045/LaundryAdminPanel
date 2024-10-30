@@ -118,13 +118,18 @@ class CustomerGaransiController extends Controller
         return redirect()->route('customer.index')->with('success', 'Customer Update successfully');
     }
 
-    public function delete(Request $request, CustomerGaransis $garansi, CustomerBuktiFotos $bukti)
+    public function delete($id)
     {
 
-        dd($request);
+        if($id){
+            $garansi = CustomerGaransis::where('id', $id);
 
-        $garansi->delete();
+            $bukti = CustomerBuktiFotos::where('garansi_id', $garansi->id);
 
+            $foto = Media::whereIn('id', array($bukti->foto_id));
+
+            dd($garansi, $bukti, $foto);
+        }
 
         return back()->with('success', 'User deleted successfully');
     }
