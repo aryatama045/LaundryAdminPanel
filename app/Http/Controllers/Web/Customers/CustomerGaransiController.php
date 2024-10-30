@@ -126,10 +126,16 @@ class CustomerGaransiController extends Controller
             $garansi = CustomerGaransis::where('id', $id)->first();
 
             $bukti = CustomerBuktiFotos::where('garansi_id', $garansi->id)->get();
+            if(!empty($bukti)){
+                $bukti->delete();
+                foreach($bukti as $idfoto){
+                    $foto = Media::where('id', $idfoto)->delete();
+                }
+                $bukti->delete();
+            }
 
-            $foto = Media::whereIn('id', array($bukti->foto_id))->get();
+            $garansi->delete();
 
-            dd($garansi, $bukti, $foto);
         }
 
         return back()->with('success', 'User deleted successfully');
