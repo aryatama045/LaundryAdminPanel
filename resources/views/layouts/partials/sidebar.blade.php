@@ -52,7 +52,7 @@
                         <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
                             href="{{ route('klaim.index') }}">
                             <i class="fas fa-list text-green"></i>
-                            <span class="nav-link-text">{{ __('Report Klaim') }}</span>
+                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
                         </a>
                     </li>
                 @endcan

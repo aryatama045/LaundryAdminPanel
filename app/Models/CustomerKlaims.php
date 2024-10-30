@@ -15,11 +15,38 @@ class CustomerKlaims extends Model
         return $this->belongsTo(User::class);
     }
 
+
     public function bukti_foto()
     {
-        return $this->hasMany(CustomerBuktiFotos::class);
+        return $this->hasMany(CustomerBuktiFotos::class, 'klaim_id');
     }
 
+    public function bukti_foto_get()
+    {
+        return $this->belongsTo(CustomerBuktiFotos::class, 'klaim_id', 'foto_id');
+    }
+
+
+    public function getBuktiFotoPathGaransi()
+    {
+        return $this->bukti_foto_get->getBuktiFotoGaransi;
+    }
+
+
+    public function GaransiPhoto(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'foto_id');
+    }
+
+
+    public function getBuktiFotoGaransi(): string
+    {
+        if ($this->GaransiPhoto && Storage::exists($this->GaransiPhoto->src)) {
+            return Storage::url($this->GaransiPhoto->src);
+        }
+
+        return asset('images/dummy/dummy-user.png');
+    }
 
 
 

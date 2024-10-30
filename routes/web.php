@@ -20,7 +20,7 @@ use App\Http\Controllers\Web\Variants\VariantController;
 
 use App\Http\Controllers\Web\Customers\CustomerController;
 use App\Http\Controllers\Web\Customers\CustomerGaransiController;
-use App\Http\Controllers\Web\Customers\KlaimController;
+use App\Http\Controllers\Web\Customers\CustomerKlaimController;
 
 use App\Http\Controllers\Web\DeliveryCost\DeliveryCostController;
 use App\Http\Controllers\Web\Driver\DriverController;
@@ -110,13 +110,13 @@ Route::middleware(['auth', 'role:admin|visitor|root|customer', 'permission_check
 
 
     // Klaim routes
-    Route::get('/klaim', [KlaimController::class, 'index'])->name('klaim.index');
-    Route::get('/klaim/{klaim}/show', [KlaimController::class, 'show'])->name('klaim.show');
-    Route::get('/klaim/create', [KlaimController::class, 'create'])->name('klaim.create');
-    Route::post('/klaim', [KlaimController::class, 'store'])->name('klaim.store');
-    Route::get('/klaim/{klaim}/edit', [KlaimController::class, 'edit'])->name('klaim.edit');
-    Route::put('/klaim/{klaim}', [KlaimController::class, 'update'])->name('klaim.update');
-    Route::get('/klaim/{klaim}/delete', [KlaimController::class, 'delete'])->name('klaim.delete');
+    Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');
+    Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.show');
+    Route::get('/klaim/create', [CustomerKlaimController::class, 'create'])->name('klaim.create');
+    Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
+    Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
+    Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
+    Route::get('/klaim/{klaim}/delete', [CustomerKlaimController::class, 'delete'])->name('klaim.delete');
 
 
 
