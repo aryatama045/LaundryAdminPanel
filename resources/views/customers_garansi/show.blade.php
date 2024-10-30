@@ -28,13 +28,16 @@
 
                                 <tr>
                                     <th>{{ __('No Nota') }}</th>
-                                    <td>{{ $garansi->no_nota }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_nota)) ?></small></td>
+                                    <td>{{ $garansi->no_nota }} <br>
+                                        <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_nota)) ?></small>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>{{ __('No Pemasangan') }}</th>
-                                    <td>{{ $garansi->no_pemasangan }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small></td>
+                                    <td>{{ $garansi->no_pemasangan }} <br>
+                                        <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small>
+                                    </td>
                                 </tr>
-
 
                                 @if (!$garansi->bukti_foto->isEmpty())
                                 <tr>

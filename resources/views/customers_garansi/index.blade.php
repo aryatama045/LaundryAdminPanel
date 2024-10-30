@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
-                        <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers Garansi') }}</h2>
+                        <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers Klaims') }}</h2>
                         <div>
                             <form action="{{ route('garansi.index') }}" method="GET">
                                 <ul class=" nav d-flex justify-content-end">
