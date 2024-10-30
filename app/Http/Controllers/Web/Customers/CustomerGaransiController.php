@@ -127,14 +127,15 @@ class CustomerGaransiController extends Controller
 
             $bukti = CustomerBuktiFotos::where('garansi_id', $garansi->id)->get();
             if(!empty($bukti)){
-                $bukti->each->delete();
+
                 foreach($bukti as $idfoto){
-                    $foto = Media::where('id', $idfoto)->each->delete();
+                    $foto = Media::where('id', $idfoto)->delete();
                 }
-                $bukti->each->delete();
+
             }
 
-            $garansi->each->delete();
+            CustomerBuktiFotos::where('garansi_id', $garansi->id)->delete();
+            CustomerGaransis::where('id', $id)->delete();
 
         }
 
