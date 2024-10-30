@@ -213,7 +213,7 @@
                                 </tr>
 
 
-                                @if (!$garansi->bukti_foto->isEmpty())
+                                @if ($garansi->bukti_foto->isEmpty())
                                 <tr>
                                     <th>{{ __('Bukti Foto') }}</th>
                                     <td>
