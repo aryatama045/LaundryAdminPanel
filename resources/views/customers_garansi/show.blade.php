@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="w-100">
-                        <h2 class="float-left">{{ __('Garansi').' '.__('Details') }}</h2>
+                        <h2 class="float-left">{{ __('Klaims').' '.__('Details') }}</h2>
                         <div class="text-right">
                             <a class="btn btn-light" href="{{ url()->previous() }}"> {{ __('Back') }} </a>
                         </div>
