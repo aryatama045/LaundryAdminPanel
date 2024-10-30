@@ -215,21 +215,8 @@
 
                                 @if ($garansi->bukti_foto->isEmpty())
                                 <tr>
-                                    <th>{{ __('Bukti Foto') }}</th>
-                                    <td>
                                         @foreach ($garansi->bukti_foto as $key => $bukti)
-                                        <div>
-                                            {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            <span>{{ $bukti->kode_foto }}</span>
-
-                                            <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-
-                                            <hr class="my-2">
-
-                                        </div>
                                         @endforeach
 
                                         <div class="container py-5">
@@ -271,7 +258,6 @@
                                             </div>
 
                                         </div>
-                                    </td>
                                 </tr>
                                 @endif
 
