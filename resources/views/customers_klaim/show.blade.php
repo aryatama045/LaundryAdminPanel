@@ -3,7 +3,7 @@
 
 @section('content')
 
-@include('tracking.css')
+<?php include('tracking.css') ?>
 
 <div class="container-fluid mt-4">
     <div class="row">
