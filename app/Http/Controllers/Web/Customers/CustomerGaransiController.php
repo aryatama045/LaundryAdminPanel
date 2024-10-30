@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Customer;
 use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
+use App\Models\Media;
 
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
