@@ -64,7 +64,7 @@
 
                                                     $tgl_1 = strtotime($garansi->tanggal_pemasangan);
                                                     $tgl_2 = strtotime($dateExps);
-                                                    $jarak = $tgl_2->diff($tgl_1);
+                                                    $jarak = date_diff($tgl_1, $tgl_2)
                                                 @endphp
 
 
