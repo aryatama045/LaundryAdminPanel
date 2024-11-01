@@ -343,7 +343,11 @@
 
 
                                                             
+                                                            @if ($klaim->status == 'Diterima')
+                                                            <div class="tracking-item-pending">
+                                                            @elseif($klaim->status == 'Ditolak' || $klaim->status == 'Disetujui')
                                                             <div class="tracking-item">
+                                                            @endif
                                                                 @if ($klaim->status == 'Ditolak')
                                                                     <div class="tracking-icon status-intransit">
                                                                         <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
