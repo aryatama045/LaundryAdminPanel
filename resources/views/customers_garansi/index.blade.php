@@ -70,18 +70,22 @@
                                                         
                                                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
                                                         $berlaku = now()->diffInDays($dateExps).' Hari';
+
+                                                        $berlaku_s ='<span class="badge badge-success"> Berlaku : '.$berlaku.' </span> <br>'
                                                     }else{
                                                         if($paymentDate <= $contractDateEnd){
                                                             $berlaku = now()->diffInDays($dateExps).' Hari';
+
+                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.$berlaku.' </span> <br>'
                                                         }else{
-                                                            $berlaku = 'Expired'; 
+                                                            $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>'
                                                         }
                                                         
                                                     }
                                                 @endphp
 
-                                                <span class="badge badge-primary"> Berlaku : {{ $berlaku }}</span> <br>
-                                                <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
+                                                {{ $berlaku_s }}
+                                                <span class="badge badge-info"> Sampai : {{ $dateExps }} </span>
 
                                             </td>
                                             
