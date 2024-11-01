@@ -37,7 +37,7 @@
                         <form action="{{ route('klaim.store') }}" method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
 
-                                @role('customer')
+                                @role('root')
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
@@ -51,6 +51,12 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                @endrole
+
+                                @role('customer')
+
+                                    <input name="customer_id" value="{{ auth()->user()->id }}" />
+
                                 @endrole
 
                                 <!-- Nota -->
