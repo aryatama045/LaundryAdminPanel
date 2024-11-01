@@ -42,7 +42,7 @@
                                     <select class="form-control" name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
                                         @foreach ($customer as $customers)
-                                            <option value="{{ $customers->id }}"> {{ $customers->id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
+                                            <option value="{{ $customers->user_id }}"> {{ $customers->user_id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
                                         @endforeach
                                     </select>
                                     @error('customer_id')

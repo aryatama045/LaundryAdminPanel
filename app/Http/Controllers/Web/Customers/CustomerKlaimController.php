@@ -12,6 +12,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\CustomerKlaims;
+use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
@@ -39,6 +40,9 @@ class CustomerKlaimController extends Controller
     public function create()
     {
         $customer = Customer::get();
+
+        $user_id = auth()->user()->id;
+        $garansi  = CustomerGaransis::where('customer_id', $user_id)->get();
         return view('customers_klaim.create', compact('customer'));
     }
 
