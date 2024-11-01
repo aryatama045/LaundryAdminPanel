@@ -57,16 +57,7 @@
                                                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
                                             </td>
                                             <td>
-                                                @php
-                                                    $dateExp = strtotime('+90 days', strtotime($garansi->tanggal_pemasangan));
-                                                    $dateExp = date('d-m-Y', $dateExp);
-                                                    $tanggal_1 = ('d-m-Y',strtotime($garansi->tanggal_pemasangan));
-                                                    $selisih  = date_diff( $tanggal_1,$dateExp);
-                                                @endphp
-
-
-
-                                                <span class="text-info"> Berlaku sampai : {{ $dateExp }} <br> {{ $selisih->days }} Hari</span>
+                                                
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
