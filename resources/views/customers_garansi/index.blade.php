@@ -69,14 +69,11 @@
                                                     $contractDateEnd = date('Y-m-d', strtotime($dateExps));
                                                         
                                                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-                                                        $berlaku = now()->diffInDays($dateExps).' Hari';
-
-                                                        $berlaku_s ='<span class="badge badge-success"> Berlaku : '.$berlaku.' </span> <br>'
+                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>'
                                                     }else{
                                                         if($paymentDate <= $contractDateEnd){
-                                                            $berlaku = now()->diffInDays($dateExps).' Hari';
 
-                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.$berlaku.' </span> <br>'
+                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>'
                                                         }else{
                                                             $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>'
                                                         }
