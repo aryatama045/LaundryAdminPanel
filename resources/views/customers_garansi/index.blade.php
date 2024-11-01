@@ -35,7 +35,9 @@
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
+                                        @role('root')
                                         <th scope="col">{{ __('Name') }}</th>
+                                        @endrole
                                         <th scope="col">{{ __('No. Nota') }}</th>
                                         <th scope="col">{{ __('No. Pemasangan') }}</th>
                                         <th scope="col">{{ __('Masa Berlaku') }}</th>
@@ -48,7 +50,9 @@
                                     @if(!$garansis)
                                     @foreach ($garansis as $garansi)
                                         <tr>
+                                            @role('root')
                                             <td>{{ $garansi->user->name }}</td>
+                                            @endrole
                                             <td>
                                                 {{ $garansi->no_nota }} <br>
                                                 <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
