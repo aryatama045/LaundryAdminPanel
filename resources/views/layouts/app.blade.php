@@ -92,7 +92,7 @@
         }
     </style>
     
-    <nav class="mobile-bottom-nav">
+    <nav hidden class="mobile-bottom-nav ">
         <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">home</i>
