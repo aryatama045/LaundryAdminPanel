@@ -314,7 +314,7 @@
 
                                                             @if ($klaim->status == 'Proses')
                                                             <div class="tracking-item-pending">
-                                                            @elseif($klaim->status == 'Diterima')
+                                                            @elseif($klaim->status == 'Diterima' || $klaim->status == 'Ditolak' || $klaim->status == 'Disetujui')
                                                             <div class="tracking-item">
                                                             @endif
                                                                 <div class="tracking-icon status-intransit">
@@ -329,7 +329,7 @@
 
                                                             @if ($klaim->status == 'Proses')
                                                             <div class="tracking-item-pending">
-                                                            @elseif($klaim->status == 'Diterima')
+                                                            @elseif($klaim->status == 'Diterima' || $klaim->status == 'Ditolak' || $klaim->status == 'Disetujui')
                                                             <div class="tracking-item">
                                                             @endif
                                                                 <div class="tracking-icon status-intransit">
