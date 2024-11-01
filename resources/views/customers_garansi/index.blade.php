@@ -59,9 +59,12 @@
                                             <td>
                                                 @php
                                                     $dateExp = strtotime('+90 days', strtotime($garansi->tanggal_pemasangan));
-                                                    $dateExps = date('d-m-Y',$dateExp);
-                                                    $tanggal_1 = date('d-m-Y',strtotime($garansi->tanggal_pemasangan));
-                                                    $selisih  = date_diff($tanggal_1,$dateExps);
+                                                    $dateExps = date('d-m-Y', $dateExp);
+
+
+                                                    $tanggal_1 = date('Y-m-d',strtotime($garansi->tanggal_pemasangan));
+                                                    $tanggal_2 = date('Y-m-d',strtotime($dateExps));
+                                                    $selisih  = date_diff($tanggal_1,$tanggal_2);
                                                 @endphp
 
 
