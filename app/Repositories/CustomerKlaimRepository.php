@@ -35,7 +35,6 @@ class CustomerKlaimRepository extends Repository
         if ($searchKey) {
             $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
                 $klaim->where('first_name', 'like', "%{$searchKey}%")
-                    ->orWhere('customer_id', $user_id)
                     ->orWhere('no_tracking', 'like', "%{$searchKey}%")
                     ->orWhere('no_nota', 'like', "%{$searchKey}%")
                     ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
