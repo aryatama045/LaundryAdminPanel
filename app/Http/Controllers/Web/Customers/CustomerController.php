@@ -34,11 +34,12 @@ class CustomerController extends Controller
     {
         $user = (new UserRepository())->registerUser($request);
         (new CustomerRepository())->storeByUser($user);
-        $user->assignRole('customer');
+        
         $user->update([
             'mobile_verified_at' => now()
         ]);
-        $user->givePermissionTo('visitor');
+        $user->assignRole('Customer');
+       $user->givePermissionTo('root');
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
 
