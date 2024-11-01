@@ -62,9 +62,10 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $r_d = date('d-m-Y', $garansi->tanggal_pemasangan);
+                                                    $r_d = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                                                    $r_s = date('Y-m-d', strtotime($dateExps));
                                                     $tgl_1 = date_create($r_d);
-                                                    $tgl_2 = date_create($dateExps);
+                                                    $tgl_2 = date_create($r_s);
                                                     $jarak = date_diff($tgl_1, $tgl_2)
                                                 @endphp
 
