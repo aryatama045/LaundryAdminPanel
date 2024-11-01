@@ -51,7 +51,6 @@
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img hidden width="80" height="80" src="{{ asset('images/icons/earning.svg') }}" alt="">
                                         <img width="80" src="{{ asset('images/icons/services.svg') }}" alt="">
                                     </div>
                                 </div>
