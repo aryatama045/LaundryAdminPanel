@@ -83,9 +83,16 @@ class CustomerKlaimController extends Controller
         $kode       = implode("",$data_kode);
         $kode_tracking = 'TRK_'.$kode.'-'.$jam.'-'.$menit;
 
+        if(! $request->garansi_id){
+            $garansi = $request->garansi_id;
+        }else{
+            $garansi = '0';
+        }
+
         $klaim_fill = [
             'no_tracking' => $kode_tracking,
             'customer_id' => $request->customer_id,
+            'garansi_id' => $garansi,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
             'no_pemasangan' => $request->no_pemasangan,
