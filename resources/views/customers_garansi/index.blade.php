@@ -64,8 +64,8 @@
 
                                                     $tgl_now = date('d-m-Y');
 
-                                                    if($tgl_now >= $dateExps ){
-                                                        $berlaku = now()->diffInDays($dateExps);
+                                                    if($tgl_now =< $dateExps ){
+                                                        $berlaku = now()->diffInDays($dateExps).' Hari';
                                                     }else{
                                                         $berlaku = 'Expired';
                                                     }
@@ -73,7 +73,7 @@
 
 
 
-                                                <span class="badge badge-primary"> Berlaku : {{ $berlaku }} Hari</span> <br>
+                                                <span class="badge badge-primary"> Berlaku : {{ $berlaku }}</span> <br>
                                                 <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
 
                                             </td>
