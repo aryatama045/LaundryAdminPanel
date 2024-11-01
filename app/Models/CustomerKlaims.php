@@ -10,9 +10,11 @@ class CustomerKlaims extends Model
     use HasFactory;
     protected $guarded = ['id'];
     // ----------------- Relations
+
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
 
