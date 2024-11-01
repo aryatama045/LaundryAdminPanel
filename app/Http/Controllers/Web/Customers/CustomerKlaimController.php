@@ -30,7 +30,7 @@ class CustomerKlaimController extends Controller
         return view('customers_klaim.index', compact('dataklaims'));
     }
 
-    public function show(CustomerKlaims $klaims)
+    public function show(CustomerKlaims $klaim)
     {
         return view('customers_klaim.show', [
             'klaim' => $klaim
