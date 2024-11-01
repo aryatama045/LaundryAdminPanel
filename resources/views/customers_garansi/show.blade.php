@@ -25,6 +25,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <th>{{ __('Customer') }}</th>
+                                    <td>{{ $garansi->user->name }} <br>
+                                        <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_nota)) ?></small>
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <th>{{ __('No Nota') }}</th>
