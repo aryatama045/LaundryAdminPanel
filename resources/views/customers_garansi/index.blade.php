@@ -82,7 +82,7 @@
                                                 @endphp
 
                                                 {!! $berlaku_s !!}
-                                                <span class="badge badge-info"> Sampai : {{ $dateExps }} </span>
+                                                <small> Sampai : {{ $dateExps }} </small>
 
                                             </td>
                                             
