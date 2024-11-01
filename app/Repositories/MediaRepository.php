@@ -64,8 +64,8 @@ class MediaRepository extends Repository
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
         $originalName   = $file->getClientOriginalName();
-        // $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
-        $extension      = $file->extension();
+        $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
+        // $extension      = $file->extension();
 
         $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
         shuffle($data_kode);
@@ -122,8 +122,8 @@ class MediaRepository extends Repository
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
         $originalName   = $file->getClientOriginalName();
-        // $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
-        $extension      = $file->extension();
+        $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
+        // $extension      = $file->extension();
 
         $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
         shuffle($data_kode);
