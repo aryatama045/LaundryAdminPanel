@@ -80,8 +80,6 @@
                                                     }
                                                 @endphp
 
-
-
                                                 <span class="badge badge-primary"> Berlaku : {{ $berlaku }}</span> <br>
                                                 <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
 
