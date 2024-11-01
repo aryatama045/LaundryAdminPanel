@@ -45,15 +45,53 @@ class CustomerKlaimController extends Controller
 
     public function store(Request $request)
     {
+        $tgl_pasang = $request->tanggal_pemasangan;
+
+        $dateExp = strtotime('+90 days', strtotime($tgl_pasang));
+        $dateExps = date('d-m-Y', $dateExp);
+
+
+        $paymentDate = now();
+        $paymentDate = date('Y-m-d', strtotime($paymentDate));
+        //echo $paymentDate; // echos today! 
+        $contractDateBegin = date('Y-m-d', strtotime($tgl_pasang));
+        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+            
+        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                $berlaku_s ='Berlaku';
+        }else{
+            if($paymentDate <= $contractDateEnd){
+
+                $berlaku_s ='Berlaku';
+            }else{
+                $berlaku_s ='Expired';
+            }
+            
+        }
         
 
+        if($berlaku_s == 'Expired'){
+            return redirect()->route('klaim.create')->with('error', ' Tanggal Pemasangan Sudah Expired');
+        }
+
+        dd('oke');
+
+        $jam            =  date('h',strtotime($date));
+        $menit          =  date('i',strtotime($date));
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        shuffle($data_kode);
+        $kode       = implode("",$data_kode);
+        $kode_tracking = 'TRK_'.$kode.'-'.$jam.'-'.$menit;
+
         $klaim_fill = [
+            'no_tracking' => $kode_tracking,
             'customer_id' => $request->customer_id,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
             'no_pemasangan' => $request->no_pemasangan,
             'tanggal_pemasangan' => $request->tanggal_pemasangan,
         ];
+        
 
         $klaim_data = CustomerKlaims::create($klaim_fill);
 
