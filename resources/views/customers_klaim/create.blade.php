@@ -55,7 +55,7 @@
 
                                 @role('customer')
 
-                                    <input name="customer_id" value="{{ auth()->user()->id }}" />
+                                    <input hidden name="customer_id" value="{{ auth()->user()->id }}" />
 
                                 @endrole
 
