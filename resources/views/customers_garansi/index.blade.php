@@ -71,7 +71,12 @@
                                                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
                                                         $berlaku = now()->diffInDays($dateExps).' Hari';
                                                     }else{
-                                                        $berlaku = 'Expired'; 
+                                                        if($paymentDate <= $contractDateEnd){
+                                                            $berlaku = now()->diffInDays($dateExps).' Hari';
+                                                        }else{
+                                                            $berlaku = 'Expired'; 
+                                                        }
+                                                        
                                                     }
                                                 @endphp
 
