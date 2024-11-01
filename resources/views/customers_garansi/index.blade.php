@@ -7,28 +7,14 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Garansi') }}</h2>
-                        <div hidden>
-                            <form action="{{ route('garansi.index') }}" method="GET">
-                                <ul class=" nav d-flex justify-content-end">
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <input type="text" name='search' placeholder="Search"
-                                            value="{{ request('search') }}" class="form-control" />
-                                    </li>
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <button type="submit" class="btn btn-info">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </li>
-                                    
-                                </ul>
-                            </form>
-                        </div>
 
+                        @role('root')
                         @can('customer.create')
                         <a href="{{ route('garansi.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
                         </a>
                         @endcan
+                        @endrole
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">
