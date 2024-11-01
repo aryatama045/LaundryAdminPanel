@@ -33,7 +33,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(!$garansis)
+                                    @if(!empty($garansis))
                                     @foreach ($garansis as $garansi)
                                         <tr>
                                             @role('root')
