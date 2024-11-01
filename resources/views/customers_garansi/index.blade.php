@@ -66,7 +66,7 @@
                                                     $r_s = date('Y-m-d', strtotime($dateExps));
                                                     $tgl_1 = date_create($r_d);
                                                     $tgl_2 = date_create($r_s);
-                                                    $jarak = date_diff($tgl_2, $tgl_1)
+                                                    $jarak = $tgl_2->diff($tgl_1);
                                                 @endphp
 
 
