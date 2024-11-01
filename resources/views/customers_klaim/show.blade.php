@@ -341,11 +341,7 @@
                                                                 <div class="tracking-content">Status Diterima </div>
                                                             </div>
 
-
-                                                            
-                                                            @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
-                                                            <div class="tracking-item-pending">
-                                                            @elseif($klaim->status == 'Ditolak')
+                                                            @if($klaim->status == 'Ditolak')
                                                             <div class="tracking-item">
                                                             @endif
                                                             
@@ -364,9 +360,7 @@
                                                                     <div class="tracking-content"> Ditolak <br> <span>Keterangan : </span></div>
                                                             </div>
 
-                                                            @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
-                                                            <div class="tracking-item-pending">
-                                                            @elseif($klaim->status == 'Disetujui')
+                                                            @if($klaim->status == 'Disetujui')
                                                             <div class="tracking-item">
                                                             @endif
                                                             
