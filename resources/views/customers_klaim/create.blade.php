@@ -37,7 +37,7 @@
                         <form action="{{ route('klaim.store') }}" method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
 
-                                @role('root|customer')
+                                @role('customer')
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
