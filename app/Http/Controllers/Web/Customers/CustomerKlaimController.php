@@ -75,6 +75,7 @@ class CustomerKlaimController extends Controller
         }
 
 
+        $date           = now()->toDateTimeString();
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
         $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
