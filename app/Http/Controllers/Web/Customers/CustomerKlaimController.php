@@ -74,7 +74,6 @@ class CustomerKlaimController extends Controller
             return redirect()->route('klaim.create')->with('error', ' Tanggal Pemasangan Sudah Expired');
         }
 
-        dd('oke');
 
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
