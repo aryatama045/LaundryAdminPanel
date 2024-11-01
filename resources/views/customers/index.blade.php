@@ -7,28 +7,11 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers') }}</h2>
-                        <div>
-                            <form action="{{ route('customer.index') }}" method="GET">
-                                <ul class=" nav d-flex justify-content-end">
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <input type="text" name='search' placeholder="Search"
-                                            value="{{ request('search') }}" class="form-control" />
-                                    </li>
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <button type="submit" class="btn btn-info">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </li>
-                                    @can('customer.create')
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <a href="{{ route('customer.create') }}" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer') }}
-                                        </a>
-                                    </li>
-                                    @endcan
-                                </ul>
-                            </form>
-                        </div>
+                        <li class="nav-item ml-2 mr-md-0">
+                            <a href="{{ route('customer.create') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer') }}
+                            </a>
+                        </li>
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">

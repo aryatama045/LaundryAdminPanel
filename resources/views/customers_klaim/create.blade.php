@@ -55,7 +55,14 @@
 
                                 @role('customer')
 
-                                    <input hidden name="customer_id" value="{{ auth()->user()->id }}" />
+                                    @php
+
+                                        $user_id = auth()->user()->id;
+                                        $customer = \App\Models\Customer::where('user_id',$user_id )->first();
+                                                                                
+                                    @endphp
+
+                                    <input hidden name="customer_id" value="{{ $customer->id }}" />
 
                                 @endrole
 
