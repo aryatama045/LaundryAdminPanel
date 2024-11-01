@@ -21,17 +21,21 @@
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
 </head>
 
 <body>
 
-    {{-- <div class="preload">
+    <div class="preload">
         <div class="flexbox">
             <div>
-                <img src="{{ asset('images/loader/GoldStar-Loader.gif') }}" alt="">
+                <img src="{{ asset('images/loader/loader.gif') }}" alt="">
             </div>
         </div>
-    </div> --}}
+    </div>
 
     @include('layouts.partials.sidebar')
 
@@ -55,6 +59,66 @@
         @yield('content')
 
     </div>
+
+    <style>
+
+        .mobile-bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            will-change: transform;
+            transform: translateZ(0);
+            display: flex;
+            height: 50px;
+            box-shadow: 0 -2px 5px -2px #333;
+            background-color: #fff;
+        }
+        .mobile-bottom-nav__item {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mobile-bottom-nav__item--active {
+            color: red;
+        }
+        .mobile-bottom-nav__item-content {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">home</i>
+                one
+            </div>		
+        </div>
+        <div class="mobile-bottom-nav__item">		
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">mail</i>
+                two
+            </div>
+        </div>
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">person</i>
+                three
+            </div>		
+        </div>
+        
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">phone</i>
+                four
+            </div>		
+        </div>
+    </nav> 
 
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
@@ -218,6 +282,18 @@
                     window.location.href = url;
                 }
             })
+        });
+    </script>
+
+    <script>
+        var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
+        navItems.forEach(function(e, i) {
+            e.addEventListener("click", function(e) {
+                navItems.forEach(function(e2, i2) {
+                    e2.classList.remove("mobile-bottom-nav__item--active");
+                })
+                this.classList.add("mobile-bottom-nav__item--active");
+            });
         });
     </script>
 </body>
