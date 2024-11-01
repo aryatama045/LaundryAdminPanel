@@ -97,19 +97,21 @@
                                                     <i class="fa fa-eye"></i>
                                                 </a>
 
-                                                @canany('customer.edit')
-                                                <a href="{{ route('garansi.edit', $garansi->id) }}"
-                                                    class="btn btn-info py-1 px-2">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                @endcanany
+                                                @role('root')
+                                                    @canany('customer.edit')
+                                                    <a href="{{ route('garansi.edit', $garansi->id) }}"
+                                                        class="btn btn-info py-1 px-2">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    @endcanany
 
-                                                @canany('customer.delete')
-                                                <a href="{{ route('garansi.delete', $garansi->id) }}"
-                                                    class="btn btn-danger py-1 px-2 delete-confirm" >
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                                @endcanany
+                                                    @canany('customer.delete')
+                                                    <a href="{{ route('garansi.delete', $garansi->id) }}"
+                                                        class="btn btn-danger py-1 px-2 delete-confirm" >
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                    @endcanany
+                                                @endrole
                                             </td>
 
                                         </tr>
