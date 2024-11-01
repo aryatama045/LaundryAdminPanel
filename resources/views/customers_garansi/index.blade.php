@@ -45,6 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(!$garansis)
                                     @foreach ($garansis as $garansi)
                                         <tr>
                                             <td>{{ $garansi->user->name }}</td>
@@ -109,6 +110,7 @@
 
                                         </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
