@@ -31,33 +31,19 @@
                     </a>
                 </li>
 
-                @role('customer')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                            href="{{ route('garansi.index') }}">
-                            <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text">{{ __('Data Garansi') }}</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
-                            href="{{ route('klaim.index') }}">
-                            <i class="fas fa-list text-green"></i>
-                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
-                        </a>
-                    </li>
+                @role(['admin','root'])
+                    @can('customer.index')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
+                                href="{{ route('customer.index') }}">
+                                <i class="fa fa-users text-red"></i>
+                                <span class="nav-link-text">{{ __('Customer') }}</span>
+                            </a>
+                        </li>
+                    @endcan
                 @endrole
 
                 @can('customer.index')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
-                            href="{{ route('customer.index') }}">
-                            <i class="fa fa-users text-red"></i>
-                            <span class="nav-link-text">{{ __('Customer') }}</span>
-                        </a>
-                    </li>
-
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                             href="{{ route('garansi.index') }}">

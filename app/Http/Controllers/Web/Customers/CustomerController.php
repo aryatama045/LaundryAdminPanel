@@ -47,6 +47,20 @@ class CustomerController extends Controller
         $user->givePermissionTo('customer.create');
         $user->givePermissionTo('customer.store');
 
+        $user->givePermissionTo('garansi.index');
+        $user->givePermissionTo('garansi.show');
+        $user->givePermissionTo('garansi.edit');
+        $user->givePermissionTo('garansi.update');
+        $user->givePermissionTo('garansi.create');
+        $user->givePermissionTo('garansi.store');
+
+        $user->givePermissionTo('klaim.index');
+        $user->givePermissionTo('klaim.show');
+        $user->givePermissionTo('klaim.edit');
+        $user->givePermissionTo('klaim.update');
+        $user->givePermissionTo('klaim.create');
+        $user->givePermissionTo('klaim.store');
+
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
 
