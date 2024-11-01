@@ -27,10 +27,7 @@
                             <tbody>
                                 <tr>
                                     <th>{{ __('Customer') }}</th>
-                                    <td>{{ $garansi->user->name }} <br>
-                                        <small>Company : {{$garansi->user->customer->company}}</small> <br>
-                                        <small>Email : {{$garansi->user->customer->email}}</small>
-                                    </td>
+                                    <td>{{ $garansi->user->name }} </td>
                                 </tr>
 
                                 <tr>
