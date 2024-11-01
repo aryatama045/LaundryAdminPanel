@@ -57,16 +57,15 @@
                                                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
                                             </td>
                                             <td>
-                                                <?php
+                                                @php
                                                     
-                                                    $days = '90';
                                                     $date = $garansi->tanggal_pemasangan;
-                                                    $dateExp = strtotime("+".$days." days", strtotime($date));
+                                                    $dateExp = strtotime('+90 days', strtotime($date));
                                                     $dateExp = date("d-m-Y", $dateExp);
 
                                                     $tanggal_1 = ('d-m-Y',strtotime($date));
                                                     $selisih  = date_diff( $tanggal_1,$dateExp);
-                                                ?>
+                                                @endphp
 
 
 
