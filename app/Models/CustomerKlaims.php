@@ -29,22 +29,22 @@ class CustomerKlaims extends Model
     }
 
 
-    public function getBuktiFotoPathGaransi()
+    public function getBuktiFotoPathKlaim()
     {
-        return $this->bukti_foto_get->getBuktiFotoGaransi;
+        return $this->bukti_foto_get->getBuktiFotoKlaim;
     }
 
 
-    public function GaransiPhoto(): BelongsTo
+    public function KlaimPhoto(): BelongsTo
     {
         return $this->belongsTo(Media::class, 'foto_id');
     }
 
 
-    public function getBuktiFotoGaransi(): string
+    public function getBuktiFotoKlaim(): string
     {
-        if ($this->GaransiPhoto && Storage::exists($this->GaransiPhoto->src)) {
-            return Storage::url($this->GaransiPhoto->src);
+        if ($this->KlaimPhoto && Storage::exists($this->KlaimPhoto->src)) {
+            return Storage::url($this->KlaimPhoto->src);
         }
 
         return asset('images/dummy/dummy-user.png');
