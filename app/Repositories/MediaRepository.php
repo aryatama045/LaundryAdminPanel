@@ -71,7 +71,16 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3', 
+				'L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
+        
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);  
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2); 
+        
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);  
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2); 
+
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
         if(!$type){
@@ -129,7 +138,18 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        $foto_bukti = 'SMP_'.$kode.'_'.$jam.'X'.$menit.'-'.$urutan.'.'.$extension;
+        // $data_kode2  = ['0' => 'M', '1'=>'E', '2' => 'T', '3' =>'A', 
+		// 		'4' =>'L', '5' =>'I','6' =>'N','7' =>'D', '8' =>'O','9' =>'P'];
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3', 
+				'L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
+        
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);  
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2); 
+        
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);  
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2); 
+
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
         if(!$type){
