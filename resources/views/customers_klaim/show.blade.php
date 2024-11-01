@@ -312,20 +312,26 @@
 
                                                         <div class="tracking-list">
 
-                                                            @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
-                                                            <div class="tracking-item">
+                                                            @if ($klaim->status == 'Proses')
+                                                            <div class="tracking-item-pending">
+                                                            @elseif($klaim->status == 'Diterima')
+                                                            <div class="tracking-item-pending">
+                                                            @endif
                                                                 <div class="tracking-icon status-intransit">
                                                                     <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                     <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
                                                                     </svg>
                                                                 </div>
                                                                 <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
-                                                                <div class="tracking-content">Proses </div>
+                                                                <div class="tracking-content"> Proses </div>
                                                             </div>
-                                                            @endif
 
-                                                            @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
-                                                            <div class="tracking-item">
+
+                                                            @if ($klaim->status == 'Proses')
+                                                            <div class="tracking-item-pending">
+                                                            @elseif($klaim->status == 'Diterima')
+                                                            <div class="tracking-item-pending">
+                                                            @endif
                                                                 <div class="tracking-icon status-intransit">
                                                                     <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                     <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
@@ -334,38 +340,37 @@
                                                                 <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
                                                                 <div class="tracking-content">Status Diterima </div>
                                                             </div>
-                                                            @endif
 
 
-                                                            @if ($klaim->status == 'Disetujui')
+                                                            
                                                             <div class="tracking-item">
-                                                                <div class="tracking-icon status-intransit">
-                                                                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                                                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                                                                    </svg>
-                                                                </div>
-                                                                <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
-                                                                <div class="tracking-content">Disetujui<span>09 Aug 2025, 10:00am</span></div>
-                                                            </div>
-                                                            @endif
+                                                                @if ($klaim->status == 'Ditolak')
+                                                                    <div class="tracking-icon status-intransit">
+                                                                        <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="tracking-date">
+                                                                        <svg style="width:23%" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                                                            <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
+                                                                            <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"></line>
+                                                                            <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"></line>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="tracking-content"> Ditolak <br> <span>Keterangan : </span></div>
+                                                                @endif
 
-                                                            @if ($klaim->status == 'Ditolak')
-                                                            <div class="tracking-item-pending">
-                                                                <div class="tracking-icon status-intransit">
-                                                                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                                                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
-                                                                    </svg>
-                                                                </div>
-                                                                <div class="tracking-date">
-                                                                    <svg style="width:23%" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                                                                        <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
-                                                                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"></line>
-                                                                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"></line>
-                                                                    </svg>
-                                                                </div>
-                                                                <div class="tracking-content"> Ditolak <br> <span>Keterangan : </span></div>
+                                                                @if ($klaim->status == 'Disetujui')
+                                                                    <div class="tracking-icon status-intransit">
+                                                                        <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
+                                                                    <div class="tracking-content">Disetujui  </div>
+                                                                @endif
                                                             </div>
-                                                            @endif
+                                                            
 
                                                             
                                                         </div>
