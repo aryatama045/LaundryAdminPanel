@@ -29,12 +29,13 @@ class CustomerKlaimRepository extends Repository
         $searchKey = \request('search');
         
             $user_id = auth()->user()->id;
-            $klaims = $this->model()::where('customer_id', $user_id)->query();
+            $klaims = $this->model()::query();
         
 
         if ($searchKey) {
             $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
                 $klaim->where('first_name', 'like', "%{$searchKey}%")
+                    ->orWhere('customer_id', $user_id)
                     ->orWhere('no_tracking', 'like', "%{$searchKey}%")
                     ->orWhere('no_nota', 'like', "%{$searchKey}%")
                     ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
