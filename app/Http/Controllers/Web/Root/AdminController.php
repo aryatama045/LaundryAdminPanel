@@ -45,8 +45,8 @@ class AdminController extends Controller
         "password" => Hash::make($request->password)
        ]);
 
-       $user->assignRole('Admin');
-       $user->givePermissionTo('root');
+       $user->assignRole('Visitor');
+       $user->givePermissionTo('visitor');
 
        return redirect()->route('admin.index')->with('success', 'Admin is created successful.');
     }
