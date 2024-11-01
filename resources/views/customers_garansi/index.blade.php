@@ -19,16 +19,18 @@
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </li>
-                                    @can('customer.create')
-                                    <li class="nav-item ml-2 mr-md-0">
-                                        <a href="{{ route('garansi.create') }}" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
-                                        </a>
-                                    </li>
-                                    @endcan
+                                    
                                 </ul>
                             </form>
                         </div>
+
+                        @can('customer.create')
+                        <li class="nav-item ml-2 mr-md-0">
+                            <a href="{{ route('garansi.create') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
+                            </a>
+                        </li>
+                        @endcan
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">
