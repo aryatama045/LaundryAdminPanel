@@ -34,8 +34,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form @role('root|admin')  action="{{ route('klaim.store') }}"  @endrole method="POST" enctype="multipart/form-data"> @csrf
+                        <form action="{{ route('klaim.store') }}" method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
+
+                                @role('root|customer')
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
@@ -49,6 +51,8 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                @endrole
+
                                 <!-- Nota -->
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
