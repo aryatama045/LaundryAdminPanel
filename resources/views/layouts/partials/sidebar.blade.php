@@ -31,7 +31,7 @@
                     </a>
                 </li>
 
-                @role('Customer')
+                @role('customer')
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                             href="{{ route('garansi.index') }}">
