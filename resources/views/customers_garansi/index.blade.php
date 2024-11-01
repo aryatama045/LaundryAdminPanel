@@ -38,6 +38,7 @@
                                         <th scope="col">{{ __('Name') }}</th>
                                         <th scope="col">{{ __('No. Nota') }}</th>
                                         <th scope="col">{{ __('No. Pemasangan') }}</th>
+                                        <th scope="col">{{ __('Masa Berlaku') }}</th>
                                         @canany(['customer.show', 'customer.edit'])
                                         <th scope="col">{{ __('Action') }}</th>
                                         @endcanany
@@ -49,11 +50,27 @@
                                             <td>{{ $garansi->user->name }}</td>
                                             <td>
                                                 {{ $garansi->no_nota }} <br>
-                                                <small> Tgl nota : {{ $garansi->tanggal_nota }} </small>
+                                                <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
                                             </td>
                                             <td>
                                                 {{ $garansi->no_pemasangan }} <br>
-                                                <small> Tgl nota : {{ $garansi->tanggal_pemasangan }} </small>
+                                                <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                    
+                                                    $days = '90';
+                                                    $date = $garansi->tanggal_pemasangan;
+                                                    $dateExp = strtotime("+".$days." days", strtotime($date));
+                                                    $dateExp = date("d-m-Y", $dateExp);
+
+                                                    $tanggal_1 = ('d-m-Y',strtotime($date));
+                                                    $selisih  = date_diff( $tanggal_1,$dateExp);
+                                                ?>
+
+
+
+                                                <span class="text-info"> Berlaku sampai : {{ $dateExp }} <br> {{ $selisih->days }} Hari</span>
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>

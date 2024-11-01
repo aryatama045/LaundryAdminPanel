@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\MediaRepository;
-use App\Repositories\CustomerGaransiRepository;
+use App\Repositories\CustomerKlaimRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use App\Models\Customer;
-use App\Models\CustomerGaransis;
+use App\Models\CustomerKlaims;
 use App\Models\CustomerBuktiFotos;
 
 use Illuminate\Support\Str;
@@ -24,15 +24,15 @@ class CustomerKlaimController extends Controller
 
     public function index()
     {
-        $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+        $klaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
-        return view('customers_klaim.index', compact('garansis'));
+        return view('customers_klaim.index', compact('klaims'));
     }
 
-    public function show(CustomerGaransis $garansi)
+    public function show(CustomerKlaims $klaims)
     {
         return view('customers_klaim.show', [
-            'garansi' => $garansi
+            'klaims' => $klaims
         ]);
     }
 
@@ -46,7 +46,7 @@ class CustomerKlaimController extends Controller
     public function store(Request $request)
     {
 
-        $garansi_fill = [
+        $klaim_fill = [
             'customer_id' => $request->customer_id,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
@@ -54,23 +54,23 @@ class CustomerKlaimController extends Controller
             'tanggal_pemasangan' => $request->tanggal_pemasangan,
         ];
 
-        $garansi_data = CustomerGaransis::create($garansi_fill);
+        $klaim_data = CustomerKlaims::create($klaim_fill);
 
         $thumbnail = null;
-        if ($request->hasFile('garansi_photo')) {
+        if ($request->hasFile('klaim_photo')) {
 
-            $garansiFoto = count($request->garansi_photo);
+            $klaimFoto = count($request->klaim_photo);
 
-            for ($x=0; $x<$garansiFoto; $x++){
+            for ($x=0; $x<$klaimFoto; $x++){
 
-                $file = $request->garansi_photo[$x];
+                $file = $request->klaim_photo[$x];
 
                 $urutan = $x;
 
-                $thumbnail = (new MediaRepository())->storeByGaransi(
+                $thumbnail = (new MediaRepository())->storeByKlaim(
                     $file,
-                    'images/garansi/',
-                    'garansi images',
+                    'images/klaim/',
+                    'klaim images',
                     'image',
                     $urutan
                 );
@@ -84,19 +84,19 @@ class CustomerKlaimController extends Controller
 
 
                 $bukti_foto = [
-                    'garansi_id'            => $garansi_data->id,
-                    'klaim_id'              => '0',
-                    'customer_id'           => $garansi_data->customer_id,
+                    'garansi_id'            => '0',
+                    'klaim_id'              => $klaim_data->id,
+                    'customer_id'           => $klaim_data->customer_id,
                     'foto_id'               => $thumbnail->id,
                     'kode_foto'             => $thumbnail->name,
-                    'created_ny'            => $garansi_data->customer_id
+                    'created_ny'            => $klaim_data->customer_id
                 ];
                 CustomerBuktiFotos::create($bukti_foto);
 
             }
         }
 
-        return redirect()->route('garansi.index')->with('success', 'Garansi create successfully');
+        return redirect()->route('klaim.index')->with('success', 'Klaim create successfully');
     }
 
     public function edit(Customer $customer)

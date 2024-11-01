@@ -35,6 +35,7 @@
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th scope="col">{{ __('No. Tracking') }}</th>
                                         <th scope="col">{{ __('Name') }}</th>
                                         <th scope="col">{{ __('No. Nota') }}</th>
                                         <th scope="col">{{ __('No. Pemasangan') }}</th>
@@ -44,28 +45,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($garansis as $garansi)
+                                    @foreach ($klaims as $klaims)
                                         <tr>
-                                            <td>{{ $garansi->user->name }}</td>
                                             <td>
-                                                {{ $garansi->no_nota }} <br>
-                                                <small> Tgl nota : {{ $garansi->tanggal_nota }} </small>
+                                                {{ $klaims->no_tracking }}
+                                            </td>
+                                            <td>{{ $klaims->user->name }}</td>
+                                            <td>
+                                                {{ $klaims->no_nota }} <br>
+                                                <small> Tgl nota : {{ $klaims->tanggal_nota }} </small>
                                             </td>
                                             <td>
-                                                {{ $garansi->no_pemasangan }} <br>
-                                                <small> Tgl nota : {{ $garansi->tanggal_pemasangan }} </small>
+                                                {{ $klaims->no_pemasangan }} <br>
+                                                <small> Tgl pemasangan : {{ $klaims->tanggal_pemasangan }} </small>
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
-                                                <a href="{{ route('klaim.show', $garansi->id) }}"
+                                                <a href="{{ route('klaim.show', $klaims->id) }}"
                                                     class="btn btn-primary py-1 px-2">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('klaim.edit', $garansi->id) }}"
+                                                <a href="{{ route('klaim.edit', $klaims->id) }}"
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a href="{{ route('klaim.delete', $garansi->id) }}"
+                                                <a href="{{ route('klaim.delete', $klaims->id) }}"
                                                     class="btn btn-danger py-1 px-2 delete-confirm" >
                                                     <i class="fa fa-trash"></i>
                                                 </a>
