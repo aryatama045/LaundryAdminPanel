@@ -89,6 +89,7 @@ class CustomerKlaimController extends Controller
             'tanggal_nota' => $request->tanggal_nota,
             'no_pemasangan' => $request->no_pemasangan,
             'tanggal_pemasangan' => $request->tanggal_pemasangan,
+            'status' => 'Proses',
         ];
         
 
