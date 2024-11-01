@@ -345,10 +345,10 @@
                                                             
                                                             @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
                                                             <div class="tracking-item-pending">
-                                                            @elseif($klaim->status == 'Ditolak' || $klaim->status == 'Disetujui')
+                                                            @elseif($klaim->status == 'Ditolak')
                                                             <div class="tracking-item">
                                                             @endif
-                                                                @if ($klaim->status == 'Ditolak')
+                                                            
                                                                     <div class="tracking-icon status-intransit">
                                                                         <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
@@ -362,9 +362,14 @@
                                                                         </svg>
                                                                     </div>
                                                                     <div class="tracking-content"> Ditolak <br> <span>Keterangan : </span></div>
-                                                                @endif
+                                                            </div>
 
-                                                                @if ($klaim->status == 'Disetujui')
+                                                            @if ($klaim->status == 'Proses' || $klaim->status == 'Diterima')
+                                                            <div class="tracking-item-pending">
+                                                            @elseif($klaim->status == 'Disetujui')
+                                                            <div class="tracking-item">
+                                                            @endif
+                                                            
                                                                     <div class="tracking-icon status-intransit">
                                                                         <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
@@ -372,7 +377,7 @@
                                                                     </div>
                                                                     <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
                                                                     <div class="tracking-content">Disetujui  </div>
-                                                                @endif
+                                                                
                                                             </div>
                                                             
 
