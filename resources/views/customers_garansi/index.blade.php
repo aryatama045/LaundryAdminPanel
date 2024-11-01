@@ -57,7 +57,15 @@
                                                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
                                             </td>
                                             <td>
-                                                
+                                                @php
+                                                    $dateExp = strtotime('+90 days', strtotime($garansi->tanggal_pemasangan));
+                                                    $dateExps = date('d-m-Y',$dateExp);
+                                                    
+                                                @endphp
+
+
+
+                                                <span class="text-info"> Berlaku sampai : {{ $dateExps }} </span>
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
