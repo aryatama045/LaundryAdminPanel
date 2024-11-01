@@ -44,7 +44,7 @@
                                     <select class="form-control" name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
                                         @foreach ($customer as $customers)
-                                            <option value="{{ $customers->user_id }}"> {{ $customers->user_id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
+                                            <option value="{{ $customers->id }}"> {{ $customers->id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
                                         @endforeach
                                     </select>
                                     @error('customer_id')
@@ -55,7 +55,7 @@
 
                                 @role('customer')
 
-                                    <input hidden name="customer_id" value="{{ auth()->user()->id }}" />
+                                    <input hidden name="customer_id" value="{{ auth()->user()->customer_id }}" />
 
                                 @endrole
 

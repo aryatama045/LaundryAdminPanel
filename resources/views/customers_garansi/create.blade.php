@@ -42,13 +42,21 @@
                                     <select class="form-control" name="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
                                         @foreach ($customer as $customers)
-                                            <option value="{{ $customers->user_id }}"> {{ $customers->user_id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
+                                            <option value="{{ $customers->id }}"> {{ $customers->id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
                                         @endforeach
                                     </select>
                                     @error('customer_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                @role('customer')
+
+                                    <input hidden name="customer_id" value="{{ auth()->user()->customer_id }}" />
+
+                                @endrole
+
+
                                 <!-- Nota -->
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
