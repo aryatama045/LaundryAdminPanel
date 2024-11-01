@@ -27,7 +27,12 @@ class CustomerKlaimRepository extends Repository
     public function getAllOrFindBySearch()
     {
         $searchKey = \request('search');
-        $klaims = $this->model()::query();
+        if(role('root')){
+            $klaims = $this->model()::query();
+        }else{
+            $user_id = auth()->user()->id;
+            $klaims = $this->model()::where('customer_id', $user_id)->query();
+        }
 
         if ($searchKey) {
             $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {

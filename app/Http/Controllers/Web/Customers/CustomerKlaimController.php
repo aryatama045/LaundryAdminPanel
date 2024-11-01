@@ -25,9 +25,9 @@ class CustomerKlaimController extends Controller
 
     public function index()
     {
-        $klaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
+        $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
-        return view('customers_klaim.index', compact('klaims'));
+        return view('customers_klaim.index', compact('dataklaims'));
     }
 
     public function show(CustomerKlaims $klaims)

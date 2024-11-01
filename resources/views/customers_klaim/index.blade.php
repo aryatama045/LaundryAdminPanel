@@ -27,8 +27,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(! $klaims)
-                                    @foreach ($klaims as $klaims)
+                                    @if(!empty($dataklaims))
+                                    @foreach ($dataklaims as $klaims)
                                         <tr>
                                             @role('root')
                                             <td>{{ $klaims->user->name }}</td>
