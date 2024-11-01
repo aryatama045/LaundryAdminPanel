@@ -62,12 +62,18 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $r_d = date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
+                                                    $tgl_now = date('d-m-Y');
+
+                                                    if($tgl_now >= $dateExps ){
+                                                        $berlaku = now()->diffInDays($dateExps);
+                                                    }else{
+                                                        $berlaku = 'Expired';
+                                                    }
                                                 @endphp
 
 
 
-                                                <span class="badge badge-primary"> Berlaku : {{ now()->diffInDays($dateExps) }} Hari</span> <br>
+                                                <span class="badge badge-primary"> Berlaku : {{ $berlaku }} Hari</span> <br>
                                                 <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
 
                                             </td>
