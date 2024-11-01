@@ -206,21 +206,97 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @role('root')
+                                <tr>
+                                    <th>{{ __('Customer') }}</th>
+                                    <td>{{ $klaim->user->name }} </td>
+                                </tr>
+                                @endrole
 
                                 <tr>
                                     <th>{{ __('No Nota') }}</th>
-                                    <td>{{ $garansi->no_nota }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_nota)) ?></small></td>
+                                    <td>{{ $klaim->no_nota }} <br> <small>Tanggal nota : <?php echo date('d-m-Y', strtotime($klaim->tanggal_nota)) ?></small></td>
                                 </tr>
                                 <tr>
                                     <th>{{ __('No Pemasangan') }}</th>
-                                    <td>{{ $garansi->no_pemasangan }} <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small></td>
+                                    <td>{{ $klaim->no_pemasangan }} <br> <small>Tanggal pemasangan : <?php echo date('d-m-Y', strtotime($klaim->tanggal_pemasangan)) ?></small></td>
                                 </tr>
 
+                                <tr>
+                                    <th>{{ __('Status') }}</th>
+                                    <td><span class="badge badge-success">{{ $klaim->status }} </span></td>
+                                </tr>
 
-                                @if ($garansi->bukti_foto->isEmpty())
+                                @if (!$klaim->bukti_foto->isEmpty())
+                                <tr>
+                                    <th>{{ __('Bukti Foto') }}</th>
+                                    <td>
+                                        @foreach ($klaim->bukti_foto as $key => $bukti)
+                                        <div>
+                                            {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
+
+                                            <span>{{ $bukti->kode_foto }}</span>
+
+                                            <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+
+                                            <hr class="my-2">
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="bukti_foto_show_{{ $bukti->id }}">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $klaim->no_pemasangan }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="col">{{ __('Title') }}</th>
+                                                                    <th scope="col">{{ __('Details') }}</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>{{ __('Kode Foto') }}</td>
+                                                                    <td>{{ $bukti->kode_foto }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>{{ __('No Nota') }}</td>
+                                                                    <td>{{ $klaim->no_nota }} <br> <small> Tanggal : {{ date('d-m-Y', strtotime($klaim->tanggal_nota)) }} </small></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <?php
+                                                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+                                                                    ?>
+
+                                                                    <td colspan="2">
+                                                                        <img width="100%" src="{{ Storage::url($get_media->path);  }}" alt="{{ $bukti->kode_foto }}">
+                                                                    </td>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                @endif
+
                                 <tr>
                                     <td colspan="2">
-                                        @foreach ($garansi->bukti_foto as $key => $bukti)
+                                        @foreach ($klaim->bukti_foto as $key => $bukti)
 
                                         @endforeach
 
@@ -291,7 +367,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endif
 
 
                             </tbody>

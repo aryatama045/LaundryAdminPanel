@@ -25,10 +25,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @role('root')
                                 <tr>
                                     <th>{{ __('Customer') }}</th>
                                     <td>{{ $garansi->user->name }} </td>
                                 </tr>
+                                @endrole
 
                                 <tr>
                                     <th>{{ __('No Nota') }}</th>

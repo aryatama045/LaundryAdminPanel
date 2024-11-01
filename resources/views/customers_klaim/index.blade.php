@@ -16,22 +16,27 @@
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">{{ __('No. Tracking') }}</th>
+                                        @role('root')
                                         <th scope="col">{{ __('Name') }}</th>
+                                        @endrole
+                                        <th scope="col">{{ __('No. Tracking') }}</th>
                                         <th scope="col">{{ __('No. Nota') }}</th>
                                         <th scope="col">{{ __('No. Pemasangan') }}</th>
-                                        @canany(['customer.show', 'customer.edit'])
+                                        <th scope="col">{{ __('Status') }}</th>
                                         <th scope="col">{{ __('Action') }}</th>
-                                        @endcanany
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(! $klaims)
                                     @foreach ($klaims as $klaims)
                                         <tr>
+                                            @role('root')
+                                            <td>{{ $klaims->user->name }}</td>
+                                            @endrole
                                             <td>
                                                 {{ $klaims->no_tracking }}
                                             </td>
-                                            <td>{{ $klaims->user->name }}</td>
+                                            
                                             <td>
                                                 {{ $klaims->no_nota }} <br>
                                                 <small> Tgl nota : {{ $klaims->tanggal_nota }} </small>
@@ -40,7 +45,9 @@
                                                 {{ $klaims->no_pemasangan }} <br>
                                                 <small> Tgl pemasangan : {{ $klaims->tanggal_pemasangan }} </small>
                                             </td>
-                                            @canany(['customer.show', 'customer.edit'])
+                                            <td>
+                                                <span class="badge badge-success">{{ $klaims->status }} </span>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('klaim.show', $klaims->id) }}"
                                                     class="btn btn-primary py-1 px-2">
@@ -55,9 +62,9 @@
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
-                                            @endcanany
                                         </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
