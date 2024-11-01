@@ -62,15 +62,17 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $tgl_1 = date_create($garansi->tanggal_pemasangan);
+                                                    $r_d = date('d-m-Y', $garansi->tanggal_pemasangan);
+                                                    $tgl_1 = date_create($r_d);
                                                     $tgl_2 = date_create($dateExps);
                                                     $jarak = date_diff($tgl_1, $tgl_2)
                                                 @endphp
 
 
 
-                                                <span class="badge badge-info"> Berlaku sampai : {{ $dateExps }} 
-                                                    <br> {{ $jarak->days }} Hari</span>
+                                                <span class="badge badge-primary"> Berlaku : {{ $jarak->days }} Hari</span> <br>
+                                                <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
+
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
