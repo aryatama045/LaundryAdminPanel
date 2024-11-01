@@ -25,11 +25,9 @@
                         </div>
 
                         @can('customer.create')
-                        <li class="nav-item ml-2 mr-md-0">
-                            <a href="{{ route('garansi.create') }}" class="btn btn-primary">
-                                <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
-                            </a>
-                        </li>
+                        <a href="{{ route('garansi.create') }}" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
+                        </a>
                         @endcan
                     </div>
                     <div class="card-body pt-2">
