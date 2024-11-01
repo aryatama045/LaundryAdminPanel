@@ -39,7 +39,13 @@ class CustomerController extends Controller
             'mobile_verified_at' => now()
         ]);
         $user->assignRole('Customer');
-        $user->givePermissionTo('visitor');
+        $user->givePermissionTo('root');
+        $user->givePermissionTo('customer.index');
+        $user->givePermissionTo('customer.show');
+        $user->givePermissionTo('customer.edit');
+        $user->givePermissionTo('customer.store');
+        $user->givePermissionTo('customer.delete');
+
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
 
