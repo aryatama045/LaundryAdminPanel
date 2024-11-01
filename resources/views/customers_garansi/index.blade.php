@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Garansi') }}</h2>
-                        <div>
+                        <div hidden>
                             <form action="{{ route('garansi.index') }}" method="GET">
                                 <ul class=" nav d-flex justify-content-end">
                                     <li class="nav-item ml-2 mr-md-0">
