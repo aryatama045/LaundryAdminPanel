@@ -71,22 +71,28 @@
                                                 <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
 
                                             </td>
-                                            @canany(['customer.show', 'customer.edit'])
+                                            
                                             <td>
                                                 <a href="{{ route('garansi.show', $garansi->id) }}"
                                                     class="btn btn-primary py-1 px-2">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
+
+                                                @canany('customer.edit')
                                                 <a href="{{ route('garansi.edit', $garansi->id) }}"
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
+                                                @endcanany
+
+                                                @canany('customer.delete')
                                                 <a href="{{ route('garansi.delete', $garansi->id) }}"
                                                     class="btn btn-danger py-1 px-2 delete-confirm" >
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                @endcanany
                                             </td>
-                                            @endcanany
+
                                         </tr>
                                     @endforeach
                                 </tbody>
