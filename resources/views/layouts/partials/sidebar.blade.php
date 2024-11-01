@@ -31,7 +31,7 @@
                     </a>
                 </li>
 
-                @role(['admin','root'])
+                @role('root')
                     @can('customer.index')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
