@@ -45,6 +45,7 @@ class CustomerKlaimController extends Controller
 
     public function store(Request $request)
     {
+        
 
         $klaim_fill = [
             'customer_id' => $request->customer_id,
