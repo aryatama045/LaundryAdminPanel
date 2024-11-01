@@ -33,7 +33,7 @@ class CustomerKlaimController extends Controller
     public function show(CustomerKlaims $klaims)
     {
         return view('customers_klaim.show', [
-            'klaims' => $klaims
+            'klaim' => $klaim
         ]);
     }
 
