@@ -62,16 +62,12 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $r_d = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-                                                    $r_s = date('Y-m-d', strtotime($dateExps));
-                                                    $tgl_1 = date_create($r_d);
-                                                    $tgl_2 = date_create($r_s);
-                                                    $jarak = $tgl_2->diff($tgl_1);
+                                                    $r_d = date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
                                                 @endphp
 
 
 
-                                                <span class="badge badge-primary"> Berlaku : {{ $jarak->days }} Hari</span> <br>
+                                                <span class="badge badge-primary"> Berlaku : {{ now()->diffInDays($dateExps) }} Hari</span> <br>
                                                 <span class="badge badge-warning"> Sampai : {{ $dateExps }} </span>
 
                                             </td>
