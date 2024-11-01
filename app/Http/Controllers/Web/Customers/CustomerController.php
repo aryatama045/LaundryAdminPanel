@@ -38,7 +38,7 @@ class CustomerController extends Controller
         $user->update([
             'mobile_verified_at' => now()
         ]);
-        $user->givePermissionTo('customer');
+        $user->givePermissionTo('visitor');
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
 
