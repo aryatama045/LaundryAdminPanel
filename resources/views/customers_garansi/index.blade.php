@@ -62,8 +62,8 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $paymentDate = date('Y-m-d');
-                                                    $paymentDate=date('Y-m-d', strtotime($paymentDate));
+                                                    $paymentDate = now();
+                                                    $paymentDate = date('Y-m-d', strtotime($paymentDate));
                                                     //echo $paymentDate; // echos today! 
                                                     $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
                                                     $contractDateEnd = date('Y-m-d', strtotime($dateExps));
