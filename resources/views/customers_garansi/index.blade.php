@@ -60,12 +60,14 @@
                                                 @php
                                                     $dateExp = strtotime('+90 days', strtotime($garansi->tanggal_pemasangan));
                                                     $dateExps = date('d-m-Y',$dateExp);
-                                                    
+                                                    $tanggal_1 = date('d-m-Y',strtotime($garansi->tanggal_pemasangan));
+                                                    $selisih  = date_diff($tanggal_1,$dateExps);
                                                 @endphp
 
 
 
-                                                <span class="text-info"> Berlaku sampai : {{ $dateExps }} </span>
+                                                <span class="badge badge-info"> Berlaku sampai : {{ $dateExps }} 
+                                                    <br> {{ $selisih->days }} Hari</span>
                                             </td>
                                             @canany(['customer.show', 'customer.edit'])
                                             <td>
