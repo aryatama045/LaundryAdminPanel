@@ -62,12 +62,16 @@
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
-                                                    $tgl_now = date('d-m-Y');
-
-                                                    if($dateExps <= $tgl_now ){
+                                                    $paymentDate = date('Y-m-d');
+                                                    $paymentDate=date('Y-m-d', strtotime($paymentDate));
+                                                    //echo $paymentDate; // echos today! 
+                                                    $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                                                    $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+                                                        
+                                                    if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
                                                         $berlaku = now()->diffInDays($dateExps).' Hari';
                                                     }else{
-                                                        $berlaku = 'Expired';
+                                                        $berlaku = 'Expired'; 
                                                     }
                                                 @endphp
 
