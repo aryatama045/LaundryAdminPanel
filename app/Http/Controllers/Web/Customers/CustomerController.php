@@ -43,8 +43,9 @@ class CustomerController extends Controller
         $user->givePermissionTo('customer.index');
         $user->givePermissionTo('customer.show');
         $user->givePermissionTo('customer.edit');
+        $user->givePermissionTo('customer.update');
+        $user->givePermissionTo('customer.create');
         $user->givePermissionTo('customer.store');
-        $user->givePermissionTo('customer.delete');
 
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
