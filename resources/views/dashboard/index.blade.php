@@ -94,6 +94,8 @@
     </div>
 </div>
 
+
+ @role('customer')
 <div  class="container-fluid mt-4">
     <div class="row">
 
@@ -242,7 +244,7 @@
                 </div>
                 @endrole
 
-                @role('customer')
+               
                 <div class="row p-3">
                     
                     <div class="col-lg-6 col-4">
@@ -260,9 +262,10 @@
                         </div>
                     </div>
                 </div>
-                @endrole
+                
             </div>
         </div>
     </div>
 </div>
+@endrole
 @endsection
