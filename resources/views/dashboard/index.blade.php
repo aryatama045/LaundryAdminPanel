@@ -6,16 +6,7 @@
 @php 
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
-$userid = auth()->user()->id;
 
-$cst = \App\Models\Customer::where('user_id', $userid)->first();
-
-$cst_id = $cst->id;
-
-$garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
-
-$klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
-    
 @endphp
 
 <div class="container-fluid">
@@ -38,6 +29,15 @@ $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
             <!-- Card stats -->
             <div class="row">
                 @role('customer')
+                @php
+                    $cst = \App\Models\Customer::where('user_id', $userid)->first();
+                    
+                    $cst_id = $cst->id;
+                    
+                    $garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
+                    
+                    $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
+                @endphp
                 @if ($server == '"Windows"')
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
