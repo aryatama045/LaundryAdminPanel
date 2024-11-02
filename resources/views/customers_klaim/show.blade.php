@@ -389,8 +389,9 @@
                                     </td>
                                 </tr>
 
+                                @role('root')
                                 <tr>
-                                    <td>Proses</td>
+                                    
                                     <td>
                                         <form action="{{ route('klaim.proses_action', $klaim->id) }}" method="POST" enctype="multipart/form-data"> @csrf
                                         <select class="form-control select" name="status">
@@ -405,7 +406,9 @@
                                         <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
 
                                     </td>
+                                    <td></td>
                                 </tr>
+                                @endrole
 
 
                             </tbody>
