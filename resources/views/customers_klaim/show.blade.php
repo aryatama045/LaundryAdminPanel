@@ -401,7 +401,7 @@
                                         </select>
 
                                         <br><br>
-                                        <input type="text" class="form-control" placeholder="Keterangan">
+                                        <input type="text" class="form-control" name="keterangan" placeholder="Keterangan">
                                         <hr class="mt-6">
                                         <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
 
