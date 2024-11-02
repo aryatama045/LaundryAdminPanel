@@ -61,65 +61,185 @@
     </div>
 
     <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 
-        .mobile-bottom-nav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            will-change: transform;
-            transform: translateZ(0);
-            display: flex;
-            height: 50px;
-            box-shadow: 0 -2px 5px -2px #333;
-            background-color: #fff;
-        }
-        .mobile-bottom-nav__item {
-            flex-grow: 1;
-            text-align: center;
-            font-size: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .mobile-bottom-nav__item--active {
-            color: red;
-        }
-        .mobile-bottom-nav__item-content {
-            display: flex;
-            flex-direction: column;
-        }
+:root {
+  --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+html {
+  color: #56688a;
+  background: #fafafa;
+}
+
+.material-symbols-outlined {
+  font-size: 24px;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 40;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background: #ffffff;
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1));
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-bar__list {
+  flex-basis: 32rem;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.bottom-bar__active-indicator {
+  width: 20%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  transform: translate(0, -0.5rem);
+  pointer-events: none;
+  transition: transform 0.3s var(--easing);
+}
+
+.bottom-bar__active-indicator::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #d9dbf1;
+  border-radius: 1.5rem;
+  border: 4px solid white;
+}
+
+.bottom-bar__active-indicator.active--1::before {
+  animation: Stretch 0.18s linear;
+}
+.bottom-bar__active-indicator.active--2::before {
+  animation: Stretch2 0.2s linear;
+}
+.bottom-bar__active-indicator.active--3::before {
+  animation: Stretch3 0.2s linear;
+}
+.bottom-bar__active-indicator.active--4::before {
+  animation: Stretch4 0.225s linear;
+}
+
+.bottom-bar__active-indicator.active-left::before {
+  transform-origin: center right;
+}
+
+.bottom-bar__active-indicator.active-right::before {
+  transform-origin: center left;
+}
+
+.bottom-bar__link {
+  flex: 1;
+  font-size: 0.675rem;
+  font-weight: 300;
+  letter-spacing: 0.025rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  z-index: 2;
+}
+
+.bottom-bar__link.selected {
+  font-weight: 500;
+  letter-spacing: 0.0125rem;
+  color: #1e2133;
+}
+
+.bottom-bar__link.selected .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 40;
+  font-size: 24px;
+  transform: translateY(-0.25rem);
+  transition: color 0.2s 0.1s ease-in-out, transform 0.3s var(--easing),
+    font-variation-settings 0.2s 0.1s ease-in-out;
+}
+
+@keyframes Stretch {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(2.25, 0.65);
+    border-radius: 1.25rem;
+  }
+  0% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes Stretch2 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(2.75, 0.625);
+    border-radius: 1.125rem;
+  }
+  0% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes Stretch3 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(3.5, 0.6);
+    border-radius: 1.125rem;
+  }
+  0% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes Stretch4 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(4.5, 0.55);
+    border-radius: 1.125rem;
+  }
+  0% {
+    transform: scale(1, 1);
+  }
+}
+
     </style>
     
-    <nav hidden class="mobile-bottom-nav ">
-        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-            <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">home</i>
-                one
-            </div>		
-        </div>
-        <div class="mobile-bottom-nav__item">		
-            <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">mail</i>
-                two
-            </div>
-        </div>
-        <div class="mobile-bottom-nav__item">
-            <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">person</i>
-                three
-            </div>		
-        </div>
-        
-        <div class="mobile-bottom-nav__item">
-            <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">phone</i>
-                four
-            </div>		
-        </div>
-    </nav> 
-
+    <nav class="bottom-bar">
+        <ul class="bottom-bar__list">
+          <div class="bottom-bar__active-indicator"></div>
+          <li class="bottom-bar__link selected"><span class="material-symbols-outlined">
+              home
+            </span>Home</i>
+          <li class="bottom-bar__link"><span class="material-symbols-outlined">
+              Search
+            </span>Explore</li>
+          <li class="bottom-bar__link"><span class="material-symbols-outlined">
+              Favorite
+            </span>Saved</li>
+          <li class="bottom-bar__link"><span class="material-symbols-outlined">
+              Notifications
+            </span>Notifications</li>
+          <li class="bottom-bar__link"><span class="material-symbols-outlined">
+              Person
+            </span>Profile</li>
+        </ul>
+      </nav>
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
@@ -286,15 +406,44 @@
     </script>
 
     <script>
-        var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
-        navItems.forEach(function(e, i) {
-            e.addEventListener("click", function(e) {
-                navItems.forEach(function(e2, i2) {
-                    e2.classList.remove("mobile-bottom-nav__item--active");
-                })
-                this.classList.add("mobile-bottom-nav__item--active");
-            });
-        });
+       let list = document.querySelector(".bottom-bar__list");
+
+let activeItemIndex = 1;
+
+let items = list.children;
+
+const handleClick = (index) => {
+  if (index !== activeItemIndex) {
+    items[activeItemIndex].classList.remove("selected");
+    items[index].classList.add("selected");
+
+    let direction;
+    index - activeItemIndex > 0 ? (direction = 1) : (direction = -1);
+
+    let magnitude = Math.abs(index - activeItemIndex);
+
+    activeItemIndex = index;
+
+    items[0].style.transform =
+      "translate(" + (activeItemIndex - 1) * 100 + "%, -0.5rem)";
+
+    items[0].classList.add("active--" + magnitude);
+    items[0].classList.add(direction > 0 ? "active-right" : "active-left");
+    console.log(items[0].classList);
+
+    setTimeout(() => {
+      items[0].classList.remove("active--" + magnitude);
+      items[0].classList.remove(direction > 0 ? "active-right" : "active-left");
+    }, 200);
+  }
+};
+
+Object.keys(items).forEach((item, index) => {
+  items[index].addEventListener("click", () => {
+    handleClick(index);
+  });
+});
+
     </script>
 </body>
 
