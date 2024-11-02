@@ -100,6 +100,7 @@
     <div class="row">
 
 
+
         <div hidden class="col-12 col-lg-8">
 
             <div class="card p-3">
@@ -188,7 +189,12 @@
 
         </div>
 
-        <div hidden class="col-12 col-lg-4">
+        @php 
+            $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+        @endphp
+
+        @if ($server == "Android")
+        <div class="col-12 col-lg-4">
             <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
                 <div class="overview">
                     <img width="100%" src="{{ asset('web/bg/overview.svg') }}" alt="">
@@ -244,7 +250,6 @@
                 </div>
                 @endrole
 
-               
                 <div class="row p-3">
                     
                     <div class="col-lg-6 col-4">
@@ -265,6 +270,7 @@
                 
             </div>
         </div>
+        @endif
     </div>
 </div>
 @endrole
