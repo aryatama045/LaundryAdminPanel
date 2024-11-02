@@ -27,9 +27,7 @@ class CustomerKlaimController extends Controller
     {
         $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
-        $header = $request->header();
-
-        dd($header);
+        
 
         return view('customers_klaim.index', compact('dataklaims'));
     }
