@@ -61,185 +61,148 @@
     </div>
 
     <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 
-:root {
-  --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-}
 
-html {
-  color: #56688a;
-  background: #fafafa;
-}
+        body nav.tab {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        width: 23rem;
+        height: 4rem;
+        }
+        body nav.tab.moving .icon {
+        pointer-events: none;
+        }
+        body nav.tab[data-selected="1"] .icon:nth-child(1), body nav.tab[data-selected="2"] .icon:nth-child(2), body nav.tab[data-selected="3"] .icon:nth-child(3) {
+        top: -1.5rem;
+        color: #2ABA66;
+        font-size: 2rem;
+        transition: 0.25s 0.375s;
+        pointer-events: none;
+        }
+        body nav.tab[data-selected="1"] .icon:nth-child(1).initialised, body nav.tab[data-selected="2"] .icon:nth-child(2).initialised, body nav.tab[data-selected="3"] .icon:nth-child(3).initialised {
+        -webkit-animation: hide 0.9s forwards;
+                animation: hide 0.9s forwards;
+        }
+        body nav.tab[data-selected="1"] .bar .middle .side:first-child, body nav.tab[data-selected="3"] .bar .middle .side:last-child {
+        flex-grow: 0;
+        }
+        body nav.tab .icons {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        justify-content: space-around;
+        width: calc(100% - 2rem);
+        padding: 0 1rem;
+        }
+        body nav.tab .icons .icon {
+        position: relative;
+        top: 0rem;
+        width: 4rem;
+        line-height: 4rem;
+        font-size: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition-delay: 0.1875s;
+        }
+        body nav.tab .icons .icon.initialised {
+        -webkit-animation: hide2 0.375s;
+                animation: hide2 0.375s;
+        }
+        body nav.tab .bar {
+        z-index: 1;
+        position: absolute;
+        display: flex;
+        align-items: stretch;
+        filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.1)) drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.1));
+        width: 100%;
+        height: 100%;
+        }
+        body nav.tab .bar .cap {
+        background: white;
+        width: 1rem;
+        }
+        body nav.tab .bar .cap:first-child {
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 0.5rem;
+        box-shadow: 0.25rem 0 0 white;
+        }
+        body nav.tab .bar .cap:last-child {
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 0.5rem;
+        box-shadow: -0.25rem 0 0 white;
+        }
+        body nav.tab .bar .middle {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        }
+        body nav.tab .bar .middle .circle {
+        position: relative;
+        top: -1.75rem;
+        width: 7rem;
+        height: 5.75rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='92' viewBox='0 0 112 92'%3E%3Ccircle cx='56' cy='36' r='36' fill='%23FFF'/%3E%3Cpath d='M104 35.2L104 35.2c0 26.3-20.9 48.3-47.2 48.8C29.9 84.4 8 62.8 8 36v-0.8c0-4-3.2-7.2-7.2-7.2H0v64h112V28h-0.8C107.2 28 104 31.2 104 35.2z' fill='%23FFF'/%3E%3C/svg%3E");
+        }
+        body nav.tab .bar .middle .side {
+        flex-grow: 1;
+        background: white;
+        transition: 0.75s ease;
+        }
 
-.material-symbols-outlined {
-  font-size: 24px;
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 40;
-  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
-}
+        @-webkit-keyframes hide {
+        0%, 100% {
+            opacity: 1;
+        }
+        25%, 75% {
+            opacity: 0;
+        }
+        }
 
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 56px;
-  background: #ffffff;
-  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.1));
-  display: flex;
-  justify-content: center;
-}
-
-.bottom-bar__list {
-  flex-basis: 32rem;
-  display: flex;
-  position: relative;
-  cursor: pointer;
-}
-
-.bottom-bar__active-indicator {
-  width: 20%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  transform: translate(0, -0.5rem);
-  pointer-events: none;
-  transition: transform 0.3s var(--easing);
-}
-
-.bottom-bar__active-indicator::before {
-  content: "";
-  display: block;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: #d9dbf1;
-  border-radius: 1.5rem;
-  border: 4px solid white;
-}
-
-.bottom-bar__active-indicator.active--1::before {
-  animation: Stretch 0.18s linear;
-}
-.bottom-bar__active-indicator.active--2::before {
-  animation: Stretch2 0.2s linear;
-}
-.bottom-bar__active-indicator.active--3::before {
-  animation: Stretch3 0.2s linear;
-}
-.bottom-bar__active-indicator.active--4::before {
-  animation: Stretch4 0.225s linear;
-}
-
-.bottom-bar__active-indicator.active-left::before {
-  transform-origin: center right;
-}
-
-.bottom-bar__active-indicator.active-right::before {
-  transform-origin: center left;
-}
-
-.bottom-bar__link {
-  flex: 1;
-  font-size: 0.675rem;
-  font-weight: 300;
-  letter-spacing: 0.025rem;
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  z-index: 2;
-}
-
-.bottom-bar__link.selected {
-  font-weight: 500;
-  letter-spacing: 0.0125rem;
-  color: #1e2133;
-}
-
-.bottom-bar__link.selected .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 40;
-  font-size: 24px;
-  transform: translateY(-0.25rem);
-  transition: color 0.2s 0.1s ease-in-out, transform 0.3s var(--easing),
-    font-variation-settings 0.2s 0.1s ease-in-out;
-}
-
-@keyframes Stretch {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(2.25, 0.65);
-    border-radius: 1.25rem;
-  }
-  0% {
-    transform: scale(1, 1);
-  }
-}
-
-@keyframes Stretch2 {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(2.75, 0.625);
-    border-radius: 1.125rem;
-  }
-  0% {
-    transform: scale(1, 1);
-  }
-}
-
-@keyframes Stretch3 {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(3.5, 0.6);
-    border-radius: 1.125rem;
-  }
-  0% {
-    transform: scale(1, 1);
-  }
-}
-
-@keyframes Stretch4 {
-  0% {
-    transform: scale(1, 1);
-  }
-  50% {
-    transform: scale(4.5, 0.55);
-    border-radius: 1.125rem;
-  }
-  0% {
-    transform: scale(1, 1);
-  }
-}
-
+        @keyframes hide {
+        0%, 100% {
+            opacity: 1;
+        }
+        25%, 75% {
+            opacity: 0;
+        }
+        }
+        @-webkit-keyframes hide2 {
+        0%, 100% {
+            opacity: 1;
+        }
+        15%, 75% {
+            opacity: 0;
+        }
+        }
+        @keyframes hide2 {
+        0%, 100% {
+            opacity: 1;
+        }
+        15%, 75% {
+            opacity: 0;
+        }
+        }
     </style>
     
-    <nav hidden class="bottom-bar">
-        <ul class="bottom-bar__list">
-          <div class="bottom-bar__active-indicator"></div>
-          <li class="bottom-bar__link selected"><span class="material-symbols-outlined">
-              home
-            </span>Home</i>
-          <li class="bottom-bar__link"><span class="material-symbols-outlined">
-              Search
-            </span>Explore</li>
-          <li class="bottom-bar__link"><span class="material-symbols-outlined">
-              Favorite
-            </span>Saved</li>
-          <li class="bottom-bar__link"><span class="material-symbols-outlined">
-              Notifications
-            </span>Notifications</li>
-          <li class="bottom-bar__link"><span class="material-symbols-outlined">
-              Person
-            </span>Profile</li>
-        </ul>
+    <nav hidden class="tab" data-selected="2">
+        <div class="icons">
+          <div data-index="1" class="icon fad fa-home"></div>
+          <div data-index="2" class="icon fal fa-plus"></div>
+          <div data-index="3" class="icon fad fa-user fa-swap-opacity"></div>
+        </div>
+        <div class="bar">
+          <div class="cap"></div>
+          <div class="middle">
+            <div class="side"></div>
+            <div class="circle"></div>
+            <div class="side"></div>
+          </div>
+          <div class="cap"></div>
+        </div>
       </nav>
+      Resources
+
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
@@ -406,44 +369,23 @@ html {
     </script>
 
     <script>
-       let list = document.querySelector(".bottom-bar__list");
-
-let activeItemIndex = 1;
-
-let items = list.children;
-
-const handleClick = (index) => {
-  if (index !== activeItemIndex) {
-    items[activeItemIndex].classList.remove("selected");
-    items[index].classList.add("selected");
-
-    let direction;
-    index - activeItemIndex > 0 ? (direction = 1) : (direction = -1);
-
-    let magnitude = Math.abs(index - activeItemIndex);
-
-    activeItemIndex = index;
-
-    items[0].style.transform =
-      "translate(" + (activeItemIndex - 1) * 100 + "%, -0.5rem)";
-
-    items[0].classList.add("active--" + magnitude);
-    items[0].classList.add(direction > 0 ? "active-right" : "active-left");
-    console.log(items[0].classList);
-
-    setTimeout(() => {
-      items[0].classList.remove("active--" + magnitude);
-      items[0].classList.remove(direction > 0 ? "active-right" : "active-left");
-    }, 200);
+        let previous = -1;
+$(".icon[data-index]").click(function(){
+  $(this).addClass("initialised");
+  let index = $(this).attr("data-index");
+  let navtab = $(this).closest("nav.tab").addClass("moving").attr("data-selected", index);
+  if(previous == -1) navtab.find('.icon[data-index="2"]').addClass("initialised")
+  if(previous == 1 && index == 3 || previous == 3 && index == 1) { //If going from one side to the other and middle needs to be hidden
+    navtab.find('.icon[data-index="2"]').removeClass("initialised");
+    setTimeout(function(){ //Because apparently this is the only way it will work
+      navtab.find('.icon[data-index="2"]').addClass("initialised"); //Same animation as the other so they line up
+    });
   }
-};
-
-Object.keys(items).forEach((item, index) => {
-  items[index].addEventListener("click", () => {
-    handleClick(index);
-  });
-});
-
+  previous = index;
+  setTimeout(function(){
+    navtab.removeClass("moving").removeClass("hidemiddle");
+  }, 750);
+}); 
     </script>
 </body>
 
