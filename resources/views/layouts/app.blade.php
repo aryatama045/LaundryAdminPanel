@@ -43,7 +43,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     @include('layouts.partials.sidebar')
 
-    <div class="main-content">
+    <div class="main-content mb-6">
         <div class="main-header shadow-sm">
             <div hidden class="btn-group dropdown">
                 <button type="button" class="notificationBell dropdown-toggle" data-toggle="dropdown"
@@ -70,7 +70,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <style>
 
         .mobile-bottom-nav {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
