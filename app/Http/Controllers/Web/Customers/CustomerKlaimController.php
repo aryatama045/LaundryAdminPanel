@@ -29,9 +29,7 @@ class CustomerKlaimController extends Controller
 
         $user_id = auth()->user()->id;
 
-        $data = $dataklaims;
-
-        dd($data );
+        dd($dataklaims);
 
         return view('customers_klaim.index', compact('dataklaims'));
     }

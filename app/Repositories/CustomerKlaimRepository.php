@@ -28,12 +28,14 @@ class CustomerKlaimRepository extends Repository
     {
         $searchKey = \request('search');
         
-            $user_id = auth()->user()->id;
+            $user_id = auth()->user();
+
+            dd($user_id);
 
             $klaims = $this->model()::query();
 
             if(session('customer')){
-                $klaims->where('customer_id', '=', $user_id);
+                $klaims = $klaims->where('customer_id', '=', $user_id);
             }
 
         if ($searchKey) {
