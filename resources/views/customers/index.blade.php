@@ -7,11 +7,9 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Customers') }}</h2>
-                        <li class="nav-item ml-2 mr-md-0">
                             <a href="{{ route('customer.create') }}" class="btn btn-primary">
                                 <i class="fa fa-plus"></i> {{ __('New'). ' '.__('Customer') }}
                             </a>
-                        </li>
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">
