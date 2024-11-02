@@ -99,6 +99,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         }
     </style>
     
+    @role('customer')
     @if($server == '"Android"')
     <nav class="mobile-bottom-nav ">
         <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
@@ -128,6 +129,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         </div>
     </nav> 
     @endif
+    @endrole
 
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
