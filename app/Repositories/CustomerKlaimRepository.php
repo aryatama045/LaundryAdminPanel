@@ -33,7 +33,8 @@ class CustomerKlaimRepository extends Repository
             $klaims = $this->model()::query();
 
         if ($searchKey) {
-            if(session('root') || session('admin')){
+            if(session('root')){
+                dd('root');
                 $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
                     $klaim->where('first_name', 'like', "%{$searchKey}%")
                         ->orWhere('no_tracking', 'like', "%{$searchKey}%")
@@ -41,6 +42,7 @@ class CustomerKlaimRepository extends Repository
                         ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
                 });
             }else{
+                dd('cst');
                 $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
                     $klaim->where('customer_id', '=', $user_id)
                         ->orWhere('first_name', 'like', "%{$searchKey}%")
