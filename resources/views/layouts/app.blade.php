@@ -99,33 +99,35 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         }
     </style>
     
-    <nav hidden class="mobile-bottom-nav ">
+    @if($server == '"Android"')
+    <nav class="mobile-bottom-nav ">
         <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">home</i>
-                one
+                Home
             </div>		
         </div>
         <div class="mobile-bottom-nav__item">		
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">mail</i>
-                two
+                Garansi
             </div>
         </div>
         <div class="mobile-bottom-nav__item">
             <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">person</i>
-                three
+                <i class="material-icons">shopping_cart_checkout</i>
+                Klaims
             </div>		
         </div>
         
         <div class="mobile-bottom-nav__item">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">phone</i>
-                four
+                Logout
             </div>		
         </div>
     </nav> 
+    @endif
 
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
