@@ -118,13 +118,26 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <h2 class="text-white">{{ __('Overview') }}</h2>
                     </div>
                 </div>
+                @php 
+
+                    $userid = auth()->user()->id;
+
+                    $cst = \App\Models\Customer::where('user_id', $userid)->first();
+
+                    $cst_id = $cst->id;
+
+                    $garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
+
+                    $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
+                    
+                @endphp
 
                 <div class="row p-3">
                     
                     <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark"> 2 </h3>
+                            <h3 class="m-0 text-dark"> {{ $garansi_cst->count() }} </h3>
                             <span class="txt-1">{{ __('Garansi') }}  </span>
                         </div>
                     </div>
@@ -132,7 +145,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark"> 3</h3>
+                            <h3 class="m-0 text-dark"> {{ $klaim_cst->count() }}</h3>
                             <span class="txt-1">{{ __('Klaim') }}</span>
                         </div>
                     </div>
