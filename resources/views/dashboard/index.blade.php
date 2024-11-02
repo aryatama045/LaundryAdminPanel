@@ -30,6 +30,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             <div class="row">
                 @role('customer')
                 @php
+                    $userid = auth()->user()->id;
                     $cst = \App\Models\Customer::where('user_id', $userid)->first();
                     
                     $cst_id = $cst->id;
