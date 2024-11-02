@@ -81,6 +81,22 @@ class CustomerGaransiController extends Controller
 
                 $logo = public_path('logo.png');
                 $img->place($logo, 'center', 15, 15);
+
+                $tanggal        = date('d/m/Y');
+                $date           = now()->toDateTimeString();
+                $jam            =  date('h',strtotime($date));
+                $menit          =  date('i',strtotime($date));
+                $text_wtr = 'Pukul  '.$jam.':'.$menit.' <br> Tanggal '.$tanggal;
+
+                $img->text($text_wtr, 200, 150, function($font) {  
+                    $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    $font->size(20);
+                    $font->color('#e74c3c');
+                    $font->align('bottom');
+                    $font->valign('right');  
+                    $font->top(30);  
+                });
+
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
 
