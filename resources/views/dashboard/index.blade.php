@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
+
 <div class="container-fluid">
     <div class="header pt-5">
 
         <div class="header-body mt--4">
             <div hidden class="row align-items-center pb-4">
                 <div class="col-lg-6 col-7">
+                    @if ($server == '"Windows"')
                     <h6 class="h2 d-inline-block">{{__('Dashboard')}}</h6>
+                    @endif
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item "><a href="{{ route('root') }}"><i class="fa fa-home text-primary"></i></a></li>
@@ -19,6 +25,7 @@
             <!-- Card stats -->
             <div class="row">
                 @role('customer')
+                @if ($server == '"Windows"')
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
@@ -58,6 +65,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
                 @endrole
 
@@ -95,105 +103,11 @@
 </div>
 
 
- @role('customer')
+@role('customer') @if ($server == '"Android"')
 <div  class="container-fluid mt-4">
     <div class="row">
 
-
-
-        <div hidden class="col-12 col-lg-8">
-
-            <div class="card p-3">
-                <div class="">
-                    <h3 class="m-0 float-left">{{ __('Revenue') }}</h3>
-                    @can('revenue.index')
-                    <div class="text-right">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary py-1 dropdown-toggle" type="button" id="filter-revunue" data-toggle="dropdown" aria-expanded="false">
-                                {{ ucfirst(\request()->type) ? __(ucfirst(\request()->type)) : __('Today') }}
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="filter-revunue">
-                                <a class="dropdown-item" href="{{ route('root', ['type' => 'today']) }}">{{__('Today')}}</a>
-                                <a class="dropdown-item" href="{{ route('root', ['type' => 'week']) }}">
-                                    {{ __('Week') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('root', ['type' => 'month']) }}">
-                                     {{ __('This_Month') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('root', ['type' => 'year']) }}">
-                                    {{ __('This_Year') }}
-                                </a>
-                            </div>
-                        </div>
-                        @php
-                            $type = ucfirst(\request()->type) ? ucfirst(\request()->type) : '';
-                        @endphp
-                        @can('revenue.generate.pdf')
-                            <a class="btn py-1 text-white" href="{{ route('revenue.generate.pdf', ['type' => strtolower($type)]) }}" target="_blank" style="background: var(--theme-color)">
-                                <i class="fas fa-file-download mr-1"></i> {{ __('Download') }}
-                            </a>
-                        @endcan
-                    </div>
-                    @endcan
-                </div>
-                <hr class="my-3">
-                <table class="table table-bordered table-striped verticle-middle table-responsive-sm {{ session()->get('local') }}">
-                    <thead>
-                        <tr>
-                            <th scope="col">{{ __('Delivery').' '.__('Date') }}</th>
-                            <th scope="col">{{ __('Order').' '.__('By') }}</th>
-                            <th scope="col">{{ __('Quantity') }}</th>
-                            <th scope="col">{{ __('Total') }}</th>
-                            <th scope="col">{{ __('Action') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @can('dashboard.revenue')
-                        @forelse ($revenues as $revenue)
-                            <tr>
-                                <td>
-                                    {{ Carbon\Carbon::parse($revenue->delivery_date)->format('M d, Y') }} <br>
-                                    <small>{{ Carbon\Carbon::parse($revenue->delivery_hour)->format('h:i a') }}</small>
-                                </td>
-                                <td>{{ $revenue->customer->user->name }}</td>
-                                @php
-                                    $quantity = 0;
-                                    foreach($revenue->products as $product){
-                                        $quantity += $product->pivot->quantity;
-                                    }
-                                @endphp
-                                <td>{{ $quantity .' '. __('Pieces') }}</td>
-                                <td>{{ currencyPosition($revenue->amount) }}</td>
-                                <td>
-                                    <a href="{{ route('order.show', $revenue->id) }}" class="btn btn-primary">{{ __('Details') }}</a>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr class="text-center">
-                                <td colspan="5">{{ __('Sorry') }} {{ ucfirst(\request()->type) ? __(ucfirst(\request()->type)) : __('Today') }} {{ __('revenue_not_found') }}</td>
-                            </tr>
-                        @endforelse
-                        @else
-                        <tr class="text-center">
-                            <td colspan="5">{{ __('Sorry') }} {{ ucfirst(\request()->type) ? __(ucfirst(\request()->type)) : __('Today') }} {{ __('revenue_not_found') }}</td>
-                        </tr>
-                        @endcan
-                        <tr>
-                            <td colspan="3" class="text-right">{{ __('Total').' '.__('Revenue') }}</td>
-                            <td colspan="2">{{ currencyPosition($revenues->sum('amount')) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-
-        @php 
-            $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
-        @endphp
-
-        @if ($server == '"Android"')
+        
         <div class="col-12 col-lg-4">
             <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
                 <div class="overview">
@@ -270,8 +184,9 @@
                 
             </div>
         </div>
-        @endif
+        
+
     </div>
 </div>
-@endrole
+@endrole @endif
 @endsection

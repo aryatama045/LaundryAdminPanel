@@ -1,3 +1,6 @@
+@php 
+$server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+@endphp
 <!doctype html>
 <html lang="">
 
