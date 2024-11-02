@@ -220,7 +220,7 @@ html {
 
     </style>
     
-    <nav class="bottom-bar">
+    <nav hidden class="bottom-bar">
         <ul class="bottom-bar__list">
           <div class="bottom-bar__active-indicator"></div>
           <li class="bottom-bar__link selected"><span class="material-symbols-outlined">
