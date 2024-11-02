@@ -41,8 +41,10 @@ class CustomerKlaimRepository extends Repository
             $userid = auth()->user()->id;
 
             $cst = Customer::where('user_id', $userid)->get();
-            dd($cst);
-            $klaims = $klaims->where('customer_id', '=', $cst->id);
+
+            $cst_id = $cst->id;
+
+            $klaims = $klaims->where('customer_id', '=', $cst_id);
         }
 
         if ($searchKey) {
