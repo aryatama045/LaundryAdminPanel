@@ -40,7 +40,7 @@ class CustomerKlaimRepository extends Repository
         if($user_id == 'customer'){
             $userid = auth()->user()->id;
 
-            $cst = Customer::where('user_id', $userid)->get();
+            $cst = Customer::where('user_id', $userid)->first();
 
             $cst_id = $cst->id;
 
