@@ -174,6 +174,7 @@ class CustomerKlaimController extends Controller
     {
         $klaim_fill = [
             'status' => $request->status,
+            'keterangan' => $request->keterangan,
         ];
 
         dd($id, $klaim_fill);
