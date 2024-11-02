@@ -119,66 +119,20 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     </div>
                 </div>
 
-                @role('admin')
-                <div class="row p-3">
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/users.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{ $customers->count() }}</h3>
-                            <span class="txt-1">{{ __('Users') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/Orders.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{ $confirmOrder }}</h3>
-                            <span class="txt-1">{{ __('Orders') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/Pending.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{ $pendingOrder }}</h3>
-                            <span class="txt-1">{{ __('Pending') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/progress.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{  $onPregressOrder }}</h3>
-                            <span class="txt-1">{{ __('On_progress') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4">
-                        <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{ $completeOrder }}</h3>
-                            <span class="txt-1">{{ __('Delivered') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 ">
-                        <img width="50" src="{{ asset('images/icons/order.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">{{ $cancelledOrder }}</h3>
-                            <span class="txt-1">{{ __('Cancel_Order') }}</span>
-                        </div>
-                    </div>
-                </div>
-                @endrole
-
                 <div class="row p-3">
                     
-                    <div class="col-lg-6 col-4">
+                    <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark">00</h3>
+                            <h3 class="m-0 text-dark"></h3>
                             <span class="txt-1">{{ __('Garansi') }}</span>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-4">
+                    
+                    <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark">00</h3>
+                            <h3 class="m-0 text-dark"></h3>
                             <span class="txt-1">{{ __('Klaim') }}</span>
                         </div>
                     </div>
