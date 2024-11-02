@@ -62,146 +62,63 @@
 
     <style>
 
-
-        body nav.tab {
-        position: relative;
-        display: flex;
-        align-items: stretch;
-        width: 23rem;
-        height: 4rem;
+        .mobile-bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            will-change: transform;
+            transform: translateZ(0);
+            display: flex;
+            height: 50px;
+            box-shadow: 0 -2px 5px -2px #333;
+            background-color: #fff;
         }
-        body nav.tab.moving .icon {
-        pointer-events: none;
+        .mobile-bottom-nav__item {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        body nav.tab[data-selected="1"] .icon:nth-child(1), body nav.tab[data-selected="2"] .icon:nth-child(2), body nav.tab[data-selected="3"] .icon:nth-child(3) {
-        top: -1.5rem;
-        color: #2ABA66;
-        font-size: 2rem;
-        transition: 0.25s 0.375s;
-        pointer-events: none;
+        .mobile-bottom-nav__item--active {
+            color: red;
         }
-        body nav.tab[data-selected="1"] .icon:nth-child(1).initialised, body nav.tab[data-selected="2"] .icon:nth-child(2).initialised, body nav.tab[data-selected="3"] .icon:nth-child(3).initialised {
-        -webkit-animation: hide 0.9s forwards;
-                animation: hide 0.9s forwards;
-        }
-        body nav.tab[data-selected="1"] .bar .middle .side:first-child, body nav.tab[data-selected="3"] .bar .middle .side:last-child {
-        flex-grow: 0;
-        }
-        body nav.tab .icons {
-        position: absolute;
-        z-index: 2;
-        display: flex;
-        justify-content: space-around;
-        width: calc(100% - 2rem);
-        padding: 0 1rem;
-        }
-        body nav.tab .icons .icon {
-        position: relative;
-        top: 0rem;
-        width: 4rem;
-        line-height: 4rem;
-        font-size: 1.5rem;
-        text-align: center;
-        cursor: pointer;
-        transition-delay: 0.1875s;
-        }
-        body nav.tab .icons .icon.initialised {
-        -webkit-animation: hide2 0.375s;
-                animation: hide2 0.375s;
-        }
-        body nav.tab .bar {
-        z-index: 1;
-        position: absolute;
-        display: flex;
-        align-items: stretch;
-        filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.1)) drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.1));
-        width: 100%;
-        height: 100%;
-        }
-        body nav.tab .bar .cap {
-        background: white;
-        width: 1rem;
-        }
-        body nav.tab .bar .cap:first-child {
-        border-bottom-left-radius: 1rem;
-        border-top-left-radius: 0.5rem;
-        box-shadow: 0.25rem 0 0 white;
-        }
-        body nav.tab .bar .cap:last-child {
-        border-bottom-right-radius: 1rem;
-        border-top-right-radius: 0.5rem;
-        box-shadow: -0.25rem 0 0 white;
-        }
-        body nav.tab .bar .middle {
-        flex-grow: 1;
-        position: relative;
-        display: flex;
-        }
-        body nav.tab .bar .middle .circle {
-        position: relative;
-        top: -1.75rem;
-        width: 7rem;
-        height: 5.75rem;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='92' viewBox='0 0 112 92'%3E%3Ccircle cx='56' cy='36' r='36' fill='%23FFF'/%3E%3Cpath d='M104 35.2L104 35.2c0 26.3-20.9 48.3-47.2 48.8C29.9 84.4 8 62.8 8 36v-0.8c0-4-3.2-7.2-7.2-7.2H0v64h112V28h-0.8C107.2 28 104 31.2 104 35.2z' fill='%23FFF'/%3E%3C/svg%3E");
-        }
-        body nav.tab .bar .middle .side {
-        flex-grow: 1;
-        background: white;
-        transition: 0.75s ease;
-        }
-
-        @-webkit-keyframes hide {
-        0%, 100% {
-            opacity: 1;
-        }
-        25%, 75% {
-            opacity: 0;
-        }
-        }
-
-        @keyframes hide {
-        0%, 100% {
-            opacity: 1;
-        }
-        25%, 75% {
-            opacity: 0;
-        }
-        }
-        @-webkit-keyframes hide2 {
-        0%, 100% {
-            opacity: 1;
-        }
-        15%, 75% {
-            opacity: 0;
-        }
-        }
-        @keyframes hide2 {
-        0%, 100% {
-            opacity: 1;
-        }
-        15%, 75% {
-            opacity: 0;
-        }
+        .mobile-bottom-nav__item-content {
+            display: flex;
+            flex-direction: column;
         }
     </style>
     
-    <nav hidden class="tab" data-selected="2">
-        <div class="icons">
-          <div data-index="1" class="icon fad fa-home"></div>
-          <div data-index="2" class="icon fal fa-plus"></div>
-          <div data-index="3" class="icon fad fa-user fa-swap-opacity"></div>
+    <nav hidden class="mobile-bottom-nav ">
+        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">home</i>
+                one
+            </div>		
         </div>
-        <div class="bar">
-          <div class="cap"></div>
-          <div class="middle">
-            <div class="side"></div>
-            <div class="circle"></div>
-            <div class="side"></div>
-          </div>
-          <div class="cap"></div>
+        <div class="mobile-bottom-nav__item">		
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">mail</i>
+                two
+            </div>
         </div>
-      </nav>
-      Resources
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">person</i>
+                three
+            </div>		
+        </div>
+        
+        <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item-content">
+                <i class="material-icons">phone</i>
+                four
+            </div>		
+        </div>
+    </nav> 
 
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
@@ -369,23 +286,15 @@
     </script>
 
     <script>
-        let previous = -1;
-$(".icon[data-index]").click(function(){
-  $(this).addClass("initialised");
-  let index = $(this).attr("data-index");
-  let navtab = $(this).closest("nav.tab").addClass("moving").attr("data-selected", index);
-  if(previous == -1) navtab.find('.icon[data-index="2"]').addClass("initialised")
-  if(previous == 1 && index == 3 || previous == 3 && index == 1) { //If going from one side to the other and middle needs to be hidden
-    navtab.find('.icon[data-index="2"]').removeClass("initialised");
-    setTimeout(function(){ //Because apparently this is the only way it will work
-      navtab.find('.icon[data-index="2"]').addClass("initialised"); //Same animation as the other so they line up
-    });
-  }
-  previous = index;
-  setTimeout(function(){
-    navtab.removeClass("moving").removeClass("hidemiddle");
-  }, 750);
-}); 
+        var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
+        navItems.forEach(function(e, i) {
+            e.addEventListener("click", function(e) {
+                navItems.forEach(function(e2, i2) {
+                    e2.classList.remove("mobile-bottom-nav__item--active");
+                })
+                this.classList.add("mobile-bottom-nav__item--active");
+            });
+        });
     </script>
 </body>
 
