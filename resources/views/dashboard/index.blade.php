@@ -3,7 +3,9 @@
 @section('content')
 
 
-
+@php 
+$server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+@endphp
 
 <div class="container-fluid">
     <div class="header pt-5">
