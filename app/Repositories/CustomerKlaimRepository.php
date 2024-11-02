@@ -31,13 +31,14 @@ class CustomerKlaimRepository extends Repository
         $user_id = auth()->user()->getRelations('roles');
         $user_id = $user_id['roles'][0]->name;
 
-            dd($user_id);
 
-            $klaims = $this->model()::query();
+        $klaims = $this->model()::query();
 
-            if($user_id == 'customer'){
-                $klaims = $klaims->where('customer_id', '=', $user_id);
-            }
+        if($user_id == 'customer'){
+            $userid = auth()->user()->id;
+            dd($userid);
+            $klaims = $klaims->where('customer_id', '=', $userid);
+        }
 
         if ($searchKey) {
                 $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
