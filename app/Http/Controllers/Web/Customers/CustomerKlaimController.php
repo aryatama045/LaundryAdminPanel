@@ -29,7 +29,7 @@ class CustomerKlaimController extends Controller
 
         $user_id = auth()->user()->id;
 
-        $data = $dataklaims->with('user')->findWhere(['customer_id'=> $user_id]);
+        $data = $dataklaims;
 
         dd($data );
 
