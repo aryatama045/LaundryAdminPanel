@@ -3,6 +3,8 @@
 
         @php
             $websetting = App\Models\WebSetting::first();
+
+            $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         @endphp
         <!-- Brand -->
         <a class="navbar-brand " href="{{ route('root') }}">
@@ -10,10 +12,12 @@
                 alt="Admin Logo">
         </a>
 
+        @if ($server != '"Android"')
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerGoldStar"
             aria-controls="navbarTogglerGoldStar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @endif
 
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="navbarTogglerGoldStar">
