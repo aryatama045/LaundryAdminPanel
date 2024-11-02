@@ -99,7 +99,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         }
     </style>
     
-    @role('customer')
+
     @if($server == '"Android"')
     <nav class="mobile-bottom-nav ">
         
@@ -136,7 +136,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         <form id="logout" action="{{ route('logout') }}" method="POST"> @csrf </form>
     </nav> 
     @endif
-    @endrole
+
 
     <script src="{{ asset('web/js/jquery.min.js') }}"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
