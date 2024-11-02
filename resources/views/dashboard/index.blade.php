@@ -193,7 +193,7 @@
             $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         @endphp
 
-        @if ($server == "Android")
+        @if ($server == '"Android"')
         <div class="col-12 col-lg-4">
             <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
                 <div class="overview">
