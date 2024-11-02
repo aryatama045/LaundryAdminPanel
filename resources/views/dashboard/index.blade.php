@@ -18,7 +18,7 @@
             </div>
             <!-- Card stats -->
             <div class="row">
-                @role('visitor')
+                @role('customer')
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
@@ -188,7 +188,7 @@
 
         </div>
 
-        <div class="col-12 col-lg-4">
+        <div hidden class="col-12 col-lg-4">
             <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
                 <div class="overview">
                     <img width="100%" src="{{ asset('web/bg/overview.svg') }}" alt="">
