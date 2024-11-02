@@ -106,7 +106,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
 @role('customer') @if ($server == '"Android"')
-<div  class="container-fluid mt-4">
+<div  class="container-fluid mt-1">
     <div class="row">
 
         
