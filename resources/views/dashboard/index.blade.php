@@ -94,9 +94,11 @@
     </div>
 </div>
 
-<div hidden class="container-fluid mt-4">
+<div  class="container-fluid mt-4">
     <div class="row">
-        <div class="col-12 col-lg-8">
+
+
+        <div hidden class="col-12 col-lg-8">
 
             <div class="card p-3">
                 <div class="">
@@ -193,7 +195,7 @@
                     </div>
                 </div>
 
-                @can('dashboard.overview')
+                @role('admin')
                 <div class="row p-3">
                     <div class="col-lg-6 col-4 mb-3">
                         <img width="50" src="{{ asset('images/icons/users.svg') }}" class="float-left mr-2" alt="">
@@ -238,52 +240,27 @@
                         </div>
                     </div>
                 </div>
-                @else
+                @endrole
+
+                @role('customer')
                 <div class="row p-3">
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/users.svg') }}" class="float-left mr-2" alt="">
+                    
+                    <div class="col-lg-6 col-4">
+                        <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
                             <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('Users') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/Orders.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('Orders') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/Pending.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('Pending') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 mb-3">
-                        <img width="50" src="{{ asset('images/icons/progress.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('On_progress') }}</span>
+                            <span class="txt-1">{{ __('Garansi') }}</span>
                         </div>
                     </div>
                     <div class="col-lg-6 col-4">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
                             <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('Delivered') }}</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-4 ">
-                        <img width="50" src="{{ asset('images/icons/order.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark">00</h3>
-                            <span class="txt-1">{{ __('Cancel_Order') }}</span>
+                            <span class="txt-1">{{ __('Klaim') }}</span>
                         </div>
                     </div>
                 </div>
-                @endcan
+                @endrole
             </div>
         </div>
     </div>
