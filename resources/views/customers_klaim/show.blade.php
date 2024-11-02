@@ -392,7 +392,7 @@
                                 <tr>
                                     <td>Proses</td>
                                     <td>
-                                        <form action="{{ route('klaim.proses_action') }}" method="POST" enctype="multipart/form-data"> @csrf
+                                        <form action="{{ route('klaim.proses_action', $klaim->id) }}" method="POST" enctype="multipart/form-data"> @csrf
                                         <select class="form-control select" name="status">
                                             <option value="Diterima">Diterima</option>
                                             <option value="Disetujui">Disetujui</option>
