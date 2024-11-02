@@ -1,3 +1,4 @@
+
 @php
 
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
@@ -49,9 +50,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
 
                         @if ($server == '"Android"')
-                            <h3>Welcome to App</h3>
+                            <h3>Welcome</h3>
                         @else
                             <h3>Login</h3>
+                            <p>This is a secure system and you will need to provide tour login detalis to access the
+                                site</p>
                         @endif
                             
 
@@ -138,3 +141,4 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 </body>
 
 </html>
+
