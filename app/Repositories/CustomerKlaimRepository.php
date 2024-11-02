@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Http\Requests\ProfilePhotoRequest;
 use App\Http\Requests\CustomerGaransiRequest;
 use App\Models\CustomerKlaims;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Media;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+
+use DB;
 
 class CustomerKlaimRepository extends Repository
 {
@@ -36,8 +39,10 @@ class CustomerKlaimRepository extends Repository
 
         if($user_id == 'customer'){
             $userid = auth()->user();
-            dd($userid);
-            $klaims = $klaims->where('customer_id', '=', $userid);
+
+            $cst = Customer::where('user_id', $userid)->first();
+            dd($cst);
+            $klaims = $klaims->where('customer_id', '=', $cst->id);
         }
 
         if ($searchKey) {
