@@ -389,6 +389,24 @@
                                     </td>
                                 </tr>
 
+                                <tr>
+                                    <td>Proses</td>
+                                    <td>
+                                        <form action="{{ route('klaim.proses_action') }}" method="POST" enctype="multipart/form-data"> @csrf
+                                        <select class="form-control select" name="status">
+                                            <option value="Diterima">Diterima</option>
+                                            <option value="Disetujui">Disetujui</option>
+                                            <option value="Ditolak">Ditolak</option>
+                                        </select>
+
+                                        <br><br>
+                                        <input type="text" class="form-control" placeholder="Keterangan">
+                                        <hr class="mt-6">
+                                        <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
+
+                                    </td>
+                                </tr>
+
 
                             </tbody>
                         </table>
