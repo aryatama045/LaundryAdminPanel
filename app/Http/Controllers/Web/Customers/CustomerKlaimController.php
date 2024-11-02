@@ -172,13 +172,14 @@ class CustomerKlaimController extends Controller
 
     public function proses_action(Request $request, $id)
     {
-        $klaim_fill = [
-            'status' => $request->status,
-            'keterangan' => $request->keterangan,
-        ];
 
         
         $klaim_data = CustomerKlaims::update($klaim_fill, $id);
+
+        $klaim_data = DB::table('customer_klaims')->where('id', $id)->update(array(
+                    'status' => $request->status,
+                    'keterangan' => $request->keterangan,
+                )); 
 
         return redirect()->route('klaim.index')->with('success', 'Klaim Proses successfully');
     }
