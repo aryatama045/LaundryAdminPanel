@@ -28,7 +28,7 @@ class CustomerKlaimRepository extends Repository
     {
         $searchKey = \request('search');
         
-            $user_id = auth()->user();
+            $user_id = auth()->user()->roles();
 
             dd($user_id);
 
