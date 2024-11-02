@@ -29,13 +29,14 @@
 
 <body>
 
+{{--     
     <div class="preload">
         <div class="flexbox">
             <div>
                 <img src="{{ asset('images/loader/loader.gif') }}" alt="">
             </div>
         </div>
-    </div>
+    </div> --}}
 
     @include('layouts.partials.sidebar')
 
