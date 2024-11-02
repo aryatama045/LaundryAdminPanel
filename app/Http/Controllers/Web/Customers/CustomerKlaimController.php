@@ -27,6 +27,12 @@ class CustomerKlaimController extends Controller
     {
         $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
+        $user_id = auth()->user()->id;
+
+        $data = $dataklaims->with('user')->findWhere(['customer_id'=> $user_id]);
+
+        dd($data );
+
         return view('customers_klaim.index', compact('dataklaims'));
     }
 
