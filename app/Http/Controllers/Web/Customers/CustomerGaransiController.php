@@ -139,7 +139,7 @@ class CustomerGaransiController extends Controller
 
         }
 
-        return back()->with('success', 'User deleted successfully');
+        return back()->with('success', 'Garansi deleted successfully');
     }
 
     public function toggleStatus(User $user)

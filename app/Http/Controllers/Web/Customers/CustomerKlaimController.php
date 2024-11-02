@@ -177,30 +177,34 @@ class CustomerKlaimController extends Controller
             'keterangan' => $request->keterangan,
         ];
 
-        dd($id, $klaim_fill);
         
         $klaim_data = CustomerKlaims::update($klaim_fill, $id);
 
-        return redirect()->route('customer.index')->with('success', 'Klaim Proses successfully');
+        return redirect()->route('klaim.index')->with('success', 'Klaim Proses successfully');
     }
 
-    public function delete(Customer $customer)
+    public function delete($id)
     {
-        $user = $customer->user;
 
-        $customer->devices()->delete();
-        $customer->addresses()->delete();
+        if($id){
+            $klaim = CustomerKlaims::where('id', $id)->first();
 
-        $customer->delete();
+            $bukti = CustomerBuktiFotos::where('klaim_id', $klaim->id)->get();
+            if(!empty($bukti)){
 
-        $user->delete();
+                foreach($bukti as $idfoto){
+                    $foto = Media::where('id', $idfoto)->delete();
+                }
 
-        return back()->with('success', 'User deleted successfully');
+            }
+
+            CustomerBuktiFotos::where('klaim_id', $klaim->id)->delete();
+            CustomerKlaims::where('id', $id)->delete();
+
+        }
+
+        return back()->with('success', 'Klaims deleted successfully');
     }
 
-    public function toggleStatus(User $user)
-    {
-        (new UserRepository())->toggleStatus($user);
-        return back()->with('success','Status update successfully');
-    }
+
 }
