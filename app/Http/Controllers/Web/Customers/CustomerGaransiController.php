@@ -86,12 +86,20 @@ class CustomerGaransiController extends Controller
                 $date           = now()->toDateTimeString();
                 $jam            =  date('h',strtotime($date));
                 $menit          =  date('i',strtotime($date));
-                $text_wtr = 'Pukul  '.$jam.':'.$menit. ' Tanggal '.$tanggal;
+                $text_wtr1 = 'Pukul  '.$jam.':'.$menit;
                 $text_wtr2 = 'Tanggal '.$tanggal;
 
 
 
-                $img->text($text_wtr, 200, 150, function($font) {  
+                $img->text($text_wtr1, 200, 150, function($font) {  
+                    $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    $font->size(20);
+                    $font->color('#000');
+                    $font->align('left');
+                    $font->valign('bottom');
+                });
+
+                $img->text($text_wtr2, 200, 150, function($font) {  
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(20);
                     $font->color('#000');
