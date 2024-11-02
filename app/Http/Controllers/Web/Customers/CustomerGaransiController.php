@@ -87,7 +87,7 @@ class CustomerGaransiController extends Controller
                 $text_wtr1 = 'Pukul  '.$jam.':'.$menit;
                 $text_wtr2 = 'Tanggal '.$tanggal;
 
-                $img->text($text_wtr1, 200, 150, function($font) {  
+                $img->text($text_wtr1, 450, 100, function($font) {  
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(20);
                     $font->color('#000');
@@ -95,7 +95,7 @@ class CustomerGaransiController extends Controller
                     $font->valign('bottom');
                 });
 
-                $img->text($text_wtr2, 200, 150, function($font) {  
+                $img->text($text_wtr2, 450, 100, function($font) {  
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(20);
                     $font->color('#000');
