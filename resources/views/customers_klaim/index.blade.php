@@ -5,8 +5,6 @@
 @php
 $server  = request()->userAgent();
 
-dd($server);
-
 @endphp
 
     <div class="container-fluid mt-4">
