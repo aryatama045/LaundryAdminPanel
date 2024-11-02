@@ -52,7 +52,16 @@ $server  = request()->userAgent();
                                                 <small> Tgl pemasangan : {{ $klaims->tanggal_pemasangan }} </small>
                                             </td>
                                             <td>
-                                                <span class="badge badge-success">{{ $klaims->status }} </span>
+                                                @if($klaims->status == 'Disetujui')
+                                                    <span class="badge badge-success">{{ $klaims->status }} </span>
+                                                @elseif($klaims->status == 'Ditolak')
+                                                    <span class="badge badge-danger">{{ $klaims->status }} </span>
+                                                @elseif($klaims->status == 'Diterima')
+                                                    <span class="badge badge-danger">{{ $klaims->status }} </span>
+                                                @else
+                                                <span class="badge badge-secondary">{{ $klaims->status }} </span>
+                                                @endif
+                                                
                                             </td>
                                             <td>
                                                 @role('root')
