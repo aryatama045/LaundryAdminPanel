@@ -84,8 +84,12 @@ class CustomerGaransiController extends Controller
                 $date           = now()->toDateTimeString();
                 $jam            =  date('H',strtotime($date));
                 $menit          =  date('i',strtotime($date));
-                $text_wtr1 = 'Pukul  '.$jam.':'.$menit.' Tanggal '.$tanggal;
+                $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
                 $text_wtr2 = 'Tanggal '.$tanggal;
+
+
+                $logo = public_path('logo.png');
+                $img->place($logo, 'center', 15, 15);
 
                 $img->text($text_wtr1, 450, 100, function($font) {  
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
@@ -94,9 +98,6 @@ class CustomerGaransiController extends Controller
                     $font->align('center');
                     $font->valign('bottom');
                 });
-
-                $logo = public_path('logo.png');
-                $img->place($logo, 'center', 15, 15);
 
 
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
