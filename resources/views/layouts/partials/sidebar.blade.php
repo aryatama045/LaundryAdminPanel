@@ -273,7 +273,7 @@
 
 
 
-                                <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
+                                <a hidden class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                                     href="{{ route('admin.index') }}">
                                     <i class="fas fa-user-secret"></i>
                                     <span class="nav-link-text">{{ __('Data Admins') }}</span>
