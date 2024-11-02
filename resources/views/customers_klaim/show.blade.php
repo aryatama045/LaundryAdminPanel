@@ -357,7 +357,7 @@
                                                                             <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"></line>
                                                                         </svg>
                                                                     </div>
-                                                                    <div class="tracking-content"> Ditolak <br> <span>Keterangan : $klaim->keterangan </span></div>
+                                                                    <div class="tracking-content"> Ditolak <br> <span>Keterangan : {{$klaim->keterangan}} </span></div>
                                                             </div>
                                                             @endif
 
