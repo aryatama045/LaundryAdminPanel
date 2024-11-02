@@ -122,7 +122,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         
         <div class="mobile-bottom-nav__item">
             <div class="mobile-bottom-nav__item-content">
-                <i class="material-icons">phone</i>
+                <i class="material-icons">exit_to_app</i>
                 Logout
             </div>		
         </div>
