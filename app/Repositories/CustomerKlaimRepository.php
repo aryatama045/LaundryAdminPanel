@@ -27,8 +27,14 @@ class CustomerKlaimRepository extends Repository
     public function getAllOrFindBySearch()
     {
         $searchKey = \request('search');
+        
+            $user_id = auth()->user()->id;
 
             $klaims = $this->model()::query();
+
+            if(session('customer')){
+                $klaims->where('customer_id', '=', $user_id);
+            }
 
         if ($searchKey) {
                 $klaims = $klaims->whereHas('user', function ($klaim) use ($searchKey) {
@@ -37,6 +43,7 @@ class CustomerKlaimRepository extends Repository
                         ->orWhere('no_nota', 'like', "%{$searchKey}%")
                         ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
                 });
+          
         }
 
         return $klaims->latest('id')->get();
