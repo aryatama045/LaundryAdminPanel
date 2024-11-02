@@ -30,7 +30,7 @@ class CustomerKlaimRepository extends Repository
         
             $user_id = auth()->user()->roles();
 
-            dd($user_id);
+            dd($user_id->name);
 
             $klaims = $this->model()::query();
 
