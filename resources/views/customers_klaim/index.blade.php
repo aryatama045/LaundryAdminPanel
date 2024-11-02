@@ -49,10 +49,21 @@
                                                 <span class="badge badge-success">{{ $klaims->status }} </span>
                                             </td>
                                             <td>
+                                                @role('root')
+                                                <a href="{{ route('klaim.show', $klaims->id) }}"
+                                                    class="btn btn-primary py-1 px-2">
+                                                    Proses
+                                                </a>
+                                                @endrole
+
+                                                @role('customer')
                                                 <a href="{{ route('klaim.show', $klaims->id) }}"
                                                     class="btn btn-primary py-1 px-2">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
+                                                @endrole
+
+
                                                 <a href="{{ route('klaim.edit', $klaims->id) }}"
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
