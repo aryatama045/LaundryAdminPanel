@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Http\Requests\ProfilePhotoRequest;
 use App\Http\Requests\CustomerGaransiRequest;
 use App\Models\CustomerGaransis;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Media;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+
+use DB;
 
 class CustomerGaransiRepository extends Repository
 {
@@ -27,7 +30,24 @@ class CustomerGaransiRepository extends Repository
     public function getAllOrFindBySearch()
     {
         $searchKey = \request('search');
+
+        $user_id = auth()->user()->getRelations('roles');
+        $user_id = $user_id['roles'][0]->name;
+
+
         $garansis = $this->model()::query();
+
+        if($user_id == 'customer'){
+            $userid = auth()->user()->id;
+
+            $cst = Customer::where('user_id', $userid)->first();
+
+            $cst_id = $cst->id;
+
+            $garansis = $garansis->where('customer_id', '=', $cst_id);
+        }
+
+        
 
         if ($searchKey) {
             $garansis = $garansis->whereHas('user', function ($garansi) use ($searchKey) {
