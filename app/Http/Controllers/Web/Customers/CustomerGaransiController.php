@@ -89,9 +89,9 @@ class CustomerGaransiController extends Controller
 
                 $img->text($text_wtr1, 450, 100, function($font) {  
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
-                    $font->size(20);
-                    $font->color('#000');
-                    $font->align('right');
+                    $font->size(24);
+                    $font->color('#d71717');
+                    $font->align('center');
                     $font->valign('bottom');
                 });
 
