@@ -112,6 +112,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     // Klaim routes
     Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');
     Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.show');
+    Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.proses');
     Route::get('/klaim/create', [CustomerKlaimController::class, 'create'])->name('klaim.create');
     Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
     Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');

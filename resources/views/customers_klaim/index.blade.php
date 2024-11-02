@@ -50,7 +50,7 @@
                                             </td>
                                             <td>
                                                 @role('root')
-                                                <a href="{{ route('klaim.show', $klaims->id) }}"
+                                                <a href="{{ route('klaim.proses', $klaims->id) }}"
                                                     class="btn btn-primary py-1 px-2">
                                                     Proses
                                                 </a>
