@@ -110,25 +110,30 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 Home
             </div>		
         </a>
-        <a href="{{ route('garansi.index') }}" class="mobile-bottom-nav__item {{ request()->routeIs('garansi.*') ? 'mobile-bottom-nav__item--active' : '' }}">		
+        <a class="mobile-bottom-nav__item {{ request()->routeIs('garansi.*') ? 'mobile-bottom-nav__item--active' : '' }}"
+            href="{{ route('garansi.index') }}" >		
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">mail</i>
                 Garansi
             </div>
         </a>
-        <div class="mobile-bottom-nav__item">
+        <a class="mobile-bottom-nav__item {{ request()->routeIs('klaim.*') ? 'mobile-bottom-nav__item--active' : '' }}"
+            href="{{ route('klaim.index') }}">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">shopping_cart_checkout</i>
                 Klaims
             </div>		
-        </div>
+        </a>
+
         
-        <div class="mobile-bottom-nav__item">
+        <a class="mobile-bottom-nav__item"  onclick="event.preventDefault(); document.getElementById('logout').submit()"
+            href="#">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">exit_to_app</i>
                 Logout
             </div>		
-        </div>
+        </a>
+        <form id="logout" action="{{ route('logout') }}" method="POST"> @csrf </form>
     </nav> 
     @endif
     @endrole
