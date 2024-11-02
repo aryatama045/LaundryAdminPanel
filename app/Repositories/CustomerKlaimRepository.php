@@ -35,7 +35,7 @@ class CustomerKlaimRepository extends Repository
         $klaims = $this->model()::query();
 
         if($user_id == 'customer'){
-            $userid = auth()->user()->id;
+            $userid = auth()->user();
             dd($userid);
             $klaims = $klaims->where('customer_id', '=', $userid);
         }
