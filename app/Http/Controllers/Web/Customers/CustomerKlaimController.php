@@ -173,8 +173,6 @@ class CustomerKlaimController extends Controller
     public function proses_action(Request $request, $id)
     {
 
-        
-        $klaim_data = CustomerKlaims::update($klaim_fill, $id);
 
         $klaim_data = DB::table('customer_klaims')->where('id', $id)->update(array(
                     'status' => $request->status,
