@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+$server  = $request->server('HTTP_USER_AGENT');
+
+dd($server);
+
+@endphp
+
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-lg-12">
