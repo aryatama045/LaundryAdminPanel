@@ -102,18 +102,20 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     @role('customer')
     @if($server == '"Android"')
     <nav class="mobile-bottom-nav ">
-        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+        
+        <a class="mobile-bottom-nav__item {{ request()->routeIs('root') ? 'mobile-bottom-nav__item--active' : '' }}" 
+            href="{{ route('root') }}">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">home</i>
                 Home
             </div>		
-        </div>
-        <div class="mobile-bottom-nav__item">		
+        </a>
+        <a href="{{ route('garansi.index') }}" class="mobile-bottom-nav__item {{ request()->routeIs('garansi.*') ? 'mobile-bottom-nav__item--active' : '' }}">		
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">mail</i>
                 Garansi
             </div>
-        </div>
+        </a>
         <div class="mobile-bottom-nav__item">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">shopping_cart_checkout</i>
