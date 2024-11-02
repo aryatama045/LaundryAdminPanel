@@ -5,6 +5,17 @@
 
 @php 
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+
+$userid = auth()->user()->id;
+
+$cst = \App\Models\Customer::where('user_id', $userid)->first();
+
+$cst_id = $cst->id;
+
+$garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
+
+$klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
+    
 @endphp
 
 <div class="container-fluid">
@@ -35,7 +46,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi ')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
-                                        0
+                                        {{ $garansi_cst->count() }}
                                     </span>
                                 </div>
                                 <div class="card-icon">
@@ -55,7 +66,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim ')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
-                                        0
+                                        {{ $klaim_cst->count() }}
                                     </span>
                                 </div>
                                 <div class="card-icon">
@@ -118,19 +129,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <h2 class="text-white">{{ __('Overview') }}</h2>
                     </div>
                 </div>
-                @php 
-
-                    $userid = auth()->user()->id;
-
-                    $cst = \App\Models\Customer::where('user_id', $userid)->first();
-
-                    $cst_id = $cst->id;
-
-                    $garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
-
-                    $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
-                    
-                @endphp
 
                 <div class="row p-3">
                     
