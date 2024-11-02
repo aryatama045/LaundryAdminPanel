@@ -93,8 +93,7 @@ class CustomerGaransiController extends Controller
                     $font->size(20);
                     $font->color('#000');
                     $font->align('bottom');
-                    $font->valign('right');  
-                    $font->top(30);  
+                    $font->valign('right');
                 });
 
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
