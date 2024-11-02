@@ -170,6 +170,19 @@ class CustomerKlaimController extends Controller
         return redirect()->route('customer.index')->with('success', 'Customer Update successfully');
     }
 
+    public function proses_action(Request $request, $id)
+    {
+        $klaim_fill = [
+            'status' => $request->status,
+        ];
+
+        dd($id, $klaim_fill);
+        
+        $klaim_data = CustomerKlaims::update($klaim_fill, $id);
+
+        return redirect()->route('customer.index')->with('success', 'Klaim Proses successfully');
+    }
+
     public function delete(Customer $customer)
     {
         $user = $customer->user;
