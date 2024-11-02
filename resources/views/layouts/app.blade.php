@@ -58,6 +58,9 @@
 
         @yield('content')
 
+        @role('customer')
+        @include('layouts.customer')
+        @endrole
     </div>
 
     <style>
@@ -130,6 +133,9 @@
     <script src="{{ asset('web/js/main.js') }}"></script>
     <script src="{{ asset('web/js/datatables.min.js') }}"></script>
     <script src="{{ asset('web/js/toastr.min.js') }}"></script>
+
+    <script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script>
