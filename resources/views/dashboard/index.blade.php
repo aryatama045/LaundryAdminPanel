@@ -5,8 +5,9 @@
     <div class="header pt-5">
 
         <div class="header-body mt--4">
-            <div class="row align-items-center pb-4">
+            <div hidden class="row align-items-center pb-4">
                 <div class="col-lg-6 col-7">
+                    <h6 class="h2 d-inline-block">{{__('Dashboard')}}</h6>
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item "><a href="{{ route('root') }}"><i class="fa fa-home text-primary"></i></a></li>
