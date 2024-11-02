@@ -3,7 +3,7 @@
 @section('content')
 
 @php
-$server  = $request->server('HTTP_USER_AGENT');
+$server  = request()->userAgent();
 
 dd($server);
 
