@@ -38,9 +38,9 @@ class CustomerKlaimRepository extends Repository
         $klaims = $this->model()::query();
 
         if($user_id == 'customer'){
-            $userid = auth()->user();
+            $userid = auth()->user()->id;
 
-            $cst = Customer::where('user_id', $userid)->first();
+            $cst = Customer::where('user_id', $userid)->get();
             dd($cst);
             $klaims = $klaims->where('customer_id', '=', $cst->id);
         }
