@@ -124,15 +124,15 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark"></h3>
-                            <span class="txt-1">{{ __('Garansi') }} <br> 2 </span>
+                            <h3 class="m-0 text-dark"> 2 </h3>
+                            <span class="txt-1">{{ __('Garansi') }}  </span>
                         </div>
                     </div>
 
                     <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
-                            <h3 class="m-0 text-dark"></h3>
+                            <h3 class="m-0 text-dark"> 3</h3>
                             <span class="txt-1">{{ __('Klaim') }}</span>
                         </div>
                     </div>
