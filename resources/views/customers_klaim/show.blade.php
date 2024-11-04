@@ -239,11 +239,7 @@
                                                 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                             @endphp
 
-                                            @if($server == '"Windows"')
-                                                <span>{{ $bukti->src }}</span>
-                                            @else
-                                                <span>{{ $bukti->kode_foto }}</span>
-                                            @endif
+                                            <span>View </span>
 
                                             <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
                                                 <i class="fa fa-eye"></i>
