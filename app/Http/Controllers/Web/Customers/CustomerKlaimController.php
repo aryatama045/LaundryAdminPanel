@@ -10,6 +10,7 @@ use App\Repositories\MediaRepository;
 use App\Repositories\CustomerKlaimRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
+use App\Models\Media;
 use App\Models\Customer;
 use App\Models\CustomerKlaims;
 use App\Models\CustomerGaransis;
@@ -195,7 +196,7 @@ class CustomerKlaimController extends Controller
             if(!empty($bukti)){
 
                 foreach($bukti as $idfoto){
-                    $foto = Media::where('id', $idfoto)->firstOrFail();
+                    $foto = Media::where('id', $idfoto)->first();
 
                     if(!empty($foto)){
                         Media::where('id', $idfoto)->delete();
