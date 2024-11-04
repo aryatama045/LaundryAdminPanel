@@ -34,8 +34,6 @@ class CustomerKlaimController extends Controller
 
     public function show(CustomerKlaims $klaim)
     {
-        $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
-        dd($server);
         return view('customers_klaim.show', [
             'klaim' => $klaim
         ]);
@@ -131,12 +129,14 @@ class CustomerKlaimController extends Controller
                 );
 
 
-                $img = Image::read(storage_path('app/public/' . $thumbnail->path));
+                $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+                if($server != '"Windows"'){
+                    $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
-                $logo = public_path('logo.png');
-                $img->place($logo, 'center', 15, 15);
-                $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
-
+                    $logo = public_path('logo.png');
+                    $img->place($logo, 'center', 15, 15);
+                    $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+                }
 
                 $bukti_foto = [
                     'garansi_id'            => '0',
