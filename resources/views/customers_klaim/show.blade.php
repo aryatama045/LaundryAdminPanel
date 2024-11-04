@@ -235,7 +235,15 @@
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            <span>{{ $bukti->kode_foto }}</span>
+                                            @php
+                                                $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+                                            @endphp
+
+                                            @if($server != '"Windows"')
+                                                <span>{{ $bukti->kode_foto }}</span>
+                                            @else
+                                                <span>{{ $bukti->src }}</span>
+                                            @endif
 
                                             <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
                                                 <i class="fa fa-eye"></i>
@@ -343,8 +351,8 @@
 
                                                             @if($klaim->status == 'Ditolak')
                                                             <div class="tracking-item">
-                                                            
-                                                            
+
+
                                                                     <div class="tracking-icon status-intransit">
                                                                         <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
@@ -363,8 +371,8 @@
 
                                                             @if($klaim->status == 'Disetujui')
                                                             <div class="tracking-item">
-                                                            
-                                                            
+
+
                                                                     <div class="tracking-icon status-intransit">
                                                                         <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
                                                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
@@ -372,12 +380,12 @@
                                                                     </div>
                                                                     <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
                                                                     <div class="tracking-content">Disetujui  </div>
-                                                                
+
                                                             </div>
                                                             @endif
-                                                            
 
-                                                            
+
+
                                                         </div>
 
                                                     </div>
@@ -391,7 +399,7 @@
 
                                 @role('root')
                                 <tr>
-                                    
+
                                     <td>
                                         <form action="{{ route('klaim.proses_action', $klaim->id) }}" method="POST" enctype="multipart/form-data"> @csrf
                                         <select class="form-control select" name="status">
