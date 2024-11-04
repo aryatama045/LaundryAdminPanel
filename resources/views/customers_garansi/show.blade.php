@@ -58,11 +58,7 @@
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            @if($server == '"Windows"')
-                                                <span>{{ $bukti->src }}</span>
-                                            @else
-                                                <span>{{ $bukti->kode_foto }}</span>
-                                            @endif
+                                            <span>View </span>
 
                                             <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
                                                 <i class="fa fa-eye"></i>
@@ -87,17 +83,12 @@
                                                                     <th scope="col">{{ __('Title') }}</th>
                                                                     <th scope="col">{{ __('Details') }}</th>
                                                                 </tr>
-                                                                @if($server == '"Windows"')
-                                                                    <tr>
-                                                                        <td>{{ __('Kode Foto') }}</td>
-                                                                        <td>{{ $bukti->src }}</td>
-                                                                    </tr>
-                                                                @else
-                                                                    <tr>
-                                                                        <td>{{ __('Kode Foto') }}</td>
-                                                                        <td>{{ $bukti->kode_foto }}</td>
-                                                                    </tr>
-                                                                @endif
+                                                                @role('root')
+                                                                <tr>
+                                                                    <td>{{ __('Kode Foto') }}</td>
+                                                                    <td>{{ $bukti->kode_foto }}</td>
+                                                                </tr>
+                                                                @endrole
 
                                                                 <tr>
                                                                     <td>{{ __('No Nota') }}</td>
