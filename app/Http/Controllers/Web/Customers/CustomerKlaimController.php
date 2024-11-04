@@ -195,7 +195,7 @@ class CustomerKlaimController extends Controller
             if(!empty($bukti)){
 
                 foreach($bukti as $idfoto){
-                    $foto = Media::where('id', $idfoto)->get();
+                    $foto = Media::where('id', $idfoto)->firstOrFail();
 
                     if(!empty($foto)){
                         Media::where('id', $idfoto)->delete();
