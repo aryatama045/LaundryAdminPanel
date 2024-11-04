@@ -27,13 +27,15 @@ class CustomerKlaimController extends Controller
     {
         $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
-        
+
 
         return view('customers_klaim.index', compact('dataklaims'));
     }
 
     public function show(CustomerKlaims $klaim)
     {
+        $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+        dd($server);
         return view('customers_klaim.show', [
             'klaim' => $klaim
         ]);
@@ -59,10 +61,10 @@ class CustomerKlaimController extends Controller
 
         $paymentDate = now();
         $paymentDate = date('Y-m-d', strtotime($paymentDate));
-        //echo $paymentDate; // echos today! 
+        //echo $paymentDate; // echos today!
         $contractDateBegin = date('Y-m-d', strtotime($tgl_pasang));
         $contractDateEnd = date('Y-m-d', strtotime($dateExps));
-            
+
         if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
                 $berlaku_s ='Berlaku';
         }else{
@@ -72,9 +74,9 @@ class CustomerKlaimController extends Controller
             }else{
                 $berlaku_s ='Expired';
             }
-            
+
         }
-        
+
 
         if($berlaku_s == 'Expired'){
             return redirect()->route('klaim.create')->with('error', ' Tanggal Pemasangan Sudah Expired');
@@ -105,7 +107,7 @@ class CustomerKlaimController extends Controller
             'tanggal_pemasangan' => $request->tanggal_pemasangan,
             'status' => 'Proses',
         ];
-        
+
 
         $klaim_data = CustomerKlaims::create($klaim_fill);
 
@@ -178,7 +180,7 @@ class CustomerKlaimController extends Controller
         $klaim_data = DB::table('customer_klaims')->where('id', $id)->update(array(
                     'status' => $request->status,
                     'keterangan' => $request->keterangan,
-                )); 
+                ));
 
         return redirect()->route('klaim.index')->with('success', 'Klaim Proses successfully');
     }
