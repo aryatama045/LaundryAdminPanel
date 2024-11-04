@@ -264,10 +264,13 @@
                                                                     <th scope="col">{{ __('Title') }}</th>
                                                                     <th scope="col">{{ __('Details') }}</th>
                                                                 </tr>
+
+                                                                @role('root')
                                                                 <tr>
                                                                     <td>{{ __('Kode Foto') }}</td>
                                                                     <td>{{ $bukti->kode_foto }}</td>
                                                                 </tr>
+                                                                @endrole
                                                                 <tr>
                                                                     <td>{{ __('No Nota') }}</td>
                                                                     <td>{{ $klaim->no_nota }} <br> <small> Tanggal : {{ date('d-m-Y', strtotime($klaim->tanggal_nota)) }} </small></td>
