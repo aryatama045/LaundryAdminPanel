@@ -3,6 +3,10 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+@endphp
+
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-lg-12">
@@ -54,14 +58,10 @@
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            @php
-                                                $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
-                                            @endphp
-
-                                            @if($server != '"Windows"')
-                                                <span>{{ $bukti->kode_foto }}</span>
-                                            @else
+                                            @if($server == '"Windows"')
                                                 <span>{{ $bukti->src }}</span>
+                                            @else
+                                                <span>{{ $bukti->kode_foto }}</span>
                                             @endif
 
                                             <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
@@ -87,10 +87,18 @@
                                                                     <th scope="col">{{ __('Title') }}</th>
                                                                     <th scope="col">{{ __('Details') }}</th>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>{{ __('Kode Foto') }}</td>
-                                                                    <td>{{ $bukti->kode_foto }}</td>
-                                                                </tr>
+                                                                @if($server == '"Windows"')
+                                                                    <tr>
+                                                                        <td>{{ __('Kode Foto') }}</td>
+                                                                        <td>{{ $bukti->src }}</td>
+                                                                    </tr>
+                                                                @else
+                                                                    <tr>
+                                                                        <td>{{ __('Kode Foto') }}</td>
+                                                                        <td>{{ $bukti->kode_foto }}</td>
+                                                                    </tr>
+                                                                @endif
+
                                                                 <tr>
                                                                     <td>{{ __('No Nota') }}</td>
                                                                     <td>{{ $garansi->no_nota }} <br> <small> Tanggal : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small></td>
