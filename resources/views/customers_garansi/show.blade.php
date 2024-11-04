@@ -54,7 +54,15 @@
                                         <div>
                                             {!! $key == 0 ? ' <hr class="my-2">' : '' !!}
 
-                                            <span>{{ $bukti->kode_foto }}</span>
+                                            @php
+                                                $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+                                            @endphp
+
+                                            @if($server != '"Windows"')
+                                                <span>{{ $bukti->kode_foto }}</span>
+                                            @else
+                                                <span>{{ $bukti->src }}</span>
+                                            @endif
 
                                             <a href="#bukti_foto_show_{{ $bukti->id }}" data-toggle="modal" class="btn btn-info p-1 px-2 ml-2">
                                                 <i class="fa fa-eye"></i>
