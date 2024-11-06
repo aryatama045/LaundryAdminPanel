@@ -378,7 +378,7 @@
                                                                         </svg>
                                                                     </div>
                                                                     <div class="tracking-date"><img src="https://raw.githubusercontent.com/shajo/portfolio/a02c5579c3ebe185bb1fc085909c582bf5fad802/delivery.svg" class="img-responsive" alt="order-placed" /></div>
-                                                                    <div class="tracking-content">Disetujui  </div>
+                                                                    <div class="tracking-content">Disetujui <br> <span>Keterangan : {{$klaim->keterangan}} </div>
 
                                                             </div>
                                                             @endif
