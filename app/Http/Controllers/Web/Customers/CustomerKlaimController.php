@@ -131,7 +131,7 @@ class CustomerKlaimController extends Controller
 
 
                 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
-                if($server == '"Android"'){
+                if($server != '"Windows"'){
                     $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
                     $logo = public_path('logo.png');
