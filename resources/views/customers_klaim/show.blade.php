@@ -272,7 +272,7 @@
                                                                 @role('root')
                                                                 <tr>
                                                                     <td>{{ __('Kode Foto') }}</td>
-                                                                    <td>{{ $bukti->src }}</td>
+                                                                    <td>{{ $get_media->src }}</td>
                                                                 </tr>
                                                                 @endrole
 
