@@ -257,6 +257,10 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
+
+                                                    <?php
+                                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+                                                    ?>
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
                                                             <tbody>
@@ -275,7 +279,7 @@
                                                                 @role('customer')
                                                                 <tr>
                                                                     <td>{{ __('Kode Foto') }}</td>
-                                                                    <td>{{ $bukti->src }}</td>
+                                                                    <td>{{ $get_media->src }}</td>
                                                                 </tr>
                                                                 @endrole
 
@@ -285,10 +289,6 @@
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <?php
-                                                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
-                                                                    ?>
-
                                                                     <td colspan="2">
                                                                         <img width="100%" src="{{ Storage::url($get_media->path);  }}" alt="{{ $bukti->kode_foto }}">
                                                                     </td>
