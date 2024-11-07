@@ -272,7 +272,7 @@
                                                                 @role('root')
                                                                 <tr>
                                                                     <td>{{ __('Kode Foto') }}</td>
-                                                                    <td>{{ $bukti->kode_foto }}</td>
+                                                                    <td>{{ $bukti->src }}</td>
                                                                 </tr>
                                                                 @endrole
 
