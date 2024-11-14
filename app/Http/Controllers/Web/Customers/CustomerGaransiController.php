@@ -51,9 +51,11 @@ class CustomerGaransiController extends Controller
             'customer_id' => $request->customer_id,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
-            'no_pemasangan' => $request->no_pemasangan,
-            'tanggal_pemasangan' => $request->tanggal_pemasangan,
+            'waktu_pemasangan' => $request->waktu_pemasangan,
         ];
+
+        // 'no_pemasangan' => $request->no_pemasangan,
+        //  'tanggal_pemasangan' => $request->tanggal_pemasangan,
 
         $garansi_data = CustomerGaransis::create($garansi_fill);
 
@@ -79,7 +81,6 @@ class CustomerGaransiController extends Controller
 
                 $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
-                
                 $tanggal        = date('d/m/Y');
                 $date           = now()->toDateTimeString();
                 $jam            =  date('H',strtotime($date));
@@ -91,7 +92,7 @@ class CustomerGaransiController extends Controller
                 $logo = public_path('logo.png');
                 $img->place($logo, 'center', 15, 15);
 
-                $img->text($text_wtr1, 450, 100, function($font) {  
+                $img->text($text_wtr1, 450, 100, function($font) {
                     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
                     $font->size(24);
                     $font->color('#d71717');

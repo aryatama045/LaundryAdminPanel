@@ -42,7 +42,7 @@ $server  = request()->userAgent();
                                             <td>
                                                 {{ $klaims->no_tracking }}
                                             </td>
-                                            
+
                                             <td>
                                                 {{ $klaims->no_nota }} <br>
                                                 <small> Tgl nota : {{ $klaims->tanggal_nota }} </small>
@@ -61,7 +61,7 @@ $server  = request()->userAgent();
                                                 @else
                                                 <span class="badge badge-info">{{ $klaims->status }} </span>
                                                 @endif
-                                                
+
                                             </td>
                                             <td>
                                                 @role('root')
