@@ -20,6 +20,19 @@
         top: 0;
         width: auto;
     }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
 </style>
     <div class="container-fluid mt-4">
         <div class="row">
@@ -85,7 +98,7 @@
                                 <!-- Pemasangan -->
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="datetime-local" class="form-control" name="waktu_pemasangan"
+                                    <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
                                         value="{{ old('waktu_pemasangan') }}" placeholder="{{ __('Waktu Pemasangan') }}">
                                     @error('waktu_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
