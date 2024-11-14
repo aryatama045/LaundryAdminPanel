@@ -84,20 +84,30 @@
                                 </div>
                                 <!-- Pemasangan -->
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="datetime" class="form-control" name="waktu_pemasangan"
+                                    <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                    <input type="datetime-local" class="form-control" name="waktu_pemasangan"
                                         value="{{ old('waktu_pemasangan') }}" placeholder="{{ __('Waktu Pemasangan') }}">
                                     @error('waktu_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <!--
+                                <div class="col-12 col-md-6 mb-2">
+                                <label for="">{{ __('No. Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="no_pemasangan"
+                                        value="{{ old('no_pemasangan') }}" placeholder="{{ __('No. Pemasangan') }}">
+                                    @error('no_pemasangan')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
                                     <input type="date" class="form-control" id="tanggal" name="tanggal_pemasangan" value="{{ now()->toDateString('d/m/Y') }}" >
                                     @error('tanggal_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> -->
                             </div>
 
                             <hr>
