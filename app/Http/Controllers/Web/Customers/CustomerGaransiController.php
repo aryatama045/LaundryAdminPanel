@@ -52,6 +52,7 @@ class CustomerGaransiController extends Controller
             'no_seri' => $request->no_seri,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
+            'tanggal_pemasangan' => date('d-m-Y',strtotime($request->tanggal_pemasangan)),
             'waktu_pemasangan' => $request->waktu_pemasangan,
         ];
 
