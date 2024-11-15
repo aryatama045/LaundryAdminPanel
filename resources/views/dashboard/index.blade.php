@@ -46,11 +46,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
-                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim ')}}</h4>
-                                    <span class="display-3 text-dark font-weight-bold mb-0">
-                                        <a href="{{ route('klaim.create') }}">
+                                    <h4 class="card-title text-uppercase text-muted mb-0"><a href="{{ route('klaim.create') }}">
                                         Klik Pengajuan
-                                        </a>
+                                        </a></h4>
+                                    <span class="display-3 text-dark font-weight-bold mb-0">.
                                     </span>
                                 </div>
                                 <div class="card-icon">
