@@ -50,10 +50,10 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-
-                            <hr class="mt-6">
-                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
                         </div>
+
+                        <hr class="mt-6">
+                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
                     </form>
                 </div>
             </div>
