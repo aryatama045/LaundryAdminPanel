@@ -44,7 +44,7 @@
                                                 <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
                                             </td>
                                             <td>
-                                                Waktu : {{ date('H:i:s',strtotime($request->waktu_pemasangan)) }} <br>
+                                                Waktu : {{ date('H:i:s',strtotime($garansi->waktu_pemasangan)) }} <br>
                                                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
                                             </td>
                                             <td>
