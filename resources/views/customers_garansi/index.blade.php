@@ -25,7 +25,7 @@
                                         <th scope="col">{{ __('Name') }}</th>
                                         @endrole
                                         <th scope="col">{{ __('No. Nota') }}</th>
-                                        <th scope="col">{{ __('No. Pemasangan') }}</th>
+                                        <th scope="col">{{ __('Waktu & Tgl. Pemasangan') }}</th>
                                         <th scope="col">{{ __('Masa Berlaku') }}</th>
                                         @canany(['customer.show', 'customer.edit'])
                                         <th scope="col">{{ __('Action') }}</th>
