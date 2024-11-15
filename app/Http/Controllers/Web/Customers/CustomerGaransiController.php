@@ -131,18 +131,14 @@ class CustomerGaransiController extends Controller
         return view('customers_garansi.edit', compact('garansi'));
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request , $id)
     {
-        $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'nullable|string',
-            'mobile' => "required|numeric|unique:users,mobile," . $customer->user->id,
-            'email' => "required|unique:users,email," . $customer->user->id,
-            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png',
-        ]);
-        (new UserRepository())->updateProfileByRequest($request, $customer->user);
+        $dataUpdate= array(
+            'waktu_pemasangan' => $request->waktu_pemasangan,
+        );
 
-        return redirect()->route('customer.index')->with('success', 'Customer Update successfully');
+
+        return redirect()->route('customers_garansi.index')->with('success', 'Update successfully');
     }
 
     public function delete($id)
