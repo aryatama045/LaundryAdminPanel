@@ -133,7 +133,9 @@ class CustomerGaransiController extends Controller
 
     public function update(Request $request , $id)
     {
+        $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
         $dataUpdate= array(
+            'tanggal_pemasangan' => $tgl_pasang,
             'waktu_pemasangan' => $request->waktu_pemasangan,
         );
         CustomerGaransis::where('id', $id)->update($dataUpdate);
