@@ -57,7 +57,7 @@ $server  = request()->userAgent();
                                                 @elseif($klaims->status == 'Ditolak')
                                                     <span class="badge badge-danger">{{ $klaims->status }} </span>
                                                 @elseif($klaims->status == 'Diterima')
-                                                    <span class="badge badge-danger">{{ $klaims->status }} </span>
+                                                    <span class="badge badge-grey">{{ $klaims->status }} </span>
                                                 @else
                                                 <span class="badge badge-info">{{ $klaims->status }} </span>
                                                 @endif
