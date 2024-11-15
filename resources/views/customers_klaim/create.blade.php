@@ -56,15 +56,23 @@
                                 @role('customer')
 
                                     @php
-
                                         $user_id = auth()->user()->id;
                                         $customer = \App\Models\Customer::where('user_id',$user_id )->first();
-                                                                                
                                     @endphp
 
                                     <input hidden name="customer_id" value="{{ $customer->id }}" />
 
                                 @endrole
+
+                                <!-- No Seri -->
+                                <div class="col-12 col-md-12 mb-2">
+                                    <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="no_seri"
+                                        value="{{ old('no_seri') }}" placeholder="{{ __('Nomor Seri/Barcode') }}">
+                                    @error('no_seri')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
 
                                 <!-- Nota -->
                                 <div class="col-12 col-md-6 mb-2">
@@ -84,17 +92,10 @@
                                 </div>
                                 <!-- Pemasangan -->
                                 <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('No. Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="no_pemasangan"
-                                        value="{{ old('no_pemasangan') }}" placeholder="{{ __('No. Pemasangan') }}">
-                                    @error('no_pemasangan')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-12 col-md-6 mb-2">
-                                    <label for="">{{ __('Tanggal Pemasangan') }} <strong class="text-danger">*</strong></label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal_pemasangan" value="{{ now()->toDateString('d/m/Y') }}" >
-                                    @error('tanggal_pemasangan')
+                                    <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                    <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
+                                        value="{{ old('waktu_pemasangan') }}" placeholder="{{ __('Waktu Pemasangan') }}">
+                                    @error('waktu_pemasangan')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
