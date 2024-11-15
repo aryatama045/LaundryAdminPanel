@@ -138,7 +138,7 @@ class CustomerGaransiController extends Controller
         );
         CustomerGaransis::where('id', $id)->update($dataUpdate);
 
-        return redirect()->route('customers_garansi.index')->with('success', 'Update successfully');
+        return redirect()->route('garansi.index')->with('success', 'Update successfully');
     }
 
     public function delete($id)
