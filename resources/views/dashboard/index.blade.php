@@ -156,7 +156,15 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                 <div class="row p-3">
 
-                    <div class="col-lg-6 col-6">
+                    <div class="col-lg-4 col-4">
+                        <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
+                        <div>
+                            <h3 class="m-0 text-dark"> Klaim </h3>
+                            <span class="txt-1"><a href="{{ route('klaim.create') }}"> Klik Pengajuan</a></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-4">
                         <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
                         <div>
                             <h3 class="m-0 text-dark"> {{ $garansi_cst->count() }} </h3>
@@ -164,7 +172,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-6">
+                    <div class="col-lg-4 col-4">
                         <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
                         <div>
                             <h3 class="m-0 text-dark"> {{ $klaim_cst->count() }}</h3>
