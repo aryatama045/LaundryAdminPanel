@@ -20,6 +20,19 @@
         top: 0;
         width: auto;
     }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
 </style>
     <div class="container-fluid mt-4">
         <div class="row">
