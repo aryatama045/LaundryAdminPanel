@@ -49,7 +49,7 @@ $server  = request()->userAgent();
                                                 <small> Tgl nota : {{ $klaims->tanggal_nota }} </small>
                                             </td>
                                             <td>
-                                                <b>{{ $klaims->no__seri }}</b>
+                                                <b>{{ $klaims->no_seri }}</b>
                                             </td>
                                             <td>
                                                 Waktu : {{ date('H:i:s',strtotime($klaims->waktu_pemasangan)) }} <br>
