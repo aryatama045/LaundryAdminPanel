@@ -136,7 +136,7 @@ class CustomerGaransiController extends Controller
         $dataUpdate= array(
             'waktu_pemasangan' => $request->waktu_pemasangan,
         );
-
+        CustomerGaransis::where('id', $id)->update($dataUpdate);
 
         return redirect()->route('customers_garansi.index')->with('success', 'Update successfully');
     }
