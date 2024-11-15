@@ -47,12 +47,14 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
+        $tgl_pasang = date('d-m-Y',strtotime($request->tanggal_pemasangan));
+
         $garansi_fill = [
             'customer_id' => $request->customer_id,
             'no_seri' => $request->no_seri,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
-            'tanggal_pemasangan' => date('d-m-Y',strtotime($request->tanggal_pemasangan)),
+            'tanggal_pemasangan' => $tgl_pasang,
             'waktu_pemasangan' => $request->waktu_pemasangan,
         ];
 
