@@ -17,58 +17,42 @@
                     <form @role('root|admin') @can('customer.update') action="{{ route('garansi.update', $garansi->id) }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
                         @method('put')
                         <div class="row">
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') ?? $customer->user->first_name }}" placeholder="First name">
-                                @error('first_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Last_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') ?? $customer->user->last_name }}" placeholder="Last name">
-                                @error('last_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Mobile_number') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="mobile" value="{{ old('mobile') ?? $customer->user->mobile}}" placeholder="Mobile">
-                                @error('mobile')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Email') }}</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email') ?? $customer->user->email }}" placeholder="Email">
-                                @error('email')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            @if (request()->routeIs('customer.create'))
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
-                                <input type="password" class="form-control" name="password" placeholder="******">
-                                @error('password')
+                            <!-- No Seri -->
+                            <div class="col-12 col-md-12 mb-2">
+                                <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" value="{{ $garansi->no_seri }}" readonly>
+                                @error('no_seri')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
+                            <!-- Nota -->
                             <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Confirm_Password') }}</label>
-                                <input type="password" class="form-control" name="password_confirmation" placeholder="******">
+                                <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" value="{{ $garansi->no_nota }}" readonly>
+                                @error('no_nota')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
-                            @endif
-                            <div class="col-12 col-md-6 mb-2 py-2">
-                                <label for="">{{ __('Profile_Photo') }}</label>
-                                <input type="file" class="form-control-file" name="profile_photo">
+                            <div class="col-12 col-md-6 mb-2">
+                                <label for=""><b>{{ __('Tanggal Nota') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ $garansi->tanggal_nota }}" readonly>
+                                @error('tanggal_nota')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
-                           @can('customer.update')
-                           <div class="col-12 col-md-6 mb-2 py-2">
-                               <label for=""></label>
-                               <button class="btn btn-primary w-100 mt-2 @role('visitor') visitorMessage @endrole">{{ __('Submit') }}</button>
+                            <!-- Pemasangan -->
+                            <div class="col-12 col-md-6 mb-2">
+                                <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
+                                    value="{{ $garansi->waktu_garansi }}" >
+                                @error('waktu_pemasangan')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
-                            @endcan
+
+                            <hr class="mt-6">
+                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
                         </div>
                     </form>
                 </div>

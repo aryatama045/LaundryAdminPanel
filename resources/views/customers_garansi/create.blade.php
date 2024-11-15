@@ -69,7 +69,7 @@
 
                                 @endrole
 
-                                <!-- Nota -->
+                                <!-- No Seri -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="no_seri"
