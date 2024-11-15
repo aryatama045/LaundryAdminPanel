@@ -52,7 +52,7 @@ class CustomerKlaimController extends Controller
 
     public function store(Request $request)
     {
-        $tgl_pasang = date('d-m-Y', strtotime($request->waktu_pemasangan));
+        $tgl_pasang = date('Y-m-d', strtotime($request->waktu_pemasangan));
 
         $dateExp = strtotime('+90 days', strtotime($tgl_pasang));
         $dateExps = date('d-m-Y', $dateExp);
