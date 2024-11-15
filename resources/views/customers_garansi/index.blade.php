@@ -44,7 +44,7 @@
                                                 <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
                                             </td>
                                             <td>
-                                                {{ $garansi->no_pemasangan }} <br>
+                                                Waktu : {{ date('H:i:s',strtotime($request->waktu_pemasangan)) }} <br>
                                                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
                                             </td>
                                             <td>
@@ -55,10 +55,10 @@
 
                                                     $paymentDate = now();
                                                     $paymentDate = date('Y-m-d', strtotime($paymentDate));
-                                                    //echo $paymentDate; // echos today! 
+                                                    //echo $paymentDate; // echos today!
                                                     $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
                                                     $contractDateEnd = date('Y-m-d', strtotime($dateExps));
-                                                        
+
                                                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
                                                             $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
                                                     }else{
@@ -68,7 +68,7 @@
                                                         }else{
                                                             $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
                                                         }
-                                                        
+
                                                     }
                                                 @endphp
 
@@ -76,7 +76,7 @@
                                                 <small> Sampai : {{ $dateExps }} </small>
 
                                             </td>
-                                            
+
                                             <td>
                                                 <a href="{{ route('garansi.show', $garansi->id) }}"
                                                     class="btn btn-primary py-1 px-2">
