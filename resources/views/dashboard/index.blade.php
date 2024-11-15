@@ -3,7 +3,7 @@
 @section('content')
 
 
-@php 
+@php
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
@@ -32,14 +32,37 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 @php
                     $userid = auth()->user()->id;
                     $cst = \App\Models\Customer::where('user_id', $userid)->first();
-                    
+
                     $cst_id = $cst->id;
-                    
+
                     $garansi_cst = \App\Models\CustomerGaransis::where('customer_id', $cst_id)->get();
-                    
+
                     $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
                 @endphp
                 @if ($server == '"Windows"')
+
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-3 text-right">
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim ')}}</h4>
+                                    <span class="display-3 text-dark font-weight-bold mb-0">
+                                        <a href="{{ route('klaim.create') }}">
+                                        Klik Pengajuan
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="card-icon">
+                                    <div class="icon icon-shape text-white shadow">
+                                        <img width="80" src="{{ asset('images/icons/items.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
@@ -121,7 +144,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 <div  class="container-fluid mt-1">
     <div class="row">
 
-        
+
         <div class="col-12 col-lg-4">
             <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
                 <div class="overview">
@@ -132,7 +155,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 </div>
 
                 <div class="row p-3">
-                    
+
                     <div class="col-lg-6 col-6">
                         <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
                         <div>
@@ -149,10 +172,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-        
+
 
     </div>
 </div>
