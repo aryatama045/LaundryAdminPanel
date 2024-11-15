@@ -217,9 +217,16 @@
                                     <th>{{ __('No Nota') }}</th>
                                     <td>{{ $klaim->no_nota }} <br> <small>Tanggal nota : <?php echo date('d-m-Y', strtotime($klaim->tanggal_nota)) ?></small></td>
                                 </tr>
+
                                 <tr>
-                                    <th>{{ __('No Pemasangan') }}</th>
-                                    <td>{{ $klaim->no_pemasangan }} <br> <small>Tanggal pemasangan : <?php echo date('d-m-Y', strtotime($klaim->tanggal_pemasangan)) ?></small></td>
+                                    <th>{{ __('No Seri/Barcode') }}</th>
+                                    <td>{{ $klaim->no_nota }} <br> <small>Tanggal nota : {{ $klaim->no_seri }}</small></td>
+                                </tr>
+
+                                <tr>
+                                    <th>{{ __('Waktu & Tanggal Pemasangan') }}</th>
+                                    <td> Waktu : {{ date('H:i:s', strtotime($klaim->waktu_pemasangan)) }}
+                                        <br> <small>Tanggal pemasangan : {{ date('d-m-Y', strtotime($klaim->waktu_pemasangan)) }}</small></td>
                                 </tr>
 
                                 <tr>
