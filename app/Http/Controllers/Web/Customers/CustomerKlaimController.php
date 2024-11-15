@@ -103,6 +103,7 @@ class CustomerKlaimController extends Controller
             'customer_id' => $request->customer_id,
             'garansi_id' => $garansi,
             'no_nota' => $request->no_nota,
+            'no_seri' => $request->no_seri,
             'tanggal_nota' => $request->tanggal_nota,
             'tanggal_pemasangan' => $tgl_pasang,
             'waktu_pemasangan' => $request->waktu_pemasangan,
