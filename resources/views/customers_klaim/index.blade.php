@@ -27,7 +27,8 @@ $server  = request()->userAgent();
                                         @endrole
                                         <th scope="col">{{ __('No. Tracking') }}</th>
                                         <th scope="col">{{ __('No. Nota') }}</th>
-                                        <th scope="col">{{ __('No. Pemasangan') }}</th>
+                                        <th scope="col">{{ __('No. Seri/Barcode') }}</th>
+                                        <th scope="col">{{ __('Waktu & Tgl. Pemasangan') }}</th>
                                         <th scope="col">{{ __('Status') }}</th>
                                         <th scope="col">{{ __('Action') }}</th>
                                     </tr>
@@ -48,8 +49,11 @@ $server  = request()->userAgent();
                                                 <small> Tgl nota : {{ $klaims->tanggal_nota }} </small>
                                             </td>
                                             <td>
-                                                {{ $klaims->no_pemasangan }} <br>
-                                                <small> Tgl pemasangan : {{ $klaims->tanggal_pemasangan }} </small>
+                                                <b>{{ $klaims->no__seri }}</b>
+                                            </td>
+                                            <td>
+                                                Waktu : {{ date('H:i:s',strtotime($klaims->waktu_pemasangan)) }} <br>
+                                                <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($klaims->waktu_pemasangan)) }} </small>
                                             </td>
                                             <td>
                                                 @if($klaims->status == 'Disetujui')
