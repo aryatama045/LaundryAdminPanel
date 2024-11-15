@@ -96,14 +96,16 @@ class CustomerKlaimController extends Controller
             $garansi = '0';
         }
 
+        $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
+
         $klaim_fill = [
             'no_tracking' => $kode_tracking,
             'customer_id' => $request->customer_id,
             'garansi_id' => $garansi,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
-            'no_pemasangan' => $request->no_pemasangan,
-            'tanggal_pemasangan' => $request->tanggal_pemasangan,
+            'tanggal_pemasangan' => $tgl_pasang,
+            'waktu_pemasangan' => $request->waktu_pemasangan,
             'status' => 'Proses',
         ];
 
