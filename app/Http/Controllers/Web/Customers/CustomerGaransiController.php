@@ -124,9 +124,11 @@ class CustomerGaransiController extends Controller
         return redirect()->route('garansi.index')->with('success', 'Garansi create successfully');
     }
 
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        return view('customers_garansi.edit', compact('customer'));
+        $garansi = CustomerGaransis::where('id', $id)->first();
+
+        return view('customers_garansi.edit', compact('garansi'));
     }
 
     public function update(Request $request, Customer $customer)

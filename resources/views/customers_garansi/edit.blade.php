@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @role('root|admin') @can('customer.update') action="{{ route('customer.update', $customer->id) }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
+                    <form @role('root|admin') @can('customer.update') action="{{ route('garansi.update', $garansi->id) }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12 col-md-6 mb-2">
