@@ -116,6 +116,8 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::post('/klaim/{klaim}', [CustomerKlaimController::class, 'proses_action'])->name('klaim.proses_action');
     Route::get('/klaim/create', [CustomerKlaimController::class, 'create'])->name('klaim.create');
     Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
+
+    Route::get('/klaim/check_validasi', [CustomerKlaimController::class, 'check_validasi'])->name('klaim.check_validasi');
     
     Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
     Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
@@ -287,8 +289,9 @@ Route::get('/order-payment/{order}/{card}', [PaymentController::class, 'payment'
 Route::get('/setup-intents/{customer}/{card}/{amount}/{order}', [PaymentController::class, 'intent']);
 Route::get('/order-update/{order}', [PaymentController::class, 'updatePayment']);
 
-Route::get('/check_validasi', [PaymentController::class, 'check_validasi'])->name('check_validasi');
 
+
+Route::get('/check_validasi', [PaymentController::class, 'check_validasi'])->name('check_validasi');
 Route::get('/new-orders', [ApiOrderController::class, 'newOrder'])->name('new.orders');
 Route::get('payment', [PaymentController::class, 'testIndex']);
 
