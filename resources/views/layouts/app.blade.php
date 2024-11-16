@@ -30,6 +30,54 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
 
+    <style>
+        <style>
+            * {box-sizing: border-box;}
+            body {font-family: Verdana, sans-serif;}
+            .mySlides {display: none;}
+
+
+            /* Slideshow container */
+            .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            }
+
+
+
+            /* The dots/bullets/indicators */
+            .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            }
+
+            .active {
+            background-color: #717171;
+            }
+
+            /* Fading animation */
+            .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+            }
+
+            @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+            }
+
+            /* On smaller screens, decrease text size */
+            @media only screen and (max-width: 300px) {
+            .text {font-size: 11px}
+            }
+            </style>
+    </style>
 </head>
 
 <body>
@@ -146,7 +194,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('web/js/select2.min.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
 
     <script src="{{ asset('web/js/argon.js') }}"></script>
     <script src="{{ asset('web/js/main.js') }}"></script>
@@ -168,49 +215,30 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             showNotifications()
         });
 
-        var interleaveOffset = 0.5;
+    </script>
 
-        var swiperOptions = {
-        loop: true,
-        speed: 1000,
-        grabCursor: true,
-        autoplay: true,
-        watchSlidesProgress: true,
-        mousewheelControl: true,
-        keyboardControl: true,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-        },
-        on: {
-            progress: function() {
-            var swiper = this;
-            for (var i = 0; i < swiper.slides.length; i++) {
-                var slideProgress = swiper.slides[i].progress;
-                var innerOffset = swiper.width * interleaveOffset;
-                var innerTranslate = slideProgress * innerOffset;
-                swiper.slides[i].querySelector(".slide-inner").style.transform =
-                "translate3d(" + innerTranslate + "px, 0, 0)";
-            }      
-            },
-            touchStart: function() {
-            var swiper = this;
-            for (var i = 0; i < swiper.slides.length; i++) {
-                swiper.slides[i].style.transition = "";
-            }
-            },
-            setTransition: function(speed) {
-            var swiper = this;
-            for (var i = 0; i < swiper.slides.length; i++) {
-                swiper.slides[i].style.transition = speed + "ms";
-                swiper.slides[i].querySelector(".slide-inner").style.transition =
-                speed + "ms";
-            }
-            }
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
         }
-        };
-
-        var swiper = new Swiper(".swiper-container", swiperOptions);
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 4000); // Change image every 2 seconds
+        }
     </script>
 
     <script>

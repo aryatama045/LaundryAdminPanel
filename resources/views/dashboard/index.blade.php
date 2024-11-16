@@ -140,45 +140,24 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-              <!--     <div class="swiper-slide">
-                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/4117/RWBNZL6CLtU.jpg)"></div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/41ad/atM6w55Z9Xg.jpg)"></div>
-                </div> -->
-                <div class="swiper-slide">
-                    <div class="slide-inner">
-                    <img src="https://pp.userapi.com/c836139/v836139003/63ce1/QThPx7qPzvU.jpg">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-inner" style="background-image:url(https://pp.userapi.com/c412624/v412624691/4136/_da_uAA6ha8.jpg)"></div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-inner">
-                    <img src="https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="slide-inner">
-                    <img src="https://pp.userapi.com/c837139/v837139407/67f52/fFqjq4U2mEk.jpg">
-                    </div>
-                </div>
-            <!--     <div class="swiper-slide">
-                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/415d/X7YuVilSl4k.jpg)"></div>
-                </div> -->
-                </div>
-                <div class="swiper-button-next swiper-button-white"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
-            </div>
-        </div>
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%">
+      <div class="text">Caption Text</div>
     </div>
-</div>
+    
+    <div class="mySlides fade">
+      <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+    
+    </div>
 
 
 @role('customer') @if ($server == '"Android"')
