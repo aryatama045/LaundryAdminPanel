@@ -170,6 +170,7 @@
 @push('scripts')
 
     <script type="text/javascript">
+        var url = '{!! url() !!}';
         $(document).ready(function() {
             $("#no_validasi").change(function() {
                 var customer_id = $("#customer_id").val();
@@ -177,6 +178,7 @@
                 //cek jika nomor_val kosong
                 if (nomor_val != "") {
                     $.ajax({
+                        _token: '{{ @csrf_token() }}',
                         url: '{{url("klaims/check_validasi) }}',
                         method: "POST",
                         data: {
