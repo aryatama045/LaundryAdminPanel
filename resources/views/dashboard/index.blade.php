@@ -155,11 +155,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         chevron_right
       </button>
     </div>
-    <div class="slider-scrollbar">
-      <div class="scrollbar-track">
-        <div class="scrollbar-thumb"></div>
-      </div>
-    </div>
+
 
 </div>
 
