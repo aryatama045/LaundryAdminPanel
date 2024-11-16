@@ -169,9 +169,35 @@
 @endsection
 @push('scripts')
 
+    <script>
+    $(document).ready(function() {
+        $('#no_validasi').on('change', function() {
+            var customer_id = $("#customer_id").val();
+            var nomor_val = $("#no_validasi").val();
+            $.ajax({
+                url: '/klaim/check_validasi',
+                method: 'GET',
+                data: {nomor_val: nomor_val,
+                    customer_id : customer_id},
+                success: function(response) {
+                    if (response.exists) {
+                        $('#emailError').removeClass('d-none').html('Email <strong>' + email + '</strong> sudah terdaftar!');
+                    } else {
+                        $('#emailError').addClass('d-none');
+                    }
+                },
+                error: function(xhr) {
+                    console.error('Error: ' + xhr.statusText);
+                }
+            });
+        });
+    });
+    </script>
+
     <script type="text/javascript">
+        
         $(document).ready(function() {
-            $("#no_validasi").change(function() {
+            $("#no_validasia").change(function() {
                 var customer_id = $("#customer_id").val();
                 var nomor_val = $("#no_validasi").val();
                 //cek jika nomor_val kosong
