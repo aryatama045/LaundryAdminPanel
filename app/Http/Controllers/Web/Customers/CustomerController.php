@@ -60,6 +60,7 @@ class CustomerController extends Controller
         $user->givePermissionTo('klaim.update');
         $user->givePermissionTo('klaim.create');
         $user->givePermissionTo('klaim.store');
+        $user->givePermissionTo('klaim.check_validasi');
 
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
