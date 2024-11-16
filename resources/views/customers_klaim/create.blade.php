@@ -88,9 +88,11 @@
                                             </a>
                                         </div>
                                         <span class="mt-2" id="hasil_validasi"></span>
-                                        <div class="alert alert-danger mt-2 d-none" id="emailError"></div>
-                                        <div class="alert alert-success mt-2 d-none" id="emailSuccess"></div>
+                                        
                                     </div>
+
+                                    <span class="alert text-danger d-none" id="emailError"></span>
+                                    <span class="alert text-success mt-2 d-none" id="emailSuccess"></span>
                                     @error('no_validasi')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
