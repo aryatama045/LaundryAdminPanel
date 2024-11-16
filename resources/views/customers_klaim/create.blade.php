@@ -77,24 +77,11 @@
 
                                 @endrole
 
-                                <!-- No Seri -->
-                                <div class="col-12 col-md-12 mb-2">
-                                    <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="no_seri"
-                                        value="{{ old('no_seri') }}" placeholder="{{ __('Nomor Seri/Barcode') }}">
-                                    @error('no_seri')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
                                 <!-- No Validasi -->
-                                <div class="col-12 col-md-12 mb-2">
+                                <div class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="no_validasi"
-                                        value="{{ old('no_validasi') }}" placeholder="{{ __('Nomor Validasi') }}">
-
                                     <div class="input-group typeahead-container">
-                                        <input id="email_forgot" name="email_forgot" type="email" class="form-control typeahead" placeholder="Email" autocomplete="off" required="">
+                                        <input id="no_validasi" name="no_validasi" type="email" class="form-control typeahead" placeholder="no_validasi" autocomplete="off" required="">
                                         <div class="input-group-append">
                                             <a href="#" class="btn btn-primary default">
                                                 <i class="simple-icon-magnifier"></i> Check
@@ -102,6 +89,16 @@
                                         </div>
                                     </div>
                                     @error('no_validasi')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <!-- No Seri -->
+                                <div class="col-12 col-md-6 mb-2">
+                                    <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
+                                    <input type="text" class="form-control" name="no_seri"
+                                        value="{{ old('no_seri') }}" placeholder="{{ __('Nomor Seri/Barcode') }}">
+                                    @error('no_seri')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
