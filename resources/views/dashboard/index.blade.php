@@ -140,23 +140,16 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
+<div class="container m-4 pt-6">
+
     <div class="slider-wrapper">
       <button id="prev-slide" class="slide-button material-symbols-rounded">
         chevron_left
       </button>
       <ul class="image-list">
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-1.jpg" alt="img-1" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-2.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-3.jpg" alt="img-3" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-4.jpg" alt="img-4" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-5.jpg" alt="img-5" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-6.jpg" alt="img-6" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-7.jpg" alt="img-7" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-8.jpg" alt="img-8" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-9.jpg" alt="img-9" />
-        <img class="image-item" src="https://www.codingnepalweb.com/demos/responsive-image-slider-html-css-javascript/images/img-10.jpg" alt="img-10" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-1" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
       </ul>
       <button id="next-slide" class="slide-button material-symbols-rounded">
         chevron_right
@@ -167,7 +160,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         <div class="scrollbar-thumb"></div>
       </div>
     </div>
-    </div>
+
 </div>
 
 
