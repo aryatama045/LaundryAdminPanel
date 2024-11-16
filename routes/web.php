@@ -287,7 +287,7 @@ Route::get('/order-payment/{order}/{card}', [PaymentController::class, 'payment'
 Route::get('/setup-intents/{customer}/{card}/{amount}/{order}', [PaymentController::class, 'intent']);
 Route::get('/order-update/{order}', [PaymentController::class, 'updatePayment']);
 
-Route::get('/klaim/check_validasi', [PaymentController::class, 'check_validasi'])->name('klaim.check_validasi');
+Route::get('/check_validasi', [PaymentController::class, 'check_validasi'])->name('check_validasi');
 
 Route::get('/new-orders', [ApiOrderController::class, 'newOrder'])->name('new.orders');
 Route::get('payment', [PaymentController::class, 'testIndex']);
