@@ -177,7 +177,7 @@
                 //cek jika nomor_val kosong
                 if (nomor_val != "") {
 
-                    $.post('{{ route('klaims.check_validasi') }}', {
+                    $.post('{{ route('klaim.check_validasi') }}', {
                         _token: '{{ @csrf_token() }}',
                         nomor_val: nomor_val,
                         customer_id : customer_id

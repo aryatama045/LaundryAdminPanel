@@ -214,7 +214,10 @@ class CustomerKlaimController extends Controller
         return back()->with('success', 'Klaims deleted successfully');
     }
 
+    public function check_validasi(Request $request)
+    {
+        dd($request);
+    }
 
-    
 
 }
