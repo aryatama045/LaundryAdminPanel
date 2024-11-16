@@ -78,6 +78,13 @@ class CustomerKlaimController extends Controller
             return redirect()->route('klaim.create')->with('error', ' Tanggal Pemasangan Sudah Expired');
         }
 
+        $no_val = $request->no_validasi;
+
+        $Exists = DB::table("customer_garanses")->where('no_validasi', $no_val)->exists();
+        if(!$Exists){
+            return redirect()->route('klaim.create')->with('error', ' Nomor Validasi Tidak terdaftar');
+        }
+
         $date           = now()->toDateTimeString();
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
@@ -93,6 +100,8 @@ class CustomerKlaimController extends Controller
         }
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
+
+
 
         $klaim_fill = [
             'no_tracking' => $kode_tracking,
