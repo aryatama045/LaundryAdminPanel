@@ -143,17 +143,39 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-        <section class="customer-logos slider">
-            <div class="slide"><img src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"></div>
-            <div class="slide"><img src="http://www.webcoderskull.com/img/logo.png"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"></div>
-            <div class="slide"><img src="https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg"></div>
-        </section>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+              <!--     <div class="swiper-slide">
+                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/4117/RWBNZL6CLtU.jpg)"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/41ad/atM6w55Z9Xg.jpg)"></div>
+                </div> -->
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                    <img src="https://pp.userapi.com/c836139/v836139003/63ce1/QThPx7qPzvU.jpg">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner" style="background-image:url(https://pp.userapi.com/c412624/v412624691/4136/_da_uAA6ha8.jpg)"></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                    <img src="https://pp.userapi.com/c637331/v637331691/48f5f/spHnV42iYVw.jpg">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                    <img src="https://pp.userapi.com/c837139/v837139407/67f52/fFqjq4U2mEk.jpg">
+                    </div>
+                </div>
+            <!--     <div class="swiper-slide">
+                    <div class="slide-inner" style="background-image:url(http://cs412624.vk.me/v412624691/415d/X7YuVilSl4k.jpg)"></div>
+                </div> -->
+                </div>
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+            </div>
         </div>
     </div>
 </div>

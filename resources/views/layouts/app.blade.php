@@ -28,123 +28,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-    <style>
-
-        .slick-slide {
-            margin: 0px 20px;
-        }
-
-        .slick-slide img {
-            width: 100%;
-        }
-
-        .slick-slider
-        {
-            position: relative;
-            display: block;
-            box-sizing: border-box;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-                    user-select: none;
-            -webkit-touch-callout: none;
-            -khtml-user-select: none;
-            -ms-touch-action: pan-y;
-                touch-action: pan-y;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .slick-list
-        {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        .slick-list:focus
-        {
-            outline: none;
-        }
-        .slick-list.dragging
-        {
-            cursor: pointer;
-            cursor: hand;
-        }
-
-        .slick-slider .slick-track,
-        .slick-slider .slick-list
-        {
-            -webkit-transform: translate3d(0, 0, 0);
-            -moz-transform: translate3d(0, 0, 0);
-                -ms-transform: translate3d(0, 0, 0);
-                -o-transform: translate3d(0, 0, 0);
-                    transform: translate3d(0, 0, 0);
-        }
-
-        .slick-track
-        {
-            position: relative;
-            top: 0;
-            left: 0;
-            display: block;
-        }
-        .slick-track:before,
-        .slick-track:after
-        {
-            display: table;
-            content: '';
-        }
-        .slick-track:after
-        {
-            clear: both;
-        }
-        .slick-loading .slick-track
-        {
-            visibility: hidden;
-        }
-
-        .slick-slide
-        {
-            display: none;
-            float: left;
-            height: 100%;
-            min-height: 1px;
-        }
-        [dir='rtl'] .slick-slide
-        {
-            float: right;
-        }
-        .slick-slide img
-        {
-            display: block;
-        }
-        .slick-slide.slick-loading img
-        {
-            display: none;
-        }
-        .slick-slide.dragging img
-        {
-            pointer-events: none;
-        }
-        .slick-initialized .slick-slide
-        {
-            display: block;
-        }
-        .slick-loading .slick-slide
-        {
-            visibility: hidden;
-        }
-        .slick-vertical .slick-slide
-        {
-            display: block;
-            height: auto;
-            border: 1px solid transparent;
-        }
-        .slick-arrow.slick-hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
 
 </head>
 
@@ -262,7 +146,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('web/js/select2.min.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
 
     <script src="{{ asset('web/js/argon.js') }}"></script>
     <script src="{{ asset('web/js/main.js') }}"></script>
@@ -284,28 +168,49 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             showNotifications()
         });
 
-        $(document).ready(function(){
-            $('.customer-logos').slick({
-                slidesToShow: 6,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1500,
-                arrows: false,
-                dots: false,
-                pauseOnHover: false,
-                responsive: [{
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 4
-                    }
-                }, {
-                    breakpoint: 520,
-                    settings: {
-                        slidesToShow: 3
-                    }
-                }]
-            });
-        });
+        var interleaveOffset = 0.5;
+
+        var swiperOptions = {
+        loop: true,
+        speed: 1000,
+        grabCursor: true,
+        autoplay: true,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        on: {
+            progress: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+                var slideProgress = swiper.slides[i].progress;
+                var innerOffset = swiper.width * interleaveOffset;
+                var innerTranslate = slideProgress * innerOffset;
+                swiper.slides[i].querySelector(".slide-inner").style.transform =
+                "translate3d(" + innerTranslate + "px, 0, 0)";
+            }      
+            },
+            touchStart: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = "";
+            }
+            },
+            setTransition: function(speed) {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = speed + "ms";
+                swiper.slides[i].querySelector(".slide-inner").style.transition =
+                speed + "ms";
+            }
+            }
+        }
+        };
+
+        var swiper = new Swiper(".swiper-container", swiperOptions);
     </script>
 
     <script>
