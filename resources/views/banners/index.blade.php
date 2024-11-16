@@ -36,7 +36,7 @@
 
                                     <div class="form-group">
                                         <label for="active">
-                                            <input type="radio" id="active" name="active" value="1"> {{ __('Action') }}
+                                            <input type="radio" id="active" name="active" value="1"> {{ __('Active') }}
                                         </label>
                                         <label for="in_active" class="ml-3">
                                             <input type="radio" id="in_active" name="active" value="1"> {{ __('Inactive') }}
