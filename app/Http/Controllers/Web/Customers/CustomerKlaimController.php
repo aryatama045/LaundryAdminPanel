@@ -219,7 +219,8 @@ class CustomerKlaimController extends Controller
 
         $no_val = $request->nomor_val;
 
-        dd($no_val);
+        $Exists = DB::table("customer_garanses")->where('no_validasi', $no_val)->exists();
+        return response()->json(['exists' => $Exists]);
     }
 
 

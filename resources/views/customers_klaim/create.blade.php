@@ -88,6 +88,8 @@
                                             </a>
                                         </div>
                                         <span class="mt-2" id="hasil_validasi"></span>
+                                        <div class="alert alert-danger mt-2 d-none" id="emailError"></div>
+                                        <div class="alert alert-success mt-2 d-none" id="emailSuccess"></div>
                                     </div>
                                     @error('no_validasi')
                                         <span class="text-danger">{{ $message }}</span>
@@ -181,9 +183,9 @@
                     customer_id : customer_id},
                 success: function(response) {
                     if (response.exists) {
-                        $('#emailError').removeClass('d-none').html('Email <strong>' + email + '</strong> sudah terdaftar!');
+                        $('#emailSuccess').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong>  terdaftar!');
                     } else {
-                        $('#emailError').addClass('d-none');
+                        $('#emailError').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong> Tidak  terdaftar!');
                     }
                 },
                 error: function(xhr) {
