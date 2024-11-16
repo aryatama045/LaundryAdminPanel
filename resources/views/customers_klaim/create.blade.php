@@ -170,7 +170,7 @@
 @push('scripts')
 
     <script type="text/javascript">
-        var url = {{ url() }};
+        var url = '{!! url() !!}';
         $(document).ready(function() {
             $("#no_validasi").change(function() {
                 var customer_id = $("#customer_id").val();
