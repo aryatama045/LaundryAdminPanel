@@ -143,14 +143,14 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 <div class="container m-4 pt-6">
 
     @php
-        $sliders = \App\Models\Banner::get();
+        $banner = \App\Models\Banner::get();
     @endphp
     <div class="slider-wrapper">
         <button id="prev-slide" class="slide-button material-symbols-rounded">
             chevron_left
         </button>
         <ul class="image-list">
-            @foreach ($sliders as $slide )
+            @foreach ($banner as $banners )
             <img class="image-item"  src="{{ asset($banner->thumbnailPath) }}" alt="img-1" />
             @endforeach
         </ul>
