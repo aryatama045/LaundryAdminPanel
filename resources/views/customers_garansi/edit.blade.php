@@ -26,6 +26,15 @@
                                 @enderror
                             </div>
 
+                            <!-- No Validasi -->
+                            <div class="col-12 col-md-12 mb-2">
+                                <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" value="{{ $garansi->no_validasi }}" readonly>
+                                @error('no_validasi')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                             <!-- Nota -->
                             <div class="col-12 col-md-6 mb-2">
                                 <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
