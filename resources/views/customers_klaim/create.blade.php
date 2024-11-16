@@ -176,19 +176,16 @@
                 var nomor_val = $("#no_validasi").val();
                 //cek jika nomor_val kosong
                 if (nomor_val != "") {
-                    $.ajax({
+
+
+                    $.post('{{ route('klaim.check_validasi') }}', {
                         _token: '{{ @csrf_token() }}',
-                        url: '{{url("klaims/check_validasi) }}',
-                        method: "POST",
-                        data: {
-                            nomor_val: nomor_val,
-                            customer_id : customer_id
-                        },
-                        success: function(data) {
+                        nomor_val: nomor_val,
+                        customer_id : customer_id
+                        }, function(data) {
                             $("#hasil_validasi").html(data);
                         }
-                    });
-
+                    );
                 }
             });
 
