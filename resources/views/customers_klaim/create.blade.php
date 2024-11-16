@@ -86,9 +86,7 @@
                                             <a href="#" class="btn btn-primary default">
                                                 <i class="simple-icon-magnifier"></i> Check
                                             </a>
-                                        </div>
-                                        <span class="mt-2" id="hasil_validasi"></span>
-                                        
+                                        </div>                                        
                                     </div>
 
                                     <span class="alert text-danger d-none" id="emailError"></span>
@@ -177,13 +175,11 @@
     $(document).ready(function() {
 
         $('#no_validasi').on('change', function() {
-            var customer_id = $("#customer_id").val();
             var nomor_val = $("#no_validasi").val();
             $.ajax({
                 url: '/klaim/check_validasi',
                 method: 'GET',
-                data: {nomor_val: nomor_val,
-                    customer_id : customer_id},
+                data: {nomor_val: nomor_val},
                 success: function(response) {
                     if (response.exists) {
                         $('#emailSuccess').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong>  terdaftar!');
