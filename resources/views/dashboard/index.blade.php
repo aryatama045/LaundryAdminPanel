@@ -150,6 +150,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-1" />
         <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
         <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
+        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
       </ul>
       <button id="next-slide" class="slide-button material-symbols-rounded">
         chevron_right

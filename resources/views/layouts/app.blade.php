@@ -86,8 +86,8 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         }
 
         .slider-wrapper .image-list .image-item {
-        width: 325px;
-        height: 400px;
+        width: 350px;
+        height: 350px;
         object-fit: cover;
         }
 
@@ -140,24 +140,24 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
         /* Styles for mobile and tablets */
         @media only screen and (max-width: 1023px) {
-        .slider-wrapper .slide-button {
-            display: none !important;
-        }
+            .slider-wrapper .slide-button {
+                display: none !important;
+            }
 
-        .slider-wrapper .image-list {
-            gap: 10px;
-            margin-bottom: 15px;
-            scroll-snap-type: x mandatory;
-        }
+            .slider-wrapper .image-list {
+                gap: 10px;
+                margin-bottom: 15px;
+                scroll-snap-type: x mandatory;
+            }
 
-        .slider-wrapper .image-list .image-item {
-            width: 280px;
-            height: 380px;
-        }
+            .slider-wrapper .image-list .image-item {
+                width: 280px;
+                height: 380px;
+            }
 
-        .slider-scrollbar .scrollbar-thumb {
-            width: 20%;
-        }
+            .slider-scrollbar .scrollbar-thumb {
+                width: 20%;
+            }
         }
     </style>
 </head>
