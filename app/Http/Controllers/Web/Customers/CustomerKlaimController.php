@@ -216,7 +216,10 @@ class CustomerKlaimController extends Controller
 
     public function check_validasi(Request $request)
     {
-        dd($request);
+
+        $no_val = $request->nomor_val;
+
+        dd($no_val);
     }
 
 
