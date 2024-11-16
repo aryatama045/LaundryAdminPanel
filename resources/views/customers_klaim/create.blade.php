@@ -87,6 +87,7 @@
                                                 <i class="simple-icon-magnifier"></i> Check
                                             </a>
                                         </div>
+                                        <span class="mt-2" id="hasil_validasi"></span>
                                     </div>
                                     @error('no_validasi')
                                         <span class="text-danger">{{ $message }}</span>
@@ -168,7 +169,27 @@
 @endsection
 @push('scripts')
 
-    <script>
+    <script type="text/javascript">
+        var url = <?php echo base_url(); ?>
+        $(document).ready(function() {
+            $("#no_validasi").change(function() {
+                var nomor_val = $("#no_validasi").val();
+                //cek jika nomor_val kosong
+                if (nomor_val != "") {
+                    $.ajax({
+                        url: url + "klaims/check_validasi",
+                        method: "POST",
+                        data: {
+                            nomor_val: nomor_val
+                        },
+                        success: function(data) {
+                            $("#hasil_validasi").html(data);
+                        }
+                    });
+                }
+            });
+        });
+
         $(document).ready(function() {
 
             var count = 1;
