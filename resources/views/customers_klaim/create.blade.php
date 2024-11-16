@@ -54,7 +54,7 @@
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
-                                    <select class="form-control" name="customer_id" required>
+                                    <select class="form-control" name="customer_id" id="customer_id" required>
                                         <option value=""> -- Select Customers --</option>
                                         @foreach ($customer as $customers)
                                             <option value="{{ $customers->id }}"> {{ $customers->id.'-'.$customers->user->first_name.' '.$customers->user->last_name }}  </option>
@@ -173,6 +173,7 @@
         var url = {{ url() }};
         $(document).ready(function() {
             $("#no_validasi").change(function() {
+                var customer_id = $("#customer_id").val();
                 var nomor_val = $("#no_validasi").val();
                 //cek jika nomor_val kosong
                 if (nomor_val != "") {
@@ -180,7 +181,8 @@
                         url: url + "klaims/check_validasi",
                         method: "POST",
                         data: {
-                            nomor_val: nomor_val
+                            nomor_val: nomor_val,
+                            customer_id : customer_id
                         },
                         success: function(data) {
                             $("#hasil_validasi").html(data);
