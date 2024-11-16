@@ -142,27 +142,26 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 <div class="container m-4 pt-6">
 
+    @php
+        $sliders = \App\Models\Banner::get();
+    @endphp
     <div class="slider-wrapper">
-      <button id="prev-slide" class="slide-button material-symbols-rounded">
-        chevron_left
-      </button>
-      <ul class="image-list">
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-1" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-        <img class="image-item" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="img-2" />
-      </ul>
-      <button id="next-slide" class="slide-button material-symbols-rounded">
-        chevron_right
-      </button>
+        <button id="prev-slide" class="slide-button material-symbols-rounded">
+            chevron_left
+        </button>
+        <ul class="image-list">
+            @foreach ($sliders as $slide )
+            <img class="image-item"  src="{{ asset($banner->thumbnailPath) }}" alt="img-1" />
+            @endforeach
+        </ul>
+        <button id="next-slide" class="slide-button material-symbols-rounded">
+            chevron_right
+        </button>
     </div>
     <div class="slider-scrollbar">
-      <div class="scrollbar-track">
-        <div class="scrollbar-thumb"></div>
-      </div>
+        <div class="scrollbar-track">
+            <div class="scrollbar-thumb"></div>
+        </div>
     </div>
 
 </div>
