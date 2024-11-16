@@ -145,7 +145,7 @@
                 @endcan
 
                 @can('banner.promotional')
-                    <li hidden class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
                             href="{{ route('banner.promotional') }}">
                             <i class="fas fa-image text-dark"></i>
