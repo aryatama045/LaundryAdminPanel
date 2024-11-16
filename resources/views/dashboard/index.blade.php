@@ -141,6 +141,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 </div>
 
 <div class="container">
+    <div class="row">
     <div class="slider-wrapper">
       <button id="prev-slide" class="slide-button material-symbols-rounded">
         chevron_left
@@ -165,6 +166,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
       <div class="scrollbar-track">
         <div class="scrollbar-thumb"></div>
       </div>
+    </div>
     </div>
 </div>
 
