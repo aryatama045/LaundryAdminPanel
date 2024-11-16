@@ -12,6 +12,7 @@ use App\Models\NotificationManage;
 use App\Models\StripeKey;
 use App\Models\WebSetting;
 use App\Repositories\OrderRepository;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -78,5 +79,12 @@ class PaymentController extends Controller
         ]);
 
         return $order;
+    }
+
+    public function check_validasi(Request $REQUEST)
+    {
+        $check = 'Success';
+
+        return $check;
     }
 }
