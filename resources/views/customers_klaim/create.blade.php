@@ -170,24 +170,26 @@
 @push('scripts')
 
     <script type="text/javascript">
+        var url = '{!! url() !!}';
         $(document).ready(function() {
             $("#no_validasi").change(function() {
                 var customer_id = $("#customer_id").val();
                 var nomor_val = $("#no_validasi").val();
                 //cek jika nomor_val kosong
                 if (nomor_val != "") {
-
                     $.post('{{ route('klaim.check_validasi') }}', {
                         _token: '{{ @csrf_token() }}',
                         nomor_val: nomor_val,
                         customer_id : customer_id
-                        }, 
-                        success: function(data) {
+                        }, function(data) {
                             $("#hasil_validasi").html(data);
                         }
                     );
                 }
             });
+
+            
+
         });
 
         $(document).ready(function() {
