@@ -151,7 +151,12 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         </button>
         <ul class="image-list">
             @foreach ($banner as $banners )
-            <img class="image-item"  src="{{ asset($banner->thumbnailPath) }}" alt="img-1" />
+
+            @php
+            $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
+            @endphp
+
+            <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
             @endforeach
         </ul>
         <button id="next-slide" class="slide-button material-symbols-rounded">
