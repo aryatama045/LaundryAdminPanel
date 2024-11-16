@@ -176,7 +176,7 @@
     <script>
     $(document).ready(function() {
         $('#emailSuccess').removeClass('d-none');
-        $('#emailError').removeClass('d-none')
+        $('#emailError').removeClass('d-none');
         $('#no_validasi').on('change', function() {
             var customer_id = $("#customer_id").val();
             var nomor_val = $("#no_validasi").val();
