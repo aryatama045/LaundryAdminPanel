@@ -52,6 +52,7 @@ class CustomerGaransiController extends Controller
         $garansi_fill = [
             'customer_id' => $request->customer_id,
             'no_seri' => $request->no_seri,
+            'no_validasi' => $request->no_validasi,
             'no_nota' => $request->no_nota,
             'tanggal_nota' => $request->tanggal_nota,
             'tanggal_pemasangan' => $tgl_pasang,

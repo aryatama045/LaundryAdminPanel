@@ -43,7 +43,7 @@
                                         </label>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div hidden class="form-group">
                                         <label for="banner">
                                             <input type="checkbox" id="banner" class="form-control-checkbox" name="banner" value="1"> {{ __('Web'). ' '.__('Banner') }}
                                         </label>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped verticle-middle table-responsive-sm {{ session()->get('local') }}">
+                        <table id="myTable" class="table table-bordered table-striped verticle-middle table-responsive-sm {{ session()->get('local') }}">
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('Title') }}</th>

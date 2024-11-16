@@ -103,6 +103,38 @@ $server  = request()->userAgent();
             </div>
         </div>
     </div>
+
+    <div class="container m-4 pt-6">
+
+        @php
+            $banner = \App\Models\Banner::get();
+        @endphp
+        <div class="slider-wrapper">
+            <button id="prev-slide" class="slide-button material-symbols-rounded">
+                chevron_left
+            </button>
+            <ul class="image-list">
+                @foreach ($banner as $banners )
+    
+                @php
+                $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
+                @endphp
+    
+                <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
+                @endforeach
+            </ul>
+            <button id="next-slide" class="slide-button material-symbols-rounded">
+                chevron_right
+            </button>
+        </div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
+    
+    </div>
+
     <style>
         td {
             padding: 5px 10px !important;

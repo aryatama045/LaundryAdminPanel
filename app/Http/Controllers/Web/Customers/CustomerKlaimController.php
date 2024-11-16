@@ -57,7 +57,6 @@ class CustomerKlaimController extends Controller
         $dateExp = strtotime('+90 days', strtotime($tgl_pasang));
         $dateExps = date('d-m-Y', $dateExp);
 
-
         $paymentDate = now();
         $paymentDate = date('Y-m-d', strtotime($paymentDate));
         //echo $paymentDate; // echos today!
@@ -73,14 +72,11 @@ class CustomerKlaimController extends Controller
             }else{
                 $berlaku_s ='Expired';
             }
-
         }
-
 
         if($berlaku_s == 'Expired'){
             return redirect()->route('klaim.create')->with('error', ' Tanggal Pemasangan Sudah Expired');
         }
-
 
         $date           = now()->toDateTimeString();
         $jam            =  date('h',strtotime($date));
@@ -104,6 +100,7 @@ class CustomerKlaimController extends Controller
             'garansi_id' => $garansi,
             'no_nota' => $request->no_nota,
             'no_seri' => $request->no_seri,
+            'no_validasi' => $request->no_validasi,
             'tanggal_nota' => $request->tanggal_nota,
             'tanggal_pemasangan' => $tgl_pasang,
             'waktu_pemasangan' => $request->waktu_pemasangan,
@@ -217,5 +214,7 @@ class CustomerKlaimController extends Controller
         return back()->with('success', 'Klaims deleted successfully');
     }
 
+
+    
 
 }
