@@ -35,6 +35,16 @@
                     </a>
                 </li>
 
+                @can('banner.promotional')
+                    <li class="nav-item">
+                        <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
+                            href="{{ route('banner.promotional') }}">
+                            <i class="fas fa-image text-dark"></i>
+                            <span class="nav-link-text">{{ __('Banners') }}</span>
+                        </a>
+                    </li>
+                @endcan
+
                 @role('root')
                     @can('customer.index')
                         <li class="nav-item">
@@ -144,15 +154,6 @@
                     </li>
                 @endcan
 
-                @can('banner.promotional')
-                    <li class="nav-item">
-                        <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
-                            href="{{ route('banner.promotional') }}">
-                            <i class="fas fa-image text-dark"></i>
-                            <span class="nav-link-text">{{ __('App_Banners') }}</span>
-                        </a>
-                    </li>
-                @endcan
 
                 @can('driver.index')
                     <li hidden class="nav-item">
