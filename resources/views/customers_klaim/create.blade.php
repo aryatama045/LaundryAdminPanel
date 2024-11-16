@@ -170,7 +170,7 @@
 @push('scripts')
 
     <script type="text/javascript">
-        var url = <?php echo url(); ?>
+        var url = {{ url() }};
         $(document).ready(function() {
             $("#no_validasi").change(function() {
                 var nomor_val = $("#no_validasi").val();
