@@ -37,7 +37,7 @@
                                     @foreach ($garansis as $garansi)
                                         <tr>
                                             @role('root')
-                                            <td><?= (!$garansi->user->name)?$garansi->user->name:''; ?></td>
+                                            <td>{{ $garansi->user->name }}</td>
                                             @endrole
                                             <td>
                                                 {{ $garansi->no_nota }} <br>
