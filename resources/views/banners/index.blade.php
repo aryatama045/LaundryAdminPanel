@@ -85,9 +85,18 @@
                                     <td>
                                         @php
                                             $ext    = pathinfo($banner->thumbnailPath, PATHINFO_EXTENSION);
-                                            dd($banner->thumbnailPath, $ext);
                                         @endphp
-                                        <img width="100" src="{{ asset($banner->thumbnailPath) }}" alt="">
+
+                                        @if ($ext = 'jpg' || $ext = 'png' || $ext = 'gif' || $ext = 'jpeg')
+                                            <img width="100" src="{{ asset($banner->thumbnailPath) }}" alt="">
+                                        @endif
+
+                                        @if ($ext = 'pdf')
+                                            <button class="btn btn-sm btn-danger" src="{{ asset($banner->thumbnailPath) }}" alt="">PDF </button>
+                                        @endif
+                                        @if ($ext = 'xlsx' || $ext = 'xls' || $ext = 'csv')
+                                            <button class="btn btn-sm btn-success" src="{{ asset($banner->thumbnailPath) }}" alt=""> Excel </button>
+                                        @endif
                                     </td>
                                     @can('banner.status.toggle')
                                     <td>
