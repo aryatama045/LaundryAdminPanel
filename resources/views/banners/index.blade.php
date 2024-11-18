@@ -83,6 +83,10 @@
                                         {{ substr($banner->description, 0 ,30) }}
                                     </td>
                                     <td>
+                                        @php
+                                            $ext = $banner->thumbnailPath->extension();
+                                            dd($ext);
+                                        @endphp
                                         <img width="100" src="{{ asset($banner->thumbnailPath) }}" alt="">
                                     </td>
                                     @can('banner.status.toggle')
