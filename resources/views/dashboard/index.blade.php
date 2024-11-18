@@ -44,20 +44,22 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('klaim.create') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
-                                    <h4 class="card-title text-uppercase text-muted mb-0"><a href="{{ route('klaim.create') }}">
-                                        Klik Pengajuan
-                                        </a></h4>
+                                    <h4 class="card-title text-uppercase text-muted mb-0">
+                                        Form Klaim
+                                    </h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">.
                                     </span>
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img width="80" src="{{ asset('images/icons/items.svg') }}" alt="">
+                                        <img width="80" src="{{ asset('images/icons/progress.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -65,6 +67,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('garansi.index') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi ')}}</h4>
@@ -78,6 +81,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +89,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('klaim.index') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim ')}}</h4>
@@ -94,10 +99,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img width="80" src="{{ asset('images/icons/services.svg') }}" alt="">
+                                        <img width="80" src="{{ asset('images/icons/Orders.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
