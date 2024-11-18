@@ -58,7 +58,9 @@ class MediaRepository extends Repository
     public function storeByBanner(UploadedFile $file, string $path, string $description = null, string $type = null): Media
     {
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
-        $extension = $file->extension();
+        $originalName   = $file->getClientOriginalName();
+        $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
+        // $extension = $file->extension();
         if(!$type){
             $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif','pdf','xls','csv','xlsx' ]) ? 'image' : $extension;
         }
@@ -76,7 +78,9 @@ class MediaRepository extends Repository
     public function updateByBanner(UploadedFile $file,string $path, string $type = null, Media $media): Media
     {
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
-        $extension = $file->extension();
+        $originalName   = $file->getClientOriginalName();
+        $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
+        // $extension = $file->extension();
         if(!$type){
             $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif','pdf','xls','csv','xlsx']) ? 'image' : $extension;
         }
