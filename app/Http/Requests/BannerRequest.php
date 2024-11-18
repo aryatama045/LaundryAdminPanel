@@ -26,7 +26,7 @@ class BannerRequest extends FormRequest
         $imgRule = request()->isMethod('put') ? 'nullable' : 'required';
 
         return [
-            'title' => ['nullable', 'string'], // ,'max:256'
+            'title' => ['nullable', 'string','max:80000'], // ,'max:256'
             'description' => ['nullable'],
             'image' => [$imgRule, 'image', 'mimes:jpg,jpeg,png,gis,svg,pdf,xls,xlsx,csv'],
         ];
