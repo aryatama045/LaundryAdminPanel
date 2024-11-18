@@ -12,7 +12,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 <div class="container-fluid">
     <div class="header pt-5">
 
-        <div class="header-body mt--4">
+        <div class="header-body mt-4">
             <div hidden class="row align-items-center pb-4">
                 <div class="col-lg-6 col-7">
                     @if ($server == '"Windows"')
@@ -103,8 +103,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 </div>
 
                 @endif
-
-
                 @endrole
 
 
