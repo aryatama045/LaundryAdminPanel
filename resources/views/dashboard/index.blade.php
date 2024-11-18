@@ -152,11 +152,31 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         <ul class="image-list">
             @foreach ($banner as $banners )
 
-            @php
-            $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
-            @endphp
+                @php
+                $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
+                @endphp
 
-            <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
+                @php
+                    $ext    = pathinfo($get_media->path, PATHINFO_EXTENSION);
+                @endphp
+
+                @if ($ext == 'jpg' || $ext == 'png' || $ext == 'gif' || $ext == 'jpeg')
+                    <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
+                @endif
+
+                @if ($ext == 'pdf')
+                    <div class="image-item">
+                        <h3>{{ $banners->title }} </h3>
+                        <a target="_blank" class="btn btn-sm btn-danger" href="{{ Storage::url($get_media->path);  }}" alt="">PDF </a>
+                    </div>
+                @endif
+
+                @if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'csv')
+                    <div class="image-item">
+                        <h3>{{ $banners->title }} </h3>
+                        <a target="_blank" class="btn btn-sm btn-success" href="{{ Storage::url($get_media->path);  }}" alt=""> Excel </a>
+                    </div>
+                @endif
             @endforeach
         </ul>
         <button id="next-slide" class="slide-button material-symbols-rounded">
@@ -219,9 +239,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     </div>
 
-    
+
 </div>
-@endrole 
+@endrole
 
 @endif
 
@@ -252,13 +272,13 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             const sliderScrollbar = document.querySelector(".container .slider-scrollbar");
             const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
             const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-            
+
             // Handle scrollbar thumb drag
             scrollbarThumb.addEventListener("mousedown", (e) => {
                 const startX = e.clientX;
                 const thumbPosition = scrollbarThumb.offsetLeft;
                 const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
-                
+
                 // Update thumb position on mouse move
                 const handleMouseMove = (e) => {
                     const deltaX = e.clientX - startX;
@@ -267,7 +287,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     // Ensure the scrollbar thumb stays within bounds
                     const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
                     const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
-                    
+
                     scrollbarThumb.style.left = `${boundedPosition}px`;
                     imageList.scrollLeft = scrollPosition;
                 }
