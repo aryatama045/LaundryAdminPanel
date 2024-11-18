@@ -53,7 +53,6 @@ class CustomerGaransiController extends Controller
             'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
         ]);
 
-        dd($this->validate);
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
