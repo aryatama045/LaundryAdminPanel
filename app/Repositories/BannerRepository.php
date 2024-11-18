@@ -27,7 +27,7 @@ class BannerRepository extends Repository
 
     public function storeByRequest(BannerRequest $request): Banner
     {
-        $thumbnail = (new MediaRepository())->storeByRequest(
+        $thumbnail = (new MediaRepository())->storeByBanner(
             $request->image,
             $this->path,
             'this image for website slider banner',
@@ -46,7 +46,7 @@ class BannerRepository extends Repository
     public function updateByRequest(BannerRequest $request, Banner $banner): Banner
     {
         if ($request->hasFile('image')) {
-            (new MediaRepository())->updateByRequest(
+            (new MediaRepository())->updateByBanner(
                 $request->image,
                 $this->path,
                 'image',

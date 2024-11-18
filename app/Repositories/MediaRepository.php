@@ -55,6 +55,45 @@ class MediaRepository extends Repository
     }
 
 
+    public function storeByBanner(UploadedFile $file, string $path, string $description = null, string $type = null): Media
+    {
+        $path = Storage::put('/'. trim($path, '/'), $file, 'public');
+        $extension = $file->extension();
+        if(!$type){
+            $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif','pdf','xls','csv','xlsx' ]) ? 'image' : $extension;
+        }
+
+        return $this->model()::create([
+            'type' => $type,
+            'name' => $file->getClientOriginalName(),
+            'src' =>  $path,
+            'extension' => $extension,
+            'path' => $path,
+            'description' => $description,
+        ]);
+    }
+
+    public function updateByBanner(UploadedFile $file,string $path, string $type = null, Media $media): Media
+    {
+        $path = Storage::put('/'. trim($path, '/'), $file, 'public');
+        $extension = $file->extension();
+        if(!$type){
+            $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif','pdf','xls','csv','xlsx']) ? 'image' : $extension;
+        }
+
+        if(Storage::exists($media->src)){
+            Storage::delete($media->src);
+        }
+
+        $media->update([
+            'type' => $type,
+            'name' => $file->getClientOriginalName(),
+            'src' =>  $path,
+            'extension' => $extension,
+            'path' => $path,
+        ]);
+        return $media;
+    }
 
 
     public function storeByGaransi(UploadedFile $file, string $path, string $description = null, string $type = null, $urutan): Media
@@ -71,14 +110,14 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3', 
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3',
 				'L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
-        
-        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);  
-        $jam2 = array_search(substr($jam,1,1 ), $data_kode2); 
-        
-        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);  
-        $menit2 = array_search(substr($menit,1,1 ), $data_kode2); 
+
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2);
+
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
@@ -138,16 +177,16 @@ class MediaRepository extends Repository
         shuffle($data_kode);
         $kode       = implode("",$data_kode);
 
-        // $data_kode2  = ['0' => 'M', '1'=>'E', '2' => 'T', '3' =>'A', 
+        // $data_kode2  = ['0' => 'M', '1'=>'E', '2' => 'T', '3' =>'A',
 		// 		'4' =>'L', '5' =>'I','6' =>'N','7' =>'D', '8' =>'O','9' =>'P'];
-        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3', 
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3',
 				'L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
-        
-        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);  
-        $jam2 = array_search(substr($jam,1,1 ), $data_kode2); 
-        
-        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);  
-        $menit2 = array_search(substr($menit,1,1 ), $data_kode2); 
+
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2);
+
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
