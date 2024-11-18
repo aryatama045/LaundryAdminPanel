@@ -28,7 +28,7 @@ class BannerRequest extends FormRequest
         return [
             'title' => ['nullable', 'string','max:80000'], // ,'max:256'
             'description' => ['nullable'],
-            'image' => [$imgRule, 'file', 'mimes:jpg,jpeg,png,gis,svg,csv,pdf,xls,xlsx'],
+            'image' => [$imgRule, 'file', 'mimes:jpg,jpeg,png,gif,svg,csv,pdf,xls,xlsx'],
         ];
     }
 }
