@@ -220,7 +220,7 @@
 
                                 <tr>
                                     <th>{{ __('No Seri/Barcode') }}</th>
-                                    <td>{{ $klaim->no_nota }} <br> <small>Tanggal nota : {{ $klaim->no_seri }}</small></td>
+                                    <td>{{ $klaim->no_seri }} </td>
                                 </tr>
 
                                 <tr>

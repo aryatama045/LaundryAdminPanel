@@ -14,6 +14,7 @@ use App\Models\Customer;
 use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
 use App\Models\Media;
+use App\Events\KlaimMailEvent;
 
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
@@ -121,6 +122,21 @@ class CustomerGaransiController extends Controller
 
             }
         }
+
+        // $message  = 'New klaim add from ' . $garansi_data->customer->name;
+        // KlaimNotificationEvent::dispatch($message);
+
+        // $notificationKlaim = NotificationManage::where('name', 'new_order')->first();
+
+        // if ($notificationKlaim->is_active) {
+        //     $keys = $garansi_data->customer->devices->pluck('key')->toArray();
+
+        //     $message = $notificationKlaim->message;
+
+        //     (new NotificationServices($message, $keys, 'New Klaim'));
+        // }
+
+        // KlaimMailEvent::dispatch($garansi_data);
 
         return redirect()->route('garansi.index')->with('success', 'Garansi create successfully');
     }
