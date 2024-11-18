@@ -33,7 +33,7 @@ class DashboardController extends Controller
 
 
         return view('dashboard.index', compact(
-            'customers', 'services', 'products', 'revenues', 'income', 'confirmOrder', 'completeOrder', 'pendingOrder', 'onPregressOrder', 'cancelledOrder'
+            'customers','garansi','klaim', 'services', 'products', 'revenues', 'income', 'confirmOrder', 'completeOrder', 'pendingOrder', 'onPregressOrder', 'cancelledOrder'
         ));
     }
 }
