@@ -184,8 +184,10 @@
                 success: function(response) {
                     if (response.exists) {
                         $('#emailSuccess').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong>  terdaftar!');
+                        $('#emailError').addClass('d-none');
                     } else {
                         $('#emailError').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong> Tidak  terdaftar!');
+                        $('#emailSuccess').addClass('d-none');
                     }
                 },
                 error: function(xhr) {
