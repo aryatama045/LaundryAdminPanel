@@ -1,4 +1,4 @@
-@php 
+@php
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 @endphp
 <!doctype html>
@@ -164,7 +164,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 <body>
 
-{{--     
+{{--
     <div class="preload">
         <div class="flexbox">
             <div>
@@ -230,20 +230,20 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             flex-direction: column;
         }
     </style>
-    
+
 
     @if($server == '"Android"')
     <nav class="mobile-bottom-nav ">
-        
-        <a class="mobile-bottom-nav__item {{ request()->routeIs('root') ? 'mobile-bottom-nav__item--active' : '' }}" 
+
+        <a class="mobile-bottom-nav__item {{ request()->routeIs('root') ? 'mobile-bottom-nav__item--active' : '' }}"
             href="{{ route('root') }}">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">home</i>
                 Home
-            </div>		
+            </div>
         </a>
         <a class="mobile-bottom-nav__item {{ request()->routeIs('garansi.*') ? 'mobile-bottom-nav__item--active' : '' }}"
-            href="{{ route('garansi.index') }}" >		
+            href="{{ route('garansi.index') }}" >
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">mail</i>
                 Garansi
@@ -254,19 +254,19 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">shopping_cart_checkout</i>
                 Klaims
-            </div>		
+            </div>
         </a>
 
-        
+
         <a class="mobile-bottom-nav__item"  onclick="event.preventDefault(); document.getElementById('logout').submit()"
             href="#">
             <div class="mobile-bottom-nav__item-content">
                 <i class="material-icons">exit_to_app</i>
                 Logout
-            </div>		
+            </div>
         </a>
         <form id="logout" action="{{ route('logout') }}" method="POST"> @csrf </form>
-    </nav> 
+    </nav>
     @endif
 
 
@@ -286,7 +286,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-    <script>
+    <!-- <script>
         var pusher = new Pusher("{{ config('app.pusher_key') }}", {
             cluster: "{{ config('app.pusher_cluster') }}"
         });
@@ -297,32 +297,32 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             showNotifications()
         });
 
-    </script>
+    </script> -->
 
     <script>
-        const showNotifications = function() {
-            var totalNumber = $('#total');
+        // const showNotifications = function() {
+        //     var totalNumber = $('#total');
 
-            $.ajax({
-                type: 'GET',
-                url: "{{ route('new.orders') }}",
-                dataType: 'json',
-                success: function(response) {
-                    $('#total').text(response.data.orders.length)
-                    $('#notification').empty()
-                    $.each(response.data.orders, function(key, value) {
-                        $('#notification').append(
-                        "<a class='dropdown-item' href='/orders/"+ value.id+"'><div class='message'>New Order From <strong>"+value.customer.user.name+"</strong> Order ID: "+value.order_code+"</div> <div class='time'>"+value.ordered_at+"</div></a>"
-                        );
-                    })
-                },
-                error: function(e) {
-                    $('#notification').empty()
-                    $("#notification").html(e.responseText);
-                }
-            });
-        }
-        showNotifications()
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: "{{ route('new.orders') }}",
+        //         dataType: 'json',
+        //         success: function(response) {
+        //             $('#total').text(response.data.orders.length)
+        //             $('#notification').empty()
+        //             $.each(response.data.orders, function(key, value) {
+        //                 $('#notification').append(
+        //                 "<a class='dropdown-item' href='/orders/"+ value.id+"'><div class='message'>New Order From <strong>"+value.customer.user.name+"</strong> Order ID: "+value.order_code+"</div> <div class='time'>"+value.ordered_at+"</div></a>"
+        //                 );
+        //             })
+        //         },
+        //         error: function(e) {
+        //             $('#notification').empty()
+        //             $("#notification").html(e.responseText);
+        //         }
+        //     });
+        // }
+        // showNotifications()
 
         $('.visitorMessage').click(function(e) {
             e.preventDefault()
