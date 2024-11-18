@@ -168,7 +168,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <div class="image-item text-center">
                         <h3>{{ $banners->title }} </h3>
                         <p>{{ $banners->description }}</p>
-                        <a target="_blank" class="btn btn-sm btn-danger" href="{{ Storage::url($get_media->path);  }}" alt="">PDF </a>
+                        <a target="_blank" class="btn btn-sm btn-danger" href="{{ Storage::url($get_media->path);  }}" alt="">View PDF </a>
                     </div>
                 @endif
 
@@ -176,7 +176,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <div class="image-item text-center">
                         <h3>{{ $banners->title }} </h3>
                         <p>{{ $banners->description }}</p>
-                        <a target="_blank" class="btn btn-sm btn-success" href="{{ Storage::url($get_media->path);  }}" alt=""> Excel </a>
+                        <a target="_blank" class="btn btn-sm btn-success" href="{{ Storage::url($get_media->path);  }}" alt="">View Excel </a>
                     </div>
                 @endif
             @endforeach
