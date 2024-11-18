@@ -119,12 +119,34 @@
             </button>
             <ul class="image-list">
                 @foreach ($banner as $banners )
-    
-                @php
-                $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
-                @endphp
-    
-                <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
+
+                    @php
+                    $get_media = DB::table('media')->where('id', $banners ->thumbnail_id)->first();
+                    @endphp
+
+                    @php
+                        $ext    = pathinfo($get_media->path, PATHINFO_EXTENSION);
+                    @endphp
+
+                    @if ($ext == 'jpg' || $ext == 'png' || $ext == 'gif' || $ext == 'jpeg')
+                        <img class="image-item"  src="{{ Storage::url($get_media->path);  }}" alt="img-1" />
+                    @endif
+
+                    @if ($ext == 'pdf')
+                        <div class="image-item text-center">
+                            <h3>{{ $banners->title }} </h3>
+                            <p>{{ $banners->description }}</p>
+                            <a target="_blank" class="btn btn-sm btn-danger" href="{{ Storage::url($get_media->path);  }}" alt="">View PDF </a>
+                        </div>
+                    @endif
+
+                    @if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'csv')
+                        <div class="image-item text-center">
+                            <h3>{{ $banners->title }} </h3>
+                            <p>{{ $banners->description }}</p>
+                            <a target="_blank" class="btn btn-sm btn-success" href="{{ Storage::url($get_media->path);  }}" alt="">View Excel </a>
+                        </div>
+                    @endif
                 @endforeach
             </ul>
             <button id="next-slide" class="slide-button material-symbols-rounded">
@@ -136,9 +158,10 @@
                 <div class="scrollbar-thumb"></div>
             </div>
         </div>
-    
+
     </div>
-    
+
+
     <style>
         td {
             padding: 5px 10px !important;
@@ -172,13 +195,13 @@
             const sliderScrollbar = document.querySelector(".container .slider-scrollbar");
             const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
             const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
-            
+
             // Handle scrollbar thumb drag
             scrollbarThumb.addEventListener("mousedown", (e) => {
                 const startX = e.clientX;
                 const thumbPosition = scrollbarThumb.offsetLeft;
                 const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
-                
+
                 // Update thumb position on mouse move
                 const handleMouseMove = (e) => {
                     const deltaX = e.clientX - startX;
@@ -187,7 +210,7 @@
                     // Ensure the scrollbar thumb stays within bounds
                     const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
                     const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
-                    
+
                     scrollbarThumb.style.left = `${boundedPosition}px`;
                     imageList.scrollLeft = scrollPosition;
                 }

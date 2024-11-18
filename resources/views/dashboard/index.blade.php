@@ -140,6 +140,59 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     </div>
 </div>
 
+
+
+@role('customer') @if ($server == '"Android"')
+<div  class="container-fluid mt-1">
+    <div class="row">
+
+
+        <div class="col-12 col-lg-4">
+            <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
+                <div class="overview">
+                    <img width="100%" src="{{ asset('web/bg/overview.svg') }}" alt="">
+                    <div>
+                        <h2 class="text-white">{{ __('Overview') }}</h2>
+                    </div>
+                </div>
+
+                <div class="row p-3">
+
+                    <div class="col-lg-4 col-4">
+                        <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
+                        <div>
+                            <h3 class="m-0 text-dark"> Klaim </h3>
+                            <span class="txt-1"><a href="{{ route('klaim.create') }}"> Klik Pengajuan</a></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-4">
+                        <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
+                        <div>
+                            <h3 class="m-0 text-dark"> {{ $garansi_cst->count() }} </h3>
+                            <span class="txt-1">{{ __('Garansi') }}  </span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-4">
+                        <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
+                        <div>
+                            <h3 class="m-0 text-dark"> {{ $klaim_cst->count() }}</h3>
+                            <span class="txt-1">{{ __('Klaim') }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+@endrole
+
 <div class="container m-4 pt-6">
 
     @php
@@ -193,57 +246,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 </div>
 
-
-@role('customer') @if ($server == '"Android"')
-<div  class="container-fluid mt-1">
-    <div class="row">
-
-
-        <div class="col-12 col-lg-4">
-            <div class="card" style="border-radius: 10px; border-bottom: 4px solid var(--theme-color);">
-                <div class="overview">
-                    <img width="100%" src="{{ asset('web/bg/overview.svg') }}" alt="">
-                    <div>
-                        <h2 class="text-white">{{ __('Overview') }}</h2>
-                    </div>
-                </div>
-
-                <div class="row p-3">
-
-                    <div class="col-lg-4 col-4">
-                        <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark"> Klaim </h3>
-                            <span class="txt-1"><a href="{{ route('klaim.create') }}"> Klik Pengajuan</a></span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-4">
-                        <img width="50" src="{{ asset('images/icons/items.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark"> {{ $garansi_cst->count() }} </h3>
-                            <span class="txt-1">{{ __('Garansi') }}  </span>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-4">
-                        <img width="50" src="{{ asset('images/icons/delivered.svg') }}" class="float-left mr-2" alt="">
-                        <div>
-                            <h3 class="m-0 text-dark"> {{ $klaim_cst->count() }}</h3>
-                            <span class="txt-1">{{ __('Klaim') }}</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </div>
-
-
-</div>
-@endrole
 
 @endif
 
