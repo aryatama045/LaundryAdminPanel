@@ -84,8 +84,8 @@
                                     </td>
                                     <td>
                                         @php
-                                            $ext = asset($banner->thumbnailPath);
-                                            dd($ext->extension());
+                                            $ext    = pathinfo($originalName, PATHINFO_EXTENSION);
+                                            dd($ext);
                                         @endphp
                                         <img width="100" src="{{ asset($banner->thumbnailPath) }}" alt="">
                                     </td>
