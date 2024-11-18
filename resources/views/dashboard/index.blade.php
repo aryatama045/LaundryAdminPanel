@@ -130,7 +130,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
@@ -150,7 +154,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
