@@ -167,6 +167,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 @if ($ext == 'pdf')
                     <div class="image-item text-center">
                         <h3>{{ $banners->title }} </h3>
+                        <p>{{ $banners->description }}</p>
                         <a target="_blank" class="btn btn-sm btn-danger" href="{{ Storage::url($get_media->path);  }}" alt="">PDF </a>
                     </div>
                 @endif
@@ -174,6 +175,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 @if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'csv')
                     <div class="image-item text-center">
                         <h3>{{ $banners->title }} </h3>
+                        <p>{{ $banners->description }}</p>
                         <a target="_blank" class="btn btn-sm btn-success" href="{{ Storage::url($get_media->path);  }}" alt=""> Excel </a>
                     </div>
                 @endif
