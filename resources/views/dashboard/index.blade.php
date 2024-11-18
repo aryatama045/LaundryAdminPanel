@@ -191,6 +191,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
 </div>
+@endif
 @endrole
 
 <div class="container m-4 pt-6">
@@ -247,7 +248,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 </div>
 
 
-@endif
+
 
 @push('scripts')
     <script>
