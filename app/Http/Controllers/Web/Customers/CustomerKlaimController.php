@@ -226,9 +226,13 @@ class CustomerKlaimController extends Controller
     public function check_validasi(Request $request)
     {
 
+        $customer_id = $request->customer_id;
         $no_val = $request->nomor_val;
 
-        $Exists = DB::table("customer_garanses")->where('no_validasi', $no_val)->exists();
+        $Exists = DB::table("customer_garanses")
+            ->where('no_validasi', $no_val)
+            ->where('customer_id', $customer_id)
+            ->exists();
         return response()->json(['exists' => $Exists]);
     }
 

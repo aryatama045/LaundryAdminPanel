@@ -73,7 +73,7 @@
                                         $customer = \App\Models\Customer::where('user_id',$user_id )->first();
                                     @endphp
 
-                                    <input hidden name="customer_id" value="{{ $customer->id }}" />
+                                    <input hidden id="customer_id" name="customer_id" value="{{ $customer->id }}" />
 
                                 @endrole
 
@@ -86,7 +86,7 @@
                                             <a href="#" class="btn btn-primary default">
                                                 <i class="simple-icon-magnifier"></i> Check
                                             </a>
-                                        </div>                                        
+                                        </div>
                                     </div>
 
                                     <span class="alert text-danger d-none" id="emailError"></span>
@@ -176,10 +176,11 @@
 
         $('#no_validasi').on('change', function() {
             var nomor_val = $("#no_validasi").val();
+            var customer_id = $("#customer_id").val();
             $.ajax({
                 url: '/klaim/check_validasi',
                 method: 'GET',
-                data: {nomor_val: nomor_val},
+                data: {nomor_val: nomor_val, customer_id:customer_id},
                 success: function(response) {
                     if (response.exists) {
                         $('#emailSuccess').removeClass('d-none').html('No. <strong>' + nomor_val + '</strong>  terdaftar!');
@@ -196,7 +197,7 @@
     </script>
 
     <script type="text/javascript">
-        
+
         $(document).ready(function() {
             $("#no_validasia").change(function() {
                 var customer_id = $("#customer_id").val();
