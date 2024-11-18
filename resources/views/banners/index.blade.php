@@ -29,7 +29,7 @@
                                     <x-input name='title' type="text" placeholder="{{ __('Banner'). ' '.__('Title') }}" />
 
                                     <label class="mb-1">{{ __('Banner'). ' '.__('Photo') }}</label>
-                                    <x-input-file name="image" type="file"/>
+                                    <x-input-file name="image" type="file" />
 
                                     <label class="mb-1">{{ __('Banner'). ' '.__('Description') }}</label>
                                     <x-textarea name="description" placeholder="{{ __('Banner'). ' '.__('Description') }}" />
