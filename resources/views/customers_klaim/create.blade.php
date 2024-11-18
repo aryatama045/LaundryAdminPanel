@@ -81,7 +81,7 @@
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
                                     <div class="input-group typeahead-container">
-                                        <input id="no_validasi" name="no_validasi" type="text" class="form-control typeahead" placeholder="Nomor Validasi" autocomplete="off" required="">
+                                        <input id="no_validasi" name="no_validasi" type="text" accept="image/*" class="form-control typeahead" placeholder="Nomor Validasi" autocomplete="off" required="">
                                         <div class="input-group-append">
                                             <a href="#" class="btn btn-primary default">
                                                 <i class="simple-icon-magnifier"></i> Check
@@ -232,7 +232,7 @@
                 if (count > 1) {
 
                     html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
-                        '<input style="height:100% !important" type="file" multiple="" class="form-control" name="klaim_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                        '<input style="height:100% !important" type="file" accept="image/*" multiple="" class="form-control" name="klaim_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
                 }
                 var remove_button = '';
 
