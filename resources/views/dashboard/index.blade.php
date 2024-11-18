@@ -110,6 +110,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('customer.index') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Users')}}</h4>
@@ -127,6 +128,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -134,6 +136,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('garansi.index') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi')}}</h4>
@@ -151,6 +154,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -158,6 +162,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
+                            <a href="{{ route('klaim.index') }}">
                             <div class="row">
                                 <div class="col mt-3 text-right">
                                     <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim')}}</h4>
@@ -175,6 +180,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
