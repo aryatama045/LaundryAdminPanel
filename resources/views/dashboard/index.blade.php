@@ -129,6 +129,44 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col mt-3 text-right">
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi')}}</h4>
+                                    <span class="display-3 text-dark font-weight-bold mb-0">
+                                        @can('dashboard.calculation')
+                                        {{ $customers->count() }}
+                                        @else
+                                        00
+                                        @endcan
+                                    </span>
+                                </div>
+                                <div class="card-icon">
+                                    <div class="icon icon-shape text-white shadow">
+                                        <img width="80" src="{{ asset('images/icons/user.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col mt-3 text-right">
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi')}}</h4>
+                                    <span class="display-3 text-dark font-weight-bold mb-0">
+                                        @can('dashboard.calculation')
+                                        {{ $customers->count() }}
+                                        @else
+                                        00
+                                        @endcan
+                                    </span>
+                                </div>
+                                <div class="card-icon">
+                                    <div class="icon icon-shape text-white shadow">
+                                        <img width="80" src="{{ asset('images/icons/user.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
