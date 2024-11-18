@@ -136,10 +136,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
-                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Users')}}</h4>
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Garansi')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
                                         @can('dashboard.calculation')
-                                        {{ $customers->count() }}
+                                        {{ $garansi->count() }}
                                         @else
                                         00
                                         @endcan
@@ -160,10 +160,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-3 text-right">
-                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Users')}}</h4>
+                                    <h4 class="card-title text-uppercase text-muted mb-0">{{__('Klaim')}}</h4>
                                     <span class="display-3 text-dark font-weight-bold mb-0">
                                         @can('dashboard.calculation')
-                                        {{ $customers->count() }}
+                                        {{ $klaim->count() }}
                                         @else
                                         00
                                         @endcan

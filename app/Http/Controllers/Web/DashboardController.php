@@ -14,6 +14,9 @@ class DashboardController extends Controller
     public function index()
     {
         $customers = Customer::all();
+        $garansi = CustomerGaransis::all();
+        $klaim = CustomerKlaims::all();
+
         $services = (new ServiceRepository())->getAll();
         $products = (new ProductRepository())->getAll();
         $income = (new OrderRepository())->getByStatus('Delivered')->sum('amount');
