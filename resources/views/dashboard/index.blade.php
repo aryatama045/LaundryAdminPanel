@@ -147,7 +147,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img width="80" src="{{ asset('images/icons/user.svg') }}" alt="">
+                                        <img width="80" src="{{ asset('images/icons/items.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 </div>
                                 <div class="card-icon">
                                     <div class="icon icon-shape text-white shadow">
-                                        <img width="80" src="{{ asset('images/icons/user.svg') }}" alt="">
+                                        <img width="80" src="{{ asset('images/icons/Orders.svg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
