@@ -52,6 +52,14 @@ class CustomerGaransiController extends Controller
             'garansi_photo'=> 'mimes:jpeg,jpg,png,gif|max:5000',
         ]);
 
+        $validatedData = $request->validate([
+                'garansi_photo'=> 'mimes:jpeg,jpg,png,gif|max:5000',
+            ],
+            [
+            'garansi_photo.required'=> 'Bukti foto harus image', // custom message
+            ]
+        );
+
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
         $garansi_fill = [
