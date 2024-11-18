@@ -92,11 +92,11 @@
                                         @endif
 
                                         @if ($ext == 'pdf')
-                                            <a target="_blank" class="btn btn-sm btn-danger" src="{{ asset($banner->thumbnailPath) }}" alt="">PDF </a>
+                                            <a target="_blank" class="btn btn-sm btn-danger" href="{{ asset($banner->thumbnailPath) }}" alt="">PDF </a>
                                         @endif
 
                                         @if ($ext == 'xlsx' || $ext == 'xls' || $ext == 'csv')
-                                            <a target="_blank" class="btn btn-sm btn-success" src="{{ asset($banner->thumbnailPath) }}" alt=""> Excel </a>
+                                            <a target="_blank" class="btn btn-sm btn-success" href="{{ asset($banner->thumbnailPath) }}" alt=""> Excel </a>
                                         @endif
                                     </td>
                                     @can('banner.status.toggle')
