@@ -27,12 +27,15 @@ class CustomerGaransiRequest extends FormRequest
         if(\request()->routeIs('admin.update')){
             $userId = $this->userId;
         }
+
+        $imgRule = request()->isMethod('put') ? 'nullable' : 'required';
         $rule = [
             'customer_id'           => 'required|string',
             'no_nota'               => 'required',
             'tanggal_nota'          => 'nullable',
             'no_pemasangan'         => 'nullable',
             'tanggal_pemasangan'    => 'nullable',
+            'garansi_photo'         => [$imgRule, 'file', 'mimes:jpg,jpeg,png'],
 
         ];
 
