@@ -48,14 +48,10 @@ class CustomerGaransiController extends Controller
     public function store(Request $request)
     {
 
-
-        $validatedData = $request->validate([
-                'garansi_photo'=> 'mimes:jpeg,jpg,png,gif|max:5000',
-            ],
-            [
-            'garansi_photo.required'=> 'Bukti foto harus image', // custom message
-            ]
-        );
+        $this->validate($request, [
+            'garansi_photo' => ['required', 'array'],
+            'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
+        ]);
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
