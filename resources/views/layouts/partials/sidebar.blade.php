@@ -95,11 +95,11 @@
                             <span class="nav-link-text">{{ __('Product_Manage') }}</span>
                         </a>
 
-                        <div class="collapse {{ request()->routeIs('service.*', 'variant.*', 'product.*', 'coupon.*') ? 'show' : '' }}"
+                        <div class="collapse {{ request()->routeIs('service.*', 'additional.*', 'variant.*', 'product.*', 'coupon.*') ? 'show' : '' }}"
                             id="product_manage">
                             <ul class="nav nav-sm flex-column">
                                 @can('service.index')
-                                    <a class="nav-link sub-menu {{ request()->routeIs('service.*') ? 'active' : '' }}"
+                                    <a class="nav-link sub-menu {{ request()->routeIs('service.*') ? 'active' : '' }} {{ request()->routeIs('additional.*') ? 'active' : '' }}"
                                         href="{{ route('service.index') }}" href="{{ route('service.index') }}">
                                         {{-- <i class="fas fa-cogs"></i> --}}
                                         <i class="fas fa-tools"></i>
