@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h2 class="card-title">
-                                {{ __('All'). ' '.__('Products') }} {{ __('under') }} {{  $variant->name : $variant->name}} {{ __('Variant') }}</h2>
+                                {{ __('All'). ' '.__('Products') }} {{ __('under') }} {{ $variant->name }} {{ __('Variant') }}</h2>
 
                         </div>
 
