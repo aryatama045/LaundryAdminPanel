@@ -21,8 +21,7 @@
                         <table class="table table-bordered table-striped verticle-middle table-responsive-sm {{ session()->get('local') }}" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('English') }}</th>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('Arabic') }}</th>
+                                    <th scope="col">{{ __('Name') }}</th>
                                     <th scope="col">{{ __('Thumbnail') }}</th>
                                     <th scope="col">{{ __('Description') }}</th>
                                     @can('service.status.toggle')
@@ -37,7 +36,6 @@
                                 @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $service->name }}</td>
-                                    <td>{{ $service->name_bn }}</td>
                                     <td>
                                         <img width="100" src="{{ asset($service->thumbnailPath) }}" alt="">
                                     </td>

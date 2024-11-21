@@ -8,11 +8,9 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-6">
-                            @if (session()->get('local') == 'ar')
-                            <h2 class="card-title"> {{ __('Variant') }} {{ $variant->name_bn ?? $variant->name }}  {{__('under').' '. __('Products'). ' '.__('All') }}</h2>
-                            @else
-                            <h2 class="card-title">{{ __('All'). ' '.__('Products') }} {{ __('under') }} {{ session()->get('local') == 'ar' ? $variant->name_bn ?? $variant->name : $variant->name}} {{ __('Variant') }}</h2>
-                            @endif
+                            <h2 class="card-title">
+                                {{ __('All'). ' '.__('Products') }} {{ __('under') }} {{  $variant->name : $variant->name}} {{ __('Variant') }}</h2>
+
                         </div>
 
                         <div class="col-md-6 d-flex justify-content-end " >
@@ -28,7 +26,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('Name').' '.__('of'). ' '. __('English') }}</th>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('Arabic') }}</th>
                                     <th scope="col">{{__('Action')}}</th>
                                 </tr>
                             </thead>
@@ -36,7 +33,6 @@
                                 @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->name_bn ?? 'N\A' }}</td>
                                     <td>
 
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update{{ $product->id }}">

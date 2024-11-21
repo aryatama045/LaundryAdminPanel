@@ -19,14 +19,10 @@
                                 <img width="50%" src="{{ $service->thumbnailPath }}" alt="">
                             </div>
 
-                            <label>{{ __('Name') . ' ' . __('of') . ' ' . __('English') }}</label>
+                            <label>{{ __('Name')  }}</label>
                             <x-input name="name" type="text"
-                                placeholder="{{ __('Service') . ' ' . __('Name') . ' ' . __('English') }}"
+                                placeholder="{{ __('Service') . ' ' . __('Name')  }}"
                                 value="{{ $service->name }}" />
-
-                            <label>{{ __('Name') . ' ' . __('of') . ' ' . __('Arabic') }}</label>
-                            <x-input name="name_bn" type='text' value="{{ $service->name_bn }}"
-                                placeholder="{{ __('Service') . ' ' . __('Name') . ' ' . __('Arabic') }}" />
 
                             <label for="">Selected Variants</label>
                             <x-select :multi="true" name="variant_ids[]">

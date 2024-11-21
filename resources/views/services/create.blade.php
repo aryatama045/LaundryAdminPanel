@@ -14,11 +14,8 @@
                 </div>
                 <div class="card-body">
                     <x-form route="service.store" type="Submit">
-                        <label>{{ __('Name').' '.__('of'). ' '. __('English') }}</label>
-                        <x-input name="name" type='text' placeholder="{{ __('Service').' '.__('Name'). ' '. __('English') }}"/>
-
-                        <label>{{ __('Name').' '.__('of'). ' '. __('Arabic') }}</label>
-                        <x-input name="name_bn" type='text' placeholder="{{ __('Service').' '.__('Name'). ' '. __('Arabic') }}"/>
+                        <label>{{ __('Name') }}</label>
+                        <x-input name="name" type='text' placeholder="{{ __('Service').' '.__('Name') }}"/>
 
                         <label>{{ __('Select').' '.__('Variants') }}</label>
                         <x-select :multi="true" name="variant_ids[]">

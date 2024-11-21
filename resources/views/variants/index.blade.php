@@ -28,8 +28,7 @@
                                 id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">{{ __('Name') . ' ' . __('of') . ' ' . __('English') }}</th>
-                                        <th scope="col">{{ __('Name') . ' ' . __('of') . ' ' . __('Arabic') }}</th>
+                                        <th scope="col">{{ __('Name')  }}</th>
                                         @canany(['variant.update', 'variant.products'])
                                             <th scope="col">{{ __('Action') }}</th>
                                         @endcanany
@@ -39,7 +38,6 @@
                                     @foreach ($variants as $variant)
                                         <tr>
                                             <td>{{ $variant->name }}</td>
-                                            <td>{{ $variant->name_bn }}</td>
                                             @canany(['variant.update', 'variant.products'])
                                                 <td>
                                                     @can('variant.update')

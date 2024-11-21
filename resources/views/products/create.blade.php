@@ -17,9 +17,9 @@
                     </div>
                     <div class="card-body">
                         <x-form route="product.store" type="Submit">
-                            <label class="mb-1">{{ __('Product') . ' ' . __('Name') . ' ' . __('English') }}</label>
+                            <label class="mb-1">{{ __('Product') . ' ' . __('Name')  }}</label>
                             <x-input name="name" type="text"
-                                placeholder="{{ __('Product') . ' ' . __('Name') . ' ' . __('English') }}" />
+                                placeholder="{{ __('Product') . ' ' . __('Name')  }}" />
 
                             <label class="mb-1">{{ __('Product') . ' ' . __('Price') }}</label>
                             <input name="price" type="text" class="form-control"
