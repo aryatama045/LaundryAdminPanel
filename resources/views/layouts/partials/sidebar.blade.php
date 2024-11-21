@@ -87,7 +87,7 @@
                 @endcan
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
-                    <li hidden class="nav-item">
+                    <li  class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('service.*', 'variant.*', 'product.*', 'coupon.*') ? 'active' : '' }}"
                             href="#product_manage" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">

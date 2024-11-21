@@ -39,8 +39,7 @@
                         <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('English') }}</th>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('Arabic') }}</th>
+                                    <th scope="col">{{ __('Name') }}</th>
                                     <th scope="col">{{ __('Thumbnail') }}</th>
                                     <th scope="col">{{ __('Variant') }}</th>
                                     <th scope="col">{{ __('Discount').' '.__('Price') }}</th>
@@ -58,7 +57,6 @@
                                 @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->name_bn ?? 'N\A' }}</td>
                                     <td>
                                         <img width="100" src="{{ $product->thumbnailPath }}" alt="">
                                     </td>
@@ -97,7 +95,7 @@
                                         </a>
 
                                         <a href="{{ route('product.subproduct.index', $product->id) }}" class="btn btn-sm btn-primary">
-                                           Sub Products
+                                            Sub Products
                                         </a>
 
                                         <a href="{{ route('product.delete', $product->id) }}" class="btn btn-sm btn-danger delete-confirm"><i class="fas fa-trash"></i></a>
