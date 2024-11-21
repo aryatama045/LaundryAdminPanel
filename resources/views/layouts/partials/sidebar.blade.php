@@ -123,7 +123,7 @@
                                 @endcan
 
                                 @can('coupon.index')
-                                    <a class="nav-link sub-menu {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
+                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
                                         href="{{ route('coupon.index') }}">
                                         <i class="fa fa-percentage"></i>
                                         <span class="nav-link-text">{{ __('Coupon') }}</span>
