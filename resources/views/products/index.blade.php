@@ -14,13 +14,19 @@
                         <div class="col-md-8">
                             <form action="{{ route('product.index') }}" method="GET">
                                 <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item ml-2 mr-md-0">
+                                    <!-- <li class="nav-item ml-2 mr-md-0">
                                         <x-input type="text" name='search' placeholder="Search" value="{{ request('search') }}" />
                                     </li>
                                     <li class="nav-item ml-2 mr-md-0">
                                     <button type="submit" class="btn btn-info">
                                         <i class="fa fa-search"></i>
                                     </button>
+                                    </li> -->
+                                    <li class="nav-item ml-2 mr-md-0">
+                                        <a class="btn btn-success" data-bs-effect="effect-super-scaled"
+                                            data-bs-toggle="modal" href="#modalImport">
+                                            <i data-feather="upload"></i> {{ localize('Import') }}
+                                        </a>
                                     </li>
                                     @can('product.create')
                                     <li class="nav-item ml-2 mr-md-0">
@@ -116,6 +122,47 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Import -->
+<div class="modal fade" data-bs-backdrop="static" id="modalImport">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo">
+
+            <div class="modal-header">
+                <h6 class="modal-title">Import </h6>
+                <button onclick="reset()" aria-label="Close" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!--<a class="btn btn-danger" onclick="pdf()"><i class="fa fa-file-pdf-o"></i> PDF</a>-->
+                <!--<br><br>-->
+                <!--<hr>-->
+                <!--<br><br>-->
+
+                <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('admin/orders/export_orders')}}" method="POST">
+                    @csrf
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Excel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary d-none" id="btnLoader" type="button" disabled="">
+                    <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+
+
+                <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-bs-dismiss="modal">Batal <i class="fe fe-x"></i></a>
             </div>
         </div>
     </div>
