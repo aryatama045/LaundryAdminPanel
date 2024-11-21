@@ -63,18 +63,10 @@
                                                                         @csrf @method('put')
                                                                         <div class="modal-body">
                                                                             <div class="mb-3">
-                                                                                <label>{{ __('Variant') . ' ' . __('Name') . ' ' . __('English') }}</label>
+                                                                                <label>{{ __('Variant') . ' ' . __('Name') }}</label>
                                                                                 <input type="text" name="name"
                                                                                     class="form-control"
                                                                                     value="{{ old('name') ?? $variant->name }}">
-                                                                            </div>
-
-                                                                            <div class="mb-3">
-                                                                                <label>{{ __('Variant') . ' ' . __('Name') . ' ' . __('Arabic') }}</label>
-                                                                                <input type="text" name="name_bn"
-                                                                                    class="form-control"
-                                                                                    value="{{ old('name_bn') ?? $variant->name_bn }}"
-                                                                                    placeholder="اسم المتغير">
                                                                             </div>
 
                                                                             <div class="mb-3">
@@ -128,15 +120,9 @@
                         @csrf
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label>{{ __('Variant') . ' ' . __('Name') . ' ' . __('English') }}</label>
+                                <label>{{ __('Variant') . ' ' . __('Name')  }}</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                                    placeholder="{{ __('Variant') . ' ' . __('Name') . ' ' . __('English') }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label>{{ __('Variant') . ' ' . __('Name') . ' ' . __('Arabic') }}</label>
-                                <input type="text" name="name_bn" class="form-control" value="{{ old('name_bn') }}"
-                                    placeholder="{{ __('Variant') . ' ' . __('Name') . ' ' . __('Arabic') }}">
+                                    placeholder="{{ __('Variant') . ' ' . __('Name')  }}">
                             </div>
 
                             <div class="mb-3">
