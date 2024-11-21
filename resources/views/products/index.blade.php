@@ -162,8 +162,9 @@
 
 
                 <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-dismiss="modal">Batal <i class="fas fa-x"></i></a>
-
-                <button type="submit" class="btn btn-success"><i class="fas fa-file-excel-o"></i> Submit</button>
+                <div class="w-100 text-right">
+                    <button type="submit" class="btn btn-success "><i class="fas fa-file-excel-o"></i> Submit</button>
+                </div>
             </div>
             </form>
         </div>
