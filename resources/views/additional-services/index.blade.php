@@ -12,6 +12,9 @@
                     <h2 class="card-title float-left">{{ __('All').' '.__('Additional_Service') }}</h2>
                     @can('additional.create')
                     <div class="w-100 text-right">
+                        <a href="{{ route('service.index') }}" class="text-right btn btn-primary">{{ __('Back').' '.__('Service') }}</a>
+                    </div>
+                    <div class="w-100 text-right">
                         <a href="{{ route('additional.create') }}" class="text-right btn btn-primary">{{ __('Create').' '.__('Additional_Service') }}</a>
                     </div>
                     @endcan
