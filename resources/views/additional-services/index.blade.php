@@ -10,14 +10,12 @@
             <div class="card">
                 <div class="card-header">
                     <h2 class="card-title float-left">{{ __('All').' '.__('Additional_Service') }}</h2>
-                    @can('additional.create')
                     <div class="w-100 text-right">
-                        <a href="{{ route('service.index') }}" class="text-right btn btn-primary">{{ __('Back').' '.__('Service') }}</a>
+                        <a href="{{ route('additional.index') }}" class="text-right btn btn-info my-md-0 my-1">{{ __('Back Service') }}</a>
+                        @can('additional.create')
+                        <a href="{{ route('additional.create') }}" class="text-right btn btn-primary my-md-0 my-1">{{ __('Create'). ' '. __('Additional_Service') }}</a>
+                        @endcan
                     </div>
-                    <div class="w-100 text-right">
-                        <a href="{{ route('additional.create') }}" class="text-right btn btn-primary">{{ __('Create').' '.__('Additional_Service') }}</a>
-                    </div>
-                    @endcan
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
