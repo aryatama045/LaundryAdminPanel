@@ -25,7 +25,7 @@
                                     <li class="nav-item ml-2 mr-md-0">
                                         <a class="btn btn-success" data-bs-effect="effect-super-scaled"
                                             data-bs-toggle="modal" href="#modalImport">
-                                            <i class="fa fa-upload"></i> {{ localize('Import') }}
+                                            <i class="fa fa-upload"></i> Import
                                         </a>
                                     </li>
                                     @can('product.create')
