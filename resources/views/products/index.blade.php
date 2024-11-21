@@ -23,7 +23,7 @@
                                     </button>
                                     </li> -->
                                     <li class="nav-item ml-2 mr-md-0">
-                                        <a class="btn btn-success" data-bs-effect="effect-super-scaled"
+                                        <a class="btn btn-info" data-bs-effect="effect-super-scaled"
                                             data-bs-toggle="modal" href="#modalImport">
                                             <i class="fa fa-upload"></i> Import
                                         </a>
