@@ -136,6 +136,7 @@
 
             <div class="modal-header">
                 <h2 class="modal-title">Import </h2>
+                <hr>
             </div>
             <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
             @csrf
