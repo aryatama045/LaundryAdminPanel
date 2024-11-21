@@ -144,16 +144,16 @@
                 <!--<hr>-->
                 <!--<br><br>-->
 
-                <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('admin/orders/export_orders')}}" method="POST">
+                <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
                     @csrf
 
                     <div class="form-group">
-                        <label class="mb-1">{{ __('Impport') . ' ' . __('Excel') }}</label>
+                        <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
                         <x-input-file name="import_data" type="file" />
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-file-excel-o"></i> Excel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-file-excel-o"></i> Submit</button>
                     </div>
                 </form>
             </div>
