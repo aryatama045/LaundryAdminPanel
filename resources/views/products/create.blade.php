@@ -21,10 +21,6 @@
                             <x-input name="name" type="text"
                                 placeholder="{{ __('Product') . ' ' . __('Name') . ' ' . __('English') }}" />
 
-                            <label class="mb-1">{{ __('Product') . ' ' . __('Name') . ' ' . __('Arabic') }}</label>
-                            <x-input name="name_bn" type="text"
-                                placeholder="{{ __('Product') . ' ' . __('Name') . ' ' . __('Arabic') }}" />
-
                             <label class="mb-1">{{ __('Product') . ' ' . __('Price') }}</label>
                             <input name="price" type="text" class="form-control"
                                 placeholder="{{ __('Product') . ' ' . __('Price') }}" onkeypress="onlyNumber(event)" />

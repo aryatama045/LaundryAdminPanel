@@ -23,9 +23,6 @@
                             <x-input name="name" type='text' placeholder="{{ __('Product').' '.__('Name').' '.__('English')}}"
                                 value="{{ old('name') ?? $product->name }}"/>
 
-                            <label class="mb-1">{{ __('Product').' '.__('Name').' '.__('Arabic')}}</label>
-                            <x-input name="name_bn" type="text" placeholder="{{ __('Product').' '.__('Name').' '.__('Arabic')}}" value="{{ old('name_bn') ?? $product->name_bn }}"/>
-
                             <label class="mb-1">{{ __('Product').' '.__('Price') }}</label>
                             <input name="price" type='text' class="form-control" placeholder="{{ __('Product').' '.__('Price') }}"
                                 value="{{ old('price') ?? $product->price }}" onkeypress="onlyNumber(event)"/>
