@@ -93,15 +93,18 @@
                                     @can('product.edit')
                                     <td>
                                         <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-primary" title="View">
-                                            <i class="far fa-view"></i>
+                                            <i class="far fa-eye"></i>
                                         </a>
 
                                         <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-primary" title="Edit">
                                             <i class="far fa-edit"></i>
                                         </a>
 
-                                        <a href="{{ route('product.delete', $product->id) }}" class="btn btn-sm btn-danger delete-confirm" title="Delete"><i class="fas fa-trash"></i></a>
+                                        <a href="{{ route('product.delete', $product->id) }}" class="btn btn-sm btn-danger delete-confirm" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
 
+                                        <br>
                                         <a href="{{ route('product.subproduct.index', $product->id) }}" class="btn btn-sm btn-primary">
                                             Sub Products
                                         </a>
