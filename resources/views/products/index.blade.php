@@ -137,7 +137,7 @@
             <div class="card-header">
                 <h2 class="card-title m-0">Import</h2>
             </div>
-            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
+            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{ url('products/imports') }}" method="POST">
             @csrf
             <div class="card-body">
                 <!--<a class="btn btn-danger" onclick="pdf()"><i class="fa fa-file-pdf-o"></i> PDF</a>-->
@@ -147,20 +147,12 @@
 
                 <div class="form-group">
                     <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
-                    <x-input-file name="import_data" type="file" />
+                    <input name="import_data" type="file" />
                 </div>
 
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-primary d-none" id="btnLoader" type="button" disabled="">
-                    <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
-                    Loading...
-                </button>
-
-
-
-
                 <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="reset()" data-dismiss="modal"><i class="far fa-window-close"></i> Cancel</a>
 
                 <button type="submit" class="btn btn-sm btn-success float-right"><i class="far fa-save"></i> Submit</button>

@@ -118,7 +118,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
 
     Route::get('/klaim/check_validasi', [CustomerKlaimController::class, 'check_validasi'])->name('klaim.check_validasi');
-    
+
     Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
     Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
     Route::get('/klaim/{klaim}/delete', [CustomerKlaimController::class, 'delete'])->name('klaim.delete');
@@ -130,6 +130,9 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
         Route::get('/products', 'index')->name('product.index');
         Route::get('/products/create', 'create')->name('product.create');
         Route::post('/products', 'store')->name('product.store');
+
+        Route::post('/products', 'imports');
+
         Route::get('/products/{product}/show', 'show')->name('product.show');
         Route::get('/products/{product}/edit', 'edit')->name('product.edit');
         Route::put('/products/{product}/update', 'update')->name('product.update');
@@ -137,6 +140,8 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
         Route::get('/products/{product}/toggle-status', 'toggleActivationStatus')->name('product.status.toggle');
         Route::put('/products/{product}/ordering', 'orderUpdate')->name('product.update.order');
     });
+
+    Route::post('/products/import/', [ProductController::class, 'import']);
 
     Route::controller(SubProductController::class)->group(function () {
         Route::get('/products/{product}/sub-product', 'index')->name('product.subproduct.index');
