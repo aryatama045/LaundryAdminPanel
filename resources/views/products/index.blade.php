@@ -137,25 +137,19 @@
             <div class="modal-header">
                 <h2 class="modal-title">Import </h2>
             </div>
-
+            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
+            @csrf
             <div class="modal-body">
                 <!--<a class="btn btn-danger" onclick="pdf()"><i class="fa fa-file-pdf-o"></i> PDF</a>-->
                 <!--<br><br>-->
                 <!--<hr>-->
                 <!--<br><br>-->
 
-                <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
-                    @csrf
+                <div class="form-group">
+                    <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
+                    <x-input-file name="import_data" type="file" />
+                </div>
 
-                    <div class="form-group">
-                        <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
-                        <x-input-file name="import_data" type="file" />
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-file-excel-o"></i> Submit</button>
-                    </div>
-                </form>
             </div>
 
             <div class="modal-footer">
@@ -165,8 +159,13 @@
                 </button>
 
 
-                <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-dismiss="modal">Batal <i class="fe fe-x"></i></a>
+
+
+                <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-dismiss="modal">Batal <i class="fas fa-x"></i></a>
+
+                <button type="submit" class="btn btn-success"><i class="fas fa-file-excel-o"></i> Submit</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
