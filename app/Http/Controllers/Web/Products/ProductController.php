@@ -39,6 +39,13 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('success', 'Product added successsfully');
     }
 
+    public function show(Product $product)
+    {
+        $variants = $product->service->variants;
+        $services = (new ServiceRepository())->getAll();
+        return view('products.show', compact('product', 'services', 'variants'));
+    }
+
     public function edit(Product $product)
     {
         $variants = $product->service->variants;
