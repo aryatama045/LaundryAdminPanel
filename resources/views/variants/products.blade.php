@@ -25,7 +25,7 @@
                         <table class="table table-bordered table-striped verticle-middle table-responsive-md {{ session()->get('local') }}" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('English') }}</th>
+                                    <th scope="col">{{ __('Name').' '.__('of'). ' '. __('Variants') }}</th>
                                     <th scope="col">{{__('Action')}}</th>
                                 </tr>
                             </thead>
@@ -89,14 +89,10 @@
             @csrf
             <div class="modal-body">
                 <div class="mb-3">
-                    <label>{{ __('Variant').' '.__('Name'). ' '. __('English') }}</label>
+                    <label>{{ __('Variant').' '.__('Name') }}</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="{{ __('Variant').' '.__('Name'). ' '. __('English') }}">
                 </div>
 
-                <div class="mb-3">
-                    <label>{{ __('Variant').' '.__('Name'). ' '. __('Arabic') }}</label>
-                    <input type="text" name="name_bn" class="form-control" value="{{ old('name_bn') }}" placeholder="{{ __('Variant').' '.__('Name'). ' '. __('Arabic') }}">
-                </div>
 
                 <div class="mb-3">
                     <label class="mb-1">{{ __('Position') }}</label>
