@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h2 class="card-title">
-                                {{ __('All'). ' '.__('Products') }} {{ __('under') }} {{ $variant->name }} {{ __('Variant') }}</h2>
+                                {{ __('All'). ' '.__('Products') }} {{ __('Under') }} : {{ $variant->name }} {{ __('Variant') }}</h2>
 
                         </div>
 
@@ -90,9 +90,8 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label>{{ __('Variant').' '.__('Name') }}</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="{{ __('Variant').' '.__('Name'). ' '. __('English') }}">
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="{{ __('Variant').' '.__('Name') }}">
                 </div>
-
 
                 <div class="mb-3">
                     <label class="mb-1">{{ __('Position') }}</label>
