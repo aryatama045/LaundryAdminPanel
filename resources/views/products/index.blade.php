@@ -134,13 +134,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
 
-            <div class="modal-header">
-                <h2 class="modal-title">Import </h2>
-                <hr>
+            <div class="card-header">
+                <h2 class="card-title m-0">Import</h2>
             </div>
             <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{url('products/imports')}}" method="POST">
             @csrf
-            <div class="modal-body">
+            <div class="card-body">
                 <!--<a class="btn btn-danger" onclick="pdf()"><i class="fa fa-file-pdf-o"></i> PDF</a>-->
                 <!--<br><br>-->
                 <!--<hr>-->
@@ -153,7 +152,7 @@
 
             </div>
 
-            <div class="modal-footer">
+            <div class="card-footer">
                 <button class="btn btn-primary d-none" id="btnLoader" type="button" disabled="">
                     <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
                     Loading...
