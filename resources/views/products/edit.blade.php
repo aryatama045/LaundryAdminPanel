@@ -19,7 +19,7 @@
                             <img width="50%" src="{{ $product->thumbnailPath }}" alt="">
                         </div>
                         <x-form type="Update" method="true" route="product.update" updateId="{{ $product->id }}">
-                            <label class="mb-1">{{ __('Product').' '.__('Name').' '.__('English')}}</label>
+                            <label class="mb-1">{{ __('Product').' '.__('Name') }}</label>
                             <x-input name="name" type='text' placeholder="{{ __('Product').' '.__('Name').' '.__('English')}}"
                                 value="{{ old('name') ?? $product->name }}"/>
 
@@ -49,7 +49,7 @@
                                 @foreach ($services as $service)
                                     <option value="{{ $service->id }}"
                                         {{ $product->service_id == $service->id ? 'selected' : '' }}>
-                                        {{ session()->get('local') == 'ar' ? $service->name_bn ?? $service->name : $service->name }}
+                                        {{ $service->name }}
                                     </option>
                                 @endforeach
                             </x-select>
@@ -59,7 +59,7 @@
                                 @foreach ($variants as $variant)
                                     <option {{ $product->variant_id == $variant->id ? 'selected' : '' }}
                                         value="{{ $variant->id }}">
-                                        {{ session()->get('local') == 'ar' ? $variant->name_bn ?? $variant->name : $variant->name }}
+                                        {{ $variant->name }}
                                     </option>
                                 @endforeach
                             </x-select>
