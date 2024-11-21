@@ -18,7 +18,7 @@
                         <div class="text-center mb-3">
                             <img width="50%" src="{{ $product->thumbnailPath }}" alt="">
                         </div>
-                        <x-form type="Update" method="true" route="product.update" updateId="{{ $product->id }}">
+
                             <label class="mb-1">{{ __('Product').' '.__('Name').' '.__('English')}}</label>
                             <x-input name="name" type='text' placeholder="{{ __('Product').' '.__('Name').' '.__('English')}}"
                                 value="{{ old('name') ?? $product->name }}"/>
@@ -79,7 +79,6 @@
                                 </label>
                             </div>
 
-                        </x-form>
                     </div>
                 </div>
             </div>
