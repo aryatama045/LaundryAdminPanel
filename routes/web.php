@@ -131,7 +131,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
         Route::get('/products/create', 'create')->name('product.create');
         Route::post('/products', 'store')->name('product.store');
 
-        Route::post('/products', 'imports');
+        Route::post('/products/imports', 'imports');
 
         Route::get('/products/{product}/show', 'show')->name('product.show');
         Route::get('/products/{product}/edit', 'edit')->name('product.edit');
