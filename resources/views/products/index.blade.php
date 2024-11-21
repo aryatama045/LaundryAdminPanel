@@ -163,7 +163,7 @@
 
                 <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="reset()" data-dismiss="modal"><i class="far fa-window-close"></i> Cancel</a>
 
-                <button type="submit" class="btn btn-sm btn-success float-right"><i class="fas fa-file-excel"></i> Submit</button>
+                <button type="submit" class="btn btn-sm btn-success float-right"><i class="far fa-save"></i> Submit</button>
 
             </div>
             </form>
