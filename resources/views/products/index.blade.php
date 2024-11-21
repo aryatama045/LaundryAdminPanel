@@ -23,8 +23,8 @@
                                     </button>
                                     </li> -->
                                     <li class="nav-item ml-2 mr-md-0">
-                                        <a class="btn btn-info" data-bs-effect="effect-super-scaled"
-                                            data-bs-toggle="modal" href="#modalImport">
+                                        <a class="btn btn-info" data-effect="effect-super-scaled"
+                                            data-toggle="modal" href="#modal_import">
                                             <i class="fa fa-upload"></i> Import
                                         </a>
                                     </li>
@@ -130,13 +130,13 @@
 
 
 <!-- Modal Import -->
-<div class="modal fade" data-bs-backdrop="static" id="modalImport">
+<div class="modal fade" data-backdrop="static" id="modal_import">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
 
             <div class="modal-header">
                 <h6 class="modal-title">Import </h6>
-                <button onclick="reset()" aria-label="Close" class="btn-close" data-bs-dismiss="modal">
+                <button onclick="reset()" aria-label="Close" class="btn-close" data-dismiss="modal">
                 </button>
             </div>
 
@@ -162,7 +162,7 @@
                 </button>
 
 
-                <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-bs-dismiss="modal">Batal <i class="fe fe-x"></i></a>
+                <a href="javascript:void(0)" class="btn btn-warning" onclick="reset()" data-dismiss="modal">Batal <i class="fe fe-x"></i></a>
             </div>
         </div>
     </div>
