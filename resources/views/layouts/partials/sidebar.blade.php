@@ -117,7 +117,7 @@
                                 @can('product.index')
                                     <a class="nav-link sub-menu {{ request()->routeIs('product.*') ? 'active' : '' }}"
                                         href="{{ route('product.index') }}">
-                                        <i class="fas fa-tshirt"></i>
+                                        <i class="fas fa-boxes"></i>
                                         <span class="nav-link-text">{{ __('Products') }}</span>
                                     </a>
                                 @endcan
