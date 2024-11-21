@@ -20,7 +20,7 @@
                         <label>{{ __('Select').' '.__('Variants') }}</label>
                         <x-select :multi="true" name="variant_ids[]">
                             @foreach ($variants as $variant)
-                                <option value="{{ $variant->id }}">{{ session()->get('local') == 'ar' ? ($variant->name_bn ??$variant->name) : $variant->name}}</option>
+                                <option value="{{ $variant->id }}">{{ $variant->name }}</option>
                             @endforeach
                         </x-select>
 

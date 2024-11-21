@@ -29,7 +29,7 @@
                                 @foreach ($variants as $variant)
                                     <option value="{{ $variant->id }}"
                                         {{ in_array($variant->id, $service->variants->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                        {{ session()->get('local') == 'ar' ? $variant->name_bn ?? $variant->name : $variant->name }}
+                                        {{ $variant->name }}
                                     </option>
                                 @endforeach
                             </x-select>
@@ -47,7 +47,7 @@
                                     <option value="{{ $additional->id }}"
                                         {{ in_array($additional->id, $service->additionals->pluck('id')->toArray()) ? 'selected' : '' }}>
                                         {{ $additional->title }}
-                                        {{ session()->get('local') == 'ar' ? $additional->title_bn ?? $additional->title : $additional->title }}
+                                        {{ $additional->title }}
                                     </option>
                                 @endforeach
                             </x-select>
