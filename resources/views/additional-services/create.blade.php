@@ -14,12 +14,10 @@
                 </div>
                 <div class="card-body">
                     <x-form route="additional.store" type="Submit">
-                        <x-input name="title" placeholder="{{ __('Title') }} {{ __('English') }}" type='text'/>
-                        <x-input name="title_bn" type="text" placeholder="{{ __('Title').' '.__('Arabic').' '.__('Name') }}" />
+                        <x-input name="title" placeholder="{{ __('Title') }} " type='text'/>
                         <x-input name="price" placeholder="{{ __('Price') }}" type="number" />
 
-                        <x-textarea name="description" placeholder="{{ __('Description').' '.__('English') }}" />
-                        <x-textarea name="description_bn" placeholder="{{ __('Description').' '.__('Arabic') }}" />
+                        <x-textarea name="description" placeholder="{{ __('Description') }}" />
                     </x-form>
                 </div>
             </div>

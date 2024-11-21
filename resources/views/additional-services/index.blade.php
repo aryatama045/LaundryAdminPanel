@@ -22,7 +22,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('Title') }}</th>
-                                    <th scope="col">{{ __('Title'). ' ' . __('Arabic') }}</th>
                                     <th scope="col">{{ __('Description') }}</th>
                                     <th scope="col">{{ __('Description'). ' ' . __('Arabic') }}</th>
                                     <th scope="col">{{ __('Price') }}</th>
@@ -38,12 +37,8 @@
                                 @foreach ($additionals as $additional)
                                 <tr>
                                     <td>{{ $additional->title }}</td>
-                                    <td>{{ $additional->title_bn }}</td>
                                     <td>
                                         {{ substr($additional->description, 0 ,25) }}
-                                    </td>
-                                    <td>
-                                        {{ substr($additional->description_bn, 0 ,25) }}
                                     </td>
                                     <td>{{ currencyPosition($additional->price) }}</td>
                                     @can('additional.status.toggle')
