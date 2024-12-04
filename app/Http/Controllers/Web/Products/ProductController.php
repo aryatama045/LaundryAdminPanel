@@ -100,7 +100,7 @@ class ProductController extends Controller
     {
 
         $gudang = request('to_warehouse_id');
-        $file   = $request->file('file');
+        $file   = $request->file('import_data');
 
         $array= Excel::toArray(new BarangImport, $file);
 
