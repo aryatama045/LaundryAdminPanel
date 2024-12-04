@@ -104,7 +104,7 @@ class ProductController extends Controller
 
         $array= Excel::toArray(new BarangImport, $file);
 
-        dd('imports');
+        dd($array);
 
         $data = [];
         foreach($array as $key => $val){
