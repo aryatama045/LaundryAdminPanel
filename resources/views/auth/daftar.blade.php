@@ -124,10 +124,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 mb-2 py-2">
+                            <!-- <div class="col-12 col-md-6 mb-2 py-2">
                                 <label for="">{{ __('Profile_Photo') }}</label>
                                 <input type="file" class="form-control-file" name="profile_photo">
-                            </div>
+                            </div> -->
 
                         </div>
 
