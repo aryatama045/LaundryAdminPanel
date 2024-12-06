@@ -37,8 +37,8 @@
                     @can('customer.index')
 
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                                href="{{ route('garansi.index') }}">
+                            <a class="nav-link {{ request()->routeIs('orders.*') ? 'active' : '' }}"
+                                href="{{ route('orders.index') }}">
                                 <i class="fa fa-file text-blue"></i>
                                 <span class="nav-link-text"><b>{{ __('Pembelian Saya') }}</b></span>
                             </a>
