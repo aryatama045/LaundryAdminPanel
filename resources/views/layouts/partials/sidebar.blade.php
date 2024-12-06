@@ -40,7 +40,7 @@
                             <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                                 href="{{ route('order.index') }}">
                                 <i class="fa fa-file text-blue"></i>
-                                <span class="nav-link-text"><b>{{ __('Pembelian Saya') }}</b></span>
+                                <span class="nav-link-text">{{ __('Pembelian Saya') }}</span>
                             </a>
                         </li>
 
@@ -50,7 +50,7 @@
                                 href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
                                 aria-controls="navbar-examples">
                                 <i class="fa fa-file text-blue"></i>
-                                <span class="nav-link-text"><b>{{ __('Garansi Saya') }}</b></span>
+                                <span class="nav-link-text">{{ __('Garansi Saya') }}</span>
                             </a>
 
                             <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
