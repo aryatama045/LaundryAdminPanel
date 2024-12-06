@@ -39,7 +39,7 @@
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                             href="{{ route('garansi.index') }}">
                             <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text">{{ __('Data Garansi') }}</span>
+                            <span class="nav-link-text"><b>{{ __('Pembelian Saya') }}</b></span>
                         </a>
                     </li>
 
@@ -49,7 +49,7 @@
                             href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
                             <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text">{{ __('Garansi Saya') }}</span>
+                            <span class="nav-link-text"><b>{{ __('Garansi Saya') }}</b></span>
                         </a>
 
                         <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
