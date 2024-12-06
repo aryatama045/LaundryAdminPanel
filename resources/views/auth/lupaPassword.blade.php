@@ -45,17 +45,12 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
 
 
-                            <h3>Login</h3>
+                            <h3>Forgot Password</h3>
                             <p>This is a secure system and you will need to provide tour login detalis to access the
                                 site</p>
 
                         </div>
 
-                        @if (session('password'))
-                            <div class="bg-danger p-2 mb-1">
-                                <span style="color: #fff">{{ session('password') }}</span>
-                            </div>
-                        @endif
 
                         <div class="inputBox">
                             <input type="text" id="email" name="email"
@@ -66,48 +61,28 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
                         </div>
 
-                        <div class="inputBox">
-                            <div class="input w-100 position-relative">
-                                <input type="password" id="password" name="password"
-                                    class="form-control inputfield @error('password') is-invalid @enderror"
-                                    placeholder="Password">
-                                <span class="eye" onclick="showHidePassword()">
-                                    <i class="fas fa-eye-slash fa-eye" id="togglePassword"></i>
-                                </span>
-                            </div>
-                            @error('password')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
 
                         <button type="submit" class="btn btn-danger text-white w-100">Login</button>
 
                         <hr>
-                        <div class="row">
-                            <div class="col-6">
-                                <a class="setVisitorBtn" href="{{ route('lupa_password') }}">
-                                    Lupa Password
-                                </a>
-                            </div>
-
-                            <div class="col-6 d-flex justify-content-end">
-                                <a class="setVisitorBtn " href="{{ route('daftar') }}">
-                                    Daftar
-                                </a>
-                            </div>
-
-                        </div>
-
                     </form>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <a class="setVisitorBtn" href="{{ route('login') }}">
+                                Kembali
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="col-12 col-md-6 d-none d-md-block"
+            <!-- <div class="col-12 col-md-6 d-none d-md-block"
                 style="background: url({{ asset('web/bg/login.jpg') }});overflow: hidden;
             background-size: cover;
             background-position: center;">
-            </div>
+            </div> -->
         </div>
     </div>
 
