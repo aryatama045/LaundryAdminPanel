@@ -55,6 +55,10 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/daftar', [LoginController::class, 'daftar'])->name('daftar');
+Route::post('/daftar', [LoginController::class, 'daftar_action'])->name('daftar');
+
+Route::get('/lupa_password', [LoginController::class, 'lupa_password'])->name('lupa_password');
+Route::post('/lupa_password', [LoginController::class, 'lupa_password_action'])->name('lupa_password');
 
 Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('root');

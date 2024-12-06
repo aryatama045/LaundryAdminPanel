@@ -85,13 +85,13 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <hr>
                         <div class="row">
                             <div class="col-6">
-                                <a class="setVisitorBtn" href="">
+                                <a class="setVisitorBtn" href="{{ route('lupa_password') }}">
                                     Lupa Password
                                 </a>
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
-                                <button class="setVisitorBtn " href="">
+                                <button class="setVisitorBtn " href="{{ route('daftar') }}">
                                     Daftar
                                 </button>
                             </div>

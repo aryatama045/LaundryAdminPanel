@@ -21,9 +21,19 @@ class LoginController extends Controller
         return view('auth.daftar');
     }
 
+    public function daftar_action()
+    {
+        return view('auth.daftar');
+    }
+
     public function lupa_password()
     {
         return view('auth.lupaPassword');
+    }
+
+    public function lupa_password_action()
+    {
+        return view('auth.daftar');
     }
 
     public function login(LoginRequest $loginRequest)
