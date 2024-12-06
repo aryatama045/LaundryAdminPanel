@@ -80,14 +80,19 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
                         </div>
 
-                            <div class="mb-3 d-flex justify-content-end">
-                                <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
-                                    Set Admin visitor
-                                </button>
-                            </div>
+                        <button type="submit" class="btn btn-danger text-white w-100">Login</button>
 
+                        <div class="mb-3 d-flex justify-content-start">
+                            <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
+                                Lupa Password
+                            </button>
+                        </div>
 
-                            <button type="submit" class="btn btn-danger text-white w-100">Login</button>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
+                                Daftar
+                            </button>
+                        </div>
 
                     </form>
                 </div>
