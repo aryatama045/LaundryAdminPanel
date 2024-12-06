@@ -8,7 +8,7 @@
                     <div class="card-header py-2 d-flex align-items-center justify-content-between">
                         <h2 class="card-title m-0">
                             {{ __(config('enums.order_status.' . request('status'))) }}
-                            {{ __('Orders') }}
+                            {{ __('Data Pembelian') }}
                         </h2>
                         <div class="d-flex justify-content-end">
                             <form class="" action="{{ route('order.index') }}" method="GET">
