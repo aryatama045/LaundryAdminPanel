@@ -62,7 +62,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         </div>
 
 
-                        <button type="submit" class="btn btn-danger text-white w-100">Login</button>
+                        <button type="submit" class="btn btn-danger text-white w-100">Send Forgot Password</button>
 
                         <hr>
                     </form>
