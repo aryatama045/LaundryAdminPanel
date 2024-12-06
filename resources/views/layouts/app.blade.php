@@ -15,7 +15,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <title>{{ $websetting->title ?? config('app.name') }}</title>
     <!-- Fonts -->
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('web/css/all.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/bootstrap.css') }}" type="text/css">
@@ -30,9 +32,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
     />
+
     <style>
         .slider-wrapper {
         position: relative;
