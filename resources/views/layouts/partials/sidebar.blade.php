@@ -34,19 +34,13 @@
                 </li>
 
                 @can('customer.index')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                            href="{{ route('garansi.index') }}">
-                            <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text">{{ __('Data Garansi') }}</span>
-                        </a>
-                    </li>
+
 
                     <li  class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }} "
                             href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
-                            <i class="fas fa-warehouse text-primary"></i>
+                            <i class="fa fa-file text-blue"></i>
                             <span class="nav-link-text">{{ __('Garansi Saya') }}</span>
                         </a>
 
@@ -77,51 +71,6 @@
                         </div>
                     </li>
 
-                    <li  class="nav-item">
-                        <a class="nav-link  {{ request()->routeIs('service.*', 'variant.*', 'product.*', 'coupon.*') ? 'active' : '' }}"
-                            href="#product_manage" data-toggle="collapse" aria-expanded="false" role="button"
-                            aria-controls="navbar-examples">
-                            <i class="fas fa-warehouse text-primary"></i>
-                            <span class="nav-link-text">{{ __('Product_Manage') }}</span>
-                        </a>
-
-                        <div class="collapse {{ request()->routeIs('service.*', 'additional.*', 'variant.*', 'product.*', 'coupon.*') ? 'show' : '' }}"
-                            id="product_manage">
-                            <ul class="nav nav-sm flex-column">
-                                @can('service.index')
-                                    <a class="nav-link sub-menu {{ request()->routeIs('service.*') ? 'active' : '' }} {{ request()->routeIs('additional.*') ? 'active' : '' }}"
-                                        href="{{ route('service.index') }}" href="{{ route('service.index') }}">
-                                        {{-- <i class="fas fa-cogs"></i> --}}
-                                        <i class="fas fa-tools"></i>
-                                        <span class="nav-link-text">{{ __('Services') }}</span>
-                                    </a>
-                                @endcan
-
-                                @can('variant.index')
-                                    <a class="nav-link sub-menu {{ request()->routeIs('variant.*') ? 'active' : '' }}"
-                                        href="{{ route('variant.index') }}">
-                                        <i class="fas fa-list"></i>
-                                        <span class="nav-link-text">{{ __('Variants') }}</span>
-                                    </a>
-                                @endcan
-                                @can('product.index')
-                                    <a class="nav-link sub-menu {{ request()->routeIs('product.*') ? 'active' : '' }}"
-                                        href="{{ route('product.index') }}">
-                                        <i class="fas fa-boxes"></i>
-                                        <span class="nav-link-text">{{ __('Products') }}</span>
-                                    </a>
-                                @endcan
-
-                                @can('coupon.index')
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
-                                        href="{{ route('coupon.index') }}">
-                                        <i class="fa fa-percentage"></i>
-                                        <span class="nav-link-text">{{ __('Coupon') }}</span>
-                                    </a>
-                                @endcan
-                            </ul>
-                        </div>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
