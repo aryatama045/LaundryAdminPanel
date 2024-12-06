@@ -159,18 +159,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('/banners/{banner}/toggle-status', [BannerController::class, 'toggleActivationStatus'])
         ->name('banner.status.toggle');
 
-    // Order Routes
-    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('order.show');
-    Route::get('/orders/{order}/update-status', [OrderController::class, 'statusUpdate'])->name('order.status.change');
-    Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels'])
-        ->name('order.print.labels');
-    Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
-        ->name('order.print.invioce');
 
-    //INcomplete Order Route
-    Route::get('/orders-incomplete', [OrderController::class, 'index'])->name('orderIncomplete.index');
-    Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name('orderIncomplete.paid');
 
     // Revenue Eoutes
     Route::get('revenues', [RevenueController::class, 'index'])->name('revenue.index');
@@ -196,14 +185,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('/drivers/{driver}/details', [DriverController::class, 'details'])->name('driver.details');
     Route::get('/driver/{driver}/toggle-status', [DriverController::class, 'toggleStatus'])->name('driver.status.toggle');
 
-    //Profile
-    Route::get('/setting/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::post('/setting/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/setting/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/setting/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
-    Route::get('/setting/profile/change-password', function () {
-        return view('profile.change-password');
-    })->name('profile.change-password');
+
 
     Route::controller(OrderScheduleController::class)->group(function () {
         Route::get('/{type}/scheduls', 'index')->name('schedule.index');
@@ -212,13 +194,32 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     });
 });
 
-Route::middleware(['auth', 'role:customer'])->group(function () {
-    Route::post('/orders', [OrderController::class, 'store']);
-    Route::put('/orders/{order}', [OrderController::class, 'update']);
 
-    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('order.show');
-});
+
+// Order Routes
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+Route::get('/orders/{order}', [OrderController::class, 'show'])->name('order.show');
+Route::get('/orders/{order}/update-status', [OrderController::class, 'statusUpdate'])->name('order.status.change');
+Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels'])
+    ->name('order.print.labels');
+Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
+    ->name('order.print.invioce');
+
+//INcomplete Order Route
+Route::get('/orders-incomplete', [OrderController::class, 'index'])->name('orderIncomplete.index');
+Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name('orderIncomplete.paid');
+
+
+//Profile
+Route::get('/setting/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('/setting/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('/setting/profile-edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/setting/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+Route::get('/setting/profile/change-password', function () {
+    return view('profile.change-password');
+})->name('profile.change-password');
+
+
 
 
 // access only root user.
