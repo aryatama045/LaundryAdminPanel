@@ -55,18 +55,18 @@
                         <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
                             id="garansi_saya">
                             <ul class="nav nav-sm flex-column">
-                                <a class="nav-link sub-menu {{ request()->routeIs('variant.*') ? 'active' : '' }} "
-                                    href="{{ route('service.index') }}" href="{{ route('service.index') }}">
+                                <a class="nav-link sub-menu {{ request()->routeIs('garansi.index') ? 'active' : '' }} "
+                                    href="{{ route('garansi.index') }}" href="{{ route('garansi.index') }}">
                                     <span class="nav-link-text">{{ __('Cek Status') }}</span>
                                 </a>
 
-                                <a class="nav-link sub-menu {{ request()->routeIs('additional.*') ? 'active' : '' }}"
-                                    href="{{ route('service.index') }}" href="{{ route('service.index') }}">
+                                <a class="nav-link sub-menu {{ request()->routeIs('garansi.create') ? 'active' : '' }}"
+                                    href="{{ route('garansi.create') }}" href="{{ route('garansi.create') }}">
                                     <span class="nav-link-text">{{ __('Tambah Masa Proteksi') }}</span>
                                 </a>
 
                                 <a class="nav-link sub-menu {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
-                                    href="{{ route('service.index') }}" href="{{ route('service.index') }}">
+                                    href="{{ route('klaim.index') }}" href="{{ route('klaim.index') }}">
                                     <span class="nav-link-text">{{ __('Klaim Garansi') }}</span>
                                 </a>
 
@@ -121,11 +121,11 @@
 
 
                 @can('order.index')
-                    <li hidden class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                             href="{{ route('order.index') }}">
                             <i class="fa fa-shopping-cart text-orange"></i>
-                            <span class="nav-link-text">{{ __('Orders') }}</span>
+                            <span class="nav-link-text">{{ __('Pembelian Customer') }}</span>
                         </a>
                     </li>
                 @endcan
@@ -354,7 +354,7 @@
                 <li class="nav-item">
                     <a class="nav-link"
                         onclick="event.preventDefault();
-                                        document.getElementById('logout').submit()"
+                        document.getElementById('logout').submit()"
                         href="#">
                         <i class="fas fa-sign-out-alt text-warning"></i>
                         <span class="nav-link-text">{{ __('Logout') }}</span>
