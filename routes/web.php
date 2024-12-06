@@ -54,6 +54,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/daftar', [LoginController::class, 'daftar'])->name('daftar');
+
 Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('root');
 

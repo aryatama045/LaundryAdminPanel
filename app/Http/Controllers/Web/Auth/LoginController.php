@@ -16,6 +16,16 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function daftar()
+    {
+        return view('auth.daftar');
+    }
+
+    public function lupa_password()
+    {
+        return view('auth.lupaPassword');
+    }
+
     public function login(LoginRequest $loginRequest)
     {
         $user = $this->isAuthenticate($loginRequest);
