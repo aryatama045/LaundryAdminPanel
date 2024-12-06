@@ -80,7 +80,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-danger mb-3 text-white w-100">Login</button>
+                        <button type="submit" class="btn btn-danger text-white w-100">Login</button>
 
                         <hr>
                         <div class="row">
