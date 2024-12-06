@@ -214,10 +214,17 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
 
 Route::middleware(['auth:api', 'role:customer'])->group(function () {
     Route::post('/coupons/{coupon:code}/apply', [CouponController::class, 'apply']);
-    Route::get('/orders', [OrderController::class, 'index']);
+
     Route::post('/orders', [OrderController::class, 'store']);
     Route::put('/orders/{order}', [OrderController::class, 'update']);
-    Route::get('/orders/{id}/details', [OrderController::class, 'show']);
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('/orders/{order}/update-status', [OrderController::class, 'statusUpdate'])->name('order.status.change');
+    Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels'])
+        ->name('order.print.labels');
+    Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
+        ->name('order.print.invioce');
 
     Route::post('/users/update', [UserController::class, 'update']);
     Route::post('/users/profile-photo/update', [UserController::class, 'updateProfilePhoto']);
