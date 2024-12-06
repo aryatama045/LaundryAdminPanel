@@ -212,51 +212,14 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     });
 });
 
-Route::middleware(['auth:api', 'role:customer'])->group(function () {
-    Route::post('/coupons/{coupon:code}/apply', [CouponController::class, 'apply']);
-
+Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::post('/orders', [OrderController::class, 'store']);
     Route::put('/orders/{order}', [OrderController::class, 'update']);
 
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('order.show');
-    Route::get('/orders/{order}/update-status', [OrderController::class, 'statusUpdate'])->name('order.status.change');
-    Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels'])
-        ->name('order.print.labels');
-    Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
-        ->name('order.print.invioce');
-
-    Route::post('/users/update', [UserController::class, 'update']);
-    Route::post('/users/profile-photo/update', [UserController::class, 'updateProfilePhoto']);
-    Route::post('/users/change-password', [UserController::class, 'changePassword']);
-
-    Route::get('/customers', [CustomerController::class, 'show']);
-
-    Route::get('/card-list', [CardController::class, 'index']);
-    Route::post('/cards', [CardController::class, 'store']);
-
-    Route::get('/addresses', [AddressController::class, 'index']);
-    Route::post('/addresses', [AddressController::class, 'store']);
-    Route::post('/addresses/{address}', [AddressController::class, 'update']);
-    Route::delete('/addresses/{address}', [AddressController::class, 'delete']);
-
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-    Route::get('/ratings', [RatingController::class, 'index']);
-    Route::post('/ratings', [RatingController::class, 'store']);
-
-    Route::post('/contact/verify', [AuthController::class, 'mobileVerify']);
-
-    Route::get('/pick-schedules/{date}', [OrderController::class, 'pickSchedule']);
-    Route::get('/delivery-schedules/{date}', [OrderController::class, 'deliverySchedule']);
-
-    Route::post('/payments', [PaymentControllerApi::class, 'store']);
-
-    Route::get('/notifications', [NotificationsController::class, 'index']);
-    Route::post('/notifications', [NotificationsController::class, 'store']);
-    Route::post('/notifications/{notification}', [NotificationsController::class, 'update']);
-    Route::delete('/notifications/{notification}', [NotificationsController::class, 'delete']);
 });
+
 
 // access only root user.
 Route::middleware(['auth', 'role:root|visitor'])->group(function () {
