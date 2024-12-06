@@ -34,7 +34,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <div class="card-body ">
                     <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar') }}">
                         @csrf
-                        <div class="header text-center">
+                        <div class="header text-center pt-4">
                             @php
                                 $websetting = App\Models\WebSetting::first();
                             @endphp
