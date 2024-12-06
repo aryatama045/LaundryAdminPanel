@@ -34,7 +34,6 @@
                 </li>
 
                 @role('customer')
-                    @can('customer.index')
 
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
@@ -43,7 +42,6 @@
                                 <span class="nav-link-text">{{ __('Pembelian Saya') }}</span>
                             </a>
                         </li>
-
 
                         <li  class="nav-item">
                             <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }} "
@@ -80,7 +78,6 @@
                             </div>
                         </li>
 
-
                         <!-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                                 href="{{ route('garansi.index') }}">
@@ -96,7 +93,6 @@
                                 <span class="nav-link-text">{{ __('Data Klaim') }}</span>
                             </a>
                         </li> -->
-                    @endcan
                 @endrole
 
                 @can('banner.promotional')
@@ -110,6 +106,7 @@
                 @endcan
 
                 @role('root')
+
                     @can('customer.index')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
@@ -119,18 +116,18 @@
                             </a>
                         </li>
                     @endcan
+
+                    @can('order.index')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
+                                href="{{ route('order.index') }}">
+                                <i class="fa fa-shopping-cart text-orange"></i>
+                                <span class="nav-link-text">{{ __('Pembelian Customer') }}</span>
+                            </a>
+                        </li>
+                    @endcan
+
                 @endrole
-
-
-                @can('order.index')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
-                            href="{{ route('order.index') }}">
-                            <i class="fa fa-shopping-cart text-orange"></i>
-                            <span class="nav-link-text">{{ __('Pembelian Customer') }}</span>
-                        </a>
-                    </li>
-                @endcan
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
                     <li  class="nav-item">

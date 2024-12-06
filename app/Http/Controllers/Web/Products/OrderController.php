@@ -59,7 +59,7 @@ class OrderController extends Controller
 
         $notificationOrder = NotificationManage::where('name', $status)->first();
 
-        if ($order->customer->devices->count() && $notificationOrder?->is_active) {
+        if ($order->customer->devices->count() && $notificationOrder->is_active) {
 
             $message = $notificationOrder->message;
             $keys = $order->customer->devices->pluck('key')->toArray();
@@ -133,7 +133,7 @@ class OrderController extends Controller
             return redirect()->route('webSetting.index')->with('error', 'Please fullfill the web setting');
         }
 
-        if ($invoice?->type == 'pos') {
+        if ($invoice->type == 'pos') {
             return view('pdf.posIvoice', compact('quantity', 'order', 'deliveryCost', 'webSetting'));
         }
 
