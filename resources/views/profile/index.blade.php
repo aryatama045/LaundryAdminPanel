@@ -11,7 +11,7 @@
 
                             <div class="mt-3">
 
-                                    <button class="btn btn-primary" disabled>{{ __('Change_Password') }}</button>
+                                <!-- <button class="btn btn-primary" disabled>{{ __('Change_Password') }}</button> -->
 
                                 <a href="{{ route('profile.change-password') }}" class="btn btn-primary">{{ __('Change_Password') }}</a>
 
