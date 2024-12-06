@@ -29,7 +29,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-9 col-lg-9 login-form-section">
+            <div class="col-12 col-md-7 col-lg-7 login-form-section">
                 <div class="card m-3">
                     <div class="card-body ">
                     <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar') }}">
@@ -38,8 +38,8 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @php
                                 $websetting = App\Models\WebSetting::first();
                             @endphp
-                            <img class="mt-4" src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found"
-                                height="75">
+
+                            <img class="mt-4" src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found" height="75">
 
                             @error('error')
                                 {{ $message }}
@@ -47,7 +47,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                             <h3>Daftar Customer</h3>
                             <p>Silahkan lengkapi form berikut:</p>
-
                         </div>
 
                         @if (session('password'))
