@@ -33,69 +33,71 @@
                     </a>
                 </li>
 
-                @can('customer.index')
+                @role('customer')
+                    @can('customer.index')
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                            href="{{ route('garansi.index') }}">
-                            <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text"><b>{{ __('Pembelian Saya') }}</b></span>
-                        </a>
-                    </li>
-
-
-                    <li  class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }} "
-                            href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
-                            aria-controls="navbar-examples">
-                            <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text"><b>{{ __('Garansi Saya') }}</b></span>
-                        </a>
-
-                        <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
-                            id="garansi_saya">
-                            <ul class="nav nav-sm flex-column">
-                                <a class="nav-link sub-menu {{ request()->routeIs('garansi.index') ? 'active' : '' }} "
-                                    href="{{ route('garansi.index') }}" href="{{ route('garansi.index') }}">
-                                    <span class="nav-link-text">{{ __('Cek Status') }}</span>
-                                </a>
-
-                                <a class="nav-link sub-menu {{ request()->routeIs('garansi.create') ? 'active' : '' }}"
-                                    href="{{ route('garansi.create') }}" href="{{ route('garansi.create') }}">
-                                    <span class="nav-link-text">{{ __('Tambah Masa Proteksi') }}</span>
-                                </a>
-
-                                <a class="nav-link sub-menu {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
-                                    href="{{ route('klaim.index') }}" href="{{ route('klaim.index') }}">
-                                    <span class="nav-link-text">{{ __('Klaim Garansi') }}</span>
-                                </a>
-
-                                <a class="nav-link sub-menu {{ request()->routeIs('additional.*') ? 'active' : '' }}"
-                                    href="{{ route('service.index') }}" href="{{ route('service.index') }}">
-                                    <span class="nav-link-text">{{ __('Faq Garansi') }}</span>
-                                </a>
-
-                            </ul>
-                        </div>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
+                                href="{{ route('garansi.index') }}">
+                                <i class="fa fa-file text-blue"></i>
+                                <span class="nav-link-text"><b>{{ __('Pembelian Saya') }}</b></span>
+                            </a>
+                        </li>
 
 
-                    <!-- <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                            href="{{ route('garansi.index') }}">
-                            <i class="fa fa-file text-blue"></i>
-                            <span class="nav-link-text">{{ __('Data Garansi') }}</span>
-                        </a>
-                    </li>
+                        <li  class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }} "
+                                href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
+                                aria-controls="navbar-examples">
+                                <i class="fa fa-file text-blue"></i>
+                                <span class="nav-link-text"><b>{{ __('Garansi Saya') }}</b></span>
+                            </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
-                            href="{{ route('klaim.index') }}">
-                            <i class="fas fa-list text-green"></i>
-                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
-                        </a>
-                    </li> -->
-                @endcan
+                            <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
+                                id="garansi_saya">
+                                <ul class="nav nav-sm flex-column">
+                                    <a class="nav-link sub-menu {{ request()->routeIs('garansi.index') ? 'active' : '' }} "
+                                        href="{{ route('garansi.index') }}" href="{{ route('garansi.index') }}">
+                                        <span class="nav-link-text">{{ __('Cek Status') }}</span>
+                                    </a>
+
+                                    <a class="nav-link sub-menu {{ request()->routeIs('garansi.create') ? 'active' : '' }}"
+                                        href="{{ route('garansi.create') }}" href="{{ route('garansi.create') }}">
+                                        <span class="nav-link-text">{{ __('Tambah Masa Proteksi') }}</span>
+                                    </a>
+
+                                    <a class="nav-link sub-menu {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
+                                        href="{{ route('klaim.index') }}" href="{{ route('klaim.index') }}">
+                                        <span class="nav-link-text">{{ __('Klaim Garansi') }}</span>
+                                    </a>
+
+                                    <a class="nav-link sub-menu {{ request()->routeIs('additional.*') ? 'active' : '' }}"
+                                        href="{{ route('service.index') }}" href="{{ route('service.index') }}">
+                                        <span class="nav-link-text">{{ __('Faq Garansi') }}</span>
+                                    </a>
+
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
+                                href="{{ route('garansi.index') }}">
+                                <i class="fa fa-file text-blue"></i>
+                                <span class="nav-link-text">{{ __('Data Garansi') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
+                                href="{{ route('klaim.index') }}">
+                                <i class="fas fa-list text-green"></i>
+                                <span class="nav-link-text">{{ __('Data Klaim') }}</span>
+                            </a>
+                        </li> -->
+                    @endcan
+                @endrole
 
                 @can('banner.promotional')
                     <li class="nav-item">
