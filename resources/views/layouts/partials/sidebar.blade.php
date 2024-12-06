@@ -78,6 +78,14 @@
                             </div>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link sub-menu {{ request()->routeIs('profile.*') ? 'active' : '' }}"
+                                href="{{ route('profile.index') }}">
+                                <i class="fas fa-user"></i>
+                                <span class="nav-link-text">{{ __('Profile') }}</span>
+                            </a>
+                        </li>
+
                         <!-- <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                                 href="{{ route('garansi.index') }}">
