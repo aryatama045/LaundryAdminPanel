@@ -19,14 +19,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    @if ($server == '"Android"')
     <title>SMP APP</title>
-                        @else
-    <title>Log In</title>
-                        @endif
-    
-
-    
 
 </head>
 
@@ -46,17 +39,13 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 height="75">
 
                             @error('error')
-                                {{ $message }} 79789
+                                {{ $message }}
                             @enderror
 
-                        @if ($server == '"Android"')
-                            <h3>Welcome</h3>
-                        @else
+
                             <h3>Login</h3>
                             <p>This is a secure system and you will need to provide tour login detalis to access the
                                 site</p>
-                        @endif
-                            
 
                         </div>
 
@@ -97,14 +86,8 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             </div>
                         @endif
 
-                        @if ($server == '"Android"')
                             <button type="submit" class="btn btn-danger text-white w-100">Login</button>
-                        @else
-                            <button type="submit" class="btn btncustom w-100">Login</button>
-                        @endif
 
-                        
-                        
                     </form>
                 </div>
 
