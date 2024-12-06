@@ -80,13 +80,12 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
                         </div>
 
-                        @if (app()->environment('local'))
                             <div class="mb-3 d-flex justify-content-end">
                                 <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
                                     Set Admin visitor
                                 </button>
                             </div>
-                        @endif
+
 
                             <button type="submit" class="btn btn-danger text-white w-100">Login</button>
 
