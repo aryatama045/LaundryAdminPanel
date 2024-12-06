@@ -30,8 +30,8 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 col-md-9 col-lg-9 login-form-section">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card m-3">
+                    <div class="card-body ">
                     <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar') }}">
                         @csrf
                         <div class="header text-center">
