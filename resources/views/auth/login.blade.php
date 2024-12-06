@@ -91,9 +91,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
-                                <button class="setVisitorBtn " href="{{ route('daftar') }}">
+                                <a class="setVisitorBtn " href="{{ route('daftar') }}">
                                     Daftar
-                                </button>
+                                </a>
                             </div>
 
                         </div>
