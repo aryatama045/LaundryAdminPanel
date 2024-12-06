@@ -82,6 +82,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                         <button type="submit" class="btn btn-danger mb-3 text-white w-100">Login</button>
 
+                        <hr>
                         <div class="row">
                             <div class="col-6">
                                 <a class="setVisitorBtn" href="#">
