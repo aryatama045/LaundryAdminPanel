@@ -212,6 +212,45 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     });
 });
 
+Route::middleware(['auth:api', 'role:customer'])->group(function () {
+    Route::post('/coupons/{coupon:code}/apply', [CouponController::class, 'apply']);
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::put('/orders/{order}', [OrderController::class, 'update']);
+    Route::get('/orders/{id}/details', [OrderController::class, 'show']);
+
+    Route::post('/users/update', [UserController::class, 'update']);
+    Route::post('/users/profile-photo/update', [UserController::class, 'updateProfilePhoto']);
+    Route::post('/users/change-password', [UserController::class, 'changePassword']);
+
+    Route::get('/customers', [CustomerController::class, 'show']);
+
+    Route::get('/card-list', [CardController::class, 'index']);
+    Route::post('/cards', [CardController::class, 'store']);
+
+    Route::get('/addresses', [AddressController::class, 'index']);
+    Route::post('/addresses', [AddressController::class, 'store']);
+    Route::post('/addresses/{address}', [AddressController::class, 'update']);
+    Route::delete('/addresses/{address}', [AddressController::class, 'delete']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/ratings', [RatingController::class, 'index']);
+    Route::post('/ratings', [RatingController::class, 'store']);
+
+    Route::post('/contact/verify', [AuthController::class, 'mobileVerify']);
+
+    Route::get('/pick-schedules/{date}', [OrderController::class, 'pickSchedule']);
+    Route::get('/delivery-schedules/{date}', [OrderController::class, 'deliverySchedule']);
+
+    Route::post('/payments', [PaymentControllerApi::class, 'store']);
+
+    Route::get('/notifications', [NotificationsController::class, 'index']);
+    Route::post('/notifications', [NotificationsController::class, 'store']);
+    Route::post('/notifications/{notification}', [NotificationsController::class, 'update']);
+    Route::delete('/notifications/{notification}', [NotificationsController::class, 'delete']);
+});
+
 // access only root user.
 Route::middleware(['auth', 'role:root|visitor'])->group(function () {
     // Settings Routes
