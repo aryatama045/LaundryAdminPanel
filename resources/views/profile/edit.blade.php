@@ -13,7 +13,7 @@
                     <div class="card-header py-2">
                         <h3 class="m-0">{{ __('Edit').' '. __('Profile') }}</h3>
                     </div>
-                    <form @can('profile.update') action="{{ route('profile.update') }}" @endcan method="POST"
+                    <form  action="{{ route('profile.update') }}"  method="POST"
                         enctype="multipart/form-data">
                         <div class="card-body">
                             @csrf
@@ -59,9 +59,7 @@
                             <a href="{{ route('profile.index') }}" class="btn btn-danger">
                                 <i class="fa fa-arrow-left"></i> {{ __('Back') }}
                             </a>
-                            @can('profile.update')
-                                <button class="btn btn-primary @role('visitor') visitorMessage @endrole" type="submit">{{ __('Update') }}</button>
-                            @endcan
+                            <button class="btn btn-primary " type="submit">{{ __('Update') }}</button>
                         </div>
                     </form>
                 </div>
