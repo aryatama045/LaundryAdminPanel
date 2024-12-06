@@ -38,7 +38,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @php
                                 $websetting = App\Models\WebSetting::first();
                             @endphp
-                            <img src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found"
+                            <img class="mt-4" src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found"
                                 height="75">
 
                             @error('error')
