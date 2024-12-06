@@ -35,12 +35,18 @@
 
                 @can('customer.index')
 
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
+                            href="{{ route('garansi.index') }}">
+                            <span class="nav-link-text">{{ __('Pembelian Saya') }}</span>
+                        </a>
+                    </li>
+
 
                     <li  class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }} "
                             href="#garansi_saya" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
-                            <i class="fa fa-file text-blue"></i>
                             <span class="nav-link-text">{{ __('Garansi Saya') }}</span>
                         </a>
 
@@ -72,7 +78,7 @@
                     </li>
 
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
                             href="{{ route('garansi.index') }}">
                             <i class="fa fa-file text-blue"></i>
@@ -86,7 +92,7 @@
                             <i class="fas fa-list text-green"></i>
                             <span class="nav-link-text">{{ __('Data Klaim') }}</span>
                         </a>
-                    </li>
+                    </li> -->
                 @endcan
 
                 @can('banner.promotional')
