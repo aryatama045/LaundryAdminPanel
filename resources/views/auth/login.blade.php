@@ -83,17 +83,16 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <button type="submit" class="btn btn-danger mb-3 text-white w-100">Login</button>
 
                         <div class="w-100 d-flex">
-                            <div class="justify-content-start">
+                            <div class="justify-content">
                                 <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
                                     Lupa Password
                                 </button>
-                            </div>
 
-                            <div class="justify-content-end">
-                                <button class="setVisitorBtn" type="button" onclick="setVisitorCredential()">
+                                <button class="setVisitorBtn d-flex justify-content-end " type="button" onclick="setVisitorCredential()">
                                     Daftar
                                 </button>
                             </div>
+
                         </div>
 
                     </form>
