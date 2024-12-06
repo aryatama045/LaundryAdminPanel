@@ -49,6 +49,7 @@
                     <div class="card-body">
                         <form @role('root|admin')  action="{{ route('garansi.store') }}"  @endrole method="POST" enctype="multipart/form-data"> @csrf
                             <div class="row">
+                                @role('root')
                                 <!-- Select Customer -->
                                 <div class="col-12 col-md-12 mb-2">
                                     <label for="">{{ __('Select Customer') }} <strong class="text-danger">*</strong> </label>
@@ -62,6 +63,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                @endrole
 
                                 @role('customer')
 
