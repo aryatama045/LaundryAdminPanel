@@ -41,7 +41,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         <h3 class="text-bold">Sign up Success</h3>
                         <p>This is a secure system and you will need to provide tour login detalis to access the
                             site</p>
-
                     </div>
 
                     <hr>

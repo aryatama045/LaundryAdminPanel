@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminLoginRequest as LoginRequest;
 
+use App\Http\Requests\RegistrationRequest;
+
 class LoginController extends Controller
 {
     public function index()
@@ -21,9 +23,40 @@ class LoginController extends Controller
         return view('auth.daftar');
     }
 
-    public function daftar_action()
+
+    public function daftar_action(RegistrationRequest $request)
     {
-        return view('auth.daftar');
+        $user = (new UserRepository())->registerUser($request);
+        (new CustomerRepository())->storeByUser($user);
+
+        $user->update([
+            'mobile_verified_at' => now()
+        ]);
+        $user->assignRole('Customer');
+        $user->givePermissionTo('root');
+        $user->givePermissionTo('customer.index');
+        $user->givePermissionTo('customer.show');
+        $user->givePermissionTo('customer.edit');
+        $user->givePermissionTo('customer.update');
+        $user->givePermissionTo('customer.create');
+        $user->givePermissionTo('customer.store');
+
+        $user->givePermissionTo('garansi.index');
+        $user->givePermissionTo('garansi.show');
+        $user->givePermissionTo('garansi.edit');
+        $user->givePermissionTo('garansi.update');
+        $user->givePermissionTo('garansi.create');
+        $user->givePermissionTo('garansi.store');
+
+        $user->givePermissionTo('klaim.index');
+        $user->givePermissionTo('klaim.show');
+        $user->givePermissionTo('klaim.edit');
+        $user->givePermissionTo('klaim.update');
+        $user->givePermissionTo('klaim.create');
+        $user->givePermissionTo('klaim.store');
+        $user->givePermissionTo('klaim.check_validasi');
+
+        return redirect()->route('customer.index')->with('success', 'Customer create successfully');
     }
 
     public function lupa_password()

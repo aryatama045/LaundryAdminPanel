@@ -34,7 +34,7 @@ class CustomerController extends Controller
     {
         $user = (new UserRepository())->registerUser($request);
         (new CustomerRepository())->storeByUser($user);
-        
+
         $user->update([
             'mobile_verified_at' => now()
         ]);
