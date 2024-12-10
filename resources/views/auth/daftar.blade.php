@@ -56,6 +56,26 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                         @endif
 
                         <div class="row">
+                            <div class="col-12 col-md-6 mb-2">
+                                <label for="">{{ __('kode_unik') }} <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="kode_unik"
+                                    value="{{ old('kode_unik') }}" placeholder="{{ __('kode_unik') }}">
+                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" >Klik disini </a></span>
+                                @error('kode_unik')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                            <div class="col-12 col-md-6 mb-2">
+                                <label for="">{{ __('kode_customer') }} <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="kode_customer"
+                                    value="{{ old('kode_customer') }}" placeholder="{{ __('kode_customer') }}">
+                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" >Klik disini </a></span>
+                                @error('kode_customer')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
                             <div class="col-12 col-md-12 mb-2">
                                 <label for="">{{ __('Company') }} </label>
                                 <input type="text" class="form-control" name="company"

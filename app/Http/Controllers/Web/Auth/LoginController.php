@@ -31,8 +31,8 @@ class LoginController extends Controller
         (new CustomerRepository())->storeByUser($user);
 
         $user->update([
+            'email_verified_at' => now(),
             'mobile_verified_at' => now(),
-            'is_active' => false
         ]);
 
         $user->assignRole('Customer');
