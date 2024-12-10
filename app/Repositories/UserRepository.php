@@ -17,6 +17,34 @@ class UserRepository extends Repository
         return User::class;
     }
 
+    public function daftarUser(Request $request)
+    {
+        $thumbnail = null;
+        if ($request->hasFile('profile_photo')) {
+            $thumbnail = (new MediaRepository())->storeByRequest(
+                $request->profile_photo,
+                $this->path,
+                'customer images',
+                'image'
+            );
+        }
+
+        $user = $this->create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'company' => $request->company ? $request->company : null,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => Hash::make($request->password),
+            'profile_photo_id' =>  $thumbnail ? $thumbnail->id : null,
+            'driving_lience' =>$request->driving_lience,
+            'date_of_birth' =>$request->date_of_birth,
+            'is_active' => false,
+        ]);
+
+        return $user;
+    }
+
     public function registerUser(Request $request)
     {
         $thumbnail = null;

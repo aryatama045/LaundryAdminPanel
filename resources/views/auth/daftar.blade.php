@@ -66,7 +66,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             </div>
                             <div class="col-12 col-md-6 mb-2">
                                 <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="first_name"
+                                <input required type="text" class="form-control" name="first_name"
                                     value="{{ old('first_name') }}" placeholder="{{ __('First_Name') }}">
                                 @error('first_name')
                                     <span class="text-danger">{{ $message }}</span>
@@ -74,7 +74,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             </div>
                             <div class="col-12 col-md-6 mb-2">
                                 <label for="">{{ __('Last_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="last_name"
+                                <input required type="text" class="form-control" name="last_name"
                                     value="{{ old('last_name') }}" placeholder="{{ __('Last_Name') }}">
                                 @error('last_name')
                                     <span class="text-danger">{{ $message }}</span>
@@ -83,7 +83,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                             <div class="col-12 col-md-6 mb-2">
                                 <label for="">{{ __('Mobile_number') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"
+                                <input required type="text" class="form-control" name="mobile" value="{{ old('mobile') }}"
                                     placeholder="{{ __('Mobile_number') }}">
                                 @error('mobile')
                                     <span class="text-danger">{{ $message }}</span>
@@ -91,7 +91,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             </div>
                             <div class="col-12 col-md-6 mb-2">
                                 <label for="">{{ __('Email') }}</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email') }}"
+                                <input required type="text" class="form-control" name="email" value="{{ old('email') }}"
                                     placeholder="{{ __('Email') }}">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
@@ -101,7 +101,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
                                 <div class="d-flex  align-items-center inputBox">
                                     <div class="input w-100 position-relative">
-                                        <input type="password" id="password" class="form-control" name="password"
+                                        <input required type="password" id="password" class="form-control" name="password"
                                             placeholder="******">
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye-slash"></i>
@@ -116,7 +116,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('Confirm_Password') }}</label>
                                 <div class="d-flex  align-items-center inputBox">
                                     <div class="input w-100 position-relative">
-                                        <input type="password" class="form-control" name="password_confirmation"
+                                        <input required type="password" class="form-control" name="password_confirmation"
                                             placeholder="******" id="confirmPassword">
                                         <span class="eye" onclick="confirmPassword()">
                                             <i class="fa fa-eye-slash"></i>

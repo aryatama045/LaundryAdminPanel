@@ -30,8 +30,10 @@ class LoginController extends Controller
         (new CustomerRepository())->storeByUser($user);
 
         $user->update([
-            'mobile_verified_at' => now()
+            'mobile_verified_at' => now(),
+            'is_active' => false
         ]);
+
         $user->assignRole('Customer');
         $user->givePermissionTo('root');
         $user->givePermissionTo('customer.index');
@@ -57,6 +59,11 @@ class LoginController extends Controller
         $user->givePermissionTo('klaim.check_validasi');
 
         return redirect()->route('customer.index')->with('success', 'Customer create successfully');
+    }
+
+    public function daftar_sukses()
+    {
+        return view('auth.suksesDaftar');
     }
 
     public function lupa_password()
