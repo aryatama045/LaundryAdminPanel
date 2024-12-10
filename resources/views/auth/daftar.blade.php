@@ -60,7 +60,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('kode_unik') }} <strong class="text-danger">*</strong></label>
                                 <input type="text" class="form-control" name="kode_unik"
                                     value="{{ old('kode_unik') }}" placeholder="{{ __('kode_unik') }}">
-                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" >Klik disini </a></span>
+                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" class="text-danger">Klik disini </a></span>
                                 @error('kode_unik')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -70,7 +70,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('kode_customer') }} <strong class="text-danger">*</strong></label>
                                 <input type="text" class="form-control" name="kode_customer"
                                     value="{{ old('kode_customer') }}" placeholder="{{ __('kode_customer') }}">
-                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" >Klik disini </a></span>
+                                <span class="text-success">Dimana Saya Mendapatkan kode ?  <a href="#" class="text-danger">Klik disini </a></span>
                                 @error('kode_customer')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
