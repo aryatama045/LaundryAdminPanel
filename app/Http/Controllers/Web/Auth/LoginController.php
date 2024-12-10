@@ -61,7 +61,7 @@ class LoginController extends Controller
         $user->givePermissionTo('klaim.store');
         $user->givePermissionTo('klaim.check_validasi');
 
-        return redirect()->route('customer.index')->with('success', 'Customer create successfully');
+        return redirect()->route('daftar_sukses')->with('success', 'Customer create successfully');
     }
 
     public function daftar_sukses()
