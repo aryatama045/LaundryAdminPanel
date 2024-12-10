@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
+use App\Repositories\CustomerRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AdminLoginRequest as LoginRequest;
