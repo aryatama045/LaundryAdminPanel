@@ -39,15 +39,17 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             height="75">
 
                         <h3 class="text-bold">Sign up Success</h3>
-                        <p>This is a secure system and you will need to provide tour login detalis to access the
-                            site</p>
+                        <p>
+                            Pendaftaran berhasil,
+                            Silahkan Login ke Akun Anda
+                        </p>
                     </div>
 
                     <hr>
                     <div class="row">
                         <div class="col-6">
                             <a class="setVisitorBtn" href="{{ route('login') }}">
-                                Lupa Password
+                                Kembali
                             </a>
                         </div>
                     </div>
