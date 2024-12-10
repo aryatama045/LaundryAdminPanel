@@ -31,6 +31,8 @@ class LoginController extends Controller
         (new CustomerRepository())->storeByUser($user);
 
         $user->update([
+            'kode_unik' => $request->kode_unik ? $request->kode_unik : null,
+            'kode_customer' => $request->kode_customer ? $request->kode_customer : null,
             'email_verified_at' => now(),
             'mobile_verified_at' => now(),
         ]);
