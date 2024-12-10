@@ -131,7 +131,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                         </div>
 
-                        <button class="btn btn-primary w-100 mt-2  ">{{ __('Submit') }}</button>
+                        <button class="btn btn-danger w-100 mt-2  text-white">{{ __('Daftar') }}</button>
 
                         <hr>
                         <div class="row">
