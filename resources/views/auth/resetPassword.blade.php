@@ -56,7 +56,7 @@ $websetting = App\Models\WebSetting::first();
 
                             <input hidden type="text"  class="form-control" name="tokens" value="{{ $tokens }}">
 
-                            <div class="col-12 col-md-6 mb-2">
+                            <div class="col-12 col-md-12 mb-2">
                                 <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
                                 <div class="d-flex  align-items-center inputBox">
                                     <div class="input w-100 position-relative">
@@ -71,7 +71,7 @@ $websetting = App\Models\WebSetting::first();
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-12 col-md-6 mb-2">
+                            <div class="col-12 col-md-12 mb-2">
                                 <label for="">{{ __('Confirm_Password') }}</label>
                                 <div class="d-flex  align-items-center inputBox">
                                     <div class="input w-100 position-relative">
