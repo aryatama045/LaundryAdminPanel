@@ -74,8 +74,8 @@ $websetting = App\Models\WebSetting::first();
                             </div>
 
                             <div class="col-12 col-md-12 mb-2">
-                                <label for="">{{ __('Company') }} </label>
-                                <input type="text" class="form-control" name="company"
+                                <label for="">{{ __('Nama Perusahaan') }} <strong class="text-danger">*</strong></label>
+                                <input required type="text" class="form-control" name="company"
                                     value="{{ old('company') }}" placeholder="{{ __('Company') }}">
                                 @error('company')
                                     <span class="text-danger">{{ $message }}</span>
