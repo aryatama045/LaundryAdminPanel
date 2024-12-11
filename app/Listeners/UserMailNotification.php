@@ -27,9 +27,9 @@ class UserMailNotification
      */
     public function handle(UserMailEvent $event)
     {
-        dd($event);
-        if (env('MAIL_USERNAME') && env('MAIL_PASSWORD')) {
+        // dd($event);
+        // if (env('MAIL_USERNAME') && env('MAIL_PASSWORD')) {
             Mail::to($event->user->email)->send(new mailSend($event->user, $event->otp));
-        }
+        // }
     }
 }
