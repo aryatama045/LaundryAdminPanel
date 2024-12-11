@@ -8,8 +8,8 @@
 </head>
 <body>
    <div style="text-align: center; padding: 20px">
-    <h4> Hello, {{ $user->name }} . Your reset password otp is- </h4>
-    <h1>{{ $otp }}</h1>
+    <h4> Hello, {{ $user->name }} . Success Your registrasi </h4>
+    <h1></h1>
    </div>
 </body>
 </html>
