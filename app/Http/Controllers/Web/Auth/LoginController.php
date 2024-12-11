@@ -12,6 +12,8 @@ use App\Events\DaftarMailEvent;
 use App\Http\Requests\AdminLoginRequest as LoginRequest;
 
 use App\Events\UserMailEvent;
+use App\Events\ForgotPasswordEvent;
+
 use App\Repositories\SMS;
 use Illuminate\Http\Response;
 use App\Http\Requests\ResetPasswordRequest;
@@ -115,11 +117,11 @@ class LoginController extends Controller
         $message = 'Hello '. $user->name . '. Your password reset OTP is '. $verificationCode->otp ;
 
         // (new SMS())->sendSms($mobile, $message);
-        UserMailEvent::dispatch($user, $verificationCode->otp);
+
+        ForgotPasswordEvent::dispatch($user, $verificationCode->otp);
 
         #todo create an event send
         return redirect()->route('login')->with('success', 'Success send Code Verification to your email');
-
 
     }
 
