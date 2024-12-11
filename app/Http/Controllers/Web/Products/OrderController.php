@@ -159,10 +159,12 @@ class OrderController extends Controller
 
         $array= Excel::toArray(new BarangImport, $file);
 
-        dd($array);
+
 
         $data = [];
         foreach($array as $key => $val){
+
+
 
             foreach ($val as $key2 => $val2){
 
@@ -199,20 +201,9 @@ class OrderController extends Controller
                     $satuan_id      = null;
                 }
 
-                $product        = BarangModel::firstOrNew([ 'barang_nama'=>$val2['name'] ]);
-
-                if($val2['image'])
-                    $product->barang_gambar = $val2['image'];
-                else
-                    $product->barang_gambar = 'image.png';
+                $product        = BarangModel::create();
 
 
-                $random = Str::random(13);
-
-                $codeProduct = 'BRG-'.$random;
-                $slug_barang = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $val2['name'])));
-
-                $product->barang_kode       = $codeProduct;
                 $product->barang_nama       = $val2['name'];
                 $product->barang_slug       = $slug_barang;
                 $product->jenisbarang_id    = $jenis_id;
