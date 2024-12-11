@@ -2,6 +2,8 @@
 @php
 
 $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
+
+$websetting = App\Models\WebSetting::first();
 @endphp
 
 <!doctype html>
@@ -35,10 +37,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar') }}">
                         @csrf
                         <div class="header text-center pt-4">
-                            @php
-                                $websetting = App\Models\WebSetting::first();
-                            @endphp
-
                             <img class="mt-4" src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found" height="75">
 
                             @error('error')
@@ -168,11 +166,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
             </div>
 
-            <!-- <div class="col-12 col-md-6 d-none d-md-block"
-                style="background: url({{ asset('web/bg/login.jpg') }});overflow: hidden;
-            background-size: cover;
-            background-position: center;">
-            </div> -->
         </div>
     </div>
 
@@ -190,7 +183,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             </div>
             <div class="modal-body">
                 <h2> Silahkan Hubungi Admin untuk mendapatkan kode unik <br>
-                    Hubungi Wa: +628XXXX <br>
+                    Hubungi Wa: {{$websetting->mobile}} <br>
                     <a href=""> Klik Disini Hubungi WA Admin</a>
                 </h2>
             </div>
@@ -214,8 +207,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             </div>
             <div class="modal-body">
                 <h2> Silahkan Hubungi Admin untuk mendapatkan kode unik <br>
-                    Hubungi Wa: +628XXXX <br>
-                    <a href=""> Klik Disini Hubungi WA Admin</a>
+                    Hubungi Wa: {{$websetting->mobile}} <br>
+                    <a href="https://api.whatsapp.com/send?phone={{$websetting->mobile}}&text=Hallo%20admin%2C%20saya%20ingin%20mendapatkan%20kode%20unik%20%3F"
+                        target="_blank" class="text-success">
+                        Klik Disini WA Admin</a>
                 </h2>
             </div>
 
