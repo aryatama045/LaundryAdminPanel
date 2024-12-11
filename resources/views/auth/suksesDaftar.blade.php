@@ -21,6 +21,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
     <title>SMP APP</title>
 
 </head>
@@ -60,6 +61,43 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         </div>
     </div>
 
+    <script src="{{ asset('web/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('web/js/popper.js') }}"></script>
+    <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
+    <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('web/js/toastr.min.js') }}"></script>
+    @if (session('success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session('success') }}'
+            })
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: '{{ session('error') }}',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+    @endif
 </body>
 
 </html>

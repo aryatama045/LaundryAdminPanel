@@ -55,7 +55,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/daftar', [LoginController::class, 'daftar'])->name('daftar');
-Route::post('/daftar', [LoginController::class, 'daftar_action'])->name('daftar');
+Route::post('/daftar_action', [LoginController::class, 'daftar_action'])->name('daftar_action');
 
 Route::get('/daftar_sukses', [LoginController::class, 'daftar_sukses'])->name('daftar_sukses');
 

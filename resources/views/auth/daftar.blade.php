@@ -34,7 +34,7 @@ $websetting = App\Models\WebSetting::first();
             <div class="col-12 col-md-7 col-lg-7 login-form-section">
                 <div class="card m-3">
                     <div class="card-body ">
-                    <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar') }}">
+                    <form role="form" class="pui-form" id="loginform" method="POST" action="{{ route('daftar_action') }}">
                         @csrf
                         <div class="header text-center pt-4">
                             <img class="mt-4" src="{{ $websetting->websiteLogoPath ?? asset('web/logo.png') }}" alt="not found" height="75">
