@@ -64,6 +64,10 @@ Route::post('/lupa_password_action', [LoginController::class, 'lupa_password_act
 
 Route::get('/verifyOtp/{token}/verify', [LoginController::class, 'verifyOtp'])->name('verifyOtp');
 
+
+Route::post('/reset_password_action', [LoginController::class, 'reset_password_action'])->name('reset_password_action');
+
+
 Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('root');
 

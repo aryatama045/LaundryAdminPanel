@@ -209,18 +209,14 @@ class LoginController extends Controller
 
     }
 
-    public function resetPassword(ResetPasswordRequest $request)
+    public function reset_password_action(ResetPasswordRequest $request)
     {
         $verifyCode = $this->verificationCodeRepo->checkByToken($request->token);
 
-        if (!$verifyCode) {
-            return $this->json('Invalid token', [], Response::HTTP_BAD_REQUEST);
-        }
-
-        $user = $this->userRepo->findByContact($verifyCode->contact);
+        $user = $this->userRepo->findByContact($verifyCode->email);
 
         if (!$user) {
-            return $this->json('Sorry! No user found with this contact.', [], Response::HTTP_BAD_REQUEST);
+            return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
         }
 
         $user->update([
@@ -229,6 +225,6 @@ class LoginController extends Controller
 
         $verifyCode->delete();
 
-        return $this->json('Password reset successfully!');
+        return redirect()->route('login')->with('success', 'Password reset successfully!');
     }
 }
