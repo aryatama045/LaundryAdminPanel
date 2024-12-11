@@ -184,7 +184,9 @@ $websetting = App\Models\WebSetting::first();
             <div class="modal-body">
                 <h2> Silahkan Hubungi Admin untuk mendapatkan kode unik <br>
                     Hubungi Wa: {{$websetting->mobile}} <br>
-                    <a href=""> Klik Disini Hubungi WA Admin</a>
+                    <a href="https://api.whatsapp.com/send?phone={{$websetting->mobile}}&text=Hallo%20admin%2C%20saya%20ingin%20mendapatkan%20kode%20unik%20%3F"
+                        target="_blank" class="text-success">
+                        Klik Disini WA Admin</a>
                 </h2>
             </div>
 
@@ -206,9 +208,9 @@ $websetting = App\Models\WebSetting::first();
                 </button>
             </div>
             <div class="modal-body">
-                <h2> Silahkan Hubungi Admin untuk mendapatkan kode unik <br>
+                <h2> Silahkan Hubungi Admin untuk mendapatkan kode customer <br>
                     Hubungi Wa: {{$websetting->mobile}} <br>
-                    <a href="https://api.whatsapp.com/send?phone={{$websetting->mobile}}&text=Hallo%20admin%2C%20saya%20ingin%20mendapatkan%20kode%20unik%20%3F"
+                    <a href="https://api.whatsapp.com/send?phone={{$websetting->mobile}}&text=Hallo%20admin%2C%20saya%20ingin%20mendapatkan%20kode%20customer%20%3F"
                         target="_blank" class="text-success">
                         Klik Disini WA Admin</a>
                 </h2>
