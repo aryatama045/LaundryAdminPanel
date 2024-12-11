@@ -89,8 +89,6 @@ class LoginController extends Controller
     {
         $contact = $request->email;
 
-        dd($request, $contact);
-
         $user = $this->userRepo->findByContact($contact);
 
         if (!$user) {
