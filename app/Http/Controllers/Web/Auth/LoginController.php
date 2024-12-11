@@ -120,6 +120,7 @@ class LoginController extends Controller
         #todo create an event send
         return redirect()->route('login')->with('success', 'Success send Code Verification to your email');
 
+
     }
 
     public function login(LoginRequest $loginRequest)
