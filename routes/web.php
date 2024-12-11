@@ -219,6 +219,9 @@ Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels
 Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
     ->name('order.print.invioce');
 
+//Order Imports
+Route::post('/orders/imports', [OrderController::class, 'imports']);
+
 //INcomplete Order Route
 Route::get('/orders-incomplete', [OrderController::class, 'index'])->name('orderIncomplete.index');
 Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name('orderIncomplete.paid');
