@@ -87,7 +87,9 @@ class LoginController extends Controller
 
     public function lupa_password_action(ForgotPasswordRequest $request)
     {
-        $contact = $request->contact;
+        $contact = $request->email;
+
+        dd($request, $contact);
 
         $user = $this->userRepo->findByContact($contact);
 
