@@ -8,20 +8,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class mailSend extends Mailable
+class daftarMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
-    public $otp;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $otp)
+    public function __construct($user)
     {
         $this->user = $user;
-        $this->otp = $otp;
     }
 
     /**
@@ -32,7 +30,7 @@ class mailSend extends Mailable
     public function build()
     {
 
-        return $this->subject('One Time Password (OTP)')
-                    ->view('mail.sendMail',['user' => $this->user,'otp'=>$this->otp]);
+        return $this->subject('Registrasi Success')
+                    ->view('mail.daftarMail',['user' => $this->user]);
     }
 }
