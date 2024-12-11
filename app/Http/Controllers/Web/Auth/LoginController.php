@@ -83,7 +83,9 @@ class LoginController extends Controller
         $user->givePermissionTo('klaim.store');
         $user->givePermissionTo('klaim.check_validasi');
 
-        DaftarMailEvent::dispatch($user);
+        // DaftarMailEvent::dispatch($user);
+
+        UserMailEvent::dispatch($user, '');
 
         return redirect()->route('daftar_sukses')->with('success', 'Customer create successfully');
     }
