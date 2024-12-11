@@ -187,9 +187,11 @@ class LoginController extends Controller
 
 
 
-    public function verifyOtp(ForgotPasswordOtpVerifyRequest $request)
+    public function verifyOtp(ForgotPasswordOtpVerifyRequest $request, $token)
     {
         // $mobile = formatMobile($request->mobile);
+
+        dd($token);
         $contact = $request->contact;
 
         $user = $this->userRepo->findByContact($contact);
