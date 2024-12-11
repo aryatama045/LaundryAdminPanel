@@ -23,6 +23,19 @@ use App\Http\Requests\RegistrationRequest;
 
 class LoginController extends Controller
 {
+    /**
+     * @var VerificationCodeRepository
+     */
+    private $verificationCodeRepo;
+
+    private $userRepo;
+
+    public function __construct(VerificationCodeRepository $verificationCodeRepo, UserRepository $userRepo)
+    {
+        $this->verificationCodeRepo = $verificationCodeRepo;
+        $this->userRepo = $userRepo;
+    }
+
     public function index()
     {
         return view('auth.login');
@@ -90,6 +103,8 @@ class LoginController extends Controller
         $contact = $request->email;
 
         $user = $this->userRepo->findByContact($contact);
+
+        dd($user);
 
         if (!$user) {
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this contact.');
