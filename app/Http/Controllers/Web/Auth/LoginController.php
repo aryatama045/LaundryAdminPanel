@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Events\DaftarMailEvent;
 use App\Http\Requests\AdminLoginRequest as LoginRequest;
 
+use App\Models\WebSetting;
+
 use App\Events\UserMailEvent;
 use App\Events\ForgotPasswordEvent;
 
@@ -117,7 +119,7 @@ class LoginController extends Controller
         $message = 'Hello '. $user->name . '. Your password reset OTP is '. $verificationCode->otp ;
 
         // (new SMS())->sendSms($mobile, $message);
-        $setting = App\Models\WebSetting::first();
+        $setting = WebSetting::first();
 
         ForgotPasswordEvent::dispatch($setting, $user, $verificationCode->token);
 
