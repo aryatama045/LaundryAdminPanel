@@ -33,7 +33,7 @@
         <div style="margin-top: 40px">
 
             <div style="background: #F5F5F4;padding: 16px 8px 16px 16px;">
-                <span> <a href="https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }}">https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }} </a></span>
+                <span> <a href="https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }}/verify">https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }} </a></span>
             </div>
 
             <div style=" padding: 16px 8px; display: block;">
@@ -42,7 +42,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <a href="https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }}" target="_blank" style="width: 240px; padding: 16px 0;color: #fff; margin: auto; background: #00B894;text-decoration: none; font-size: 16px;border-radius: 4px; display: block">
+                <a href="https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }}/verify" target="_blank" style="width: 240px; padding: 16px 0;color: #fff; margin: auto; background: #00B894;text-decoration: none; font-size: 16px;border-radius: 4px; display: block">
                     Reset Password
                 </a>
             </div>

@@ -12,6 +12,7 @@ use App\Events\DaftarMailEvent;
 use App\Http\Requests\AdminLoginRequest as LoginRequest;
 
 use App\Models\WebSetting;
+use App\Models\VerificationCode;
 
 use App\Events\UserMailEvent;
 use App\Events\ForgotPasswordEvent;
@@ -191,7 +192,13 @@ class LoginController extends Controller
     {
         // $mobile = formatMobile($request->mobile);
 
+        $getUser = VerificationCode::where('token', $token)->get();
         dd($token);
+        if (!$getUser) {
+            return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this contact.');
+        }
+        $verificationCode = $this->verificationCodeRepo->checkCode($request->contact, $request->otp);
+
         $contact = $request->contact;
 
         $user = $this->userRepo->findByContact($contact);
@@ -200,7 +207,7 @@ class LoginController extends Controller
             return $this->json('Sorry! No user found with this contact.', [], Response::HTTP_BAD_REQUEST);
         }
 
-        $verificationCode = $this->verificationCodeRepo->checkCode($request->contact, $request->otp);
+
 
         if (!$verificationCode){
             return $this->json('Invalid OTP', [], Response::HTTP_BAD_REQUEST);
