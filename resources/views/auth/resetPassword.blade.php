@@ -54,7 +54,7 @@ $websetting = App\Models\WebSetting::first();
 
                         <div class="row">
 
-                            <input hidden type="text"  class="form-control" name="tokens" value="{{ $tokens }}">
+                            <input hidden type="text"  class="form-control" name="token" value="{{ $tokens }}">
 
                             <div class="col-12 col-md-12 mb-2">
                                 <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
