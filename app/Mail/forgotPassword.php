@@ -32,7 +32,7 @@ class forgotPassword extends Mailable
     public function build()
     {
 
-        return $this->subject('Success')
+        return $this->subject('Forgot-Password')
                     ->view('mail.forgotPassword',['user' => $this->user,'otp'=>$this->otp]);
     }
 }
