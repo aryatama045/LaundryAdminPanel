@@ -193,29 +193,20 @@ class LoginController extends Controller
         // $mobile = formatMobile($request->mobile);
 
         $getUser = VerificationCode::where('token', $token)->get();
-        dd($token);
+        dd($token, $getUser);
         if (!$getUser) {
-            return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this contact.');
-        }
-        $verificationCode = $this->verificationCodeRepo->checkCode($request->contact, $request->otp);
-
-        $contact = $request->contact;
-
-        $user = $this->userRepo->findByContact($contact);
-
-        if (!$user) {
-            return $this->json('Sorry! No user found with this contact.', [], Response::HTTP_BAD_REQUEST);
+            return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
         }
 
-
+        $verificationCode = $this->verificationCodeRepo->checkCode($getUser->email, $request->otp);
 
         if (!$verificationCode){
-            return $this->json('Invalid OTP', [], Response::HTTP_BAD_REQUEST);
+            return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
         }
 
-        return $this->json('Otp matched successfully!', [
-            'token' => $verificationCode->token
-        ]);
+        $tokens = $verificationCode->token;
+        return view('auth.resetPassword', compact('tokens'));
+
     }
 
     public function resetPassword(ResetPasswordRequest $request)
