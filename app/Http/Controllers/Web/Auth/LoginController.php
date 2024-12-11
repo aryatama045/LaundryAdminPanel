@@ -196,7 +196,6 @@ class LoginController extends Controller
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
         }
 
-        dd($getUser);
         $verificationCode = $this->verificationCodeRepo->checkCode($getUser->contact, $getUser->otp);
 
         if (!$verificationCode){
