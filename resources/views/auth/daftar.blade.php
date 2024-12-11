@@ -227,6 +227,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 </div>
 
 <script src="{{ asset('web/js/jquery.min.js') }}"></script>
+<script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
 
 <script>
     function showHidePassword() {
