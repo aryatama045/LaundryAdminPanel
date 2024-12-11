@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Events\OrderMailEvent;
 use App\Events\UserMailEvent;
+use App\Events\ForgotPasswordEvent;
+
 use App\Listeners\OrderMailNotification;
 use App\Listeners\UserMailNotification;
 use Illuminate\Auth\Events\Registered;
@@ -24,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserMailEvent::class => [
             UserMailNotification::class
+        ],
+        ForgotPasswordEvent::class => [
+            ForgotPasswordNotification::class
         ],
 
         OrderMailEvent::class => [
