@@ -117,8 +117,9 @@ class LoginController extends Controller
         $message = 'Hello '. $user->name . '. Your password reset OTP is '. $verificationCode->otp ;
 
         // (new SMS())->sendSms($mobile, $message);
+        $setting = App\Models\WebSetting::first();
 
-        ForgotPasswordEvent::dispatch($user, $verificationCode->otp);
+        ForgotPasswordEvent::dispatch($setting, $user, $verificationCode->token);
 
         #todo create an event send
         return redirect()->route('login')->with('success', 'Success send Code Verification to your email');

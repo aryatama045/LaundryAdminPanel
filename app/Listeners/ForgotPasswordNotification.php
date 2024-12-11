@@ -29,7 +29,7 @@ class ForgotPasswordNotification
     {
         // dd($event);
         // if (env('MAIL_USERNAME') && env('MAIL_PASSWORD')) {
-            Mail::to($event->user->email)->send(new forgotPassword($event->user, $event->otp));
+            Mail::to($event->user->email)->send(new forgotPassword($event->setting, $event->user, $event->otp));
         // }
     }
 }

@@ -10,15 +10,18 @@ use Illuminate\Queue\SerializesModels;
 class ForgotPasswordEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $setting;
     public $user;
     public $otp;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user, $otp)
+    public function __construct($setting, $user, $otp)
     {
+        $this->setting = $setting;
         $this->user = $user;
         $this->otp = $otp;
     }
