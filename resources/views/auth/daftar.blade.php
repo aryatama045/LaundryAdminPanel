@@ -60,7 +60,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('Kode Unik') }} </label>
                                 <input type="text" class="form-control" name="kode_unik"
                                     value="{{ old('kode_unik') }}" placeholder="{{ __('Kode Unik') }}">
-                                <span class="text-success">Dimana Saya Mendapatkan kode? <a href="#" class="text-danger">Klik disini </a></span>
+                                <span class="text-success">Dimana Saya Mendapatkan kode? <a href="#kode_unik" data-toggle="modal" class="text-danger">Klik disini </a></span>
                                 @error('kode_unik')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -69,7 +69,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 <label for="">{{ __('Kode Customer') }} </label>
                                 <input type="text" class="form-control" name="kode_customer"
                                     value="{{ old('kode_customer') }}" placeholder="{{ __('Kode Customer') }}">
-                                <span class="text-success">Dimana Saya Mendapatkan kode? <a href="#" class="text-danger">Klik disini </a></span>
+                                <span class="text-success">Dimana Saya Mendapatkan kode? <a href="#kode_unik" data-toggle="modal" class="text-danger">Klik disini </a></span>
                                 @error('kode_customer')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -175,45 +175,75 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             </div> -->
         </div>
     </div>
-    <script>
-        function showHidePassword() {
-            const toggle = document.getElementById("togglePassword");
-            const password = document.getElementById("password");
 
-            // toggle the type attribute
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            // toggle the icon
-            toggle.classList.toggle("fa-eye-slash");
+
+<!-- Modal -->
+<div class="modal fade" id="kode_unik">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Support Admin </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2> Silahkan Hubungi Admin untuk mendapatkan kode unik <br>
+                    Hubungi Wa: +628XXXX <br>
+                    <a href=""> Klik Disini Hubungi WA Admin</a>
+                </h2>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function showHidePassword() {
+        const toggle = document.getElementById("togglePassword");
+        const password = document.getElementById("password");
+
+        // toggle the type attribute
+        const type = password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        // toggle the icon
+        toggle.classList.toggle("fa-eye-slash");
+    }
+
+    const setVisitorCredential = function() {
+        var password = document.getElementById("password");
+        var email = document.getElementById("email");
+
+        email.value = 'visitor@laundry.com';
+        password.value = 'secret@123';
+    }
+
+
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
+    }
 
-        const setVisitorCredential = function() {
-            var password = document.getElementById("password");
-            var email = document.getElementById("email");
-
-            email.value = 'visitor@laundry.com';
-            password.value = 'secret@123';
+    function confirmPassword() {
+        var x = document.getElementById("confirmPassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
+    }
+</script>
 
 
-        function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-
-        function confirmPassword() {
-            var x = document.getElementById("confirmPassword");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
 
 
 </body>

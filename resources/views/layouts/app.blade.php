@@ -236,7 +236,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
     @if($server == '"Android"')
-    <nav class="mobile-bottom-nav ">
+    <nav hidden class="mobile-bottom-nav ">
 
         <a class="mobile-bottom-nav__item {{ request()->routeIs('root') ? 'mobile-bottom-nav__item--active' : '' }}"
             href="{{ route('root') }}">
