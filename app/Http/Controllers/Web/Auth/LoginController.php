@@ -207,7 +207,7 @@ class LoginController extends Controller
 
     }
 
-    public function reset_password_action(ResetPasswordRequest $request)
+    public function reset_password_action(Request $request)
     {
         dd($request);
         $verifyCode = $this->verificationCodeRepo->checkByToken($request->token);
