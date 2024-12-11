@@ -85,7 +85,7 @@ class LoginController extends Controller
 
         // DaftarMailEvent::dispatch($user);
 
-        UserMailEvent::dispatch($user, '');
+        UserMailEvent::dispatch($user, 'Sukses');
 
         return redirect()->route('daftar_sukses')->with('success', 'Customer create successfully');
     }
