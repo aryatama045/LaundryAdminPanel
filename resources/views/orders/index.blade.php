@@ -4,6 +4,21 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12">
+                <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item ml-2 mr-md-0">
+                        <a class="btn btn-info" data-effect="effect-super-scaled"
+                            data-toggle="modal" href="#modal_import">
+                            <i class="fa fa-upload"></i> Import
+                        </a>
+                    </li>
+                    @can('product.create')
+                    <li class="nav-item ml-2 mr-md-0">
+                        <a href="{{ route('product.create') }}" class="btn btn-primary">
+                            {{__('Add_New').' '.__('Product')}}
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
                 <div class="card">
                     <div class="card-header py-2 d-flex align-items-center justify-content-between">
                         <h2 class="card-title m-0">
