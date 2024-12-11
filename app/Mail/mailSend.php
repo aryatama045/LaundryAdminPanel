@@ -32,7 +32,7 @@ class mailSend extends Mailable
     public function build()
     {
 
-        return $this->subject('One Time Password (OTP)')
+        return $this->subject('Success')
                     ->view('mail.sendMail',['user' => $this->user,'otp'=>$this->otp]);
     }
 }
