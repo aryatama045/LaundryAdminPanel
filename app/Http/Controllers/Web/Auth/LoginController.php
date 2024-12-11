@@ -212,8 +212,6 @@ class LoginController extends Controller
 
         $verifyCode = $this->verificationCodeRepo->checkByToken($request->token);
 
-        dd($verifyCode);
-
         $user = $this->userRepo->findByContact($verifyCode->contact);
 
         if (!$user) {
