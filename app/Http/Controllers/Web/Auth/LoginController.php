@@ -190,15 +190,13 @@ class LoginController extends Controller
 
     public function verifyOtp($token)
     {
-        // $mobile = formatMobile($request->mobile);
-
         $getUser = VerificationCode::where('token', $token)->get();
-        dd($token, $getUser);
+
         if (!$getUser) {
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
         }
 
-        $verificationCode = $this->verificationCodeRepo->checkCode($getUser->email, $request->otp);
+        $verificationCode = $this->verificationCodeRepo->checkCode($getUser->contact, $request->otp);
 
         if (!$verificationCode){
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
@@ -213,7 +211,7 @@ class LoginController extends Controller
     {
         $verifyCode = $this->verificationCodeRepo->checkByToken($request->token);
 
-        $user = $this->userRepo->findByContact($verifyCode->email);
+        $user = $this->userRepo->findByContact($verifyCode->contact);
 
         if (!$user) {
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this verify token.');
