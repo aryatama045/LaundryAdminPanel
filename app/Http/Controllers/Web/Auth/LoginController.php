@@ -104,8 +104,6 @@ class LoginController extends Controller
 
         $user = $this->userRepo->findByContact($contact);
 
-        dd($user);
-
         if (!$user) {
             return redirect()->route('lupa_password')->with('error', 'Sorry! No user found with this contact.');
         }
