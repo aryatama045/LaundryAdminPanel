@@ -84,6 +84,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('web/js/toastr.min.js') }}"></script>
     @if (session('success'))
         <script>
             const Toast = Swal.mixin({
