@@ -44,14 +44,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                                 {{ $message }}
                             @enderror
 
-
                             <h3>Forgot Password</h3>
                             <p>This is a secure system and you will need to provide tour login detalis to access the
                                 site</p>
-
                         </div>
-
-
                         <div class="inputBox">
                             <input type="text" id="email" name="email"
                                 class="form-control inputfield @error('email') is-invalid @enderror"
@@ -61,12 +57,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                             @enderror
                         </div>
 
-
                         <button type="submit" class="btn btn-danger text-white w-100">Send Forgot Password</button>
 
-                        <hr>
                     </form>
 
+                    <hr>
                     <div class="row">
                         <div class="col-6">
                             <a class="setVisitorBtn" href="{{ route('login') }}">
@@ -78,11 +73,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
             </div>
 
-            <!-- <div class="col-12 col-md-6 d-none d-md-block"
-                style="background: url({{ asset('web/bg/login.jpg') }});overflow: hidden;
-            background-size: cover;
-            background-position: center;">
-            </div> -->
         </div>
     </div>
 

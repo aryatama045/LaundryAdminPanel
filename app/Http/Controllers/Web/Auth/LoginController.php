@@ -85,7 +85,7 @@ class LoginController extends Controller
         return view('auth.lupaPassword');
     }
 
-    public function lupa_password_action(ForgotPasswordRequest $request)
+    public function lupa_password_action(Request $request)
     {
         $contact = $request->email;
 
