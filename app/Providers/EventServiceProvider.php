@@ -6,8 +6,11 @@ use App\Events\OrderMailEvent;
 use App\Events\UserMailEvent;
 use App\Events\ForgotPasswordEvent;
 
+
 use App\Listeners\OrderMailNotification;
 use App\Listeners\UserMailNotification;
+use App\Listeners\ForgotPasswordNotification;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
