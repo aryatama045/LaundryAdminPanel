@@ -62,6 +62,8 @@ Route::get('/daftar_sukses', [LoginController::class, 'daftar_sukses'])->name('d
 Route::get('/lupa_password', [LoginController::class, 'lupa_password'])->name('lupa_password');
 Route::post('/lupa_password_action', [LoginController::class, 'lupa_password_action'])->name('lupa_password_action');
 
+Route::get('/verifyOtp', [LoginController::class, 'verifyOtp'])->name('verifyOtp');
+
 Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('root');
 

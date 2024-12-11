@@ -182,6 +182,8 @@ class LoginController extends Controller
         ]);
     }
 
+
+
     public function verifyOtp(ForgotPasswordOtpVerifyRequest $request)
     {
         // $mobile = formatMobile($request->mobile);
