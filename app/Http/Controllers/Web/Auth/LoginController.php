@@ -187,7 +187,7 @@ class LoginController extends Controller
 
 
 
-    public function verifyOtp(ForgotPasswordOtpVerifyRequest $request, $token)
+    public function verifyOtp($token)
     {
         // $mobile = formatMobile($request->mobile);
 
