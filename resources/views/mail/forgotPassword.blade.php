@@ -33,7 +33,7 @@
         <div style="margin-top: 40px">
 
             <div style="background: #F5F5F4;padding: 16px 8px 16px 16px;">
-                <span> <a href="">{{ url() }} </a></span>
+                <span> <a href="https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }}">https://smp.suryametalindoparts.com/verifyOtp/{{ $otp }} </a></span>
             </div>
 
             <div style=" padding: 16px 8px; display: block;">
