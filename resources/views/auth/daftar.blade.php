@@ -177,6 +177,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     </div>
 
 
+
 <!-- Modal -->
 <div class="modal fade" id="kode_unik">
     <div class="modal-dialog">
@@ -201,7 +202,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     </div>
 </div>
 
-
+<script src="{{ asset('web/js/jquery.min.js') }}"></script>
 
 <script>
     function showHidePassword() {
