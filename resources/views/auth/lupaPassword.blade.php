@@ -21,6 +21,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
     <title>SMP APP</title>
 
 </head>
@@ -76,6 +77,13 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         </div>
     </div>
 
+
+
+
+    <script src="{{ asset('web/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('web/js/popper.js') }}"></script>
+    <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
+    <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     @if (session('success'))
         <script>
             const Toast = Swal.mixin({
@@ -108,6 +116,8 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             })
         </script>
     @endif
+
+    @stack('scripts')
 
 </body>
 
