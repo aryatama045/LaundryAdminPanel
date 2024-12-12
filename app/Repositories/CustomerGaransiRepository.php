@@ -45,7 +45,8 @@ class CustomerGaransiRepository extends Repository
             $cstid = $cst->id;
 
             $garansis = $garansis->whereHas('orders', function ($orders) use ($searchKey) {
-                $orders->where('customer_id', '', $userid)
+                $userid = auth()->user()->id;
+                $orders->where('customer_id', '=', $userid)
                     ->orWhere('nomor_nota', 'like', "%{$searchKey}%")
                     ->orWhere('tanggal_nota', 'like', "%{$searchKey}%");
             });
