@@ -25,7 +25,7 @@ class CustomerGaransis extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'order_id');
+        return $this->belongsTo(Order::class, 'order_id');
     }
 
     public function bukti_foto()
