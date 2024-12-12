@@ -126,20 +126,23 @@ class OrderRepository extends Repository
 
     public function getSortedByRequest(Request $request)
     {
-        $status = $request->status;
+
         $searchKey = $request->search;
 
         $orders = $this->model()::query();
 
-        if ($status) {
-            $status = config('enums.order_status.' . $status);
+        $customer = auth()->user()->customer;
 
-            $orders = $orders->where('order_status', $status);
+        dd($customer);
+
+        if('customer') {
+            $orders = $orders->where('customer_id', $customer->id);
         }
+
 
         if ($searchKey) {
             $orders = $orders->where(function ($query) use ($searchKey) {
-                $query->orWhere('order_code', 'like', "%{$searchKey}%")
+                $query->orWhere('nama_customer', 'like', "%{$searchKey}%")
                     ->orWhereHas('customer', function ($customer) use ($searchKey) {
                         $customer->whereHas('user', function ($user) use ($searchKey) {
                             $user->where('first_name', $searchKey)
