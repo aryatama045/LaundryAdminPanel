@@ -168,19 +168,19 @@ class OrderController extends Controller
 
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
 
-                dd($tanggal_nota, $val2);
+                $data_order = array(
+                    'nomor_nota'        => $val2['nomor_nota'],
+                    'tanggal_nota'      => $tanggal_nota,
+                    'nama_customer'     => $val2['nama_customer'],
+                    'nama_barang'       => $val2['nama_barang'],
+                    'qty'               => $val2['qty'],
+                    'satuan'            => $val2['satuan'],
+                    'part_number'       => $val2['part_number']
+                );
 
-                $order->nomor_nota        = $val2['nomor_nota'];
-                $order->tanggal_nota      = $tanggal_nota;
-                $order->nama_customer     = $val2['nama_customer'];
-                $order->nama_barang       = $val2['nama_barang'];
-                $order->qty               = $val2['qty'];
-                $order->satuan            = $val2['satuan'];
-                $order->part_number       = $val2['part_number'];
+                // $order->save();
 
-                $order->save();
-
-                array_push($data, $order);
+                array_push($data, $data_order);
 
             }
 
