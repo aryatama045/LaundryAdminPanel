@@ -160,13 +160,7 @@ class OrderController extends Controller
         $array= Excel::toArray(new BarangImport, $file);
 
         $data = [];
-        foreach($array as $key => $val){
-
-            dd($val);
-
-            foreach ($val as $key2 => $val2){
-
-
+        foreach($array as $key => $val2){
 
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
 
@@ -181,8 +175,6 @@ class OrderController extends Controller
                 $order->save();
 
                 array_push($data, $order);
-
-            }
 
         }
         dd($data);
