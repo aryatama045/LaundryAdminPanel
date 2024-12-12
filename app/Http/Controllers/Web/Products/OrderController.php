@@ -160,7 +160,7 @@ class OrderController extends Controller
         $array= Excel::toArray(new BarangImport, $file);
 
         $data = [];
-        foreach($array as $key => $val2){
+        foreach($array as $key => $val){
 
 
 
