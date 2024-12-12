@@ -42,7 +42,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                        <tr class="{{ $order->customer_id ? '' : 'bg-color' }}">
+                                        <tr class="bg-color">
                                             <td class="py-1">
                                                 {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
                                             </td>
