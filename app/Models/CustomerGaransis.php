@@ -23,6 +23,11 @@ class CustomerGaransis extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
+    public function orders()
+    {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
     public function bukti_foto()
     {
         return $this->hasMany(CustomerBuktiFotos::class, 'garansi_id');
