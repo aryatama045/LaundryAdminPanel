@@ -4,39 +4,23 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12">
-                @role('root')
-                <ul class="nav mb-2 nav-pills justify-content-end">
-                    <li class="nav-item ml-2 mr-md-0">
-                        <a class="btn btn-info" data-effect="effect-super-scaled"
-                            data-toggle="modal" href="#modal_import">
-                            <i class="fa fa-upload"></i> Import
-                        </a>
-                    </li>
-                </ul>
-                @endrole
+
                 <div class="card">
                     <div class="card-header py-2 d-flex align-items-center justify-content-between">
                         <h2 class="card-title m-0">
                             Data Pembelian
                         </h2>
                         <div class="d-flex justify-content-end">
-                            <form class="" action="{{ route('order.index') }}" method="GET">
-
-                                <select class="form-control mx-2 float-left" name="status" style="width: 200px">
-                                    <option value="">
-                                        {{ in_array(config('enums.order_status.' . \request('status')), config('enums.order_status')) ? __(config('enums.order_status.' . request('status'))) : __('All') }}
-                                    </option>
-
-                                    @foreach (config('enums.order_status') as $key => $order_status)
-                                        <option value="{{ $key }}"
-                                            {{ $key == \request('status') ? 'selected' : '' }}>{{ __($order_status) }}
-                                        </option>
-                                    @endforeach
-                                </select>
-
-                                <button class="btn btn-primary mx-md-0 mx-2"> <i
-                                        class="fa fa-search"></i> </button>
-                            </form>
+                            @role('root')
+                            <ul class="nav mb-2 nav-pills justify-content-end">
+                                <li class="nav-item ml-2 mr-md-0">
+                                    <a class="btn btn-info" data-effect="effect-super-scaled"
+                                        data-toggle="modal" href="#modal_import">
+                                        <i class="fa fa-upload"></i> Import
+                                    </a>
+                                </li>
+                            </ul>
+                            @endrole
                         </div>
                     </div>
                     <div class="card-body pt-2">
@@ -60,7 +44,7 @@
                                     @foreach ($orders as $order)
                                         <tr class="{{ $order->customer_id ? '' : 'bg-color' }}">
                                             <td class="py-1">
-                                                {{ $order->tanggal_nota->format(d/m/Y') }}
+                                                {{ $order->tanggal_nota->format('d/m/Y') }}
                                             </td>
                                             <td class="py-1">{{ $order->nomor_nota }}</td>
                                             <td class="py-1">
