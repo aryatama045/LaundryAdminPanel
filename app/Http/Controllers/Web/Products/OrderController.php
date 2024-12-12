@@ -184,7 +184,7 @@ class OrderController extends Controller
 
                 $data_order = array(
                     'nomor_nota'        => $val2['nomor_nota'],
-                    'tanggal_nota'      => $tanggal_nota->format('d/m/Y'),
+                    'tanggal_nota'      => $tanggal_nota->format('d-m-Y'),
                     'customer_id'       => $id_customer,
                     'nama_customer'     => $val2['nama_customer'],
                     'nama_barang'       => $val2['nama_barang'],
