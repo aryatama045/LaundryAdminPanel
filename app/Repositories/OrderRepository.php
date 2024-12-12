@@ -134,6 +134,8 @@ class OrderRepository extends Repository
 
         $customer = auth()->user()->customer;
 
+        dd($customer);
+
         if(!$customer){
             $user_id    = auth()->user()->getRelations('roles');
             $user_roles = $user_id['roles'][0]->name;
@@ -147,6 +149,14 @@ class OrderRepository extends Repository
 
                 $orders = $orders->where('customer_id','=', $cst_id);
             }
+        }
+
+        if ($searchKey) {
+            $garansis = $garansis->whereHas('user', function ($garansi) use ($searchKey) {
+                $garansi->where('first_name', 'like', "%{$searchKey}%")
+                    ->orWhere('no_nota', 'like', "%{$searchKey}%")
+                    ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
+            });
         }
 
 
