@@ -64,7 +64,7 @@
                                             </td>
                                             <td class="py-1">{{ $order->nomor_nota }}</td>
                                             <td class="py-1">
-                                                {{ $order->nama_customer ? $order->nama_customer : 'N/A' }}
+                                                {{ $order->nama_customer }}
                                             </td>
                                             <td class="py-1">{{ $order->nama_barang }}</td>
                                             <td class="py-1">{{ $order->qty }}</td>
