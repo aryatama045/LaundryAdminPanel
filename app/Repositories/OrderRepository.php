@@ -136,7 +136,10 @@ class OrderRepository extends Repository
 
 
         if($customer != NULL){
-            $orders = $orders->where('customer_id','=', $customer->id);
+
+            $user = auth()->user();
+            dd($customer->id, $user);
+            $orders = $orders->where('customer_id', $customer->id);
         }
 
 
