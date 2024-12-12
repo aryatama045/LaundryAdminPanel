@@ -35,14 +35,14 @@
                                         <th scope="col">Qty</th>
                                         <th scope="col">Satuan</th>
                                         <th scope="col">Part Number</th>
-                                        @canany(['order.show', 'order.print.invioce'])
-                                            <th scope="col" class="px-2">{{ __('Actions') }}</th>
-                                        @endcanany
+                                        @role('root')
+                                            <th hidden scope="col" class="px-2">{{ __('Actions') }}</th>
+                                        @endrole
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                        <tr class="bg-color">
+                                        <tr class="">
                                             <td class="py-1">
                                                 {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
                                             </td>
@@ -55,23 +55,20 @@
                                             <td class="py-1">{{ $order->satuan }}</td>
                                             <td class="py-1">{{ $order->part_number }}</td>
 
-                                            @canany(['order.show', 'order.print.invioce'])
-                                                <td class="p-1 ">
+                                            @role('root')
+                                                <td hidden class="p-1 ">
 
-                                                    @can('order.show')
-                                                        <a href="{{ route('order.show', $order->id) }}"
-                                                            class="btn btn-primary btn-sm mb-1">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                    @endcan
+                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                        class="btn btn-primary btn-sm mb-1">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
 
-                                                    @can('order.print.invioce')
-                                                        <a class="btn btn-danger btn-sm mb-1"
-                                                            href="{{ route('order.print.invioce', $order->id) }}"
-                                                            target="_blank"><i class="fas fa-print"></i> </a>
-                                                    @endcan
+                                                    <a class="btn btn-danger btn-sm mb-1"
+                                                        href="{{ route('order.print.invioce', $order->id) }}"
+                                                        target="_blank"><i class="fas fa-print"></i> </a>
+
                                                 </td>
-                                            @endcanany
+                                            @endrole
                                         </tr>
                                     @endforeach
                                 </tbody>
