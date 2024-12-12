@@ -131,7 +131,7 @@ class OrderRepository extends Repository
 
         $orders = $this->model()::query();
 
-        $customer = auth()->user()->customer;
+        $customer = auth()->user();
 
         dd($customer);
 
