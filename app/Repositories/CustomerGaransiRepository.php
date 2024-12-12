@@ -44,10 +44,11 @@ class CustomerGaransiRepository extends Repository
 
             $cst_id = $cst->id;
 
+            $garansis = $garansis->Join('orders','customer_garanses.customer_id = orders.customer_id');
+
             $garansis = $garansis->where('customer_id', '=', $cst_id);
         }
 
-        
 
         if ($searchKey) {
             $garansis = $garansis->whereHas('user', function ($garansi) use ($searchKey) {
