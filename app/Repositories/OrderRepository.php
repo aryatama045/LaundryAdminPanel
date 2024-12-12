@@ -132,6 +132,11 @@ class OrderRepository extends Repository
 
         $orders = $this->model()::query();
 
+        $user_id    = auth()->user();
+        $customer = auth()->user()->customer;
+
+        dd( $customer, $user_id);
+
         $user_id    = auth()->user()->getRelations('roles');
         $user_roles = $user_id['roles'][0]->name;
 
@@ -145,9 +150,7 @@ class OrderRepository extends Repository
             $orders = $orders->where('customer_id','=', $cst_id);
         }
 
-        $customer = auth()->user()->customer;
 
-        dd( $customer, $user_id);
 
         if ($searchKey) {
             $orders = $orders->where(function ($query) use ($searchKey) {
