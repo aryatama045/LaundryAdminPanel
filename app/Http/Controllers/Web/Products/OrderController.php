@@ -162,7 +162,11 @@ class OrderController extends Controller
         $data = [];
         foreach($array as $key => $val){
 
+            dd($val);
+
             foreach ($val as $key2 => $val2){
+
+
 
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
 
