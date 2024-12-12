@@ -132,24 +132,22 @@ class OrderRepository extends Repository
 
         $orders = $this->model()::query();
 
-        $user_id    = auth()->user();
         $customer = auth()->user()->customer;
 
-        dd( $customer, $user_id);
+        if(!$customer){
+            $user_id    = auth()->user()->getRelations('roles');
+            $user_roles = $user_id['roles'][0]->name;
 
-        $user_id    = auth()->user()->getRelations('roles');
-        $user_roles = $user_id['roles'][0]->name;
+            if($user_roles == 'customer'){
+                $userid = auth()->user()->id;
 
-        if($user_roles == 'customer'){
-            $userid = auth()->user()->id;
+                $cst = Customer::where('user_id', $userid)->first();
 
-            $cst = Customer::where('user_id', $userid)->first();
+                $cst_id = $cst->id;
 
-            $cst_id = $cst->id;
-
-            $orders = $orders->where('customer_id','=', $cst_id);
+                $orders = $orders->where('customer_id','=', $cst_id);
+            }
         }
-
 
 
         if ($searchKey) {
