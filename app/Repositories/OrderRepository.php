@@ -145,6 +145,10 @@ class OrderRepository extends Repository
             $orders = $orders->where('customer_id','=', $cst_id);
         }
 
+        $customer = auth()->user()->customer;
+
+        dd( $customer, $user_id);
+
         if ($searchKey) {
             $orders = $orders->where(function ($query) use ($searchKey) {
                 $query->orWhere('nama_customer', 'like', "%{$searchKey}%")
