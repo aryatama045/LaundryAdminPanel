@@ -27,6 +27,8 @@ use Redirect;
 use Excel;
 use DB;
 
+use App\Models\Product;
+
 class OrderController extends Controller
 {
     private $orderRepo;
@@ -161,9 +163,6 @@ class OrderController extends Controller
 
         $data = [];
         foreach($array as $key => $val){
-
-
-
             foreach ($val as $key2 => $val2){
 
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
@@ -180,14 +179,14 @@ class OrderController extends Controller
 
                 // $order->save();
 
+                Product::create($data_order);
+
                 array_push($data, $data_order);
 
             }
-
         }
-        dd($data);
 
 
-        return redirect('admin/barang')->with('create_message', 'Product imported successfully');
+        return redirect('admin/orders')->with('success', 'Pembelian imported successfully');
     }
 }
