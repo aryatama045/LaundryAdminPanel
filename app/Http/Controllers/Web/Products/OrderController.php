@@ -28,7 +28,6 @@ use Redirect;
 use Excel;
 use DB;
 
-use App\Models\Product;
 
 class OrderController extends Controller
 {
@@ -196,7 +195,7 @@ class OrderController extends Controller
 
                 // $order->save();
 
-                Product::create($data_order);
+                Order::create($data_order);
 
                 array_push($data, $data_order);
 
