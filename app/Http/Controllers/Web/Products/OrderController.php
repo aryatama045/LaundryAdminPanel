@@ -18,6 +18,7 @@ use App\Repositories\DriverRepository;
 use App\Repositories\NotificationRepository;
 use App\Repositories\OrderRepository;
 use App\Services\NotificationServices;
+use App\Repositories\UserRepository;
 
 use Illuminate\Support\Str;
 use App\Import\BarangImport;
@@ -32,10 +33,16 @@ use App\Models\Product;
 class OrderController extends Controller
 {
     private $orderRepo;
-    public function __construct(OrderRepository $orderRepository)
+
+    private $userRepo;
+
+    public function __construct(OrderRepository $orderRepository, UserRepository $userRepo)
     {
+        $this->userRepo = $userRepo;
+
         $this->orderRepo = $orderRepository;
     }
+
 
     public function index(Request $request)
     {
@@ -167,9 +174,19 @@ class OrderController extends Controller
 
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
 
+                $getUser = $this->userRepo->findByContact($val2['nama_customer']);
+
+                if(!$getUser){
+                    $id_customer = '-';
+                }else{
+                    $id_customer = $getUser->id;
+                }
+
+
                 $data_order = array(
                     'nomor_nota'        => $val2['nomor_nota'],
                     'tanggal_nota'      => $tanggal_nota->format('d/m/Y'),
+                    'customer_id'       => $id_customer,
                     'nama_customer'     => $val2['nama_customer'],
                     'nama_barang'       => $val2['nama_barang'],
                     'qty'               => $val2['qty'],
@@ -179,12 +196,14 @@ class OrderController extends Controller
 
                 // $order->save();
 
-                Product::create($data_order);
+                // Product::create($data_order);
 
                 array_push($data, $data_order);
 
             }
         }
+
+        dd($data);
 
 
         return redirect('admin/orders')->with('success', 'Pembelian imported successfully');

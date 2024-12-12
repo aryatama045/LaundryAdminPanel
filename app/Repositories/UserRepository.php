@@ -77,6 +77,7 @@ class UserRepository extends Repository
     {
         return $this->model()::where('mobile', $contact)
             ->orWhere('email', $contact)
+            ->orWhere('company','like', '%'.$contact.'%')
             ->isActive()
             ->first();
     }
@@ -85,6 +86,7 @@ class UserRepository extends Repository
     {
         return $this->model()::where('mobile', $contact)
             ->orWhere('email', $contact)
+            ->orWhere('company','like', '%'.$contact.'%')
             ->first();
     }
 
