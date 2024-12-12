@@ -166,10 +166,9 @@ class OrderController extends Controller
 
             foreach ($val as $key2 => $val2){
 
-                dd($val2);
-
-
                 $tanggal_nota = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($val2['tanggal_nota']);
+
+                dd($tanggal_nota, $val2);
 
                 $order->nomor_nota        = $val2['nomor_nota'];
                 $order->tanggal_nota      = $tanggal_nota;
