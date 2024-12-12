@@ -44,7 +44,7 @@
                                     @foreach ($orders as $order)
                                         <tr class="{{ $order->customer_id ? '' : 'bg-color' }}">
                                             <td class="py-1">
-                                                {{ $order->tanggal_nota->format('d/m/Y') }}
+                                                {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
                                             </td>
                                             <td class="py-1">{{ $order->nomor_nota }}</td>
                                             <td class="py-1">
