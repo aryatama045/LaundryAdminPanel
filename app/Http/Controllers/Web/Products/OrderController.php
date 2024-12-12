@@ -181,7 +181,6 @@ class OrderController extends Controller
                     $id_customer = $getUser->id;
                 }
 
-
                 $data_order = array(
                     'nomor_nota'        => $val2['nomor_nota'],
                     'tanggal_nota'      => $tanggal_nota->format('Y-m-d'),
@@ -192,19 +191,19 @@ class OrderController extends Controller
                     'satuan'            => $val2['satuan'],
                     'part_number'       => $val2['part_number']
                 );
-
                 // $order->save();
 
-                Order::create($data_order);
+                if(!$getUser){
+                    Order::create($data_order);
+                }
+
 
                 array_push($data, $data_order);
 
             }
         }
-
         // dd($data);
 
-
-        return redirect('admin/orders')->with('success', 'Pembelian imported successfully');
+        return redirect('orders')->with('success', 'Pembelian imported successfully');
     }
 }
