@@ -42,10 +42,16 @@ class CustomerGaransiRepository extends Repository
 
             $cst = Customer::where('user_id', $userid)->first();
 
-            $garansis->Join('orders','customer_garanses.customer_id = orders.customer_id');
-            $garansis = $garansis->where('customer_garanses.customer_id', '=', $cst->id)
-                        ->orWhere('orders.customer_id', '=', $userid)
-                        ;
+            $cstid = $cst->id;
+
+            $garansis = $garansis->whereHas('orders', function ($orders) use ($searchKey) {
+                $orders->where('customer_id', '', $userid)
+                    ->orWhere('nomor_nota', 'like', "%{$searchKey}%")
+                    ->orWhere('tanggal_nota', 'like', "%{$searchKey}%");
+            });
+
+
+            $garansis = $garansis->where('customer_id', '=', $cstid);
         }
 
 
