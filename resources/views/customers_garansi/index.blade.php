@@ -49,7 +49,11 @@
                                             </td>
                                             <td>
                                                 @php
-                                                    $dateExp = strtotime('+90 days', strtotime($garansi->tanggal_pemasangan));
+                                                    $websetting = App\Models\WebSetting::first();
+
+                                                    $masa_berlaku = $websetting->masa_berlaku;
+
+                                                    $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
                                                     $dateExps = date('d-m-Y', $dateExp);
 
 
@@ -108,7 +112,7 @@
         </div>
     </div>
 
-    <div class="container m-4 pt-6">
+    <div hidden class="container m-4 pt-6">
 
         @php
             $banner = \App\Models\Banner::get();
