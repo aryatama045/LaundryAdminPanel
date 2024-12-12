@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Models\Order;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use App\Models\Additional;
@@ -131,14 +132,18 @@ class OrderRepository extends Repository
 
         $orders = $this->model()::query();
 
-        $customer = auth()->user();
+        $user_id    = auth()->user()->getRelations('roles');
+        $user_roles = $user_id['roles'][0]->name;
 
-        dd($customer);
+        if($user_roles == 'customer'){
+            $userid = auth()->user()->id;
 
-        if('customer') {
-            $orders = $orders->where('customer_id', $customer->id);
+            $cst = Customer::where('user_id', $userid)->first();
+
+            $cst_id = $cst->id;
+
+            $orders = $orders->where('customer_id','=', $cst_id);
         }
-
 
         if ($searchKey) {
             $orders = $orders->where(function ($query) use ($searchKey) {
@@ -150,10 +155,7 @@ class OrderRepository extends Repository
                                 ->orWhere('mobile', $searchKey);
                         });
                     })
-                    ->orWhere('prefix', 'like', "%{$searchKey}%")
-                    ->orWhere('amount', 'like', "%{$searchKey}%")
-                    ->orWhere('payment_status', 'like', "%{$searchKey}%")
-                    ->orWhere('order_status', 'like', "%{$searchKey}%");
+                    ->orWhere('nama_barang', 'like', "%{$searchKey}%");
             });
         }
         return $orders->latest()->get();
