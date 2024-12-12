@@ -134,7 +134,6 @@ class OrderRepository extends Repository
 
         $customer = auth()->user()->customer;
 
-        dd($customer);
 
         if(!$customer){
             $user_id    = auth()->user()->getRelations('roles');
