@@ -196,14 +196,14 @@ class OrderController extends Controller
 
                 // $order->save();
 
-                // Product::create($data_order);
+                Product::create($data_order);
 
                 array_push($data, $data_order);
 
             }
         }
 
-        dd($data);
+        // dd($data);
 
 
         return redirect('admin/orders')->with('success', 'Pembelian imported successfully');
