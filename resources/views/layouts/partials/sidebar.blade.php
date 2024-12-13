@@ -138,7 +138,7 @@
                 @endrole
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
-                    <li  class="nav-item">
+                    <li hidden class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('service.*', 'variant.*', 'product.*', 'coupon.*') ? 'active' : '' }}"
                             href="#product_manage" data-toggle="collapse" aria-expanded="false" role="button"
                             aria-controls="navbar-examples">
