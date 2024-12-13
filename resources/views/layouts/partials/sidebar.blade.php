@@ -151,6 +151,8 @@
                             </a>
                         </li>
 
+                        
+
                 @endrole
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
@@ -263,7 +265,7 @@
                             id="setting">
                             <ul class="nav nav-sm flex-column">
                                 @foreach (config('enums.settings') as $index => $item)
-                                    <a hidden class="nav-link sub-menu {{ url()->full() == config('app.url') . '/settings/' . $index || url()->full() == config('app.url') . '/settings/' . $index . '/edit' ? 'active' : '' }}"
+                                    <a class="nav-link sub-menu {{ url()->full() == config('app.url') . '/settings/' . $index || url()->full() == config('app.url') . '/settings/' . $index . '/edit' ? 'active' : '' }}"
                                         href="{{ route('setting.show', $index) }}">
                                         @if ($index == 'privacy-policy')
                                             <i class="fas fa-vote-yea"></i>
@@ -290,7 +292,7 @@
                                         <i class="fa fa-link"></i>
                                         <span class="nav-link-text">{{ __('Mobile App Link') }}</span>
                                     </a>
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('socialLink.*') ? 'active' : '' }}"
+                                    <a  class="nav-link sub-menu {{ request()->routeIs('socialLink.*') ? 'active' : '' }}"
                                         href="{{ route('socialLink.index') }}">
                                         <i class="fa fa-icons"></i>
                                         <span class="nav-link-text">{{ __('Social Links') }}</span>
