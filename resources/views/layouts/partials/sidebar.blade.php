@@ -267,7 +267,7 @@
                                 @foreach (config('enums.settings') as $index => $item)
                                     <a class="nav-link sub-menu {{ url()->full() == config('app.url') . '/settings/' . $index || url()->full() == config('app.url') . '/settings/' . $index . '/edit' ? 'active' : '' }}"
                                         href="{{ route('setting.show', $index) }}">
-                                        @if ($index == 'privacy-policy')
+                                        @if ($index == 'faq')
                                             <i class="fas fa-vote-yea"></i>
                                         @endif
                                         @if ($index == 'trams-of-service')
