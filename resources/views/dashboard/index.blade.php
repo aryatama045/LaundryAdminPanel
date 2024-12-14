@@ -39,7 +39,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
                     $klaim_cst = \App\Models\CustomerKlaims::where('customer_id', $cst_id)->get();
                 @endphp
-                @if ($server == '"Windows"')
+                
 
                 <div class="col-xl-3 col-lg-6">
                     <div class="card card-stats mb-4 mb-xl-0">
@@ -108,7 +108,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                     </div>
                 </div>
 
-                @endif
                 @endrole
 
 
@@ -201,7 +200,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
 @role('customer') @if ($server == '"Android"')
-<div  class="container-fluid mt-1">
+<div hidden class="container-fluid mt-1">
     <div class="row">
 
 
