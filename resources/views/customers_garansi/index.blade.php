@@ -99,102 +99,102 @@
 
 @section('scripts')
 
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $(document).ready(function() {
-        getData();
-    });
-
-    function getData() {
-        //datatables
-        table = $('#myTable').DataTable({
-
-            "processing": true,
-            "serverSide": true,
-            "info": true,
-            "order": [],
-            "scrollX": true,
-            "stateSave": true,
-            "lengthMenu": [
-                [5, 10, 25, 50, 100, -1],
-                [5, 10, 25, 50, 100, 'Semua']
-            ],
-            "pageLength": 10,
-
-            lengthChange: true,
-
-            "ajax": {
-                "url": "{{ route('garansi.getdata') }}",
-                "data": function(d) {
-                    d.tglawal = $('input[name="tglawal"]').val();
-                    d.tglakhir = $('input[name="tglakhir"]').val();
-                }
-            },
-
-            "columns": [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    searchable: false
-                },
-                {
-                    data: 'tgl',
-                    name: 'bm_tanggal',
-                },
-                {
-                    data: 'bm_kode',
-                    name: 'bm_kode',
-                },
-                {
-                    data: 'barang_kode',
-                    name: 'barang_kode',
-                },
-                {
-                    data: 'supplier',
-                    name: 'supplier_nama',
-                },
-                {
-                    data: 'barang',
-                    name: 'barang_nama',
-                },
-                {
-                    data: 'bm_jumlah',
-                    name: 'bm_jumlah',
-                },
-            ],
-
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-    }
 
-    function filter() {
-        var tglawal = $('input[name="tglawal"]').val();
-        var tglakhir = $('input[name="tglakhir"]').val();
-        if (tglawal != '' && tglakhir != '') {
+        $(document).ready(function() {
+            getData();
+        });
+
+        function getData() {
+            //datatables
+            table = $('#myTable').DataTable({
+
+                "processing": true,
+                "serverSide": true,
+                "info": true,
+                "order": [],
+                "scrollX": true,
+                "stateSave": true,
+                "lengthMenu": [
+                    [5, 10, 25, 50, 100, -1],
+                    [5, 10, 25, 50, 100, 'Semua']
+                ],
+                "pageLength": 10,
+
+                lengthChange: true,
+
+                "ajax": {
+                    "url": "{{ route('garansi.getdata') }}",
+                    "data": function(d) {
+                        d.tglawal = $('input[name="tglawal"]').val();
+                        d.tglakhir = $('input[name="tglakhir"]').val();
+                    }
+                },
+
+                "columns": [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        searchable: false
+                    },
+                    {
+                        data: 'tgl',
+                        name: 'bm_tanggal',
+                    },
+                    {
+                        data: 'bm_kode',
+                        name: 'bm_kode',
+                    },
+                    {
+                        data: 'barang_kode',
+                        name: 'barang_kode',
+                    },
+                    {
+                        data: 'supplier',
+                        name: 'supplier_nama',
+                    },
+                    {
+                        data: 'barang',
+                        name: 'barang_nama',
+                    },
+                    {
+                        data: 'bm_jumlah',
+                        name: 'bm_jumlah',
+                    },
+                ],
+
+            });
+        }
+
+        function filter() {
+            var tglawal = $('input[name="tglawal"]').val();
+            var tglakhir = $('input[name="tglakhir"]').val();
+            if (tglawal != '' && tglakhir != '') {
+                table.ajax.reload(null, false);
+            } else {
+                validasi("Isi dulu Form Filter Tanggal!", 'warning');
+            }
+
+        }
+
+        function reset() {
+            $('input[name="tglawal"]').val('');
+            $('input[name="tglakhir"]').val('');
             table.ajax.reload(null, false);
-        } else {
-            validasi("Isi dulu Form Filter Tanggal!", 'warning');
         }
 
-    }
-
-    function reset() {
-        $('input[name="tglawal"]').val('');
-        $('input[name="tglakhir"]').val('');
-        table.ajax.reload(null, false);
-    }
 
 
-
-    function validasi(judul, status) {
-        swal({
-            title: judul,
-            type: status,
-            confirmButtonText: "Iya."
-        });
-    }
-</script>
+        function validasi(judul, status) {
+            swal({
+                title: judul,
+                type: status,
+                confirmButtonText: "Iya."
+            });
+        }
+    </script>
 @endsection
