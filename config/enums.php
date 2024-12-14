@@ -40,9 +40,9 @@ return [
     'settings' => [
         'faq' => 'FAQ',
         // 'privacy-policy' => 'Privacy Policy',
-        'trams-of-service' => 'Terms of Service',
-        'contact-us' => 'Contact us',
-        'about-us' => 'About Us'
+        // 'trams-of-service' => 'Terms of Service',
+        // 'contact-us' => 'Contact us',
+        // 'about-us' => 'About Us'
     ],
 
     'ganders' => [
