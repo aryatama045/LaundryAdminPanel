@@ -36,7 +36,7 @@
 
                     <div class="card-body pt-2">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
+                            <table class="table table-bordered dataTable table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
                                         <th rowspan="2" width="10%"> Tanggal Nota </th>
