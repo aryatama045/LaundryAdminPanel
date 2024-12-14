@@ -21,7 +21,7 @@
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTables">
                                 <thead>
                                     <tr>
-                                        <th rowspan="2" width="5%"> Tanggal Nota </th>
+                                        <th rowspan="2" width="10%"> Tanggal Nota </th>
                                         <th rowspan="2"> Nomor Nota </th>
                                         <th rowspan="2"> Nama Barang </th>
                                         <th rowspan="2" width="2%"> Qty </th>
@@ -32,12 +32,9 @@
                                     </tr>
                     
                                     <tr>
-                                        <th width="5%">TANGGAL</th>
-                                        <th width="35%">HM</th>
+                                        <th width="10%">TANGGAL</th>
+                                        <th width="10%">HM</th>
                                     </tr>
-                    
-                                    
-                    
                                 </thead>
                                 <thead hidden>
                                     <tr>
