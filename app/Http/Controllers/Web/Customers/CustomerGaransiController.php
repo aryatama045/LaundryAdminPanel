@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Customer;
 use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
+use App\Models\Order;
 use App\Models\Media;
 use App\Events\KlaimMailEvent;
 
@@ -112,6 +113,19 @@ class CustomerGaransiController extends Controller
 
     public function getdata(Request $request)
     {
+        if ($request->ajax()) {
+            $data = Order::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+
         dd($request);
         if ($request->ajax()) {
 
