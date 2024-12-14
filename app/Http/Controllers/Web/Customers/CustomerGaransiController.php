@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web\Customers;
 
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\MediaRepository;
@@ -16,6 +15,9 @@ use App\Models\CustomerBuktiFotos;
 use App\Models\Media;
 use App\Events\KlaimMailEvent;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 use Illuminate\Support\Str;
