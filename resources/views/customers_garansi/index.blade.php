@@ -16,18 +16,15 @@
                         @endcan
                         @endrole
                     </div>
-                    
-                    <div class="card-header justify-content-between row mb-4">
-                        <div class="col-12">
-                            <label for="" class="fw-bold">Filter Tanggal</label>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
+
+                    <div class="col-md-6">
+                        <div class="form-inline ">
+                            <div class="form-group mb-2">
+                                <label for="tglawal" class="sr-only">Tanggal Awal</label>
                                 <input type="text" name="tglawal" class="form-control datepicker-date" placeholder="Tanggal Awal">
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="tglakhir" class="sr-only">Tanggal Akhir</label>
                                 <input type="text" name="tglakhir" class="form-control datepicker-date" placeholder="Tanggal Akhir">
                             </div>
                         </div>
