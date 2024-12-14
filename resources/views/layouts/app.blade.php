@@ -25,6 +25,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css">
+
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -278,6 +281,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('web/js/select2.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 
     <script src="{{ asset('web/js/argon.js') }}"></script>
