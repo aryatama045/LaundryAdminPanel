@@ -283,65 +283,63 @@
                                     </a>
                                 @endforeach
                                 <a hidden class="nav-link sub-menu {{ request()->routeIs('deliveryCost') ? 'active' : '' }}"
-                                        href="{{ route('deliveryCost') }}">
-                                        <i class="fa fa-dollar-sign"></i>
-                                        <span class="nav-link-text">{{ __('Delivery Cost') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('mobileApp') ? 'active' : '' }}"
-                                        href="{{ route('mobileApp') }}">
-                                        <i class="fa fa-link"></i>
-                                        <span class="nav-link-text">{{ __('Mobile App Link') }}</span>
-                                    </a>
-                                    <a  class="nav-link sub-menu {{ request()->routeIs('socialLink.*') ? 'active' : '' }}"
-                                        href="{{ route('socialLink.index') }}">
-                                        <i class="fa fa-icons"></i>
-                                        <span class="nav-link-text">{{ __('Social Links') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ url()->full() == config('app.url') . '/pickup/scheduls' ? 'active' : '' }}"
-                                        href="{{ route('schedule.index', 'pickup') }}">
-                                        <i class="fas fa-clock"></i>
-                                        <span class="nav-link-text">{{ __('P. Schedules') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ url()->full() == config('app.url') . '/delivery/scheduls' ? 'active' : '' }}"
-                                        href="{{ route('schedule.index', 'delivery') }}">
-                                        <i class="fas fa-clock"></i>
-                                        <span class="nav-link-text">{{ __('D. Schedules') }}</span>
-                                    </a>
-
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('stripeKey.*') ? 'active' : '' }}"
-                                        href="{{ route('stripeKey.index') }}">
-                                        <i class="fab fa-cc-stripe"></i>
-                                        <span class="nav-link-text">{{ __('Stripe payment') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('sms-gateway.*') ? 'active' : '' }}"
-                                        href="{{ route('sms-gateway.index') }}">
-                                        <i class="fas fa-sms"></i>
-                                        <span class="nav-link-text">{{ __('SMS Gateway') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('invoiceManage.*') ? 'active' : '' }}"
-                                        href="{{ route('invoiceManage.index') }}">
-                                        <i class="fas fa-print"></i>
-                                        <span class="nav-link-text">{{ __('Invoice Manage') }}</span>
-                                    </a>
-
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('notification.manage') ? 'active' : '' }}"
-                                        href="{{ route('notification.manage') }}">
-                                        <i class="fas fa-bell"></i>
-                                        <span class="nav-link-text">{{ __('Notify.. Manage') }}</span>
-                                    </a>
-
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('fcm.*') ? 'active' : '' }}"
-                                        href="{{ route('fcm.index') }}">
-                                        <i class="fas fa-cloud"></i>
-                                        <span class="nav-link-text">{{ __('FCM Config') }}</span>
-                                    </a>
-                                    <a hidden class="nav-link sub-menu {{ request()->routeIs('areas.*') ? 'active' : '' }}"
-                                        href="{{ route('areas.index') }}">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <span class="nav-link-text">{{ __('Areas') }}</span>
+                                    href="{{ route('deliveryCost') }}">
+                                    <i class="fa fa-dollar-sign"></i>
+                                    <span class="nav-link-text">{{ __('Delivery Cost') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('mobileApp') ? 'active' : '' }}"
+                                    href="{{ route('mobileApp') }}">
+                                    <i class="fa fa-link"></i>
+                                    <span class="nav-link-text">{{ __('Mobile App Link') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('socialLink.*') ? 'active' : '' }}"
+                                    href="{{ route('socialLink.index') }}">
+                                    <i class="fa fa-icons"></i>
+                                    <span class="nav-link-text">{{ __('Social Links') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ url()->full() == config('app.url') . '/pickup/scheduls' ? 'active' : '' }}"
+                                    href="{{ route('schedule.index', 'pickup') }}">
+                                    <i class="fas fa-clock"></i>
+                                    <span class="nav-link-text">{{ __('P. Schedules') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ url()->full() == config('app.url') . '/delivery/scheduls' ? 'active' : '' }}"
+                                    href="{{ route('schedule.index', 'delivery') }}">
+                                    <i class="fas fa-clock"></i>
+                                    <span class="nav-link-text">{{ __('D. Schedules') }}</span>
                                 </a>
 
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('stripeKey.*') ? 'active' : '' }}"
+                                    href="{{ route('stripeKey.index') }}">
+                                    <i class="fab fa-cc-stripe"></i>
+                                    <span class="nav-link-text">{{ __('Stripe payment') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('sms-gateway.*') ? 'active' : '' }}"
+                                    href="{{ route('sms-gateway.index') }}">
+                                    <i class="fas fa-sms"></i>
+                                    <span class="nav-link-text">{{ __('SMS Gateway') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('invoiceManage.*') ? 'active' : '' }}"
+                                    href="{{ route('invoiceManage.index') }}">
+                                    <i class="fas fa-print"></i>
+                                    <span class="nav-link-text">{{ __('Invoice Manage') }}</span>
+                                </a>
 
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('notification.manage') ? 'active' : '' }}"
+                                    href="{{ route('notification.manage') }}">
+                                    <i class="fas fa-bell"></i>
+                                    <span class="nav-link-text">{{ __('Notify.. Manage') }}</span>
+                                </a>
+
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('fcm.*') ? 'active' : '' }}"
+                                    href="{{ route('fcm.index') }}">
+                                    <i class="fas fa-cloud"></i>
+                                    <span class="nav-link-text">{{ __('FCM Config') }}</span>
+                                </a>
+                                <a hidden class="nav-link sub-menu {{ request()->routeIs('areas.*') ? 'active' : '' }}"
+                                    href="{{ route('areas.index') }}">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span class="nav-link-text">{{ __('Areas') }}</span>
+                                </a>
 
                                 <a hidden class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                                     href="{{ route('admin.index') }}">
