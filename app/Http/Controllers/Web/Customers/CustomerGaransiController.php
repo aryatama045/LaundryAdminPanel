@@ -112,6 +112,7 @@ class CustomerGaransiController extends Controller
 
     public function getdata(Request $request)
     {
+        dd($request);
         if ($request->ajax()) {
 
             $user_id = auth()->user()->getRelations('roles');
