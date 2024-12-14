@@ -321,7 +321,7 @@ Route::get('/order-payment/{order}/{card}', [PaymentController::class, 'payment'
 Route::get('/setup-intents/{customer}/{card}/{amount}/{order}', [PaymentController::class, 'intent']);
 Route::get('/order-update/{order}', [PaymentController::class, 'updatePayment']);
 
-
+Route::get('/settings/{slug}', [SettingController::class, 'show'])->name('setting.show');
 
 Route::get('/check_validasi', [PaymentController::class, 'check_validasi'])->name('check_validasi');
 Route::get('/new-orders', [ApiOrderController::class, 'newOrder'])->name('new.orders');
