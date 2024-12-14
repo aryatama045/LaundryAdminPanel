@@ -74,8 +74,11 @@
     </style>
 
 @endsection
+
+
 @push('scripts')
     <script>
+        
         $('.delete-confirm').on('click', function(e) {
             e.preventDefault();
             const url = $(this).attr('href');
@@ -93,13 +96,7 @@
                 }
             })
         });
-    </script>
-@endpush
 
-
-@section('scripts')
-
-    <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -197,4 +194,6 @@
             });
         }
     </script>
-@endsection
+@endpush
+
+
