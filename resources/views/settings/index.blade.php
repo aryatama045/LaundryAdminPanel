@@ -10,9 +10,12 @@
                 </div>
                 <div class="card-body">
                     {!! $setting->content !!}
-                   <div class="mt-4 text-right">
-                        <a href="{{ route('setting.edit', $setting->slug) }}" class="btn btn-primary">{{ __('Edit') }}</a>
-                   </div>
+
+                    @role('root')
+                    <div class="mt-4 text-right">
+                            <a href="{{ route('setting.edit', $setting->slug) }}" class="btn btn-primary">{{ __('Edit') }}</a>
+                    </div>
+                    @endrole
                 </div>
             </div>
         </div>
