@@ -115,6 +115,8 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
 
     // Garansi routes
     Route::get('/garansi', [CustomerGaransiController::class, 'index'])->name('garansi.index');
+    Route::get('/garansi/getdata', [CustomerGaransiController::class, 'getdata'])->name('garansi.getdata');
+
     Route::get('/garansi/{garansi}/show', [CustomerGaransiController::class, 'show'])->name('garansi.show');
     Route::get('/garansi/create', [CustomerGaransiController::class, 'create'])->name('garansi.create');
     Route::post('/garansi', [CustomerGaransiController::class, 'store'])->name('garansi.store');
