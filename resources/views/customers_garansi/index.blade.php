@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTables">
+                            <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
                                         <th rowspan="2" width="10%"> Tanggal Nota </th>
@@ -29,24 +29,14 @@
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
+                                        @role('root')
+                                        <th scope="col">{{ __('Action') }}</th>
+                                        @endrole
                                     </tr>
                     
                                     <tr>
                                         <th width="10%">TANGGAL</th>
                                         <th width="10%">HM</th>
-                                    </tr>
-                                </thead>
-                                <thead hidden>
-                                    <tr>
-                                        @role('root')
-                                        <th scope="col">{{ __('Name') }}</th>
-                                        @endrole
-                                        <th scope="col">{{ __('No. Nota') }}</th>
-                                        <th scope="col">{{ __('Waktu & Tgl. Pemasangan') }}</th>
-                                        <th scope="col">{{ __('Masa Berlaku') }}</th>
-                                        @canany(['customer.show', 'customer.edit'])
-                                        <th scope="col">{{ __('Action') }}</th>
-                                        @endcanany
                                     </tr>
                                 </thead>
                                 <tbody>

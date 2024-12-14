@@ -24,6 +24,8 @@ use DB;
 class CustomerGaransiController extends Controller
 {
 
+
+
     public function index()
     {
         $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
@@ -34,9 +36,13 @@ class CustomerGaransiController extends Controller
     public function getdata(Request $request)
     {
         if ($request->ajax()) {
-            $user = Session::get('user')->user_nmlengkap;
 
-            if($user == 'root' ){
+            $user_id = auth()->user()->getRelations('roles');
+            $roles   = $user_id['roles'][0]->name;
+
+            dd($roles);
+
+            if($roles == 'root' ){
 
                 if($request->tglawal != ''){
 
