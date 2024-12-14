@@ -72,28 +72,6 @@
             padding: 5px 10px !important;
         }
     </style>
-@endsection
-@push('scripts')
-    <script>
-        $('.delete-confirm').on('click', function(e) {
-            e.preventDefault();
-            const url = $(this).attr('href');
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#00B894',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url;
-                }
-            })
-        });
-    </script>
-
 
 <script>
     $.ajaxSetup({
@@ -193,5 +171,26 @@
         });
     }
 </script>
+@endsection
+@push('scripts')
+    <script>
+        $('.delete-confirm').on('click', function(e) {
+            e.preventDefault();
+            const url = $(this).attr('href');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#00B894',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        });
+    </script>
 @endpush
 
