@@ -70,7 +70,7 @@
                                     </a>
 
                                     <a class="nav-link sub-menu {{ url()->full() == config('app.url') . '/settings/faq'  ? 'active' : '' }}"
-                                        href="{{ route('service.index') }}" >
+                                        href="{{ route('setting.show', 'faq') }}" >
                                         <span class="nav-link-text">{{ __('Faq Garansi') }}</span>
                                     </a>
 
