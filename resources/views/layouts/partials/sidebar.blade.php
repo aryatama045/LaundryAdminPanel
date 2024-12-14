@@ -51,7 +51,7 @@
                                 <span class="nav-link-text">{{ __('Garansi Saya') }}</span>
                             </a>
 
-                            <div class="collapse {{ request()->routeIs('garansi.*', 'klaim.*') ? 'show' : '' }}"
+                            <div class="collapse {{ request()->routeIs('setting.*','garansi.*', 'klaim.*') ? 'show' : '' }}"
                                 id="garansi_saya">
                                 <ul class="nav nav-sm flex-column">
                                     <a class="nav-link sub-menu {{ request()->routeIs('garansi.index') ? 'active' : '' }} "
@@ -69,8 +69,8 @@
                                         <span class="nav-link-text">{{ __('Klaim Garansi') }}</span>
                                     </a>
 
-                                    <a class="nav-link sub-menu {{ request()->routeIs('additional.*') ? 'active' : '' }}"
-                                        href="{{ route('service.index') }}" href="{{ route('service.index') }}">
+                                    <a class="nav-link sub-menu {{ url()->full() == config('app.url') . '/settings/faq'  ? 'active' : '' }}"
+                                        href="{{ route('service.index') }}" >
                                         <span class="nav-link-text">{{ __('Faq Garansi') }}</span>
                                     </a>
 

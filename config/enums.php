@@ -5,7 +5,7 @@ return [
 
     'post_code' => ['E14', 'E15', 'E16', 'E1W', 'E1', 'E2', 'E3', 'E6','E8','E9', 'SE16'],
 
-    'currency' => '$',
+    'currency' => 'Rp',
 
     'coupons' => [
         'discount_types' => [
@@ -38,7 +38,8 @@ return [
     ],
 
     'settings' => [
-        'privacy-policy' => 'Privacy Policy',
+        'faq' => 'FAQ',
+        // 'privacy-policy' => 'Privacy Policy',
         'trams-of-service' => 'Terms of Service',
         'contact-us' => 'Contact us',
         'about-us' => 'About Us'
