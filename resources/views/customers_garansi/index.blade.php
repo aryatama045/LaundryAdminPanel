@@ -16,6 +16,27 @@
                         @endcan
                         @endrole
                     </div>
+                    
+                    <div class="card-header justify-content-between row mb-4">
+                        <div class="col-12">
+                            <label for="" class="fw-bold">Filter Tanggal</label>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" name="tglawal" class="form-control datepicker-date" placeholder="Tanggal Awal">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input type="text" name="tglakhir" class="form-control datepicker-date" placeholder="Tanggal Akhir">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success-light" onclick="filter()"><i class="fe fe-filter"></i> Filter</button>
+                            <button class="btn btn-secondary-light" onclick="reset()"><i class="fe fe-refresh-ccw"></i> Reset</button>
+                        </div>
+                    </div>
+
                     <div class="card-body pt-2">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
