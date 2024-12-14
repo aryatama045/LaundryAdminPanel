@@ -26,6 +26,9 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css">
 
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+
     <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -275,7 +278,10 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     @endif
 
 
-    <script src="{{ asset('web/js/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
