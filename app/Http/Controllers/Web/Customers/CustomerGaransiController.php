@@ -19,11 +19,11 @@ use App\Events\KlaimMailEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Facades\DataTables;
 
 use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 use DB;
+use DataTables;
 
 
 class CustomerGaransiController extends Controller
