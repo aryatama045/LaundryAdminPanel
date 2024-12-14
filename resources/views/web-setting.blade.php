@@ -72,9 +72,14 @@
                                         <textarea name="address" class="form-control" rows="2" required>{{ $websetting?->address }}</textarea>
                                     </div>
                                     <div class="mb-2">
-                                        <label class="mb-0 text-dark">{{ __('Mobile_number') }}</label>
+                                        <label class="mb-0 text-dark"><b>WA Number</b></label>
                                         <input type="text" name="mobile" class="form-control"
                                             value="{{ $websetting?->mobile }}" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="mb-0 text-dark"><b>Default Masa Berlaku</b></label>
+                                        <input type="text" name="mobile" class="form-control"
+                                            value="{{ $websetting?->masa_berlaku }}" required>
                                     </div>
 
                                     <div class="mb-2">
