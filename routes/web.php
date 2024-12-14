@@ -210,7 +210,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
 });
 
 
-Route::get('/garansi/getdata', [CustomerGaransiController::class, 'getdata'])->name('garansi.getdata');
+Route::get('/garansi/getdata', [CustomerGaransiController::class, 'getDataGaransi'])->name('garansi.getdata');
 
 
 // Order Routes

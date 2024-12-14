@@ -111,7 +111,7 @@ class CustomerGaransiController extends Controller
     //     @endif
     // </tbody>
 
-    public function getdata(Request $request)
+    public function getDataGaransi(Request $request)
     {
         if ($request->ajax()) {
             $data = Order::latest()->get();
