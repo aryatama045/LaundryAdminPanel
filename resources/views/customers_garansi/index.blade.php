@@ -57,78 +57,7 @@
                                         <th width="10%">HM</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @if(!empty($garansis))
-                                    @foreach ($garansis as $garansi)
-                                        <tr>
-                                            @role('root')
-                                            <td>{{ $garansi->user->name }}</td>
-                                            @endrole
-                                            <td>
-                                                {{ $garansi->no_nota }} <br>
-                                                <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
-                                            </td>
-                                            <td>
-                                                Waktu : {{ date('H:i:s',strtotime($garansi->waktu_pemasangan)) }} <br>
-                                                <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
-                                            </td>
-                                            <td>
-                                                @php
-                                                    $websetting = App\Models\WebSetting::first();
-
-                                                    $masa_berlaku = $websetting->masa_berlaku;
-
-                                                    $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
-                                                    $dateExps = date('d-m-Y', $dateExp);
-
-
-                                                    $paymentDate = now();
-                                                    $paymentDate = date('Y-m-d', strtotime($paymentDate));
-                                                    //echo $paymentDate; // echos today!
-                                                    $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-                                                    $contractDateEnd = date('Y-m-d', strtotime($dateExps));
-
-                                                    if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                                                    }else{
-                                                        if($paymentDate <= $contractDateEnd){
-
-                                                            $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                                                        }else{
-                                                            $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
-                                                        }
-
-                                                    }
-                                                @endphp
-
-                                                {!! $berlaku_s !!}
-                                                <small> Sampai : {{ $dateExps }} </small>
-
-                                            </td>
-
-                                            <td>
-                                                <a href="{{ route('garansi.show', $garansi->id) }}"
-                                                    class="btn btn-primary py-1 px-2">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-
-                                                @role('root')
-                                                    <a href="{{ route('garansi.edit', $garansi->id) }}"
-                                                        class="btn btn-info py-1 px-2">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-
-                                                    <a href="{{ route('garansi.delete', $garansi->id) }}"
-                                                        class="btn btn-danger py-1 px-2 delete-confirm" >
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
-                                                @endrole
-                                            </td>
-
-                                        </tr>
-                                    @endforeach
-                                    @endif
-                                </tbody>
+                                
                             </table>
                         </div>
                     </div>
