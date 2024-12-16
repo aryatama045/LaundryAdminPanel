@@ -146,9 +146,9 @@ class CustomerGaransiController extends Controller
                     }
 
                     if($roles){
-                        if($row->order_status == 'Diproses'){
+                        if($row->garansi_id){
                             $button .= '
-                                <a href="'.route('garansi.show', $row->id) .'"
+                                <a href="'.route('garansi.show', $row->garansi_id) .'"
                                     class="btn btn-primary py-1 px-2">
                                     Proses
                                 </a>';
@@ -355,14 +355,11 @@ class CustomerGaransiController extends Controller
         }
     }
 
-    public function show($id)
+    public function show(CustomerGaransis $garansi)
     {
-
-        $order      = Order::where('id', $id)->first();
-
-        $garansi    = CustomerGaransis::where('id', $order->garansi_id)->first();
-
-        return view('customers_garansi.show', compact('order','garansi'));
+        return view('customers_garansi.show', [
+            'garansi' => $garansi
+        ]);
     }
 
     public function create()
