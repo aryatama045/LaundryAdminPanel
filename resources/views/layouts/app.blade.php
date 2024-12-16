@@ -388,6 +388,13 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     @stack('scripts')
 
     <script>
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        });
+
         $('#language').change(function() {
             var url = "{{ route('change.local') }}";
             var lan = $(this).val();
