@@ -113,6 +113,8 @@ class CustomerGaransiController extends Controller
 
     public function getDataGaransi(Request $request)
     {
+
+        dd('test');
         if ($request->ajax()) {
             $data = Order::latest()->get();
             return Datatables::of($data)
@@ -260,7 +262,7 @@ class CustomerGaransiController extends Controller
                     ';
 
                     $button .= '-';
-                    
+
 
                     return $button;
                 })
