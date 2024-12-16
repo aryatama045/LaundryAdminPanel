@@ -47,7 +47,7 @@
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
-                                        @role('root')
+                                        @role('roots')
                                         <th scope="col" rowspan="2">{{ __('Action') }}</th>
                                         @endrole
                                     </tr>
@@ -148,10 +148,6 @@
                         name: 'nomor_nota',
                     },
                     {
-                        data: 'nama_customer',
-                        name: 'nama_customer',
-                    },
-                    {
                         data: 'nama_barang',
                         name: 'nama_barang',
                     },
@@ -164,12 +160,24 @@
                         name: 'terproteksi',
                     },
                     {
-                        data: 'satuan',
-                        name: 'satuan',
+                        data: 'terproteksi',
+                        name: 'terproteksi',
                     },
                     {
-                        data: 'part_number',
-                        name: 'part_number',
+                        data: 'tambah_proteksi',
+                        name: 'tambah_proteksi',
+                    },
+                    {
+                        data: 'img',
+                        name: 'img',
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
                     },
                 ],
 
