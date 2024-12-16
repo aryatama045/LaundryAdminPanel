@@ -20,7 +20,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('web/css/all.min.css') }}" type="text/css">
-    <!-- <link rel="stylesheet" href="{{ asset('web/css/bootstrap.css') }}" type="text/css"> -->
+    <link rel="stylesheet" href="{{ asset('web/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/select2.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
@@ -37,7 +37,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
     />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
