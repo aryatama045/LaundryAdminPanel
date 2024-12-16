@@ -138,9 +138,22 @@ class CustomerGaransiController extends Controller
                         "id" => $row->id
                     );
                     $button = '';
-                    $button .= '
-                        <a class="dropdown-item btn modal-effect text-primary btn-sm" data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Umodaldemo8" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick=update(' . json_encode($array) . ')><span class="fe fe-edit text-success fs-14"></span> Edit</a>
-                    ';
+
+                    $roles   = '';
+                    $user_id = auth()->user();
+                    if($user_id){
+                        $roles   = $user_id['roles'][0]->name;
+                    }
+
+                    if($roles){
+                        if($row->order_status == 'Diproses'){
+                            $button .= '
+                                <a href="{{ route("garansi.show", $row->id) }}"
+                                    class="btn btn-primary py-1 px-2">
+                                    <i class="fa fa-eye"></i>
+                                </a>';
+                        }
+                    }
 
                     return $button;
                 })

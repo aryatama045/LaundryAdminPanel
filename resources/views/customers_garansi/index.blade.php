@@ -48,6 +48,7 @@
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2" class="text-center"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
+                                        <th rowspan="2"> </th>
                                     </tr>
 
                                     <tr>
@@ -184,6 +185,12 @@
                     {
                         data: 'status',
                         name: 'status',
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        searchable: false,
+                        orderable: false
                     },
 
                 ],
