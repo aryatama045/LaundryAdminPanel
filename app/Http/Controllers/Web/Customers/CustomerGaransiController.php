@@ -116,7 +116,7 @@ class CustomerGaransiController extends Controller
         $roles   = '';
         $user_id = auth()->user();
 
-        dd($user_id);
+        dd($user_id->id);
 
         if($user_id){
             $roles   = $user_id['roles'][0]->name;
