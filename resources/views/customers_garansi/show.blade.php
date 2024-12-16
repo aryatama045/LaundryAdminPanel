@@ -35,7 +35,7 @@
                                     <?php
                                         $customer = DB::table('users')->where('id', $garansi->customer_id)->first();
                                     ?>
-                                    <td>{{ $customer->name }} </td>
+                                    <td>{{ $customer->first_name. $customer->last_name }} ({{ $customer->company }})</td>
                                 </tr>
 
                                 <tr>
