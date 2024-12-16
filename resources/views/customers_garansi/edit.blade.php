@@ -134,7 +134,7 @@
     <script>
         document.getElementById("qty").addEventListener("change", function() {
             let v = parseInt(this.value);
-            if (v =< 1) this.value = 1;
+            if (v <= 1) this.value = 1;
             if (1 >= v) this.value = v;
         });
     </script>
