@@ -51,13 +51,13 @@
                                         <th scope="col">{{ __('Action') }}</th>
                                         @endrole
                                     </tr>
-                    
+
                                     <tr>
                                         <th width="10%">TANGGAL</th>
                                         <th width="10%">HM</th>
                                     </tr>
                                 </thead>
-                                
+
                             </table>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
 
 @push('scripts')
     <script>
-        
+
         $('.delete-confirm').on('click', function(e) {
             e.preventDefault();
             const url = $(this).attr('href');
@@ -187,11 +187,25 @@
 
 
         function validasi(judul, status) {
-            swal({
+            // swal({
+            //     title: judul,
+            //     type: status,
+            //     confirmButtonText: "Iya."
+            // });
+
+            Swal.fire({
                 title: judul,
                 type: status,
-                confirmButtonText: "Iya."
-            });
+                icon: 'warning',
+                showCancelButton: true,
+                // confirmButtonColor: '#00B894',
+                cancelButtonColor: '#d33',
+                // confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
         }
     </script>
 @endpush
