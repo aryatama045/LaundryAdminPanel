@@ -64,7 +64,7 @@ class CustomerGaransiController extends Controller
                     return $img;
                 })
                 ->addColumn('tanggal_nota', function ($row) {
-                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : $row->tanggal_nota->format('d/m/Y');
+                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : date('d-m-Y', strtotime($row->tanggal_nota));
                     return $tanggal_nota;
                 })
                 ->addColumn('nomor_nota', function ($row) {
