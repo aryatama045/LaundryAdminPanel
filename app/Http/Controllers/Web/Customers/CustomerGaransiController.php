@@ -147,10 +147,11 @@ class CustomerGaransiController extends Controller
 
                     if($roles){
                         if($row->order_status == 'Diproses'){
-                            $button .= "<a href='{{ route('garansi.show', $row->id) }}'
-                                    class='btn btn-primary py-1 px-2'>
-                                    <i class='fa fa-eye'></i>
-                                </a>";
+                            $button .= '
+                                <a href="'.route('garansi.show', $row->id) .'"
+                                    class="btn btn-primary py-1 px-2">
+                                    <i class="fa fa-eye"></i>
+                                </a>';
                         }
                     }
 
