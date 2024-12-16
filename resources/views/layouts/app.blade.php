@@ -275,15 +275,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     @endif
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
-    <!-- <script src="{{ asset('web/js/bootstrap.min.js') }}"></script> -->
+    <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('web/js/select2.min.js') }}"></script>
 
 
