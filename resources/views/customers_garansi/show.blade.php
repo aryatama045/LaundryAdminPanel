@@ -45,9 +45,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>{{ __('No Pemasangan') }}</th>
-                                    <td>{{ $garansi->no_pemasangan }} <br>
-                                        <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small>
+                                    <th>{{ __('Pemasangan') }}</th>
+                                    <td>
+                                        <small>Tanggal : <?php echo date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) ?></small><br>
+                                        <small>Waktu : <?php echo date('h:i:s', strtotime($garansi->waktu_pemasangan)) ?></small>
                                     </td>
                                 </tr>
 
