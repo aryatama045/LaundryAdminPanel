@@ -465,8 +465,6 @@ class CustomerGaransiController extends Controller
 
         $garansiFoto = count($request->garansi_photo);
 
-        dd($id, $tgl_pasang, $request);
-
         $dataOrder = Order::where('id', $id)->first();
 
         $garansi_fill = [
