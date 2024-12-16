@@ -357,7 +357,7 @@ class CustomerGaransiController extends Controller
 
     public function show(CustomerGaransis $garansi, $id)
     {
-
+        dd($id);
 
         return view('customers_garansi.show', [
             'garansi' => $garansi
