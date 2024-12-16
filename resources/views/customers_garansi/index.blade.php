@@ -133,11 +133,12 @@
                     }
                 },
 
-                "columns": [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex',
-                        searchable: false
-                    },
+                "columns": [
+                    // {
+                    //     data: 'DT_RowIndex',
+                    //     name: 'DT_RowIndex',
+                    //     searchable: false
+                    // },
                     {
                         data: 'tanggal_nota',
                         name: 'tanggal_nota',

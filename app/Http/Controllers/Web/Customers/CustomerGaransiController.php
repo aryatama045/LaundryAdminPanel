@@ -61,8 +61,6 @@ class CustomerGaransiController extends Controller
 
                     $img = '';
 
-
-
                     return $img;
                 })
                 ->addColumn('tanggal_nota', function ($row) {
@@ -74,6 +72,11 @@ class CustomerGaransiController extends Controller
                     $nomor_nota = $row->nomor_nota == '' ? '-' : $row->nomor_nota;
 
                     return $nomor_nota;
+                })
+                ->addColumn('nama_customer', function ($row) {
+                    $nama_customer = $row->nama_customer == '' ? '-' : $row->nama_customer;
+
+                    return $nama_customer;
                 })
                 ->addColumn('nama_barang', function ($row) {
                     $nama_barang = $row->nama_barang == '' ? '-' : $row->nama_barang;
@@ -124,15 +127,13 @@ class CustomerGaransiController extends Controller
                         <a class="dropdown-item btn modal-effect text-primary btn-sm" data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Umodaldemo8" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick=update(' . json_encode($array) . ')><span class="fe fe-edit text-success fs-14"></span> Edit</a>
                     ';
 
-
-                        return $button;
-
-
+                    return $button;
                 })
                 ->rawColumns([
                     'action',
                     'tanggal_nota',
                     'nomor_nota',
+                    'nama_customer',
                     'nama_barang',
                     'qty',
                     'terproteksi',
