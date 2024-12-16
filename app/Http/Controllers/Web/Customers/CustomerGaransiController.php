@@ -134,11 +134,7 @@ class CustomerGaransiController extends Controller
                     return $result;
                 })
                 ->addColumn('action', function ($row) {
-                    $array = array(
-                        "id" => $row->id
-                    );
                     $button = '';
-
                     $roles   = '';
                     $user_id = auth()->user();
                     if($user_id){
