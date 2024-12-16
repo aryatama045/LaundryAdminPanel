@@ -63,7 +63,7 @@ class CustomerGaransiController extends Controller
                     );
 
                     if ($get_media) {
-                        $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8"
+                        $img = '<a data-effect="effect-super-scaled" data-toggle="modal" href="#Gmodaldemo8"
                         onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>';
