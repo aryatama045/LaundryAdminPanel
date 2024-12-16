@@ -68,7 +68,6 @@ class CustomerGaransiController extends Controller
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>';
-
                     }
 
                     return $img;
@@ -94,7 +93,17 @@ class CustomerGaransiController extends Controller
                     return $qty;
                 })
                 ->addColumn('terproteksi', function ($row) {
-                    $terproteksi = '-';
+                    $result = '-';
+                    if($row->order_status == 'Disetujui'){
+                        $result = '<span class="text-success"><b>Disetujui</b></span>';
+                    }else if($row->order_status == 'Diproses'){
+                        $result = '<span class="text-grey"><b>Diproses</b></span>';
+                    }else if($row->order_status == 'Ditolak'){
+                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                    }else{
+                        $result = '<span class=""> - </span>';
+                    }
+                    return $result;
 
                     return $terproteksi;
                 })
@@ -104,23 +113,14 @@ class CustomerGaransiController extends Controller
                     if($row->order_status == '-'){
                         $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Tambah Proteksi</b></a></span>';
                     }else if($row->order_status == 'Diproses'){
-                        $tambah_proteksi .= '<span class="text-grey text-center"><b>Sedang Proses Proteksi</b></span>';
+                        $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
                     }else{
                         $tambah_proteksi .= '';
                     }
 
                     return $tambah_proteksi;
                 })
-                ->addColumn('satuan', function ($row) {
-                    $satuan = $row->satuan == '' ? '-' : $row->satuan;
 
-                    return $satuan;
-                })
-                // ->addColumn('currency', function ($row) {
-                //     $currency = $row->barang_harga == '' ? '-' : 'Rp ' . number_format($row->barang_harga, 0);
-
-                //     return $currency;
-                // })
                 ->addColumn('status', function ($row) use ($request) {
                     if($row->order_status == 'Disetujui'){
                         $result = '<span class="text-success"><b>Disetujui</b></span>';
