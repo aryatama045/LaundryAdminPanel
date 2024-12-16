@@ -36,12 +36,13 @@ class CustomerGaransiController extends Controller
 
         if ($request->ajax()) {
 
-            dd('oke');
             if($roles == 'root' ){
                 $data = Order::get();
             }else{
                 $data = Order::where('customer_id', $user_id->id)->get();
             }
+
+            dd($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
