@@ -49,20 +49,19 @@ class CustomerGaransiController extends Controller
                 $data = Order::where('customer_id', $user_id->id)->get();
             }
 
-            dd($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('img', function ($row) {
-                    $array = array(
-                        "barang_gambar" => $row->barang_gambar,
-                    );
+                    // if ($row->barang_gambar == "image.png") {
+                    //     $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/assets/default/barang') . '/' . $row->barang_gambar . '&quot;) center center;"></span></a>';
+                    // } else {
+                    //     $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/uploads/image/' . $row->barang_gambar) . '&quot;) center center;"></span></a>';
+                    // }
 
-                    if ($row->barang_gambar == "image.png") {
-                        $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/assets/default/barang') . '/' . $row->barang_gambar . '&quot;) center center;"></span></a>';
-                    } else {
-                        $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/uploads/image/' . $row->barang_gambar) . '&quot;) center center;"></span></a>';
-                    }
+                    $img = '';
+
+
 
                     return $img;
                 })
