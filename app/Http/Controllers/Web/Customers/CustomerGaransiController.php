@@ -64,28 +64,23 @@ class CustomerGaransiController extends Controller
                     return $img;
                 })
                 ->addColumn('tanggal_nota', function ($row) {
-                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : $row->tanggal_nota;
-
+                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : $row->tanggal_nota->format('d/m/Y');
                     return $tanggal_nota;
                 })
                 ->addColumn('nomor_nota', function ($row) {
                     $nomor_nota = $row->nomor_nota == '' ? '-' : $row->nomor_nota;
-
                     return $nomor_nota;
                 })
                 ->addColumn('nama_customer', function ($row) {
                     $nama_customer = $row->nama_customer == '' ? '-' : $row->nama_customer;
-
                     return $nama_customer;
                 })
                 ->addColumn('nama_barang', function ($row) {
                     $nama_barang = $row->nama_barang == '' ? '-' : $row->nama_barang;
-
                     return $nama_barang;
                 })
                 ->addColumn('qty', function ($row) {
                     $qty = $row->qty == '' ? '-' : $row->qty;
-
                     return $qty;
                 })
                 ->addColumn('terproteksi', function ($row) {
@@ -129,17 +124,7 @@ class CustomerGaransiController extends Controller
 
                     return $button;
                 })
-                ->rawColumns([
-                    'action',
-                    'tanggal_nota',
-                    'nomor_nota',
-                    'nama_customer',
-                    'nama_barang',
-                    'qty',
-                    'terproteksi',
-                    'tambah_proteksi',
-                    'img',
-                    'status'])
+                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','tambah_proteksi','img','status'])
                 ->make(true);
         }
 
