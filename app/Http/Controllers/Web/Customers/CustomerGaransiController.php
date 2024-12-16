@@ -56,17 +56,18 @@ class CustomerGaransiController extends Controller
 
                     $bukti = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
 
-                    $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+                    if($bukti){
+                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
 
-                    $array = array(
-                        "barang_gambar" => $get_media->path,
-                    );
+                        $array = array(
+                            "barang_gambar" => $get_media->path,
+                        );
 
-                    if ($get_media) {
                         $img = '<a data-effect="effect-super-scaled" data-toggle="modal" href="#Gmodaldemo8"
                         onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>';
+
                     }
 
                     return $img;
