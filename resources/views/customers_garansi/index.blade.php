@@ -109,7 +109,7 @@
 
         function getData() {
             //datatables
-            table = $('#myTable').DataTable({
+            var table = $('#myTable').DataTable({
 
                 "processing": true,
                 "serverSide": true,
@@ -122,9 +122,7 @@
                     [5, 10, 25, 50, 100, 'Semua']
                 ],
                 "pageLength": 10,
-
-                lengthChange: true,
-
+                "lengthChange": true,
                 "ajax": {
                     "url": "{{ route('garansi.index') }}",
                     "data": function(d) {
@@ -132,7 +130,6 @@
                         d.tglakhir = $('input[name="tglakhir"]').val();
                     }
                 },
-
                 "columns": [{
                         data: 'tanggal_nota',
                         name: 'tanggal_nota',
