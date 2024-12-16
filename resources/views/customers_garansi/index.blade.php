@@ -48,9 +48,6 @@
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
-                                        @role('roots')
-                                        <th scope="col" rowspan="2">{{ __('Action') }}</th>
-                                        @endrole
                                     </tr>
 
                                     <tr>
