@@ -104,7 +104,7 @@ class CustomerGaransiController extends Controller
                     if($row->order_status == '-'){
                         $tambah_proteksi .= '<span class="text-success"> <a href="'. route('garansi.edit',$row->id) .'">Tambah Proteksi</a></span>';
                     }else if($row->order_status == 'Diproses'){
-                        $tambah_proteksi .= '<span class="text-info"> <a href="">Sedang Proses Proteksi</a></span>';
+                        $tambah_proteksi .= '<span class="text-grey"><b>Sedang Proses Proteksi</b></span>';
                     }else{
                         $tambah_proteksi .= '';
                     }
