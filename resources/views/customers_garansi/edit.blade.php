@@ -50,8 +50,7 @@
                 </div>
                 <div class="card-body">
                     <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
+                        @csrf @method('put')
                         <div class="row">
                             <!-- nomor_nota -->
                             <div class="col-12 col-md-6 mb-4">
