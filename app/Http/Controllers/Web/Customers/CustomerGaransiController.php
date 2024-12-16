@@ -116,7 +116,7 @@ class CustomerGaransiController extends Controller
         $roles   = '';
         $user_id = auth()->user();
 
-        dd($user_id->id);
+        // dd($user_id->id);
 
         if($user_id){
             $roles   = $user_id['roles'][0]->name;
@@ -125,10 +125,13 @@ class CustomerGaransiController extends Controller
         if ($request->ajax()) {
 
             if($roles == 'root' ){
+                $data = Order::get();
+            }else{
+                $data = Order::where('customer_id', $user_id->id)->get();
+            }
 
-                if($request->tglawal != ''){
 
-                    $data = Order::get();
+                // if($request->tglawal != ''){
 
                     // $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
                     // ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
@@ -136,33 +139,36 @@ class CustomerGaransiController extends Controller
                     // ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
                     // ->whereBetween('tbl_barang.created_at', [$request->tglawal, $request->tglakhir])
                     // ->orderBy('barang_id', 'DESC')->get();
-                }else{
+                // }else{
+
                     // $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
                     // ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
                     // ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
                     // ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
                     // ->orderBy('barang_id', 'DESC')->get();
 
-                }
-            }else{
-                if($request->tglawal != ''){
+                // }
+            // }else{
+            //     if($request->tglawal != ''){
 
-                    $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-                    ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-                    ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-                    ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-                    ->whereBetween('tbl_barang.created_at', [$request->tglawal, $request->tglakhir])
-                    ->where('make_by', $user)
-                    ->orderBy('barang_id', 'DESC')->get();
-                }else{
-                    $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-                    ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-                    ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-                    ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-                    ->where('make_by', $user)
-                    ->orderBy('barang_id', 'DESC')->get();
-                }
-            }
+            //         $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
+            //         ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
+            //         ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
+            //         ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
+            //         ->whereBetween('tbl_barang.created_at', [$request->tglawal, $request->tglakhir])
+            //         ->where('make_by', $user)
+            //         ->orderBy('barang_id', 'DESC')->get();
+            //     }else{
+            //         $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
+            //         ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
+            //         ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
+            //         ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
+            //         ->where('make_by', $user)
+            //         ->orderBy('barang_id', 'DESC')->get();
+            //     }
+            // }
+
+            dd($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
