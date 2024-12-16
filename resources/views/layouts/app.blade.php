@@ -389,6 +389,12 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     @stack('scripts')
 
     <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    <script>
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -429,6 +435,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
             });
         }
     </script>
+
     <script>
         $(document).ready(function() {
             $('.select2').select2({
