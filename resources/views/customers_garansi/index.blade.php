@@ -141,7 +141,7 @@
                     // },
                     {
                         data: 'tanggal_nota',
-                        name: 'tanggal_nota',
+                        name: 'tanggal',
                     },
                     {
                         data: 'nomor_nota',
