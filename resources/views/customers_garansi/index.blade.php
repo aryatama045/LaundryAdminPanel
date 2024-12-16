@@ -140,8 +140,8 @@
                     //     searchable: false
                     // },
                     {
-                        data: 'tanggal_nota',
-                        name: 'tanggal',
+                        data: 'tanggal',
+                        name: 'tanggal_nota',
                     },
                     {
                         data: 'nomor_nota',
