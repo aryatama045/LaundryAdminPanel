@@ -135,10 +135,36 @@
         function imposeMinMax(el){
             if(el.value != ""){
                 if(parseInt(el.value) < parseInt(el.min)){
-                el.value = el.min;
+                    el.value = el.min;
+                    Swal.fire({
+                        title: 'Qty Tidak Boleh Kurang',
+                        type: 'warning',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#00B894',
+                        cancelButtonColor: '#d33',
+                        // confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    })
                 }
                 if(parseInt(el.value) > parseInt(el.max)){
-                el.value = el.max;
+                    el.value = el.max;
+                    Swal.fire({
+                        title: 'Qty Tidak Boleh Lebih',
+                        type: 'warning',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#00B894',
+                        cancelButtonColor: '#d33',
+                        // confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    })
                 }
             }
         }
