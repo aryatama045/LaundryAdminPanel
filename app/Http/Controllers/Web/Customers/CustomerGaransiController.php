@@ -357,11 +357,12 @@ class CustomerGaransiController extends Controller
 
     public function show($id)
     {
-        dd($id);
 
-        return view('customers_garansi.show', [
-            'garansi' => $garansi
-        ]);
+        $order      = Order::where('id', $id)->first();
+
+        $garansi    = CustomerGaransis::where('id', $order->garansi_id)->first();
+
+        return view('customers_garansi.show', compact('order','garansi'));
     }
 
     public function create()

@@ -30,17 +30,10 @@
                             </thead>
                             <tbody>
 
-                                @role('root')
                                 <tr>
                                     <th>{{ __('Customer') }}</th>
                                     <td>{{ $garansi->user->name }} </td>
                                 </tr>
-
-                                <tr>
-                                    <th>{{ __('No Validasi') }}</th>
-                                    <td>{{ $garansi->no_validasi }} </td>
-                                </tr>
-                                @endrole
 
                                 <tr>
                                     <th>{{ __('No Nota') }}</th>
