@@ -17,44 +17,31 @@
                     <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data"> @csrf
                         @method('put')
                         <div class="row">
-                            <!-- No Seri -->
+                            <!-- nama_barang -->
                             <div class="col-12 col-md-12 mb-2">
-                                <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" value="{{ $garansi->no_seri }}" readonly>
-                                @error('no_seri')
+                                <label for=""><b>{{ __('Nama Barang') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="nama_barang" value="{{ $order->nama_barang }}" readonly>
+                                @error('nama_barang')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <!-- No Validasi -->
+                            <!-- Qty -->
                             <div class="col-12 col-md-12 mb-2">
-                                <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" value="{{ $garansi->no_validasi }}" readonly>
-                                @error('no_validasi')
+                                <label for=""><b>{{ __('Qty') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="qty" min="1" max="{{ $order->qty }}" value="{{ $order->qty }}" readonly>
+
+                                <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Hooray!">(?)Cara Pengisian Qty?</a>
+                                @error('qty')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <!-- Nota -->
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for=""><b>{{ __('No. Nota') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" value="{{ $garansi->no_nota }}" readonly>
-                                @error('no_nota')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for=""><b>{{ __('Tanggal Nota') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ $garansi->tanggal_nota }}" readonly>
-                                @error('tanggal_nota')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
                             <!-- Pemasangan -->
                             <div class="col-12 col-md-6 mb-2">
                                 <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
                                 <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
-                                    value="{{ $garansi->waktu_garansi }}" >
+                                    value="{{ $garansi?->waktu_garansi }}" >
                                 @error('waktu_pemasangan')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -69,4 +56,9 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 @endsection
