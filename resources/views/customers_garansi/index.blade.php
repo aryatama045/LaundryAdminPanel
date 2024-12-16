@@ -104,13 +104,15 @@
             }
         });
 
+        var table;
+
         $(document).ready(function() {
             getData();
         });
 
         function getData() {
             //datatables
-            var table = $('#myTable').DataTable({
+            table = $('#myTable').DataTable({
 
                 "processing": true,
                 "serverSide": true,
