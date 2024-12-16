@@ -52,7 +52,7 @@ class CustomerGaransiController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('img', function ($row) {
-                    $img = '';
+                    $img = ' -- ';
 
                     $bukti = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
 
