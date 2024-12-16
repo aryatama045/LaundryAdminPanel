@@ -145,7 +145,7 @@ class CustomerGaransiController extends Controller
                         $roles   = $user_id['roles'][0]->name;
                     }
 
-                    if($roles){
+                    if($roles=='root'){
                         if($row->garansi_id){
                             $button .= '
                                 <a href="'.route('garansi.show', $row->garansi_id) .'"
