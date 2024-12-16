@@ -21,11 +21,11 @@
                         <div class="form-inline ">
                             <div class="form-group mb-2">
                                 <label for="tglawal" class="sr-only">Tanggal Awal</label>
-                                <input type="text" name="tglawal" class="form-control datepicker-date" placeholder="Tanggal Awal">
+                                <input type="date" name="tglawal" class="form-control datepicker-date" placeholder="Tanggal Awal">
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
                                 <label for="tglakhir" class="sr-only">Tanggal Akhir</label>
-                                <input type="text" name="tglakhir" class="form-control datepicker-date" placeholder="Tanggal Akhir">
+                                <input type="date" name="tglakhir" class="form-control datepicker-date" placeholder="Tanggal Akhir">
                             </div>
                         </div>
                         <div class="form-group">
