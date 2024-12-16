@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('Title') }}</th>
-                                    <th scope="col">{{ __('Details') }}</th>
+                                    <th scope="col">{{ __('Detail') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
