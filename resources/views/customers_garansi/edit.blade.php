@@ -44,7 +44,7 @@
                     <div class="w-100">
                         <h2 class="float-left">{{ __('Tambah'). ' '. __('Proteksi') }} - {{ $order->nama_barang }}</h2>
                         <div class="text-right">
-                            <a class="btn btn-light" href="{{ route('customer.index') }}"> {{ __('Back') }} </a>
+                            <a class="btn btn-light" href="{{ route('garansi.index') }}"> {{ __('Back') }} </a>
                         </div>
                     </div>
                 </div>
