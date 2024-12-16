@@ -355,7 +355,7 @@ class CustomerGaransiController extends Controller
         }
     }
 
-    public function show(CustomerGaransis $garansi, $id)
+    public function show($id)
     {
         dd($id);
 
