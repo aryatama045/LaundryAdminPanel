@@ -114,7 +114,11 @@ class CustomerGaransiController extends Controller
     public function getDataGaransi(Request $request)
     {
 
-        dd('test');
+        $user_id = auth()->user()->getRelations('roles');
+            $roles   = $user_id['roles'][0]->name;
+
+        dd($roles);
+
         if ($request->ajax()) {
             $data = Order::latest()->get();
             return Datatables::of($data)
@@ -127,14 +131,9 @@ class CustomerGaransiController extends Controller
                 ->make(true);
         }
 
-
-        dd($request);
         if ($request->ajax()) {
 
-            $user_id = auth()->user()->getRelations('roles');
-            $roles   = $user_id['roles'][0]->name;
 
-            dd($roles);
 
             if($roles == 'root' ){
 
