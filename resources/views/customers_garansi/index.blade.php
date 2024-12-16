@@ -39,6 +39,7 @@
                             <table class="table table-bordered dataTable table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th rowspan="2" width="3%"> No. </th>
                                         <th rowspan="2" width="10%"> Tanggal Nota </th>
                                         <th rowspan="2"> Nomor Nota </th>
                                         <th rowspan="2"> Nama Barang </th>
@@ -131,6 +132,11 @@
                     }
                 },
                 "columns": [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        searchable: false
+                    },
+                    {
                         data: 'tanggal_nota',
                         name: 'tanggal_nota',
                     },
