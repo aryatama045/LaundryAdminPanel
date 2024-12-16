@@ -26,9 +26,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css">
 
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-
     <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -178,7 +175,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
                 <img src="{{ asset('images/loader/loader.gif') }}" alt="">
             </div>
         </div>
-    </div> 
+    </div>
 --}}
 
     @include('layouts.partials.sidebar')
@@ -279,12 +276,11 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
 
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
+
     <script src="{{ asset('web/js/popper.js') }}"></script>
     <script src="{{ asset('web/js/sweet-alert.js') }}"></script>
     <script src="{{ asset('web/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('web/js/select2.min.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
