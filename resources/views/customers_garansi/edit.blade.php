@@ -104,7 +104,7 @@
                         <div class="row">
                             <div class="col-12 col-md-8 mb-2">
                                 <label><b>{{ __('Bukti Foto') }}</b> </label>
-                                <span name="add" class="float-right btn btn-primary btn-sm default add">
+                                <span hidden name="add" class="float-right btn btn-primary btn-sm default add">
                                     <i class="fa fa-plus"></i> Tambah
                                 </span>
 
