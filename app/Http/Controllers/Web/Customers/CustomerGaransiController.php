@@ -150,7 +150,7 @@ class CustomerGaransiController extends Controller
                             $button .= '
                                 <a href="'.route('garansi.show', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
-                                    <i class="fa fa-eye"></i>
+                                    Proses
                                 </a>';
                         }
                     }
