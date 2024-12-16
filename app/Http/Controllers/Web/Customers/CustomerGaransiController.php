@@ -89,7 +89,15 @@ class CustomerGaransiController extends Controller
                     return $terproteksi;
                 })
                 ->addColumn('tambah_proteksi', function ($row) {
-                    $tambah_proteksi = '-';
+
+                    $tambah_proteksi = '';
+                    if($row->order_status == '-'){
+                        $tambah_proteksi .= '<span class="text-success"> <a href="">Tambah Proteksi</a></span>';
+                    }else if($row->order_status == 'Diproses'){
+                        $tambah_proteksi .= '<span class="text-info"> <a href="">Sedang Proses Proteksi</a></span>';
+                    }else{
+                        $tambah_proteksi .= '';
+                    }
 
                     return $tambah_proteksi;
                 })
