@@ -165,7 +165,9 @@
                     },
                     {
                         data: 'img',
-                        name: 'img',
+                        name: 'barang_gambar',
+                        searchable: false,
+                        orderable: false
                     },
                     {
                         data: 'status',
