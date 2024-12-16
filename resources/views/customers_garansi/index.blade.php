@@ -48,7 +48,7 @@
                                         <th rowspan="2"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
                                         @role('root')
-                                        <th scope="col">{{ __('Action') }}</th>
+                                        <th scope="col" rowspan="2">{{ __('Action') }}</th>
                                         @endrole
                                     </tr>
 
@@ -139,28 +139,36 @@
                         searchable: false
                     },
                     {
-                        data: 'tgl',
-                        name: 'bm_tanggal',
+                        data: 'tanggal_nota',
+                        name: 'tanggal_nota',
                     },
                     {
-                        data: 'bm_kode',
-                        name: 'bm_kode',
+                        data: 'nomor_nota',
+                        name: 'nomor_nota',
                     },
                     {
-                        data: 'barang_kode',
-                        name: 'barang_kode',
+                        data: 'nama_customer',
+                        name: 'nama_customer',
                     },
                     {
-                        data: 'supplier',
-                        name: 'supplier_nama',
+                        data: 'nama_barang',
+                        name: 'nama_barang',
                     },
                     {
-                        data: 'barang',
-                        name: 'barang_nama',
+                        data: 'qty',
+                        name: 'qty',
                     },
                     {
-                        data: 'bm_jumlah',
-                        name: 'bm_jumlah',
+                        data: 'terproteksi',
+                        name: 'terproteksi',
+                    },
+                    {
+                        data: 'satuan',
+                        name: 'satuan',
+                    },
+                    {
+                        data: 'part_number',
+                        name: 'part_number',
                     },
                 ],
 

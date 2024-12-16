@@ -37,12 +37,9 @@ class CustomerGaransiController extends Controller
         $roles   = '';
         $user_id = auth()->user();
 
-        // dd($user_id->id);
-
         if($user_id){
             $roles   = $user_id['roles'][0]->name;
         }
-
 
         if ($request->ajax()) {
 
@@ -60,6 +57,7 @@ class CustomerGaransiController extends Controller
                     $array = array(
                         "barang_gambar" => $row->barang_gambar,
                     );
+
                     if ($row->barang_gambar == "image.png") {
                         $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/assets/default/barang') . '/' . $row->barang_gambar . '&quot;) center center;"></span></a>';
                     } else {
@@ -68,85 +66,81 @@ class CustomerGaransiController extends Controller
 
                     return $img;
                 })
-                ->addColumn('jenisbarang', function ($row) {
-                    $jenisbarang = $row->jenisbarang_id == '' ? '-' : $row->jenisbarang_nama;
+                ->addColumn('tanggal_nota', function ($row) {
+                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : $row->tanggal_nota;
 
-                    return $jenisbarang;
+                    return $tanggal_nota;
                 })
-                ->addColumn('kategori', function ($row) {
-                    $kategori = $row->kategori_id == '' ? '-' : $row->kategori_nama;
+                ->addColumn('nomor_nota', function ($row) {
+                    $nomor_nota = $row->nomor_nota == '' ? '-' : $row->nomor_nota;
 
-                    return $kategori;
+                    return $nomor_nota;
+                })
+                ->addColumn('nama_barang', function ($row) {
+                    $nama_barang = $row->nama_barang == '' ? '-' : $row->nama_barang;
+
+                    return $nama_barang;
+                })
+                ->addColumn('qty', function ($row) {
+                    $qty = $row->qty == '' ? '-' : $row->qty;
+
+                    return $qty;
+                })
+                ->addColumn('terproteksi', function ($row) {
+                    $terproteksi = '-';
+
+                    return $terproteksi;
+                })
+                ->addColumn('tambah_proteksi', function ($row) {
+                    $tambah_proteksi = '-';
+
+                    return $tambah_proteksi;
                 })
                 ->addColumn('satuan', function ($row) {
-                    $satuan = $row->satuan_id == '' ? '-' : $row->satuan_nama;
+                    $satuan = $row->satuan == '' ? '-' : $row->satuan;
 
                     return $satuan;
                 })
-                ->addColumn('merk', function ($row) {
-                    $merk = $row->merk_id == '' ? '-' : $row->merk_nama;
+                // ->addColumn('currency', function ($row) {
+                //     $currency = $row->barang_harga == '' ? '-' : 'Rp ' . number_format($row->barang_harga, 0);
 
-                    return $merk;
-                })
-                ->addColumn('make_by', function ($row) {
-                    $make_by = $row->make_by == '' ? '-' : $row->make_by;
-
-                    return $make_by;
-                })
-                ->addColumn('currency', function ($row) {
-                    $currency = $row->barang_harga == '' ? '-' : 'Rp ' . number_format($row->barang_harga, 0);
-
-                    return $currency;
-                })
-                ->addColumn('totalstok', function ($row) use ($request) {
-                    if ($request->tglawal == '') {
-                        $jmlmasuk = BarangmasukModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangmasuk.barang_kode')->leftJoin('tbl_supplier', 'tbl_supplier.supplier_id', '=', 'tbl_barangmasuk.supplier_id')->where('tbl_barangmasuk.barang_kode', '=', $row->barang_kode)->sum('tbl_barangmasuk.bm_jumlah');
-                    } else {
-                        $jmlmasuk = BarangmasukModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangmasuk.barang_kode')->leftJoin('tbl_supplier', 'tbl_supplier.supplier_id', '=', 'tbl_barangmasuk.supplier_id')->whereBetween('bm_tanggal', [$request->tglawal, $request->tglakhir])->where('tbl_barangmasuk.barang_kode', '=', $row->barang_kode)->sum('tbl_barangmasuk.bm_jumlah');
-                    }
-
-
-                    if ($request->tglawal) {
-                        $jmlkeluar = BarangkeluarModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangkeluar.barang_kode')->whereBetween('bk_tanggal', [$request->tglawal, $request->tglakhir])->where('tbl_barangkeluar.barang_kode', '=', $row->barang_kode)->sum('tbl_barangkeluar.bk_jumlah');
-                    } else {
-                        $jmlkeluar = BarangkeluarModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangkeluar.barang_kode')->where('tbl_barangkeluar.barang_kode', '=', $row->barang_kode)->sum('tbl_barangkeluar.bk_jumlah');
-                    }
-
-                    $totalstok = $row->barang_stok + ($jmlmasuk - $jmlkeluar);
-                    if($totalstok == 0){
-                        $result = '<span class="">'.$totalstok.'</span>';
-                    }else if($totalstok > 0){
-                        $result = '<span class="text-success">'.$totalstok.'</span>';
+                //     return $currency;
+                // })
+                ->addColumn('status', function ($row) use ($request) {
+                    if($row->order_status == 'Disetujui'){
+                        $result = '<span class="text-success"> Disetujui </span>';
+                    }else if($row->order_status == 'Diproses'){
+                        $result = '<span class="text-info"> Diproses </span>';
                     }else{
-                        $result = '<span class="text-danger">'.$totalstok.'</span>';
+                        $result = '<span class=""> - </span>';
                     }
-
                     return $result;
                 })
                 ->addColumn('action', function ($row) {
                     $array = array(
-                        "barang_id" => $row->barang_id,
-                        "jenisbarang_id" => $row->jenisbarang_id,
-                        "satuan_id" => $row->satuan_id,
-                        "merk_id" => $row->merk_id,
-                        "barang_id" => $row->barang_id,
-                        "barang_kode" => $row->barang_kode,
-                        "barang_nama" => trim(preg_replace('/[^A-Za-z0-9-]+/', '_', $row->barang_nama)),
-                        "barang_harga" => $row->barang_harga,
-                        "barang_stok" => $row->barang_stok,
-                        "barang_gambar" => $row->barang_gambar,
+                        "id" => $row->id
                     );
                     $button = '';
                     $button .= '
                         <a class="dropdown-item btn modal-effect text-primary btn-sm" data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Umodaldemo8" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick=update(' . json_encode($array) . ')><span class="fe fe-edit text-success fs-14"></span> Edit</a>
                     ';
 
-                    $button .= '-';
+                    if($roles == 'root'){
+                        return $button;
+                    }
 
-
-                    return $button;
                 })
-                ->rawColumns(['checkbox','action', 'img', 'jenisbarang', 'satuan','kategori', 'merk','currency', 'totalstok', 'make_by'])->make(true);
+                ->rawColumns([
+                    'action',
+                    'tanggal_nota',
+                    'nomor_nota',
+                    'nama_barang',
+                    'qty',
+                    'terproteksi',
+                    'tambah_proteksi',
+                    'img',
+                    'status'])
+                ->make(true);
         }
 
         $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
@@ -155,76 +149,76 @@ class CustomerGaransiController extends Controller
     }
 
     // <tbody>
-    //     @if(!empty($garansis))
-    //     @foreach ($garansis as $garansi)
-    //         <tr>
-    //             @role('root')
-    //             <td>{{ $garansi->user->name }}</td>
-    //             @endrole
-    //             <td>
-    //                 {{ $garansi->no_nota }} <br>
-    //                 <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
-    //             </td>
-    //             <td>
-    //                 Waktu : {{ date('H:i:s',strtotime($garansi->waktu_pemasangan)) }} <br>
-    //                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
-    //             </td>
-    //             <td>
-    //                 @php
-    //                     $websetting = App\Models\WebSetting::first();
+        //     @if(!empty($garansis))
+        //     @foreach ($garansis as $garansi)
+        //         <tr>
+        //             @role('root')
+        //             <td>{{ $garansi->user->name }}</td>
+        //             @endrole
+        //             <td>
+        //                 {{ $garansi->no_nota }} <br>
+        //                 <small> Tgl nota : {{ date('d-m-Y', strtotime($garansi->tanggal_nota)) }} </small>
+        //             </td>
+        //             <td>
+        //                 Waktu : {{ date('H:i:s',strtotime($garansi->waktu_pemasangan)) }} <br>
+        //                 <small> Tgl pemasangan : {{ date('d-m-Y', strtotime($garansi->tanggal_pemasangan)) }} </small>
+        //             </td>
+        //             <td>
+        //                 @php
+        //                     $websetting = App\Models\WebSetting::first();
 
-    //                     $masa_berlaku = $websetting->masa_berlaku;
+        //                     $masa_berlaku = $websetting->masa_berlaku;
 
-    //                     $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
-    //                     $dateExps = date('d-m-Y', $dateExp);
+        //                     $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+        //                     $dateExps = date('d-m-Y', $dateExp);
 
 
-    //                     $paymentDate = now();
-    //                     $paymentDate = date('Y-m-d', strtotime($paymentDate));
-    //                     //echo $paymentDate; // echos today!
-    //                     $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-    //                     $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+        //                     $paymentDate = now();
+        //                     $paymentDate = date('Y-m-d', strtotime($paymentDate));
+        //                     //echo $paymentDate; // echos today!
+        //                     $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+        //                     $contractDateEnd = date('Y-m-d', strtotime($dateExps));
 
-    //                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-    //                             $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-    //                     }else{
-    //                         if($paymentDate <= $contractDateEnd){
+        //                     if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+        //                             $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+        //                     }else{
+        //                         if($paymentDate <= $contractDateEnd){
 
-    //                             $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-    //                         }else{
-    //                             $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
-    //                         }
+        //                             $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+        //                         }else{
+        //                             $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+        //                         }
 
-    //                     }
-    //                 @endphp
+        //                     }
+        //                 @endphp
 
-    //                 {!! $berlaku_s !!}
-    //                 <small> Sampai : {{ $dateExps }} </small>
+        //                 {!! $berlaku_s !!}
+        //                 <small> Sampai : {{ $dateExps }} </small>
 
-    //             </td>
+        //             </td>
 
-    //             <td>
-    //                 <a href="{{ route('garansi.show', $garansi->id) }}"
-    //                     class="btn btn-primary py-1 px-2">
-    //                     <i class="fa fa-eye"></i>
-    //                 </a>
+        //             <td>
+        //                 <a href="{{ route('garansi.show', $garansi->id) }}"
+        //                     class="btn btn-primary py-1 px-2">
+        //                     <i class="fa fa-eye"></i>
+        //                 </a>
 
-    //                 @role('root')
-    //                     <a href="{{ route('garansi.edit', $garansi->id) }}"
-    //                         class="btn btn-info py-1 px-2">
-    //                         <i class="fa fa-edit"></i>
-    //                     </a>
+        //                 @role('root')
+        //                     <a href="{{ route('garansi.edit', $garansi->id) }}"
+        //                         class="btn btn-info py-1 px-2">
+        //                         <i class="fa fa-edit"></i>
+        //                     </a>
 
-    //                     <a href="{{ route('garansi.delete', $garansi->id) }}"
-    //                         class="btn btn-danger py-1 px-2 delete-confirm" >
-    //                         <i class="fa fa-trash"></i>
-    //                     </a>
-    //                 @endrole
-    //             </td>
+        //                     <a href="{{ route('garansi.delete', $garansi->id) }}"
+        //                         class="btn btn-danger py-1 px-2 delete-confirm" >
+        //                         <i class="fa fa-trash"></i>
+        //                     </a>
+        //                 @endrole
+        //             </td>
 
-    //         </tr>
-    //     @endforeach
-    //     @endif
+        //         </tr>
+        //     @endforeach
+        //     @endif
     // </tbody>
 
     public function getDataGaransi(Request $request)
