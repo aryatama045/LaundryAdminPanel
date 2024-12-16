@@ -49,8 +49,19 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data"> @csrf
-                        @method('put')
+                    <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <!-- nomor_nota -->
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for=""><b>{{ __('Nomor Nota') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="nomor_nota" value="{{ $order->nomor_nota }}" readonly>
+                                @error('nomor_nota')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row">
                             <!-- nama_barang -->
                             <div class="col-12 col-md-6 mb-4">
