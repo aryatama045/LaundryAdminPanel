@@ -115,9 +115,9 @@ class CustomerGaransiController extends Controller
     {
 
         $user_id = auth()->user()->getRelations('roles');
-            $roles   = $user_id['roles'][0]->name;
+            // $roles   = $user_id['roles'][0]->name;
 
-        dd($roles);
+        dd($user_id);
 
         if ($request->ajax()) {
             $data = Order::latest()->get();
