@@ -465,6 +465,9 @@ class CustomerGaransiController extends Controller
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
+        $garansiFoto = count($request->garansi_photo);
+
+
         dd($id, $tgl_pasang, $request);
         $dataUpdate= array(
             'tanggal_pemasangan' => $tgl_pasang,
