@@ -388,11 +388,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
 
     @stack('scripts')
 
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 
     <script>
         $.ajaxSetup({
