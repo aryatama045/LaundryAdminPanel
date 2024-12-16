@@ -234,7 +234,7 @@
 
         function gambar(data) {
             if(data.barang_gambar != 'image.png'){
-                $("#outputImgG").attr("src", "{{url('/')}}" + data.barang_gambar);
+                $("#outputImgG").attr("src", "{{ Storage::url('"+ data.barang_gambar +"')}}");
             }else{
                 $("#outputImgG").attr("src", "{{url('/images/dummy/dummy-placeholder.png')}}");
             }
