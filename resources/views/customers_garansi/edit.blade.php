@@ -137,7 +137,7 @@
                 if(parseInt(el.value) < parseInt(el.min)){
                     el.value = el.min;
                     Swal.fire({
-                        title: 'Qty Tidak Boleh Kurang',
+                        title: 'Qty Tidak Boleh Kurang, dari nilai nota',
                         type: 'warning',
                         icon: 'warning',
                         showCancelButton: true,
@@ -153,7 +153,7 @@
                 if(parseInt(el.value) > parseInt(el.max)){
                     el.value = el.max;
                     Swal.fire({
-                        title: 'Qty Tidak Boleh Lebih',
+                        title: 'Qty Tidak Boleh Lebih, dari nilai nota',
                         type: 'warning',
                         icon: 'warning',
                         showCancelButton: true,
