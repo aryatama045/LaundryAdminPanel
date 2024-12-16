@@ -448,6 +448,7 @@ class CustomerGaransiController extends Controller
 
     public function edit($id)
     {
+        dd($id);
         $garansi = CustomerGaransis::where('id', $id)->first();
 
         return view('customers_garansi.edit', compact('garansi'));
