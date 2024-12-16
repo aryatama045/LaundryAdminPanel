@@ -102,9 +102,9 @@ class CustomerGaransiController extends Controller
 
                     $tambah_proteksi = '';
                     if($row->order_status == '-'){
-                        $tambah_proteksi .= '<span class="text-success"> <a href="'. route('garansi.edit',$row->id) .'">Tambah Proteksi</a></span>';
+                        $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Tambah Proteksi</b></a></span>';
                     }else if($row->order_status == 'Diproses'){
-                        $tambah_proteksi .= '<span class="text-grey"><b>Sedang Proses Proteksi</b></span>';
+                        $tambah_proteksi .= '<span class="text-grey text-center"><b>Sedang Proses Proteksi</b></span>';
                     }else{
                         $tambah_proteksi .= '';
                     }
