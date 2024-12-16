@@ -34,14 +34,14 @@ class CustomerGaransiController extends Controller
     public function index(Request $request)
     {
 
-        $roles   = '';
-        $user_id = auth()->user();
-
-        if($user_id){
-            $roles   = $user_id['roles'][0]->name;
-        }
 
         if ($request->ajax()) {
+            $roles   = '';
+            $user_id = auth()->user();
+
+            if($user_id){
+                $roles   = $user_id['roles'][0]->name;
+            }
 
             if($roles == 'root' ){
                 $data = Order::get();
