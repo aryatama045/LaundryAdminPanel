@@ -144,7 +144,7 @@ class CustomerGaransiController extends Controller
                     if($roles=='root'){
                         if($row->garansi_id){
                             $button .= '
-                                <a href="'.route('garansi.show', $row->garansi_id) .'"
+                                <a href="'.route('garansi.show', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
                                     Proses
                                 </a>';
@@ -351,11 +351,17 @@ class CustomerGaransiController extends Controller
         }
     }
 
-    public function show(CustomerGaransis $garansi)
+    public function show($id)  //CustomerGaransis $garansi
     {
-        return view('customers_garansi.show', [
-            'garansi' => $garansi
-        ]);
+        $order      = Order::where('id', $id)->first();
+
+        $garansi    = CustomerGaransis::where('id', $order->garansi_id)->first();
+
+        return view('customers_garansi.show', compact('order','garansi'));
+
+        // return view('customers_garansi.show', [
+        //     'garansi' => $garansi
+        // ]);
     }
 
     public function create()

@@ -32,7 +32,10 @@
 
                                 <tr>
                                     <th>{{ __('Customer') }}</th>
-                                    <td>{{ $garansi->user->name }} </td>
+                                    <?php
+                                        $customer = DB::table('users')->where('id', $garansi->customer_id)->first();
+                                    ?>
+                                    <td>{{ $customer->name }} </td>
                                 </tr>
 
                                 <tr>
