@@ -79,7 +79,7 @@
                             <div class="col-12 col-md-6 mb-4">
                                 <label for=""><b>{{ __('Qty') }}</b> <strong class="text-danger">*</strong></label>
                                 <input type="number" class="form-control" id="qty" name="qty" min="1" max="{{ $order->qty }}"
-                                        value="{{ $order->qty }}" >
+                                        value="{{ $order->qty }}" onkeyup=imposeMinMax(this)>
                                 <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Qty tidak boleh lebih dari yang tertera pada nota.">
                                     (?)Cara Pengisian Qty?</a>
                                 @error('qty')
@@ -132,11 +132,16 @@
 
 @push('scripts')
     <script>
-        document.getElementById("qty").addEventListener("change", function() {
-            let v = parseInt(this.value);
-            if (v < 1) this.value = 1;
-            if (1 > v) this.value = v;
-        });
+        function imposeMinMax(el){
+            if(el.value != ""){
+                if(parseInt(el.value) < parseInt(el.min)){
+                el.value = el.min;
+                }
+                if(parseInt(el.value) > parseInt(el.max)){
+                el.value = el.max;
+                }
+            }
+        }
     </script>
 
     <script>
