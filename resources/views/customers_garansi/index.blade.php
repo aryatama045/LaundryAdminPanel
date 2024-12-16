@@ -169,10 +169,7 @@
                         data: 'status',
                         name: 'status',
                     },
-                    {
-                        data: 'action',
-                        name: 'action',
-                    },
+
                 ],
 
             });
