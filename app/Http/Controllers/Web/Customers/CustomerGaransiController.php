@@ -124,6 +124,7 @@ class CustomerGaransiController extends Controller
 
         if ($request->ajax()) {
 
+            dd('oke');
             if($roles == 'root' ){
                 $data = Order::get();
             }else{
