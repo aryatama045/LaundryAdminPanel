@@ -24,7 +24,7 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <link rel="stylesheet" href="{{ asset('web/css/select2.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}" type="text/css">
-    <!-- <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css"> -->
+    <link rel="stylesheet" href="{{ asset('web/css/datatables.min.css') }}" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('web/css/toastr.min.css') }}" type="text/css">
 
@@ -36,10 +36,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 
     <style>
         .slider-wrapper {
@@ -282,8 +278,6 @@ $server  = request()->server('HTTP_SEC_CH_UA_PLATFORM');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
 
