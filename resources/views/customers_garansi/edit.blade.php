@@ -18,28 +18,34 @@
                         @method('put')
                         <div class="row">
                             <!-- nama_barang -->
-                            <div class="col-12 col-md-12 mb-2">
+                            <div class="col-12 col-md-6 mb-2">
                                 <label for=""><b>{{ __('Nama Barang') }}</b> <strong class="text-danger">*</strong></label>
                                 <input type="text" class="form-control" name="nama_barang" value="{{ $order->nama_barang }}" readonly>
                                 @error('nama_barang')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                        </div>
 
-                            <!-- Qty -->
-                            <div class="col-12 col-md-12 mb-2">
+                        <!-- Qty -->
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-2">
                                 <label for=""><b>{{ __('Qty') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="qty" min="1" max="{{ $order->qty }}" value="{{ $order->qty }}" readonly>
+                                <input type="text" class="form-control" name="qty" min="1" max="{{ $order->qty }}"
+                                        value="{{ $order->qty }}" >
 
-                                <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Hooray!">(?)Cara Pengisian Qty?</a>
+                                <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Qty tidak boleh lebih dari yang tertera pada nota.">
+                                    (?)Cara Pengisian Qty?</a>
                                 @error('qty')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                        </div>
 
-                            <!-- Pemasangan -->
+                        <!-- Pemasangan -->
+                        <div class="row">
                             <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Tanggal & Waktu Pemasangan') }} <strong class="text-danger">*</strong></label>
+                                <label for=""><b>{{ __('Tanggal & Waktu Pemasangan') }}</b> <strong class="text-danger">*</strong></label>
                                 <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
                                     value="{{ $garansi?->waktu_garansi }}" >
                                 @error('waktu_pemasangan')
