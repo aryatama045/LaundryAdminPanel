@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 mb-2">
                                 <label for=""><b>{{ __('Qty') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="qty" minlength="1" maxlength="{{ $order->qty }}"
+                                <input type="number" class="form-control" name="qty" minlength="1" maxlength="{{ $order->qty }}"
                                         value="{{ $order->qty }}" >
 
                                 <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Qty tidak boleh lebih dari yang tertera pada nota.">
