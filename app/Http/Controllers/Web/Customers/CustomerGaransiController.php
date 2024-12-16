@@ -469,7 +469,7 @@ class CustomerGaransiController extends Controller
 
         $garansi_fill = [
             'customer_id'           => $dataOrder->customer_id,
-            'no_nota'               => $dataOrder->no_nota,
+            'no_nota'               => $dataOrder->nomor_nota,
             'tanggal_nota'          => $dataOrder->tanggal_nota,
             'tanggal_pemasangan'    => $tgl_pasang,
             'waktu_pemasangan'      => $request->waktu_pemasangan,
