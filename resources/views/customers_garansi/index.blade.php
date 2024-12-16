@@ -46,7 +46,7 @@
                                         <th rowspan="2" width="2%"> Qty </th>
                                         <th colspan="2"> Terproteksi Hingga </th>
                                         <th rowspan="2"> Tambah Proteksi</th>
-                                        <th rowspan="2"> Foto Pemasangan</th>
+                                        <th rowspan="2" class="text-center"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
                                     </tr>
 
