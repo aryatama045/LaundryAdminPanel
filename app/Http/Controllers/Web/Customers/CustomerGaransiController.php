@@ -113,9 +113,12 @@ class CustomerGaransiController extends Controller
 
     public function getDataGaransi(Request $request)
     {
-
+        $roles   = '';
         $user_id = auth()->user();
-        $roles   = $user_id['roles'][0]->name;
+
+        if(!$user_id){
+            $roles   = $user_id['roles'][0]->name;
+        }
 
         dd($roles,$user_id);
 
