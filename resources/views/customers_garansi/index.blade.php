@@ -36,7 +36,7 @@
 
                     <div class="card-body pt-2">
                         <div class="table-responsive">
-                            <table class="table table-bordered dataTable table-striped {{ session()->get('local') }}" id="myTable">
+                            <table class="table table-bordered dataTable table-striped " id="tables-1">
                                 <thead>
                                     <tr>
                                         <th rowspan="2" width="3%"> No. </th>
@@ -103,15 +103,13 @@
             }
         });
 
-        var table;
-
         $(document).ready(function() {
             getData();
         });
 
         function getData() {
             //datatables
-            table = $('#myTable').DataTable({
+            table = $('#tables-1').DataTable({
 
                 "processing": true,
                 "serverSide": true,
