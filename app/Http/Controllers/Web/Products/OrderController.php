@@ -195,7 +195,6 @@ class OrderController extends Controller
 
                 Order::create($data_order);
 
-
                 array_push($data, $data_order);
 
             }
