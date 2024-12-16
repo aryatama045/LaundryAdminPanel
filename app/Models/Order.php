@@ -15,6 +15,11 @@ class Order extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
+    public function garansi()
+    {
+        return $this->belongsTo(CustomerGaransis::class, 'order_id');
+    }
+
     public function coupon()
     {
         return $this->belongsTo(Coupon::class, 'coupon_id');
