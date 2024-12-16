@@ -411,9 +411,7 @@ class CustomerGaransiController extends Controller
                     $font->valign('bottom');
                 });
 
-
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
-
 
                 $bukti_foto = [
                     'garansi_id'            => $garansi_data->id,
@@ -467,15 +465,80 @@ class CustomerGaransiController extends Controller
 
         $garansiFoto = count($request->garansi_photo);
 
-
         dd($id, $tgl_pasang, $request);
-        $dataUpdate= array(
-            'tanggal_pemasangan' => $tgl_pasang,
-            'waktu_pemasangan' => $request->waktu_pemasangan,
-        );
-        CustomerGaransis::where('id', $id)->update($dataUpdate);
 
-        return redirect()->route('garansi.index')->with('success', 'Update successfully');
+        $dataOrder = Order::where('id', $id)->first();
+
+        $garansi_fill = [
+            'customer_id'           => $dataOrder->customer_id,
+            'no_nota'               => $dataOrder->no_nota,
+            'tanggal_nota'          => $dataOrder->tanggal_nota,
+            'tanggal_pemasangan'    => $tgl_pasang,
+            'waktu_pemasangan'      => $request->waktu_pemasangan,
+        ];
+        $garansi_data = CustomerGaransis::create($garansi_fill);
+
+        $thumbnail = null;
+        if ($request->hasFile('garansi_photo')) {
+
+            $garansiFoto = count($request->garansi_photo);
+
+            for ($x=0; $x<$garansiFoto; $x++){
+
+                $file = $request->garansi_photo[$x];
+
+                $urutan = $x;
+
+                $thumbnail = (new MediaRepository())->storeByGaransi(
+                    $file,
+                    'images/garansi/',
+                    'garansi images',
+                    'image',
+                    $urutan
+                );
+
+                $img = Image::read(storage_path('app/public/' . $thumbnail->path));
+
+                $tanggal        = date('d/m/Y');
+                $date           = now()->toDateTimeString();
+                $jam            =  date('H',strtotime($date));
+                $menit          =  date('i',strtotime($date));
+                $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
+                $text_wtr2 = 'Tanggal '.$tanggal;
+
+
+                $logo = public_path('logo.png');
+                $img->place($logo, 'center', 15, 15);
+
+                $img->text($text_wtr1, 450, 100, function($font) {
+                    $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    $font->size(24);
+                    $font->color('#d71717');
+                    $font->align('center');
+                    $font->valign('bottom');
+                });
+
+                $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+
+                $bukti_foto = [
+                    'garansi_id'            => $garansi_data->id,
+                    'klaim_id'              => '0',
+                    'customer_id'           => $garansi_data->customer_id,
+                    'foto_id'               => $thumbnail->id,
+                    'kode_foto'             => $thumbnail->name,
+                    'created_ny'            => $garansi_data->customer_id
+                ];
+                CustomerBuktiFotos::create($bukti_foto);
+            }
+        }
+
+        $orderUpdate = array(
+            'order_status'  => 'Diproses',
+            'garansi_id'    => $garansi_data->id,
+        );
+        Order::where('id', $id)->update($orderUpdate);
+
+        return redirect()->route('garansi.index')->with('success', 'Data successfully send, Admin Sedang Proses !!');
     }
 
     public function delete($id)
