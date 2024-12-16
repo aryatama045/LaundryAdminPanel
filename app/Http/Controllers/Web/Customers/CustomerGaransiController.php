@@ -123,9 +123,11 @@ class CustomerGaransiController extends Controller
                 // })
                 ->addColumn('status', function ($row) use ($request) {
                     if($row->order_status == 'Disetujui'){
-                        $result = '<span class="text-success"> Disetujui </span>';
+                        $result = '<span class="text-success"><b>Disetujui</b></span>';
                     }else if($row->order_status == 'Diproses'){
-                        $result = '<span class="text-info"> Diproses </span>';
+                        $result = '<span class="text-info"><b>Diproses</b></span>';
+                    }else if($row->order_status == 'Ditolak'){
+                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
                     }else{
                         $result = '<span class=""> - </span>';
                     }
