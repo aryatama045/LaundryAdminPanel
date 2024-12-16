@@ -111,7 +111,6 @@
                                 <div class="item_table mt-3" id="item_table">
                                     <div class="input-group input-group-sm mb-3" id="dtTgl">
                                         <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="image/*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                        <!-- <div class="input-group-append"><span style="height:100% !important" name="add" class="btn btn-primary default add" id="inputGroup-sizing-sm"><i class="fa fa-plus"></i> Tambah</span></div> -->
                                     </div>
                                 </div>
 
