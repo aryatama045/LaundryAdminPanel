@@ -1,6 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<style>
+    input#tanggal {
+        display: inline-block;
+        position: relative;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+</style>
+
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-lg-12">
@@ -68,8 +103,54 @@
     <script>
         document.getElementById("qty").addEventListener("change", function() {
             let v = parseInt(this.value);
-            if (v < 1) this.value = 1;
-            if (1 > v) this.value = v;
+            if (v =< 1) this.value = 1;
+            if (1 >= v) this.value = v;
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+
+            var count = 1;
+
+            function add_input_field(count) {
+
+                var html = '';
+
+                if (count > 1) {
+
+                    html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
+                        '<input style="height:100% !important" type="file" accept="image/*" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                }
+                var remove_button = '';
+
+                if (count > 1) {
+                    remove_button = '<div class="input-group-append"><span style="height:100% !important" name="remove" class="btn btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-trash"></i>  Hapus</span></div>';
+                }
+
+                html += remove_button +
+                            '</div>';
+
+                return html;
+
+            }
+
+            $('#item_table').prepend(add_input_field(1));
+
+
+            $(document).on('click', '.add', function() {
+                count++;
+                $('#item_table').prepend(add_input_field(count));
+            });
+
+            $(document).on('click', '.remove', function() {
+                const element = document.getElementById("dtTgl");
+                element.remove();
+                // $(this).closest('tr').remove();
+            });
+
+
+        });
+    </script>
+
 @endpush
