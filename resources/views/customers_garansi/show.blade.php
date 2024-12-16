@@ -123,6 +123,26 @@
                                 @endif
 
 
+                                <tr>
+
+                                    <td>
+                                        <form action="{{ route('garansi.proses_action', $order->id) }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <select class="form-control select" name="status">
+                                                <option value="Disetujui">Disetujui</option>
+                                                <option value="Ditolak">Ditolak</option>
+                                            </select>
+
+                                            <br><br>
+                                            <!-- <input type="text" class="form-control" name="keterangan" placeholder="Keterangan"> -->
+                                            <hr class="mt-6">
+                                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+
+
                             </tbody>
                         </table>
                     </div>

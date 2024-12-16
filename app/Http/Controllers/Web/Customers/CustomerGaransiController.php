@@ -351,6 +351,17 @@ class CustomerGaransiController extends Controller
         }
     }
 
+    public function proses_action(Request $request, $id)
+    {
+
+
+        DB::table('orders')->where('id', $id)->update(array(
+                    'order_status' => $request->status,
+                ));
+
+        return redirect()->route('garansi.index')->with('success', 'Proses successfully');
+    }
+
     public function show($id)
     {
         $order      = Order::where('id', $id)->first();
