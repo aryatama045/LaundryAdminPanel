@@ -126,7 +126,7 @@
                 lengthChange: true,
 
                 "ajax": {
-                    "url": "{{ route('garansi.getdata') }}",
+                    "url": "{{ route('garansi.index') }}",
                     "data": function(d) {
                         d.tglawal = $('input[name="tglawal"]').val();
                         d.tglakhir = $('input[name="tglakhir"]').val();

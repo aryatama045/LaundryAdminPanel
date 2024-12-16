@@ -31,8 +31,113 @@ class CustomerGaransiController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->ajax()) {
+
+            dd('oke');
+            if($roles == 'root' ){
+                $data = Order::get();
+            }else{
+                $data = Order::where('customer_id', $user_id->id)->get();
+            }
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('img', function ($row) {
+                    $array = array(
+                        "barang_gambar" => $row->barang_gambar,
+                    );
+                    if ($row->barang_gambar == "image.png") {
+                        $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/assets/default/barang') . '/' . $row->barang_gambar . '&quot;) center center;"></span></a>';
+                    } else {
+                        $img = '<a data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Gmodaldemo8" onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image" style="background: url(&quot;' . url('/uploads/image/' . $row->barang_gambar) . '&quot;) center center;"></span></a>';
+                    }
+
+                    return $img;
+                })
+                ->addColumn('jenisbarang', function ($row) {
+                    $jenisbarang = $row->jenisbarang_id == '' ? '-' : $row->jenisbarang_nama;
+
+                    return $jenisbarang;
+                })
+                ->addColumn('kategori', function ($row) {
+                    $kategori = $row->kategori_id == '' ? '-' : $row->kategori_nama;
+
+                    return $kategori;
+                })
+                ->addColumn('satuan', function ($row) {
+                    $satuan = $row->satuan_id == '' ? '-' : $row->satuan_nama;
+
+                    return $satuan;
+                })
+                ->addColumn('merk', function ($row) {
+                    $merk = $row->merk_id == '' ? '-' : $row->merk_nama;
+
+                    return $merk;
+                })
+                ->addColumn('make_by', function ($row) {
+                    $make_by = $row->make_by == '' ? '-' : $row->make_by;
+
+                    return $make_by;
+                })
+                ->addColumn('currency', function ($row) {
+                    $currency = $row->barang_harga == '' ? '-' : 'Rp ' . number_format($row->barang_harga, 0);
+
+                    return $currency;
+                })
+                ->addColumn('totalstok', function ($row) use ($request) {
+                    if ($request->tglawal == '') {
+                        $jmlmasuk = BarangmasukModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangmasuk.barang_kode')->leftJoin('tbl_supplier', 'tbl_supplier.supplier_id', '=', 'tbl_barangmasuk.supplier_id')->where('tbl_barangmasuk.barang_kode', '=', $row->barang_kode)->sum('tbl_barangmasuk.bm_jumlah');
+                    } else {
+                        $jmlmasuk = BarangmasukModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangmasuk.barang_kode')->leftJoin('tbl_supplier', 'tbl_supplier.supplier_id', '=', 'tbl_barangmasuk.supplier_id')->whereBetween('bm_tanggal', [$request->tglawal, $request->tglakhir])->where('tbl_barangmasuk.barang_kode', '=', $row->barang_kode)->sum('tbl_barangmasuk.bm_jumlah');
+                    }
+
+
+                    if ($request->tglawal) {
+                        $jmlkeluar = BarangkeluarModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangkeluar.barang_kode')->whereBetween('bk_tanggal', [$request->tglawal, $request->tglakhir])->where('tbl_barangkeluar.barang_kode', '=', $row->barang_kode)->sum('tbl_barangkeluar.bk_jumlah');
+                    } else {
+                        $jmlkeluar = BarangkeluarModel::leftJoin('tbl_barang', 'tbl_barang.barang_kode', '=', 'tbl_barangkeluar.barang_kode')->where('tbl_barangkeluar.barang_kode', '=', $row->barang_kode)->sum('tbl_barangkeluar.bk_jumlah');
+                    }
+
+                    $totalstok = $row->barang_stok + ($jmlmasuk - $jmlkeluar);
+                    if($totalstok == 0){
+                        $result = '<span class="">'.$totalstok.'</span>';
+                    }else if($totalstok > 0){
+                        $result = '<span class="text-success">'.$totalstok.'</span>';
+                    }else{
+                        $result = '<span class="text-danger">'.$totalstok.'</span>';
+                    }
+
+                    return $result;
+                })
+                ->addColumn('action', function ($row) {
+                    $array = array(
+                        "barang_id" => $row->barang_id,
+                        "jenisbarang_id" => $row->jenisbarang_id,
+                        "satuan_id" => $row->satuan_id,
+                        "merk_id" => $row->merk_id,
+                        "barang_id" => $row->barang_id,
+                        "barang_kode" => $row->barang_kode,
+                        "barang_nama" => trim(preg_replace('/[^A-Za-z0-9-]+/', '_', $row->barang_nama)),
+                        "barang_harga" => $row->barang_harga,
+                        "barang_stok" => $row->barang_stok,
+                        "barang_gambar" => $row->barang_gambar,
+                    );
+                    $button = '';
+                    $button .= '
+                        <a class="dropdown-item btn modal-effect text-primary btn-sm" data-bs-effect="effect-super-scaled" data-bs-toggle="modal" href="#Umodaldemo8" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick=update(' . json_encode($array) . ')><span class="fe fe-edit text-success fs-14"></span> Edit</a>
+                    ';
+
+                    $button .= '-';
+
+
+                    return $button;
+                })
+                ->rawColumns(['checkbox','action', 'img', 'jenisbarang', 'satuan','kategori', 'merk','currency', 'totalstok', 'make_by'])->make(true);
+        }
+
         $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
 
         return view('customers_garansi.index', compact('garansis'));
@@ -130,46 +235,6 @@ class CustomerGaransiController extends Controller
             }else{
                 $data = Order::where('customer_id', $user_id->id)->get();
             }
-
-
-                // if($request->tglawal != ''){
-
-                    // $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-                    // ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-                    // ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-                    // ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-                    // ->whereBetween('tbl_barang.created_at', [$request->tglawal, $request->tglakhir])
-                    // ->orderBy('barang_id', 'DESC')->get();
-                // }else{
-
-                    // $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-                    // ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-                    // ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-                    // ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-                    // ->orderBy('barang_id', 'DESC')->get();
-
-                // }
-            // }else{
-            //     if($request->tglawal != ''){
-
-            //         $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-            //         ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-            //         ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-            //         ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-            //         ->whereBetween('tbl_barang.created_at', [$request->tglawal, $request->tglakhir])
-            //         ->where('make_by', $user)
-            //         ->orderBy('barang_id', 'DESC')->get();
-            //     }else{
-            //         $data = BarangModel::leftJoin('tbl_jenisbarang', 'tbl_jenisbarang.jenisbarang_id', '=', 'tbl_barang.jenisbarang_id')
-            //         ->leftJoin('tbl_satuan', 'tbl_satuan.satuan_id', '=', 'tbl_barang.satuan_id')
-            //         ->leftJoin('tbl_kategori', 'tbl_kategori.kategori_id', '=', 'tbl_barang.kategori_id')
-            //         ->leftJoin('tbl_merk', 'tbl_merk.merk_id', '=', 'tbl_barang.merk_id')
-            //         ->where('make_by', $user)
-            //         ->orderBy('barang_id', 'DESC')->get();
-            //     }
-            // }
-
-            dd($data);
 
             return DataTables::of($data)
                 ->addIndexColumn()
