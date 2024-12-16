@@ -355,8 +355,10 @@ class CustomerGaransiController extends Controller
         }
     }
 
-    public function show(CustomerGaransis $garansi)
+    public function show(CustomerGaransis $garansi, $id)
     {
+
+
         return view('customers_garansi.show', [
             'garansi' => $garansi
         ]);
