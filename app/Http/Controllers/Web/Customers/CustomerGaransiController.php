@@ -64,7 +64,8 @@ class CustomerGaransiController extends Controller
                         );
 
                         $img = '<a data-effect="effect-super-scaled" data-toggle="modal" href="#Gmodaldemo8"
-                        onclick=gambar(' . json_encode($array) . ')><span class="avatar avatar-lg cover-image"
+                        onclick=gambar(' . json_encode($array) . ')>
+                        <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>';
 
