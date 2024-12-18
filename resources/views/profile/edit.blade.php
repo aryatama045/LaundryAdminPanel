@@ -20,16 +20,23 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>{{ __('Company Name') }}</label>
+                                        <input class="form-control" type="text" name="first_name"
+                                            value="{{ $user->company }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label>{{ __('First_Name') }}</label>
                                         <input class="form-control" type="text" name="first_name"
-                                            value="{{ $user->first_name }}">
+                                            value="{{ $user->first_name }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ __('Last_Name') }}</label>
                                         <input class="form-control" type="text" name="last_name"
-                                            value="{{ $user->last_name }}">
+                                            value="{{ $user->last_name }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
