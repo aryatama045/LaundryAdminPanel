@@ -28,13 +28,14 @@
                             <table class="table table-bordered {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Tanggal</th>
                                         <th scope="col">Tanggal Nota </th>
                                         <th scope="col">Nomor Nota</th>
                                         <th scope="col">Nama Customer</th>
                                         <th scope="col">Nama Barang</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Satuan</th>
-                                        <th scope="col">Part Number</th>
+                                        <th scope="col">Approval Retur</th>
                                         @role('root')
                                             <th hidden scope="col" class="px-2">{{ __('Actions') }}</th>
                                         @endrole
@@ -43,6 +44,9 @@
                                 <tbody>
                                     @foreach ($orders as $order)
                                         <tr class="">
+                                            <td class="py-1">
+                                                {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
+                                            </td>
                                             <td class="py-1">
                                                 {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
                                             </td>

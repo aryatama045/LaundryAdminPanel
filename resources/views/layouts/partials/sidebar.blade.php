@@ -39,7 +39,7 @@
                             <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                                 href="{{ route('order.index') }}">
                                 <i class="fa fa-file text-blue"></i>
-                                <span class="nav-link-text">{{ __('Pembelian Saya') }}</span>
+                                <span class="nav-link-text">{{ __('Retur Approval') }}</span>
                             </a>
                         </li>
 
@@ -151,7 +151,7 @@
                             </a>
                         </li>
 
-                        
+
 
                 @endrole
 
