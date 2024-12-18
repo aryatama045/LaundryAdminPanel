@@ -18,7 +18,7 @@
                         <div class="card-body">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{ __('Company Name') }}</label>
                                         <input class="form-control" type="text" name="first_name"
