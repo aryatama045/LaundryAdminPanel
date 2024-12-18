@@ -57,7 +57,7 @@
                                             <td class="py-1">{{ $order->nama_barang }}</td>
                                             <td class="py-1">{{ $order->qty }}</td>
                                             <td class="py-1">{{ $order->satuan }}</td>
-                                            <td class="py-1">{{ $order->part_number }}</td>
+                                            <td class="py-1"> - </td>
 
                                             @role('root')
                                                 <td hidden class="p-1 ">
