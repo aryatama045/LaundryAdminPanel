@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success-light" onclick="filter()"><i class="fe fe-filter"></i> Filter</button>
+                            <button class="btn btn-success" onclick="filter()"><i class="fe fe-filter"></i> Filter</button>
                             <button class="btn btn-secondary-light" onclick="reset()"><i class="fe fe-refresh-ccw"></i> Reset</button>
                         </div>
                     </div>
