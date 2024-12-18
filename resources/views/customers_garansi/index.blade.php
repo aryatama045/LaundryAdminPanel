@@ -6,14 +6,18 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
+                    @role('root')
                         <h2 class="card-title m-0">{{ __('All'). ' '.__('Garansi') }}</h2>
+                    @endrole
+
+                    @role('customer')
+                        <h2 class="card-title m-0">Cek Status Garansi</h2>
+                    @endrole
 
                         @role('root')
-                        @can('customer.create')
                         <a href="{{ route('garansi.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
                         </a>
-                        @endcan
                         @endrole
                     </div>
 
