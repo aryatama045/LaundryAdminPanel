@@ -37,7 +37,7 @@
 
                         <li class="nav-item">
 
-                            <span class="nav-link-text"><b>Selamat Datang {{ $user->company }}</b></span>
+                            <span class="nav-link-text"><b>Selamat Datang {{ auth()->user()->company }}</b></span>
 
                         </li>
 
