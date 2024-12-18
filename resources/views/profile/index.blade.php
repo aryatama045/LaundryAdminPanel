@@ -22,6 +22,7 @@
                                 <a href="{{ route('profile.edit') }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> {{ __('Edit') }}</a>
                             </div>
                             <div>
+                                <h2><b>{{ $user->company }}</b></h2>
                                 <h3>{{ $user->name }}</h3>
                                 <p>{{ $user->email }}</p>
                             </div>
