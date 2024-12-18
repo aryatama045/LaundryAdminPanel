@@ -21,7 +21,7 @@
                         @endrole
                     </div>
 
-                    <div class="col-md-6 mt-3">
+                    <div class="col-md-6 mt-3 mb-2">
                         <div class="form-inline ">
                             <div class="form-group mb-2">
                                 <label for="tglawal" class="sr-only">Tanggal Awal</label>
