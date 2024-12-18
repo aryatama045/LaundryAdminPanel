@@ -36,6 +36,12 @@
                 @role('customer')
 
                         <li class="nav-item">
+
+                            <span class="nav-link-text"><b>{{ $user->company }}</b></span>
+
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                                 href="{{ route('order.index') }}">
                                 <i class="fa fa-file text-blue"></i>
