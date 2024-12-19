@@ -123,44 +123,32 @@
 
                 @role('root')
 
-                    @can('customer.index')
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('customer.*') ? 'active' : '' }}"
-                                href="{{ route('customer.index') }}">
-                                <i class="fa fa-users text-red"></i>
-                                <span class="nav-link-text">{{ __('Customer') }}</span>
-                            </a>
-                        </li>
-                    @endcan
 
                     @can('order.index')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
                                 href="{{ route('order.index') }}">
                                 <i class="fa fa-shopping-cart text-orange"></i>
-                                <span class="nav-link-text">{{ __('Pembelian Customer') }}</span>
+                                <span class="nav-link-text">{{ __('Customer Saya') }}</span>
                             </a>
                         </li>
                     @endcan
 
                     <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
-                                href="{{ route('garansi.index') }}">
-                                <i class="fa fa-file text-blue"></i>
-                                <span class="nav-link-text">{{ __('Data Garansi') }}</span>
-                            </a>
-                        </li>
+                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
+                            href="{{ route('garansi.index') }}">
+                            <i class="fa fa-file text-blue"></i>
+                            <span class="nav-link-text">{{ __('Approval Retur') }}</span>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
-                                href="{{ route('klaim.index') }}">
-                                <i class="fas fa-list text-green"></i>
-                                <span class="nav-link-text">{{ __('Data Klaim') }}</span>
-                            </a>
-                        </li>
-
-
-
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
+                            href="{{ route('klaim.index') }}">
+                            <i class="fas fa-list text-green"></i>
+                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
+                        </a>
+                    </li>
                 @endrole
 
                 @canany(['product.index', 'coupon.index', 'variant.index', 'service.index'])
@@ -269,7 +257,7 @@
                             <span class="nav-link-text">{{ __('Settings') }}</span>
                         </a>
 
-                        <div class="collapse {{ request()->routeIs('setting.*','admin.*', 'deliveryCost', 'mobileApp', 'socialLink.*', 'profile.*', 'webSetting.*', 'stripeKey.*', 'schedule.*', 'invoiceManage.*', 'areas.*', 'sms-gateway.*', 'notification.manage', 'fcm.*', 'mail-config.*') ? 'show' : '' }}"
+                        <div class="collapse {{ request()->routeIs('setting.*','customer.*','admin.*', 'deliveryCost', 'mobileApp', 'socialLink.*', 'profile.*', 'webSetting.*', 'stripeKey.*', 'schedule.*', 'invoiceManage.*', 'areas.*', 'sms-gateway.*', 'notification.manage', 'fcm.*', 'mail-config.*') ? 'show' : '' }}"
                             id="setting">
                             <ul class="nav nav-sm flex-column">
                                 @foreach (config('enums.settings') as $index => $item)
@@ -353,6 +341,12 @@
                                     href="{{ route('admin.index') }}">
                                     <i class="fas fa-user-secret"></i>
                                     <span class="nav-link-text">{{ __('Data Admins') }}</span>
+                                </a>
+
+                                <a class="nav-link sub-menu {{ request()->routeIs('customer.*') ? 'active' : '' }}"
+                                    href="{{ route('customer.index') }}">
+                                    <i class="fa fa-users"></i>
+                                    <span class="nav-link-text">{{ __('Data Customers') }}</span>
                                 </a>
 
                                 <a class="nav-link sub-menu {{ request()->routeIs('mail-config.*') ? 'active' : '' }}"
