@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <div class="row">
                             <div class="col-6">
-                                <h2 class="card-title">{{ __('Create'). ' '.__('Coupon') }}</h2>
+                                <h2 class="card-title">{{ __('Create'). '  }}</h2>
                             </div>
 
                             <div class="col-6 position-relative" >

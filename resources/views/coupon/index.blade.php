@@ -8,13 +8,13 @@
                 <div class="card-header">
                    <div class="row">
                         <div class="col-6">
-                            <h2 class="card-title">{{ __('Coupons') }}</h2>
+                            <h2 class="card-title">{{ __('Code') }}</h2>
                         </div>
 
                         @can('coupon.create')
                         <div class="col-6 position-relative" >
                             <div class="position-absolute" style="right: 1em" >
-                                <a href="{{ route('coupon.create') }}" class="btn btn-primary">{{ __('Create'). ' '.__('Coupon') }}</a>
+                                <a href="{{ route('coupon.create') }}" class="btn btn-primary">{{ __('Create'). ' }}</a>
                             </div>
                         </div>
                         @endcan
