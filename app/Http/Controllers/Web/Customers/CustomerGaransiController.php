@@ -125,8 +125,7 @@ class CustomerGaransiController extends Controller
 
                         }
 
-                        $result = $contractDateEnd .'
-                                    </br><small> '. $berlaku_s .' Sampai : </small>'. $dateExps ;
+                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
 
 
                     }else if($row->order_status == 'Diproses'){
