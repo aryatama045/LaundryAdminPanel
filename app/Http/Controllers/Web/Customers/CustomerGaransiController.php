@@ -17,7 +17,7 @@ use App\Models\Order;
 use App\Models\Media;
 use App\Events\KlaimMailEvent;
 
-
+use App\Models\WebSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -98,7 +98,7 @@ class CustomerGaransiController extends Controller
                     $result = '-';
                     if($row->order_status == 'Disetujui'){
 
-                        $websetting = App\Models\WebSetting::first();
+                        $websetting = WebSetting::first();
 
                         $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
