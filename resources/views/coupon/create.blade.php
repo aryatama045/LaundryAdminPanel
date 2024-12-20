@@ -23,11 +23,11 @@
                         <form @can('coupon.store') @role('root|admin') action="{{ route('coupon.store') }}" @endrole @endcan method="POST"> @csrf
                             <div class="row">
                                 <div class="col-12 col-md-6">
-                                    <label class="mb-1">{{ __('Coupon'). ' '.__('Code') }}</label>
-                                    <x-input name="code" type="text" placeholder="{{ __('Coupon'). ' '.__('Code') }}"/>
+                                    <label class="mb-1">{{ '.__('Code') }}</label>
+                                    <x-input name="code" type="text" placeholder="{{ '.__('Code') }}"/>
                                 </div>
 
-                                <div class="col-12 col-md-6">
+                                <!-- <div class="col-12 col-md-6">
                                     <label class="mb-1">{{ __('Select').' '.__('Discount_Type') }}</label>
                                     <select name="discount_type" class="form-control @error('discount_type') is-invalid @enderror">
                                         <option value="">{{ __('Select').' '.__('Discount_Type') }}</option>
@@ -72,18 +72,18 @@
                                             <x-input type="time" name="expired_time"/>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-12 col-md-6">
+                                        <!-- <div class="col-12 col-md-6">
                                             <label for="yes">
                                                 <input type="radio" id="yes" name="notify" value="0"> {{ __('Notify_All_Customer') }}.
                                             </label>
                                             <label for="no" class="ml-3">
                                                 <input type="radio" id="no" name="notify" value="1"> {{ __('not_need') }}
                                             </label>
-                                        </div>
+                                        </div> -->
                                         @can('coupon.store')
                                         <div class="col-12 col-md-6 text-right">
                                             <button type="submit" class="btn btn-primary px-5 @role('visitor') visitorMessage @endrole">{{ __('Submit') }}</button>
