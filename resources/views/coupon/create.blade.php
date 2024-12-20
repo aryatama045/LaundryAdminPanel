@@ -6,17 +6,17 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                   <div class="row">
-                        <div class="col-6">
-                            <h2 class="card-title">{{ __('Create'). ' '.__('Coupon') }}</h2>
-                        </div>
-
-                        <div class="col-6 position-relative" >
-                            <div class="position-absolute" style="right: 1em" >
-                                <a href="{{ route('coupon.index') }}" class="btn btn-dark"><i class="fa fa-arrow-left"></i>  {{ __('Back') }}</a>
+                    <div class="row">
+                            <div class="col-6">
+                                <h2 class="card-title">{{ __('Create'). ' '.__('Coupon') }}</h2>
                             </div>
-                        </div>
-                   </div>
+
+                            <div class="col-6 position-relative" >
+                                <div class="position-absolute" style="right: 1em" >
+                                    <a href="{{ route('coupon.index') }}" class="btn btn-dark"><i class="fa fa-arrow-left"></i>  {{ __('Back') }}</a>
+                                </div>
+                            </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="col-8 m-auto">
@@ -78,10 +78,10 @@
                                     <div class="row">
                                         <div class="col-12 col-md-6">
                                             <label for="yes">
-                                                <input type="radio" id="yes" name="notify" value="1"> {{ __('Notify_All_Customer') }}.
+                                                <input type="radio" id="yes" name="notify" value="0"> {{ __('Notify_All_Customer') }}.
                                             </label>
                                             <label for="no" class="ml-3">
-                                                <input type="radio" id="no" name="notify" value="0"> {{ __('not_need') }}
+                                                <input type="radio" id="no" name="notify" value="1"> {{ __('not_need') }}
                                             </label>
                                         </div>
                                         @can('coupon.store')
