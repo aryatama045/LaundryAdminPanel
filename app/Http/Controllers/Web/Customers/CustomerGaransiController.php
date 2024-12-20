@@ -139,6 +139,52 @@ class CustomerGaransiController extends Controller
 
                     return $terproteksi;
                 })
+
+                ->addColumn('terproteksi', function ($row) {
+                    $result = '-';
+                    if($row->order_status == 'Disetujui'){
+
+                        $websetting = WebSetting::first();
+
+                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+
+                        $masa_berlaku = $websetting->masa_berlaku;
+
+                        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+                        $dateExps = date('d-m-Y', $dateExp);
+
+                        $paymentDate = now();
+                        $paymentDate = date('Y-m-d', strtotime($paymentDate));
+                        //echo $paymentDate; // echos today!
+                        $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+
+                        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                        }else{
+                            if($paymentDate <= $contractDateEnd){
+
+                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                            }else{
+                                $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+                            }
+
+                        }
+
+                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+
+
+                    }else if($row->order_status == 'Diproses'){
+                        $result = '<span class="text-grey"><b>Diproses</b></span>';
+                    }else if($row->order_status == 'Ditolak'){
+                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                    }else{
+                        $result = '<span class=""> - </span>';
+                    }
+                    return $result;
+
+                    return $terproteksi;
+                })
                 ->addColumn('tambah_proteksi', function ($row) {
 
                     $tambah_proteksi = '';
@@ -184,7 +230,7 @@ class CustomerGaransiController extends Controller
                                 </a>';
                         }
 
-                        if($row->order_status == 'Diproses'){
+                        if($row->order_status == 'Disetujui'){
                             $button .= ($kode_coupon->code)?$kode_coupon->code:'Tidak ada kode';
                         }
                     }
