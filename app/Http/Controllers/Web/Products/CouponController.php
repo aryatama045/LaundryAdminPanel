@@ -30,18 +30,18 @@ class CouponController extends Controller
     {
         (new CouponRepository())->storeByRequest($request);
 
-        if ($request->notify) {
+        // if ($request->notify) {
 
-            $notificationManage = NotificationManage::where('name', 'coupon_notify')->first();
-            $keys = (new DeviceKeyRepository())->getAll()->pluck('key')->toArray();
+        //     $notificationManage = NotificationManage::where('name', 'coupon_notify')->first();
+        //     $keys = (new DeviceKeyRepository())->getAll()->pluck('key')->toArray();
 
-            if ($notificationManage?->is_active) {
-                $message = $notificationManage->message;
-                (new NotificationServices($message, $keys, 'Coupon Discount'));
-            }
-        }
+        //     if ($notificationManage?->is_active) {
+        //         $message = $notificationManage->message;
+        //         (new NotificationServices($message, $keys, 'Coupon Discount'));
+        //     }
+        // }
 
-        return redirect()->route('coupon.index')->with('success', 'Coupon is added successfully.');
+        return redirect()->route('coupon.index')->with('success', 'Code is added successfully.');
     }
 
     public function edit(Coupon $coupon)
@@ -53,16 +53,16 @@ class CouponController extends Controller
     {
         (new CouponRepository())->updateByRequest($request, $coupon);
 
-        if ($request->notify) {
+        // if ($request->notify) {
 
-            $notificationManage = NotificationManage::where('name', 'coupon_notify')->first();
-            $keys = (new DeviceKeyRepository())->getAll()->pluck('key')->toArray();
+        //     $notificationManage = NotificationManage::where('name', 'coupon_notify')->first();
+        //     $keys = (new DeviceKeyRepository())->getAll()->pluck('key')->toArray();
 
-            if ($notificationManage?->is_active) {
-                $message = $notificationManage->message;
-                (new NotificationServices($message, $keys, 'Coupon Discount'));
-            }
-        }
+        //     if ($notificationManage?->is_active) {
+        //         $message = $notificationManage->message;
+        //         (new NotificationServices($message, $keys, 'Coupon Discount'));
+        //     }
+        // }
 
         return redirect()->route('coupon.index')->with('success', 'Coupon is updated successfully.');
     }

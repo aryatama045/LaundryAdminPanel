@@ -10,11 +10,13 @@ use App\Repositories\CustomerGaransiRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\Coupon;
 use App\Models\CustomerGaransis;
 use App\Models\CustomerBuktiFotos;
 use App\Models\Order;
 use App\Models\Media;
 use App\Events\KlaimMailEvent;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -141,6 +143,8 @@ class CustomerGaransiController extends Controller
                         $roles   = $user_id['roles'][0]->name;
                     }
 
+                    $kode_coupon = Coupon::first();
+
                     if($roles=='root'){
                         if($row->order_status == 'Diproses'){
                             $button .= '
@@ -148,6 +152,10 @@ class CustomerGaransiController extends Controller
                                     class="btn btn-primary py-1 px-2">
                                     Proses
                                 </a>';
+                        }
+
+                        if($row->order_status == 'Diproses'){
+                            $button .= ($kode_coupon->code)?$kode_coupon->code:'Tidak ada kode';
                         }
                     }
 
