@@ -245,7 +245,7 @@
                         <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                             href="{{ route('admin.index') }}">
                             <i class="fas fa-user-secret"></i>
-                            <span class="nav-link-text">{{ __('Admins') }}</span>
+                            <span class="nav-link-text">{{ __('Data Admins') }}</span>
                         </a>
                     </li>
 
@@ -337,7 +337,7 @@
                                     <span class="nav-link-text">{{ __('Areas') }}</span>
                                 </a>
 
-                                <a hidden class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
+                                <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                                     href="{{ route('admin.index') }}">
                                     <i class="fas fa-user-secret"></i>
                                     <span class="nav-link-text">{{ __('Data Admins') }}</span>
