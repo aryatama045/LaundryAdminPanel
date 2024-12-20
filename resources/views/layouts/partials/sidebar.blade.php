@@ -123,16 +123,22 @@
 
                 @role('root')
 
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
+                            href="{{ route('order.index') }}">
+                            <i class="fa fa-shopping-cart text-orange"></i>
+                            <span class="nav-link-text">{{ __('Customer Saya') }}</span>
+                        </a>
+                    </li>
 
-                    @can('order.index')
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
-                                href="{{ route('order.index') }}">
-                                <i class="fa fa-shopping-cart text-orange"></i>
-                                <span class="nav-link-text">{{ __('Customer Saya') }}</span>
-                            </a>
-                        </li>
-                    @endcan
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
+                            href="{{ route('coupon.index') }}">
+                            <i class="fa fa-percentage"></i>
+                            <span class="nav-link-text">{{ __('Data Kode') }}</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
