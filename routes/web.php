@@ -182,12 +182,6 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('revenues/generate-pdf', [RevenueController::class, 'generatePDF'])->name('revenue.generate.pdf');
     Route::get('reports/generate-pdf', [RevenueController::class, 'generateInvoicePDF'])->name('report.generate.pdf');
 
-    // Coupon Routes
-    Route::get('/coupons', [CouponController::class, 'index'])->name('coupon.index');
-    Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupon.create');
-    Route::post('/coupons', [CouponController::class, 'store'])->name('coupon.store');
-    Route::get('/coupons/{coupon}/edit', [CouponController::class, 'edit'])->name('coupon.edit');
-    Route::put('/coupons/{coupon}', [CouponController::class, 'update'])->name('coupon.update');
 
     //Contact Routes
     Route::get('/contacts', [ContactController::class, 'index'])->name('contact');
@@ -324,6 +318,14 @@ Route::middleware(['auth', 'role:root|visitor'])->group(function () {
 Route::get('/order-payment/{order}/{card}', [PaymentController::class, 'payment'])->name('payment');
 Route::get('/setup-intents/{customer}/{card}/{amount}/{order}', [PaymentController::class, 'intent']);
 Route::get('/order-update/{order}', [PaymentController::class, 'updatePayment']);
+
+// Coupon Routes
+Route::get('/coupons', [CouponController::class, 'index'])->name('coupon.index');
+Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupon.create');
+Route::post('/coupons', [CouponController::class, 'store'])->name('coupon.store');
+Route::get('/coupons/{coupon}/edit', [CouponController::class, 'edit'])->name('coupon.edit');
+Route::put('/coupons/{coupon}', [CouponController::class, 'update'])->name('coupon.update');
+
 
 Route::get('/settings/{slug}', [SettingController::class, 'show'])->name('setting.show');
 
