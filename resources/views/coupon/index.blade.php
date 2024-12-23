@@ -24,7 +24,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Code</th>
-                                    <th scope="col">{{ __('Action') }}</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
