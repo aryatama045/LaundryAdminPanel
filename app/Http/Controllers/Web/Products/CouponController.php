@@ -18,7 +18,7 @@ class CouponController extends Controller
     {
         $coupons = (new CouponRepository())->getAll();
 
-        dd($coupons);
+        // dd($coupons);
 
         return view('coupon.index', compact('coupons'));
     }
