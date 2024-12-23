@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped verticle-middle table-responsive-sm {{ session()->get('local') }}" id="myTable">
+                        <table class="table table-bordered table-striped verticle-middle table-responsive-sm " id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col">{{ __('Code') }}</th>
