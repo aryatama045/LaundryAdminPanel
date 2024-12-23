@@ -25,12 +25,7 @@
                         <table class="table table-bordered table-striped verticle-middle table-responsive-sm " id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">{{ __('Code') }}</th>
-                                    <th scope="col">{{ __('Discount_Type') }} </th>
-                                    <th scope="col">{{ __('Discount') }}</th>
-                                    <th scope="col">{{ __('Min_Amount') }}</th>
-                                    <th scope="col">{{ __('Started_at') }}</th>
-                                    <th scope="col">{{ __('Expired_at') }}</th>
+                                    <th scope="col">Code</th>
                                     @can('coupon.edit')
                                     <th scope="col">{{ __('Action') }}</th>
                                     @endcan
@@ -40,12 +35,6 @@
                                 @foreach ($coupons as $coupon)
                                 <tr>
                                     <td>{{ $coupon->code}}</td>
-                                    <td>{{ __($coupon->discount_type) }}</td>
-                                    <td>{!! $coupon->discount_type == 'amount' ? currencyPosition($coupon->discount) : $coupon->discount.'%' !!}</td>
-                                    <td>{{ currencyPosition($coupon->min_amount) }}</td>
-                                    <td>{{ Carbon\Carbon::parse($coupon->started_at)->format('M d, Y h:i a') }}</td>
-                                    <td>{{ Carbon\Carbon::parse($coupon->expired_at)->format('M d, Y h:i a') }}</td>
-
                                     @can('coupon.edit')
                                     <td>
                                         <a href="{{ route('coupon.edit', $coupon->id) }}" class="btn btn-primary">
