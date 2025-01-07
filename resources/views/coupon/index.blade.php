@@ -11,15 +11,22 @@
                             <h2 class="card-title">Code</h2>
                         </div>
 
-                        <div class="col-6 position-relative" >
-                            <div >
-                                <a href="{{ route('coupon.create') }}" class="btn btn-primary">Import</a>
-                            </div>
-                            <div class="position-absolute" style="right: 1em" >
-                                <a href="{{ route('coupon.create') }}" class="btn btn-primary">Create</a>
-                            </div>
+
+                        <div class="col-md-8">
+                            <ul class="nav nav-pills justify-content-end">
+                                <li class="nav-item ml-2 mr-md-0">
+                                    <a class="btn btn-info" data-effect="effect-super-scaled"
+                                        data-toggle="modal" href="#modal_import">
+                                        <i class="fa fa-upload"></i> Import
+                                    </a>
+                                </li>
+                                <li class="nav-item ml-2 mr-md-0">
+                                    <a href="{{ route('coupon.create') }}" class="btn btn-primary">Create</a>
+                                </li>
+                            </ul>
                         </div>
-                   </div>
+
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
