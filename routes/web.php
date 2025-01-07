@@ -205,7 +205,11 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
 });
 
 
+<<<<<<< Updated upstream
 // Route::get('/garansi/getdata', [CustomerGaransiController::class, 'getDataGaransi'])->name('garansi.getdata');
+=======
+Route::get('/garansi/json', [CustomerGaransiController::class, 'getDataGaransi'])->name('garansi.getdata');
+>>>>>>> Stashed changes
 
 
 // Order Routes
