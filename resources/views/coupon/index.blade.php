@@ -56,4 +56,40 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Modal Import -->
+<div class="modal fade" data-backdrop="static" id="modal_import">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo">
+
+            <div class="card-header">
+                <h2 class="card-title m-0">Import</h2>
+            </div>
+            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{ url('products/imports') }}" method="POST">
+            @csrf
+            <div class="card-body">
+                <!--<a class="btn btn-danger" onclick="pdf()"><i class="fa fa-file-pdf-o"></i> PDF</a>-->
+                <!--<br><br>-->
+                <!--<hr>-->
+                <!--<br><br>-->
+
+                <div class="form-group">
+                    <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
+                    <input name="import_data" type="file" />
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="reset()" data-dismiss="modal"><i class="far fa-window-close"></i> Cancel</a>
+
+                <button type="submit" class="btn btn-sm btn-success float-right"><i class="far fa-save"></i> Submit</button>
+
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
