@@ -13,6 +13,9 @@
 
                         <div class="col-6 position-relative" >
                             <div class="position-absolute" style="right: 1em" >
+                                <a href="{{ route('coupon.create') }}" class="btn btn-primary">Import</a>
+                            </div>
+                            <div class="position-absolute" style="right: 1em" >
                                 <a href="{{ route('coupon.create') }}" class="btn btn-primary">Create</a>
                             </div>
                         </div>
