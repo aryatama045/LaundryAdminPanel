@@ -14,11 +14,11 @@
                         <h2 class="card-title m-0">Cek Status Garansi</h2>
                     @endrole
 
-                        @role('root')
+                        {{-- @role('root')
                         <a href="{{ route('garansi.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
                         </a>
-                        @endrole
+                        @endrole --}}
                     </div>
 
                     <div class="col-md-6 mt-3 mb-2">
