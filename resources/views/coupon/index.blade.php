@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>{{ $coupon->code}}</td>
                                     <td>
-                                        <a href="{{ route('coupon.edit', $coupon->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('coupon.edit', $coupon->id) }}" class="btn btn-sm  btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="{{ route('coupon.delete', $coupon->id) }}" class="btn btn-sm btn-danger delete-confirm" title="Delete">
