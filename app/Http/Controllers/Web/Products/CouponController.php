@@ -45,7 +45,7 @@ class CouponController extends Controller
         return redirect()->route('coupon.index')->with('success', 'Coupon is updated successfully.');
     }
 
-    public function delete(CouponRequest $request)
+    public function delete(Request $request)
     {
         dd($request);
         $coupon->delete();
