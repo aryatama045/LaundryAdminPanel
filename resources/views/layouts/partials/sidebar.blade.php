@@ -69,10 +69,10 @@
                                         <span class="nav-link-text">{{ __('Cek Status') }}</span>
                                     </a>
 
-                                    <a class="nav-link sub-menu {{ request()->routeIs('garansi.create') ? 'active' : '' }}"
+                                    {{-- <a class="nav-link sub-menu {{ request()->routeIs('garansi.create') ? 'active' : '' }}"
                                         href="{{ route('garansi.create') }}" href="{{ route('garansi.create') }}">
                                         <span class="nav-link-text">{{ __('Tambah Masa Proteksi') }}</span>
-                                    </a>
+                                    </a> --}}
 
                                     <a class="nav-link sub-menu {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
                                         href="{{ route('klaim.index') }}" href="{{ route('klaim.index') }}">
