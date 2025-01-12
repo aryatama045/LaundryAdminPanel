@@ -72,9 +72,9 @@
                                 @endrole
 
                                 <!-- No Seri -->
-                                <div class="col-12 col-md-12 mb-2">
+                                <div hidden class="col-12 col-md-12 mb-2">
                                     <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="no_seri"
+                                    <input value="0" type="text" class="form-control" name="no_seri"
                                         value="{{ old('no_seri') }}" placeholder="{{ __('Nomor Seri/Barcode') }}">
                                     @error('no_seri')
                                         <span class="text-danger">{{ $message }}</span>
@@ -82,9 +82,9 @@
                                 </div>
 
                                 <!-- No Validasi -->
-                                <div class="col-12 col-md-12 mb-2">
+                                <div hidden class="col-12 col-md-12 mb-2">
                                     <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
-                                    <input type="text" class="form-control" name="no_validasi"
+                                    <input value="0" type="text" class="form-control" name="no_validasi"
                                         value="{{ old('no_validasi') }}" placeholder="{{ __('Nomor Validasi') }}">
                                     @error('no_validasi')
                                         <span class="text-danger">{{ $message }}</span>
@@ -100,6 +100,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                
                                 <div class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('Tanggal Nota') }}</b> <strong class="text-danger">*</strong></label>
                                     <input type="date" class="form-control" id="tanggal" name="tanggal_nota" value="{{ now()->toDateString('d/m/Y') }}" >
