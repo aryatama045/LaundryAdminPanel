@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web\Products;
 use App\Models\Coupon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CouponRequest;
+use Illuminate\Http\Request;
+
 use App\Models\NotificationManage;
 use App\Models\WebSetting;
 use App\Repositories\CouponRepository;
