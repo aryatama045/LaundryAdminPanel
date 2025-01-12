@@ -35,6 +35,7 @@ class CustomerKlaimRepository extends Repository
         
         // $user_id = $user_id['roles'][0]->name;
 
+        $userid = auth()->user()->id;
 
         $roles = DB::table('model_has_roles as a')
                     ->leftJoin('roles as b','a.id = b.role_id')
