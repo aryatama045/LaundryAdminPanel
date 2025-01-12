@@ -41,7 +41,7 @@ class CustomerKlaimRepository extends Repository
                     ->join('roles as b','a.role_id', '=', 'b.id')
                     ->where('a.model_id', $userid)
                     ->select('b.name')
-                    ->get();
+                    ->first();
 
         dd($roles['name']);
 
