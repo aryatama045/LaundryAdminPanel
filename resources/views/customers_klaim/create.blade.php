@@ -78,10 +78,10 @@
                                 @endrole
 
                                 <!-- No Validasi -->
-                                <div class="col-12 col-md-6 mb-2">
+                                <div hidden class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('Nomor Validasi') }}</b> <strong class="text-danger">*</strong></label>
                                     <div class="input-group typeahead-container">
-                                        <input id="no_validasi" name="no_validasi" type="text" accept="image/*" class="form-control typeahead" placeholder="Nomor Validasi" autocomplete="off" required="">
+                                        <input id="no_validasi" value="0" name="no_validasi" type="text" accept="image/*" class="form-control typeahead" placeholder="Nomor Validasi" autocomplete="off" required="">
                                         <div class="input-group-append">
                                             <a href="#" class="btn btn-primary default">
                                                 <i class="simple-icon-magnifier"></i> Check
@@ -97,10 +97,10 @@
                                 </div>
 
                                 <!-- No Seri -->
-                                <div class="col-12 col-md-6 mb-2">
+                                <div hidden class="col-12 col-md-6 mb-2">
                                     <label for=""><b>{{ __('Nomor Seri/Barcode') }}</b> <strong class="text-danger">*</strong></label>
                                     <input type="text" class="form-control" name="no_seri"
-                                        value="{{ old('no_seri') }}" placeholder="{{ __('Nomor Seri/Barcode') }}">
+                                        value="0" placeholder="{{ __('Nomor Seri/Barcode') }}">
                                     @error('no_seri')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
