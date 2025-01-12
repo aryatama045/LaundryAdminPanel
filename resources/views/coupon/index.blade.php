@@ -34,13 +34,22 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Code</th>
+                                    <th scope="col">Is_pakai</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($coupons as $coupon)
                                 <tr>
-                                    <td>{{ $coupon->code}}</td>
+                                    <td><b>{{ $coupon->code}}</b></td>
+                                    <td>
+                                        <label class="switch">
+                                            <a href="#">
+                                                <input {{ $coupon->is_pakai ? 'checked':'' }} type="checkbox">
+                                                <span class="slider round"></span>
+                                            </a>
+                                        </label>
+                                    </td>
                                     <td>
                                         <a href="{{ route('coupon.edit', $coupon->id) }}" class="btn btn-sm  btn-primary">
                                             <i class="fa fa-edit"></i>
