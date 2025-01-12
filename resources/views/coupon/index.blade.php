@@ -70,7 +70,7 @@
             <div class="card-header">
                 <h2 class="card-title m-0">Import Code</h2>
             </div>
-            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{ url('coupon/imports') }}" method="POST">
+            <form class="modal-dialog-scrollable" enctype='multipart/form-data' action="{{ url('coupons/imports') }}" method="POST">
                 @csrf
                 <div class="card-body">
 
