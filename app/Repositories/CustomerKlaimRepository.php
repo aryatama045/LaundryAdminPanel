@@ -39,15 +39,16 @@ class CustomerKlaimRepository extends Repository
 
         $roles = DB::table('model_has_roles as a')
                     ->leftJoin('roles as b','a.id = b.role_id')
-                    ->where('user_id', $userid)->first();
+                    ->where('user_id', $userid)
+                    ->select('b.name')
+                    ->first();
 
         dd($roles);
 
 
-
         $klaims = $this->model()::query();
 
-        if($user_id == 'customer'){
+        if($roles == 'customer'){
             $userid = auth()->user()->id;
 
             $cst = Customer::where('user_id', $userid)->first();
