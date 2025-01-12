@@ -11,6 +11,7 @@ use App\Repositories\CouponRepository;
 use App\Repositories\DeviceKeyRepository;
 use App\Services\NotificationServices;
 use Carbon\Carbon;
+use DB;
 
 class CouponController extends Controller
 {
@@ -45,9 +46,9 @@ class CouponController extends Controller
         return redirect()->route('coupon.index')->with('success', 'Coupon is updated successfully.');
     }
 
-    public function delete($request)
+    public function delete($id)
     {
-        Coupon :: where('id',$request)->delete();
+        DB ::table('coupons')->where('id',$id)->delete();
 
         return redirect()->route('coupon.index')->with('success', 'Coupon deleted successfully');
     }
