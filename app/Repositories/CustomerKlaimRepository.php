@@ -38,10 +38,10 @@ class CustomerKlaimRepository extends Repository
         $userid = auth()->user()->id;
 
         $roles = DB::table('model_has_roles as a')
-                    ->leftJoin('roles as b','a.role_id = b.id')
+                    ->join('roles as b','a.role_id', '=', 'b.id')
                     ->where('a.model_id', $userid)
                     ->select('b.name')
-                    ->first();
+                    ->get();
 
         dd($roles);
 
