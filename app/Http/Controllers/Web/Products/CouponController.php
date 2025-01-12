@@ -47,8 +47,7 @@ class CouponController extends Controller
 
     public function delete($request)
     {
-        dd($request);
-        $coupon->delete();
+        Coupon :: where('id',$request)->delete();
 
         return redirect()->route('coupon.index')->with('success', 'Coupon deleted successfully');
     }
