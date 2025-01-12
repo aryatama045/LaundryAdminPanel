@@ -229,9 +229,9 @@ class CustomerGaransiController extends Controller
                                     Disetujui
                                 </a>';
 
-                            $button .= ' </br>
+                            $button .= ' </br> </br>
                                 <a href="'.route('garansi.ditolak', $row->id) .'"
-                                    class="btn btn-primary py-1 px-2">
+                                    class="btn btn-danger py-1 px-2">
                                     Ditolak
                                 </a>';
                         }
