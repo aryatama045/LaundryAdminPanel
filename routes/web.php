@@ -130,19 +130,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('/garansi/{garansi}/delete', [CustomerGaransiController::class, 'delete'])->name('garansi.delete');
 
 
-    // Klaim routes
-    Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');
-    Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.show');
-    Route::get('/klaim/{klaim}/proses', [CustomerKlaimController::class, 'show'])->name('klaim.proses');
-    Route::post('/klaim/{klaim}', [CustomerKlaimController::class, 'proses_action'])->name('klaim.proses_action');
-    Route::get('/klaim/create', [CustomerKlaimController::class, 'create'])->name('klaim.create');
-    Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
-
-    Route::get('/klaim/check_validasi', [CustomerKlaimController::class, 'check_validasi'])->name('klaim.check_validasi');
-
-    Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
-    Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
-    Route::get('/klaim/{klaim}/delete', [CustomerKlaimController::class, 'delete'])->name('klaim.delete');
+    
 
 
 
@@ -229,6 +217,21 @@ Route::post('/orders/imports', [OrderController::class, 'imports']);
 //INcomplete Order Route
 Route::get('/orders-incomplete', [OrderController::class, 'index'])->name('orderIncomplete.index');
 Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name('orderIncomplete.paid');
+
+
+// Klaim routes
+Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');
+Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.show');
+Route::get('/klaim/{klaim}/proses', [CustomerKlaimController::class, 'show'])->name('klaim.proses');
+Route::post('/klaim/{klaim}', [CustomerKlaimController::class, 'proses_action'])->name('klaim.proses_action');
+Route::get('/klaim/create', [CustomerKlaimController::class, 'create'])->name('klaim.create');
+Route::post('/klaim', [CustomerKlaimController::class, 'store'])->name('klaim.store');
+
+Route::get('/klaim/check_validasi', [CustomerKlaimController::class, 'check_validasi'])->name('klaim.check_validasi');
+
+Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
+Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
+Route::get('/klaim/{klaim}/delete', [CustomerKlaimController::class, 'delete'])->name('klaim.delete');
 
 
 //Profile
