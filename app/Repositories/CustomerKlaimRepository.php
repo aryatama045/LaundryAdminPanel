@@ -43,7 +43,7 @@ class CustomerKlaimRepository extends Repository
                     ->select('b.name')
                     ->get();
 
-        dd($roles);
+        dd($roles['name']);
 
 
         $klaims = $this->model()::query();
