@@ -25,13 +25,13 @@ class CouponRequest extends FormRequest
     {
         return [
             'code' => ['required'],
-            'discount_type' => ['required'],
-            'discount' => ['required'],
-            'start_date' => ['required'],
-            'start_time' => ['required'],
-            'min_amount' => ['required'],
-            'expired_date' => ['required'],
-            'expired_time' => ['required'],
+            // 'discount_type' => ['required'],
+            // 'discount' => ['required'],
+            // 'start_date' => ['required'],
+            // 'start_time' => ['required'],
+            // 'min_amount' => ['required'],
+            // 'expired_date' => ['required'],
+            // 'expired_time' => ['required'],
         ];
     }
 }
