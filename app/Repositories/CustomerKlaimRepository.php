@@ -43,9 +43,10 @@ class CustomerKlaimRepository extends Repository
                     ->select('b.name')
                     ->first();
 
+
         $klaims = $this->model()::query();
 
-        if($roles['name'] == 'customer'){
+        if($roles->name == 'customer'){
             $userid = auth()->user()->id;
 
             $cst = Customer::where('user_id', $userid)->first();
@@ -62,7 +63,7 @@ class CustomerKlaimRepository extends Repository
                         ->orWhere('no_nota', 'like', "%{$searchKey}%")
                         ->orWhere('no_pemasangan', 'like', "%{$searchKey}%");
                 });
-          
+
         }
 
         return $klaims->latest('id')->get();
