@@ -43,9 +43,6 @@ class CustomerKlaimRepository extends Repository
                     ->select('b.name')
                     ->first();
 
-        dd($roles->name);
-
-
         $klaims = $this->model()::query();
 
         if($roles['name'] == 'customer'){
