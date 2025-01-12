@@ -67,7 +67,7 @@ class CouponController extends Controller
 
                 $code_data        = Coupon::firstOrNew(['code'=>$val2['code'] ]);
 
-                $code_data->code       = $val2['code'];
+                $code_data->code  = $val2['code'];
 
                 $code_data->save();
 
