@@ -219,14 +219,20 @@ class CustomerGaransiController extends Controller
                         $roles   = $user_id['roles'][0]->name;
                     }
 
-                    $kode_coupon = Coupon::first();
+                    $kode_coupon = Coupon::where('order_id', $row->id)->first();
 
                     if($roles=='root'){
                         if($row->order_status == 'Diproses'){
                             $button .= '
-                                <a href="'.route('garansi.show', $row->id) .'"
+                                <a href="'.route('garansi.disetujui', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
-                                    Proses
+                                    Disetujui
+                                </a>';
+
+                            $button .= ' </br>
+                                <a href="'.route('garansi.ditolak', $row->id) .'"
+                                    class="btn btn-primary py-1 px-2">
+                                    Ditolak
                                 </a>';
                         }
 
@@ -442,6 +448,29 @@ class CustomerGaransiController extends Controller
         DB::table('orders')->where('id', $id)->update(array(
                     'order_status' => $request->status,
                 ));
+
+        return redirect()->route('garansi.index')->with('success', 'Proses successfully');
+    }
+
+    public function disetujui(Request $request, $id)
+    {
+        DB::table('orders')->where('id', $id)->update(array(
+                'order_status' => 'Disetujui',
+            ));
+
+        $kode_coupon = Coupon::where('is_pakai', '0')->first();
+        DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
+            'order_id' => $id,
+        ));
+
+        return redirect()->route('garansi.index')->with('success', 'Proses successfully');
+    }
+
+    public function ditolak(Request $request, $id)
+    {
+        DB::table('orders')->where('id', $id)->update(array(
+                'order_status' => 'Ditolak',
+            ));
 
         return redirect()->route('garansi.index')->with('success', 'Proses successfully');
     }
