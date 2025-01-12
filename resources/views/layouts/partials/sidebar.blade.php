@@ -33,6 +33,8 @@
                     </a>
                 </li>
 
+                
+
                 @role('customer')
 
                         <li class="nav-item">
@@ -145,6 +147,26 @@
                             href="{{ route('garansi.index') }}">
                             <i class="fa fa-file text-blue"></i>
                             <span class="nav-link-text">{{ __('Approval Retur') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
+                            href="{{ route('klaim.index') }}">
+                            <i class="fas fa-list text-green"></i>
+                            <span class="nav-link-text">{{ __('Data Klaim') }}</span>
+                        </a>
+                    </li>
+                @endrole
+
+                @role('admin')
+
+                    
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
+                            href="{{ route('coupon.index') }}">
+                            <i class="fa fa-percentage"></i>
+                            <span class="nav-link-text">{{ __('Data Kode') }}</span>
                         </a>
                     </li>
 
