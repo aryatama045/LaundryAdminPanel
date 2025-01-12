@@ -326,6 +326,7 @@ Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupon
 Route::post('/coupons', [CouponController::class, 'store'])->name('coupon.store');
 Route::get('/coupons/{coupon}/edit', [CouponController::class, 'edit'])->name('coupon.edit');
 Route::put('/coupons/{coupon}', [CouponController::class, 'update'])->name('coupon.update');
+Route::post('/coupons/imports', 'imports');
 
 
 Route::get('/settings/{slug}', [SettingController::class, 'show'])->name('setting.show');
