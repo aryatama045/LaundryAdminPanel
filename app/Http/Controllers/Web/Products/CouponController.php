@@ -13,7 +13,16 @@ use App\Repositories\CouponRepository;
 use App\Repositories\DeviceKeyRepository;
 use App\Services\NotificationServices;
 use Carbon\Carbon;
+
+use Illuminate\Support\Str;
+use App\Import\BarangImport;
+// use App\Export\BarangExport;
+use Illuminate\Support\Facades\Input;
+use File;
+use Redirect;
+use Excel;
 use DB;
+use PDF;
 
 class CouponController extends Controller
 {
