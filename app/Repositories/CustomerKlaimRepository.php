@@ -31,9 +31,15 @@ class CustomerKlaimRepository extends Repository
     {
         $searchKey = \request('search');
         
-        $user_id = auth()->user()->getRelations('roles');
-        dd($user_id);
-        $user_id = $user_id['roles'][0]->name;
+        // $user_id = auth()->user()->getRelations('roles');
+        
+        // $user_id = $user_id['roles'][0]->name;
+
+        $userid = auth()->user()->id;
+
+        dd($userid);
+
+        $cst = Customer::where('user_id', $userid)->first();
 
 
         $klaims = $this->model()::query();
