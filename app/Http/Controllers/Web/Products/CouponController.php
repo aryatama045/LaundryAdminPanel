@@ -30,7 +30,6 @@ class CouponController extends Controller
     {
         (new CouponRepository())->storeByRequest($request);
 
-
         return redirect()->route('coupon.index')->with('success', 'Code is added successfully.');
     }
 
@@ -43,8 +42,14 @@ class CouponController extends Controller
     {
         (new CouponRepository())->updateByRequest($request, $coupon);
 
-
         return redirect()->route('coupon.index')->with('success', 'Coupon is updated successfully.');
+    }
+
+    public function delete(Coupon $coupon)
+    {
+        $coupon->delete();
+
+        return redirect()->route('coupon.index')->with('success', 'Coupon deleted successfully');
     }
 
     public function Imports(Request $request)

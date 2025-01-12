@@ -327,6 +327,7 @@ Route::post('/coupons', [CouponController::class, 'store'])->name('coupon.store'
 Route::get('/coupons/{coupon}/edit', [CouponController::class, 'edit'])->name('coupon.edit');
 Route::put('/coupons/{coupon}', [CouponController::class, 'update'])->name('coupon.update');
 Route::post('/coupons/imports', [CouponController::class, 'imports']);
+Route::get('/coupons/{product}/delete', [CouponController::class, 'delete'])->name('coupon.delete');
 
 
 Route::get('/settings/{slug}', [SettingController::class, 'show'])->name('setting.show');

@@ -45,6 +45,9 @@
                                         <a href="{{ route('coupon.edit', $coupon->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
+                                        <a href="{{ route('coupon.delete', $product->id) }}" class="btn btn-sm btn-danger delete-confirm" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
