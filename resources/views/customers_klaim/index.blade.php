@@ -52,8 +52,8 @@
                                         <th rowspan="2"> Nomor Nota </th>
                                         <th rowspan="2"> Nama Barang </th>
                                         <th rowspan="2" width="2%"> Qty </th>
-                                        <th colspan="2"> Terproteksi</th>
-                                        <th rowspan="2"> Waktu & Tanggal Rusak</th>
+                                        <th rowspan="2"> Terproteksi</th>
+                                        <th colspan="2"> Tanggal & Waktu Rusak</th>
                                         <th rowspan="2" class="text-center"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
                                         <th rowspan="2"> </th>
@@ -177,12 +177,12 @@
                         name: 'terproteksi',
                     },
                     {
-                        data: 'terproteksi',
-                        name: 'terproteksi',
+                        data: 'tanggal_rusak',
+                        name: 'tanggal_rusak',
                     },
                     {
-                        data: 'tambah_proteksi',
-                        name: 'tambah_proteksi',
+                        data: 'waktu_rusak',
+                        name: 'waktu_rusak',
                     },
                     {
                         data: 'img',
