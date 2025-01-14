@@ -10,7 +10,11 @@
                             <h2 class="card-title m-0">{{ __('All'). ' '.__('Klaim') }}</h2>
                         @endrole
 
-                        @role('customer', 'admin')
+                        @role('customer')
+                            <h2 class="card-title m-0">Data Klaim</h2>
+                        @endrole
+
+                        @role('admin')
                             <h2 class="card-title m-0">Data Klaim</h2>
                         @endrole
 
