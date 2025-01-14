@@ -53,7 +53,7 @@
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2" class="text-center"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
-                                        <th rowspan="2"> </th>
+                                        <th rowspan="2"> Proteksi Disetujui</th>
                                     </tr>
 
                                     <tr>
