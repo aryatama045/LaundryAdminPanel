@@ -59,6 +59,9 @@ class CustomerKlaimController extends Controller
                     $img = ' -- ';
 
                     $bukti = CustomerBuktiFotos::where('klaim_id', $row->klaim_id)->first();
+                    $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+
+                    $waktu = $klaim->waktu_pemasangan;
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -72,7 +75,7 @@ class CustomerKlaimController extends Controller
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>
-                        '.$get_media->name.'
+                        '. kode_smp($waktu).'
                         ';
                     }
 
@@ -487,5 +490,30 @@ class CustomerKlaimController extends Controller
         return response()->json(['exists' => $Exists]);
     }
 
+
+    public function kode_smp($date)
+    {
+        if($date == NULL){
+            $date       = now()->toDateTimeString();
+        }
+
+        $jam            =  date('h',strtotime($date));
+        $menit          =  date('i',strtotime($date));
+
+
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        shuffle($data_kode);
+        $kode        = implode("",$data_kode);
+
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3','L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
+
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2);
+
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
+
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2;
+    }
 
 }
