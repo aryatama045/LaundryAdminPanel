@@ -100,50 +100,26 @@ class CustomerGaransiController extends Controller
                     $qty = $row->qty == '' ? '-' : $row->qty;
                     return $qty;
                 })
-                ->addColumn('terproteksi', function ($row) {
-                    $result = '-';
-                    if($row->order_status == 'Disetujui'){
-
-                        $websetting = WebSetting::first();
-
-                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-
-                        $masa_berlaku = $websetting->masa_berlaku;
-
-                        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
-                        $dateExps = date('d-m-Y', $dateExp);
-
-                        $paymentDate = now();
-                        $paymentDate = date('Y-m-d', strtotime($paymentDate));
-                        //echo $paymentDate; // echos today!
-                        $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-                        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
-
-                        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                        }else{
-                            if($paymentDate <= $contractDateEnd){
-
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                            }else{
-                                $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
-                            }
-
-                        }
-
-                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
-
-
-                    }else if($row->order_status == 'Diproses'){
-                        $result = '<span class="text-grey"><b>Diproses</b></span>';
-                    }else if($row->order_status == 'Ditolak'){
-                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                ->addColumn('waktu', function ($row) {
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                    $waktu = $garansi->waktu_pemasangan;
+                    if($waktu){
+                        $result =  date('H:i:s',strtotime($garansi->waktu_pemasangan));
                     }else{
-                        $result = '<span class=""> - </span>';
+                        $result = '-';
+                    }
+
+                    return $result;
+                })
+                ->addColumn('tanggal', function ($row) {
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                    $tanggal = $garansi->tanggal_pemasangan;
+                    if($tanggal){
+                        $result =  date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
+                    }else{
+                        $result = '-';
                     }
                     return $result;
-
-                    return $terproteksi;
                 })
 
                 ->addColumn('terproteksi', function ($row) {
@@ -261,7 +237,7 @@ class CustomerGaransiController extends Controller
 
                     return $button;
                 })
-                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','tambah_proteksi','img','status'])
+                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','waktu','tanggal','tambah_proteksi','img','status'])
                 ->make(true);
         }
 

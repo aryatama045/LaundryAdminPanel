@@ -174,12 +174,12 @@
                         name: 'terproteksi',
                     },
                     {
-                        data: 'terproteksi',
-                        name: 'terproteksi',
+                        data: 'tanggal',
+                        name: 'tanggal',
                     },
                     {
-                        data: 'terproteksi',
-                        name: 'terproteksi',
+                        data: 'waktu',
+                        name: 'waktu',
                     },
                     {
                         data: 'tambah_proteksi',
