@@ -144,7 +144,7 @@ class CustomerKlaimController extends Controller
 
                 ->addColumn('waktu_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    if($klaim->waktu_pemasangan){
+                    if(!$klaim->waktu_pemasangan){
                         $result =  date('H:i:s',strtotime($klaim->waktu_pemasangan));
                     }else{
                         $result = '';
@@ -154,7 +154,7 @@ class CustomerKlaimController extends Controller
                 })
                 ->addColumn('tanggal_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    if($klaim->tanggal_pemasangan){
+                    if(!$klaim->tanggal_pemasangan){
                         $result =  date('d-m-Y', strtotime($klaim->tanggal_pemasangan));
                     }else{
                         $result = '';
