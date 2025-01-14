@@ -410,6 +410,12 @@ class CustomerKlaimController extends Controller
                 'order_status' => 'Disetujui',
             ));
 
+        $order = DB::table('orders')->where('id', $id)->get();
+
+        DB::table('customer_klaims')->where('id', $order->klaim_id)->update(array(
+            'status' => 'Disetujui',
+        ));
+
         $kode_coupon = Coupon::where('is_pakai', '0')->first();
         DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
             'order_id' => $id,
@@ -424,6 +430,12 @@ class CustomerKlaimController extends Controller
         DB::table('orders')->where('id', $id)->update(array(
                 'order_status' => 'Ditolak',
             ));
+
+        $order = DB::table('orders')->where('id', $id)->get();
+
+        DB::table('customer_klaims')->where('id', $order->klaim_id)->update(array(
+            'status' => 'Ditolak',
+        ));
 
         return redirect()->route('klaim.index')->with('success', 'Proses successfully');
     }
