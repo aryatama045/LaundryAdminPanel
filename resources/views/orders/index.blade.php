@@ -35,6 +35,8 @@
                                         <th scope="col">Nama Barang</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Satuan</th>
+                                        <th scope="col">No. Retur</th>
+                                        <th scope="col">Alasan Retur</th>
                                         <th scope="col">Approval Retur</th>
                                         @role('root')
                                             <th hidden scope="col" class="px-2">{{ __('Actions') }}</th>
@@ -58,7 +60,8 @@
                                             <td class="py-1">{{ $order->qty }}</td>
                                             <td class="py-1">{{ $order->satuan }}</td>
                                             <td class="py-1"> {{ $order->order_status }} </td>
-
+                                            <td class="py-1"> </td>
+                                            <td class="py-1"> </td>
                                             @role('root')
                                                 <td hidden class="p-1 ">
 
