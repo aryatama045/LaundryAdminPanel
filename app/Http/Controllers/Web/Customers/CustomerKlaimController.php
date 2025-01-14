@@ -49,10 +49,8 @@ class CustomerKlaimController extends Controller
             if($roles == 'root' ){
                 $data = Order::Where('klaim_id','!=','')->get();
             }else{
-                $data = Order::where('customer_id', $user_id->id)->get();
+                $data = Order::where('customer_id', $user_id->id)->Where('klaim_id','!=','')->get();
             }
-
-            dd($user_id->id);
 
             return DataTables::of($data)
 
