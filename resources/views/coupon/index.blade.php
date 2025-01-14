@@ -75,7 +75,7 @@
 <div class="modal fade" data-backdrop="static" id="modal_import">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
-            
+
             <div class="card-header">
                 <h2 class="card-title m-0">Import Code</h2>
             </div>
@@ -86,6 +86,10 @@
                     <div class="form-group">
                         <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
                         <input name="import_data" type="file" />
+                    </div>
+                    <div class="form-group">
+
+                        <a href="{{ asset('public/Code.xls') }}" class="btn btn-sm btn-success mb-2"><i class="far fa-save"></i> Download Template</a>
                     </div>
 
                 </div>

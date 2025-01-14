@@ -106,7 +106,7 @@
 
                 <div class="form-group">
 
-                    <a href="{{ asset('public/Import-order.xls') }}" class="btn btn-sm btn-success float-right"><i class="far fa-save"></i> Download Template</a>
+                    <a href="{{ asset('public/Import-order.xls') }}" class="btn btn-sm btn-success mb-2"><i class="far fa-save"></i> Download Template</a>
                 </div>
             </div>
 
