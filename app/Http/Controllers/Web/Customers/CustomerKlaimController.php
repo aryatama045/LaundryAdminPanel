@@ -179,26 +179,26 @@ class CustomerKlaimController extends Controller
                     $kode_coupon = Coupon::where('order_id', $row->id)->first();
 
                     if($roles=='root'){
-                        if($row->order_status == 'Diproses'){
+                        if($row->order_status == 'Proses'){
                             $button .= '
-                                <a href="'.route('garansi.disetujui', $row->id) .'"
+                                <a href="'.route('klaim.disetujui', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
                                     Disetujui
                                 </a>';
 
                             $button .= ' </br> </br>
-                                <a href="'.route('garansi.ditolak', $row->id) .'"
+                                <a href="'.route('klaim.ditolak', $row->id) .'"
                                     class="btn btn-danger py-1 px-2">
                                     Ditolak
                                 </a>';
                         }
 
-                        if($row->order_status == 'Disetujui'){
-                            $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
-                        }
-
                         $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
                         if($klaim->status == 'Disetujui'){
+                            if($row->order_status == 'Disetujui'){
+                                $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
+                            }
+
                             $button .= '</br><span class="text-success"><b>Disetujui</b></span>';
                         }else if($klaim->status == 'Proses'){
                             $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
@@ -401,6 +401,31 @@ class CustomerKlaimController extends Controller
                 ));
 
         return redirect()->route('klaim.index')->with('success', 'Klaim Proses successfully');
+    }
+
+
+    public function disetujui(Request $request, $id)
+    {
+        DB::table('orders')->where('id', $id)->update(array(
+                'order_status' => 'Disetujui',
+            ));
+
+        $kode_coupon = Coupon::where('is_pakai', '0')->first();
+        DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
+            'order_id' => $id,
+            'is_pakai' => '1',
+        ));
+
+        return redirect()->route('klaim.index')->with('success', 'Proses successfully');
+    }
+
+    public function ditolak(Request $request, $id)
+    {
+        DB::table('orders')->where('id', $id)->update(array(
+                'order_status' => 'Ditolak',
+            ));
+
+        return redirect()->route('klaim.index')->with('success', 'Proses successfully');
     }
 
     public function delete($id)

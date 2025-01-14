@@ -130,7 +130,7 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('/garansi/{garansi}/delete', [CustomerGaransiController::class, 'delete'])->name('garansi.delete');
 
 
-    
+
 
 
 
@@ -232,6 +232,9 @@ Route::get('/klaim/check_validasi', [CustomerKlaimController::class, 'check_vali
 Route::get('/klaim/{klaim}/edit', [CustomerKlaimController::class, 'edit'])->name('klaim.edit');
 Route::put('/klaim/{klaim}', [CustomerKlaimController::class, 'update'])->name('klaim.update');
 Route::get('/klaim/{klaim}/delete', [CustomerKlaimController::class, 'delete'])->name('klaim.delete');
+
+Route::get('/klaim/{klaim}/disetujui', [CustomerKlaimController::class, 'disetujui'])->name('klaim.disetujui');
+Route::get('/klaim/{klaim}/ditolak', [CustomerKlaimController::class, 'ditolak'])->name('klaim.ditolak');
 
 
 //Profile
