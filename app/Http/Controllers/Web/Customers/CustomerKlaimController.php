@@ -493,7 +493,7 @@ class CustomerKlaimController extends Controller
     public function kode_smp($date)
     {
 
-        $jam            =  date('h',strtotime($date));
+        $jam            =  date('H',strtotime($date));
         $menit          =  date('i',strtotime($date));
 
 
@@ -511,7 +511,6 @@ class CustomerKlaimController extends Controller
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2;
 
-        dd($foto_bukti);
 
         return $foto_bukti;
     }
