@@ -189,7 +189,7 @@ class CustomerKlaimController extends Controller
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
 
                     if($klaim){
-                        if($klaim->status == '-' || $klaim->status == ''){
+                        if($klaim->status == '-' || $klaim->status == '' || $klaim->status == 'Diterima'){
                             $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
                         }else if($klaim->status == 'Proses' || $klaim->status == 'Disetujui'){
                             $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
