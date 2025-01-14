@@ -204,12 +204,10 @@ class CustomerKlaimController extends Controller
                             $button .= '</br><span class="text-success"><b>Disetujui</b></span> <br>';
 
                             $button .= ($kode_coupon)?'Kode : '.$kode_coupon->code:'Tidak ada kode';
-
-
                         }else if($klaim->status == 'Ditolak'){
                             $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
                         }else{
-                            $button .= '</br><span class=""> - </span>';
+                            $button .= '</br><span class="">  </span>';
                         }
                     }else{
                         $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
