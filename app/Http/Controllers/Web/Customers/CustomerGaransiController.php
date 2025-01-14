@@ -225,11 +225,11 @@ class CustomerGaransiController extends Controller
                         // }
                     }else{
 
-                        if($row->order_status == 'Disetujui'){
+                        if($garansi->status == 'Disetujui'){
                             $result = '<span class="text-success"><b>Disetujui</b></span>';
-                        }else if($row->order_status == 'Diproses'){
+                        }else if($garansi->status == 'Diproses'){
                             $result = '<span class="text-info"><b>Diproses</b></span>';
-                        }else if($row->order_status == 'Ditolak'){
+                        }else if($garansi->status == 'Ditolak'){
                             $result = '<span class="text-danger"><b>Ditolak</b></span>';
                         }else{
                             $result = '<span class=""> - </span>';
