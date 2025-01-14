@@ -453,20 +453,26 @@ class CustomerKlaimController extends Controller
         }
         // END CEK VALIDASI
 
-        $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
-        $klaimFoto = count($request->klaim_photo);
+        $date           = now()->toDateTimeString();
+        $jam            =  date('h',strtotime($date));
+        $menit          =  date('i',strtotime($date));
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        shuffle($data_kode);
+        $kode       = implode("",$data_kode);
+        $kode_tracking = 'TRK_'.$kode.'-'.$jam.'-'.$menit;
 
-        $dataOrder = Order::where('id', $id)->first();
+        $order      = Order::where('id', $id)->first();
 
         $klaim_fill = [
-            'customer_id'           => $dataOrder->customer_id,
-            'no_nota'               => $dataOrder->nomor_nota,
-            'tanggal_nota'          => $dataOrder->tanggal_nota,
+            'no_tracking'           => $kode_tracking,
+            'customer_id'           => $order->customer_id,
+            'tanggal_nota'          => $request->tanggal_nota,
             'tanggal_pemasangan'    => $tgl_pasang,
             'waktu_pemasangan'      => $request->waktu_pemasangan,
+            'status'                => 'Proses',
         ];
-        $klaim_data = CustomerGaransis::create($klaim_fill);
+        $klaim_data = CustomerKlaims::create($klaim_fill);
 
         $thumbnail = null;
         if ($request->hasFile('klaim_photo')) {
@@ -523,12 +529,11 @@ class CustomerKlaimController extends Controller
         }
 
         $orderUpdate = array(
-            'order_status'  => 'Diproses',
-            'garansi_id'    => $garansi_data->id,
+            'klaim_id'    => $klaim_data->id,
         );
         Order::where('id', $id)->update($orderUpdate);
 
-        return redirect()->route('garansi.index')->with('success', 'Data successfully send, Admin Sedang Proses !!');
+        return redirect()->route('klaim.index')->with('success', 'Data successfully send, Admin Sedang Proses !!');
     }
 
     public function proses_action(Request $request, $id)
