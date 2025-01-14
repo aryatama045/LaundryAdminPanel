@@ -103,6 +103,11 @@
                     <label class="mb-1">{{ __('Import') . ' ' . __('Excel') }}</label>
                     <input name="import_data" type="file" />
                 </div>
+
+                <div class="form-group">
+
+                    <a href="{{ asset('public/Import-order.xls') }}" class="btn btn-sm btn-success float-right"><i class="far fa-save"></i> Download Template</a>
+                </div>
             </div>
 
             <div class="card-footer">
