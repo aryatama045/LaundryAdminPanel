@@ -410,7 +410,7 @@ class CustomerKlaimController extends Controller
                 'order_status' => 'Disetujui',
             ));
 
-        $order = DB::table('orders')->where('id', $id)->get();
+        $order = DB::table('orders')->where('id', $id)->first();
 
         DB::table('customer_klaims')->where('id', $order->klaim_id)->update(array(
             'status' => 'Disetujui',
@@ -431,7 +431,7 @@ class CustomerKlaimController extends Controller
                 'order_status' => 'Ditolak',
             ));
 
-        $order = DB::table('orders')->where('id', $id)->get();
+        $order = DB::table('orders')->where('id', $id)->first();
 
         DB::table('customer_klaims')->where('id', $order->klaim_id)->update(array(
             'status' => 'Ditolak',
