@@ -185,6 +185,10 @@
                         name: 'waktu_rusak',
                     },
                     {
+                        data: 'klaim_proteksi',
+                        name: 'klaim_proteksi',
+                    },
+                    {
                         data: 'img',
                         name: 'barang_gambar',
                         searchable: false,
