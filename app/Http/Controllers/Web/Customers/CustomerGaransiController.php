@@ -458,11 +458,11 @@ class CustomerGaransiController extends Controller
         DB::table('customer_garanses')->where('id', $order->garansi_id)->update(array(
             'status' => 'Disetujui',
         ));
-        $kode_coupon = Coupon::where('is_pakai', '0')->first();
-        DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
-            'order_id' => $id,
-            'is_pakai' => '1',
-        ));
+        // $kode_coupon = Coupon::where('is_pakai', '0')->first();
+        // DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
+        //     'order_id' => $id,
+        //     'is_pakai' => '1',
+        // ));
 
         return redirect()->route('garansi.index')->with('success', 'Proses successfully');
     }
@@ -472,6 +472,12 @@ class CustomerGaransiController extends Controller
         DB::table('orders')->where('id', $id)->update(array(
                 'order_status' => 'Ditolak',
             ));
+
+        $order = DB::table('orders')->where('id', $id)->first();
+
+        DB::table('customer_garanses')->where('id', $order->garansi_id)->update(array(
+            'status' => 'Ditolak',
+        ));
 
         return redirect()->route('garansi.index')->with('success', 'Proses successfully');
     }
