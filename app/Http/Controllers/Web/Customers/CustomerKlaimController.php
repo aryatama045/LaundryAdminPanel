@@ -49,7 +49,8 @@ class CustomerKlaimController extends Controller
             if($roles == 'root' ){
                 $data = Order::Where('klaim_id','!=','')->get();
             }else{
-                $data = Order::where('customer_id', $user_id->id)->Where('klaim_id','!=','')->get();
+                // $data = Order::where('customer_id', $user_id->id)->Where('klaim_id','!=','')->get();
+                $data = Order::where('customer_id', $user_id->id)->get();
             }
 
             return DataTables::of($data)
@@ -61,7 +62,11 @@ class CustomerKlaimController extends Controller
                     $bukti = CustomerBuktiFotos::where('klaim_id', $row->klaim_id)->first();
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
 
-                    $waktu = $klaim->waktu_pemasangan;
+                    if($klaim){
+                        $waktu = $this->kode_smp($klaim->waktu_pemasangan) ;
+                    }else{
+                        $waktu = '';
+                    }
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -75,7 +80,7 @@ class CustomerKlaimController extends Controller
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>
-                        '. $this->kode_smp($waktu) .'
+                        '. $waktu .'
                         ';
                     }
 
@@ -147,8 +152,8 @@ class CustomerKlaimController extends Controller
 
                 ->addColumn('waktu_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    $waktu = $klaim->waktu_pemasangan;
-                    if($waktu){
+
+                    if($klaim){
                         $result =  date('H:i',strtotime($klaim->waktu_pemasangan));
                     }else{
                         $result = '-';
@@ -158,8 +163,8 @@ class CustomerKlaimController extends Controller
                 })
                 ->addColumn('tanggal_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    $tanggal = $klaim->tanggal_pemasangan;
-                    if($tanggal){
+
+                    if($klaim){
                         $result =  date('d-m-Y', strtotime($klaim->tanggal_pemasangan));
                     }else{
                         $result = '-';
@@ -184,40 +189,47 @@ class CustomerKlaimController extends Controller
 
                     if($roles=='root'){
                         $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+                        if($klaim){
+                            if($klaim->status == 'Proses'){
+                                $button .= '
+                                    <a href="'.route('klaim.disetujui', $row->id) .'"
+                                        class="btn btn-primary py-1 px-2">
+                                        Disetujui
+                                    </a>';
 
-                        if($klaim->status == 'Proses'){
-                            $button .= '
-                                <a href="'.route('klaim.disetujui', $row->id) .'"
-                                    class="btn btn-primary py-1 px-2">
-                                    Disetujui
-                                </a>';
+                                $button .= ' </br> </br>
+                                    <a href="'.route('klaim.ditolak', $row->id) .'"
+                                        class="btn btn-danger py-1 px-2">
+                                        Ditolak
+                                    </a>';
+                            }
 
-                            $button .= ' </br> </br>
-                                <a href="'.route('klaim.ditolak', $row->id) .'"
-                                    class="btn btn-danger py-1 px-2">
-                                    Ditolak
-                                </a>';
-                        }
+                            if($klaim->status == 'Disetujui'){
+                                $button .= '</br><span class="text-success"><b>Disetujui</b></span> <br>';
 
-                        if($klaim->status == 'Disetujui'){
-                            $button .= '</br><span class="text-success"><b>Disetujui</b></span> <br>';
-
-                            $button .= ($kode_coupon)?'Kode : '.$kode_coupon->code:'Tidak ada kode';
-                        }else if($klaim->status == 'Ditolak'){
-                            $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                                $button .= ($kode_coupon)?'Kode : '.$kode_coupon->code:'Tidak ada kode';
+                            }else if($klaim->status == 'Ditolak'){
+                                $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                            }else{
+                                $button .= '</br><span class="">  </span>';
+                            }
                         }else{
                             $button .= '</br><span class="">  </span>';
                         }
                     }else{
                         $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                        if($klaim->status == 'Disetujui'){
-                            $button .= '</br><span class="text-success"><b>Disetujui</b></span>';
-                        }else if($klaim->status == 'Proses'){
-                            $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
-                        }else if($klaim->status == 'Ditolak'){
-                            $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                        if($klaim){
+                            if($klaim->status == 'Disetujui'){
+                                $button .= '</br><span class="text-success"><b>Disetujui</b></span>';
+                            }else if($klaim->status == 'Proses'){
+                                $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                            }else if($klaim->status == 'Ditolak'){
+                                $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                            }else{
+                                $button .= '</br><span class=""> - </span>';
+                            }
                         }else{
-                            $button .= '</br><span class=""> - </span>';
+                            $button .= '</br><span class="">  </span>';
                         }
                     }
 
