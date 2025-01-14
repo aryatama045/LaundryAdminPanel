@@ -54,7 +54,7 @@
                                         <th rowspan="2" width="2%"> Qty </th>
                                         <th rowspan="2"> Terproteksi</th>
                                         <th colspan="2"> Tanggal & Waktu Rusak</th>
-                                        <th rowspan="2" class="text-center"> Foto Pemasangan</th>
+                                        <th rowspan="2" class="text-center"> Foto Barang Rusak</th>
                                         <th rowspan="2"> Status</th>
                                         <th rowspan="2"> Garansi Disetujui</th>
                                     </tr>
