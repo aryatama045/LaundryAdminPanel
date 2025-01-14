@@ -52,6 +52,7 @@ class CustomerKlaimController extends Controller
                 $data = Order::where('customer_id', $user_id->id)->get();
             }
 
+            dd($user_id->id);
 
             return DataTables::of($data)
 
