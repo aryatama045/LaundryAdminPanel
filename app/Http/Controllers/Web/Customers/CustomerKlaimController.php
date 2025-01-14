@@ -179,7 +179,9 @@ class CustomerKlaimController extends Controller
                     $kode_coupon = Coupon::where('order_id', $row->id)->first();
 
                     if($roles=='root'){
-                        if($row->order_status == 'Proses'){
+                        $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+
+                        if($klaim->status == 'Proses'){
                             $button .= '
                                 <a href="'.route('klaim.disetujui', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
@@ -193,7 +195,6 @@ class CustomerKlaimController extends Controller
                                 </a>';
                         }
 
-                        $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
                         if($klaim->status == 'Disetujui'){
                             if($row->order_status == 'Disetujui'){
                                 $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
