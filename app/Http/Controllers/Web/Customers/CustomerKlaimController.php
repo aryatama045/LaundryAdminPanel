@@ -54,6 +54,7 @@ class CustomerKlaimController extends Controller
 
 
             return DataTables::of($data)
+
                 ->addIndexColumn()
                 ->addColumn('img', function ($row) {
                     $img = ' -- ';
@@ -139,14 +140,15 @@ class CustomerKlaimController extends Controller
                     }
                     return $result;
 
-                    return $terproteksi;
                 })
 
                 ->addColumn('waktu_rusak', function ($row) {
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
                     $result =  date('H:i:s',strtotime($garansi->waktu_pemasangan));
                     return $result;
                 })
                 ->addColumn('tanggal_rusak', function ($row) {
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
                     $result =  date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
                     return $result;
                 })
@@ -192,7 +194,7 @@ class CustomerKlaimController extends Controller
                 ->make(true);
         }
 
-        // $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+
 
         return view('customers_klaim.index');
     }
