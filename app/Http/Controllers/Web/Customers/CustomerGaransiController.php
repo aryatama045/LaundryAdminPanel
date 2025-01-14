@@ -235,8 +235,16 @@ class CustomerGaransiController extends Controller
                         }
 
                         if($row->order_status == 'Disetujui'){
-                            $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
+                            $result = '<span class="text-success"><b>Disetujui</b></span>';
+                        }else if($row->order_status == 'Ditolak'){
+                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $result = '<span class=""> - </span>';
                         }
+
+                        // if($row->order_status == 'Disetujui'){
+                        //     $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
+                        // }
                     }else{
 
                         if($row->order_status == 'Disetujui'){
