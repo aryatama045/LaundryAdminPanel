@@ -22,15 +22,19 @@ $server  = request()->userAgent();
                             <table class="table table-bordered table-striped {{ session()->get('local') }}" id="myTable">
                                 <thead>
                                     <tr>
-                                        @role('root')
-                                        <th scope="col">{{ __('Name') }}</th>
-                                        @endrole
-                                        <th scope="col">{{ __('No. Tracking') }}</th>
                                         <th scope="col">{{ __('No. Nota') }}</th>
-                                        <th scope="col">{{ __('No. Seri/Barcode') }}</th>
-                                        <th scope="col">{{ __('Waktu & Tgl. Pemasangan') }}</th>
+                                        <th scope="col">{{ __('Tgl. Nota') }}</th>
+                                        @role('root')
+                                        <th scope="col">{{ __('Nama Customer') }}</th>
+                                        @endrole
+                                        <th scope="col">{{ __('Nama Barang') }}</th>
+                                        <th scope="col">{{ __('Qty') }}</th>
+                                        <th scope="col">{{ __('Terproteksi') }}</th>
+                                        <th scope="col">{{ __('Waktu Barang Rusak') }}</th>
+                                        <th scope="col">{{ __('Tanggal Barang Rusak') }}</th>
+                                        <th scope="col">{{ __('Foto Barang Rusak') }}</th>
                                         <th scope="col">{{ __('Status') }}</th>
-                                        <th scope="col">{{ __('Action') }}</th>
+                                        <th scope="col">{{ __('Garansi Disetujui') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,14 +94,14 @@ $server  = request()->userAgent();
                                                 @endrole
 
 
-                                                {{-- <a href="{{ route('klaim.edit', $klaims->id) }}"
+                                                <!-- <a href="{{ route('klaim.edit', $klaims->id) }}"
                                                     class="btn btn-info py-1 px-2">
                                                     <i class="fa fa-edit"></i>
-                                                </a> --}}
+                                                </a>
                                                 <a href="{{ route('klaim.delete', $klaims->id) }}"
                                                     class="btn btn-danger py-1 px-2 delete-confirm" >
                                                     <i class="fa fa-trash"></i>
-                                                </a>
+                                                </a> -->
                                             </td>
                                         </tr>
                                     @endforeach
