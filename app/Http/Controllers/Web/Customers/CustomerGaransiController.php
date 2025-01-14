@@ -213,11 +213,11 @@ class CustomerGaransiController extends Controller
                         }
 
                         if($garansi->status == 'Disetujui'){
-                            $result = '<span class="text-success"><b>Disetujui</b></span>';
+                            $button .= '<span class="text-success"><b>Disetujui</b></span>';
                         }else if($garansi->status == 'Ditolak'){
-                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                            $button .= '<span class="text-danger"><b>Ditolak</b></span>';
                         }else{
-                            $result = '<span class=""> - </span>';
+                            $button .= '<span class=""> - </span>';
                         }
 
                         // if($row->order_status == 'Disetujui'){
@@ -226,13 +226,13 @@ class CustomerGaransiController extends Controller
                     }else{
 
                         if($garansi->status == 'Disetujui'){
-                            $result = '<span class="text-success"><b>Disetujui</b></span>';
+                            $button .= '<span class="text-success"><b>Disetujui</b></span>';
                         }else if($garansi->status == 'Diproses'){
-                            $result = '<span class="text-info"><b>Diproses</b></span>';
+                            $button .= '<span class="text-info"><b>Diproses</b></span>';
                         }else if($garansi->status == 'Ditolak'){
-                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                            $button .= '<span class="text-danger"><b>Ditolak</b></span>';
                         }else{
-                            $result = '<span class=""> - </span>';
+                            $button .= '<span class=""> - </span>';
                         }
                     }
 
