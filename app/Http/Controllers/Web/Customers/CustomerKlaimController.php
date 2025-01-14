@@ -143,13 +143,13 @@ class CustomerKlaimController extends Controller
                 })
 
                 ->addColumn('waktu_rusak', function ($row) {
-                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    $result =  date('H:i:s',strtotime($garansi->waktu_pemasangan));
+                    $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+                    $result =  date('H:i:s',strtotime($klaim->waktu_pemasangan));
                     return $result;
                 })
                 ->addColumn('tanggal_rusak', function ($row) {
-                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    $result =  date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
+                    $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+                    $result =  date('d-m-Y', strtotime($klaim->tanggal_pemasangan));
                     return $result;
                 })
 
