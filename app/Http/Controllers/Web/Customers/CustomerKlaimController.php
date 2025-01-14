@@ -493,6 +493,7 @@ class CustomerKlaimController extends Controller
 
     public function kode_smp($date)
     {
+        dd($date);
         if($date == NULL){
             $date       = now()->toDateTimeString();
         }
@@ -514,6 +515,8 @@ class CustomerKlaimController extends Controller
         $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
 
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2;
+
+        return $foto_bukti;
     }
 
 }
