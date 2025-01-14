@@ -206,15 +206,7 @@ class CustomerGaransiController extends Controller
                 })
 
                 ->addColumn('status', function ($row) use ($request) {
-                    if($row->order_status == 'Disetujui'){
-                        $result = '<span class="text-success"><b>Disetujui</b></span>';
-                    }else if($row->order_status == 'Diproses'){
-                        $result = '<span class="text-info"><b>Diproses</b></span>';
-                    }else if($row->order_status == 'Ditolak'){
-                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
-                    }else{
-                        $result = '<span class=""> - </span>';
-                    }
+                    $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
                     return $result;
                 })
                 ->addColumn('action', function ($row) {
@@ -244,6 +236,17 @@ class CustomerGaransiController extends Controller
 
                         if($row->order_status == 'Disetujui'){
                             $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
+                        }
+                    }else{
+
+                        if($row->order_status == 'Disetujui'){
+                            $result = '<span class="text-success"><b>Disetujui</b></span>';
+                        }else if($row->order_status == 'Diproses'){
+                            $result = '<span class="text-info"><b>Diproses</b></span>';
+                        }else if($row->order_status == 'Ditolak'){
+                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $result = '<span class=""> - </span>';
                         }
                     }
 
