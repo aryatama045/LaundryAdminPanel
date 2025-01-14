@@ -20,11 +20,185 @@ use Illuminate\Support\Str;
 use Intervention\Image\Laravel\Facades\Image;
 use DB;
 
+use App\Repositories\CustomerGaransiRepository;
+use App\Models\Coupon;
+use App\Models\Order;
+use App\Events\KlaimMailEvent;
+
+use App\Models\WebSetting;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+
+use DataTables;
+
 
 class CustomerKlaimController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
+    {
+
+
+        if ($request->ajax()) {
+            $roles   = '';
+            $user_id = auth()->user();
+
+            if($user_id){
+                $roles   = $user_id['roles'][0]->name;
+            }
+
+            if($roles == 'root' ){
+                $data = Order::get();
+            }else{
+                $data = Order::where('customer_id', $user_id->id)->get();
+            }
+
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('img', function ($row) {
+                    $img = ' -- ';
+
+                    $bukti = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
+
+                    if($bukti){
+                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+
+                        $array = array(
+                            "barang_gambar" => $get_media->path,
+                        );
+
+                        $img = '<a data-effect="effect-super-scaled" data-toggle="modal" href="#Gmodaldemo8"
+                        onclick=gambar(' . json_encode($array) . ')>
+                        <span class="avatar avatar-lg cover-image text-center"
+                        style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
+                        center center;"></span></a>';
+                    }
+
+                    return $img;
+                })
+                ->addColumn('tanggal_nota', function ($row) {
+                    $tanggal_nota = $row->tanggal_nota == '' ? '-' : date('d-m-Y', strtotime($row->tanggal_nota));
+                    return $tanggal_nota;
+                })
+                ->addColumn('nomor_nota', function ($row) {
+                    $nomor_nota = $row->nomor_nota == '' ? '-' : $row->nomor_nota;
+                    return $nomor_nota;
+                })
+                ->addColumn('nama_customer', function ($row) {
+                    $nama_customer = $row->nama_customer == '' ? '-' : $row->nama_customer;
+                    return $nama_customer;
+                })
+                ->addColumn('nama_barang', function ($row) {
+                    $nama_barang = $row->nama_barang == '' ? '-' : $row->nama_barang;
+                    return $nama_barang;
+                })
+                ->addColumn('qty', function ($row) {
+                    $qty = $row->qty == '' ? '-' : $row->qty;
+                    return $qty;
+                })
+                ->addColumn('terproteksi', function ($row) {
+                    $result = '-';
+                    if($row->order_status == 'Disetujui'){
+
+                        $websetting = WebSetting::first();
+
+                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+
+                        $masa_berlaku = $websetting->masa_berlaku;
+
+                        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+                        $dateExps = date('d-m-Y', $dateExp);
+
+                        $paymentDate = now();
+                        $paymentDate = date('Y-m-d', strtotime($paymentDate));
+                        //echo $paymentDate; // echos today!
+                        $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+
+                        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                        }else{
+                            if($paymentDate <= $contractDateEnd){
+
+                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                            }else{
+                                $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+                            }
+
+                        }
+
+                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+
+
+                    }else if($row->order_status == 'Diproses'){
+                        $result = '<span class="text-grey"><b>Diproses</b></span>';
+                    }else if($row->order_status == 'Ditolak'){
+                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                    }else{
+                        $result = '<span class=""> - </span>';
+                    }
+                    return $result;
+
+                    return $terproteksi;
+                })
+
+                ->addColumn('waktu_rusak', function ($row) {
+                    $result =  date('H:i:s',strtotime($garansi->waktu_pemasangan));
+                    return $result;
+                })
+                ->addColumn('tanggal_rusak', function ($row) {
+                    $result =  date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
+                    return $result;
+                })
+
+                ->addColumn('status', function ($row) use ($request) {
+
+                    $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
+                    return $result;
+                })
+                ->addColumn('action', function ($row) {
+                    $button = '';
+                    $roles   = '';
+                    $user_id = auth()->user();
+                    if($user_id){
+                        $roles   = $user_id['roles'][0]->name;
+                    }
+
+                    $kode_coupon = Coupon::where('order_id', $row->id)->first();
+
+                    if($roles=='root'){
+                        if($row->order_status == 'Diproses'){
+                            $button .= '
+                                <a href="'.route('garansi.disetujui', $row->id) .'"
+                                    class="btn btn-primary py-1 px-2">
+                                    Disetujui
+                                </a>';
+
+                            $button .= ' </br> </br>
+                                <a href="'.route('garansi.ditolak', $row->id) .'"
+                                    class="btn btn-danger py-1 px-2">
+                                    Ditolak
+                                </a>';
+                        }
+
+                        if($row->order_status == 'Disetujui'){
+                            $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
+                        }
+                    }
+
+                    return $button;
+                })
+                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','tanggal_rusak','waktu_rusak','tambah_proteksi','img','status'])
+                ->make(true);
+        }
+
+        $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+
+        return view('customers_garansi.index', compact('garansis'));
+    }
+
+    public function index22()
     {
         $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
