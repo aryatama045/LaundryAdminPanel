@@ -198,7 +198,7 @@ class CustomerKlaimController extends Controller
                         }
                     }else{
                         if($row->order_status == 'Disetujui'){
-                            $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                            $button .= '</br><span class="text-grey"><b>Disetujui</b></span>';
                         }else if($row->order_status == 'Diproses'){
                             $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
                         }else if($row->order_status == 'Ditolak'){
