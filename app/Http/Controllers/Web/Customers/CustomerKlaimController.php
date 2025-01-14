@@ -203,9 +203,8 @@ class CustomerKlaimController extends Controller
                         if($klaim->status == 'Disetujui'){
                             $button .= '</br><span class="text-success"><b>Disetujui</b></span> <br>';
 
-                            if($row->order_status == 'Disetujui'){
-                                $button .= ($kode_coupon)?'Kode : '.$kode_coupon->code:'Tidak ada kode';
-                            }
+                            $button .= ($kode_coupon)?'Kode : '.$kode_coupon->code:'Tidak ada kode';
+
 
                         }else if($klaim->status == 'Ditolak'){
                             $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
@@ -494,9 +493,6 @@ class CustomerKlaimController extends Controller
     public function kode_smp($date)
     {
 
-        if($date == NULL){
-            $date       = now()->toDateTimeString();
-        }
 
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
