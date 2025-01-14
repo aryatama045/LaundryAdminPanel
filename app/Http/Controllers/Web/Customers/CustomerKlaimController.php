@@ -47,7 +47,7 @@ class CustomerKlaimController extends Controller
             }
 
             if($roles == 'root' ){
-                $data = Order::WhereNull('klaim_id')->get();
+                $data = Order::Where('klaim_id','!=','')->get();
             }else{
                 $data = Order::where('customer_id', $user_id->id)->get();
             }
