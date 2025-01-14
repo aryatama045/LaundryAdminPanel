@@ -196,9 +196,19 @@ class CustomerKlaimController extends Controller
                         if($row->order_status == 'Disetujui'){
                             $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
                         }
+
+                        if($row->order_status == 'Disetujui'){
+                            $button .= '</br><span class="text-success"><b>Disetujui</b></span>';
+                        }else if($row->order_status == 'Diproses'){
+                            $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                        }else if($row->order_status == 'Ditolak'){
+                            $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $button .= '</br><span class=""> - </span>';
+                        }
                     }else{
                         if($row->order_status == 'Disetujui'){
-                            $button .= '</br><span class="text-grey"><b>Disetujui</b></span>';
+                            $button .= '</br><span class="text-success"><b>Disetujui</b></span>';
                         }else if($row->order_status == 'Diproses'){
                             $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
                         }else if($row->order_status == 'Ditolak'){
