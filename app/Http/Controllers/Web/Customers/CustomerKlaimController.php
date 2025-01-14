@@ -47,7 +47,7 @@ class CustomerKlaimController extends Controller
             }
 
             if($roles == 'root' ){
-                $data = Order::Where('klaim_id','!=','')->get();
+                $data = Order::get();
             }else{
                 // $data = Order::where('customer_id', $user_id->id)->Where('klaim_id','!=','')->get();
                 $data = Order::where('customer_id', $user_id->id)->get();
@@ -258,7 +258,7 @@ class CustomerKlaimController extends Controller
                                 $button .= '</br><span class=""> - </span>';
                             }
                         }else{
-                            $button .= '</br><span class="">  </span>';
+                            $button .= '</br><span class=""> -- </span>';
                         }
                     }
 
