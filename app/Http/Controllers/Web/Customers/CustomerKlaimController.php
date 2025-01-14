@@ -144,12 +144,21 @@ class CustomerKlaimController extends Controller
 
                 ->addColumn('waktu_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    $result =  date('H:i:s',strtotime($klaim->waktu_pemasangan));
+                    if($klaim->waktu_pemasangan){
+                        $result =  date('H:i:s',strtotime($klaim->waktu_pemasangan));
+                    }else{
+                        $result = '';
+                    }
+
                     return $result;
                 })
                 ->addColumn('tanggal_rusak', function ($row) {
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
-                    $result =  date('d-m-Y', strtotime($klaim->tanggal_pemasangan));
+                    if($klaim->tanggal_pemasangan){
+                        $result =  date('d-m-Y', strtotime($klaim->tanggal_pemasangan));
+                    }else{
+                        $result = '';
+                    }
                     return $result;
                 })
 
@@ -186,7 +195,18 @@ class CustomerKlaimController extends Controller
                         if($row->order_status == 'Disetujui'){
                             $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
                         }
+                    }else{
+                        if($row->order_status == 'Disetujui'){
+                            $result .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                        }else if($row->order_status == 'Diproses'){
+                            $result .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                        }else if($row->order_status == 'Ditolak'){
+                            $result .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $result .= '</br><span class=""> - </span>';
+                        }
                     }
+
 
                     return $button;
                 })
