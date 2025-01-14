@@ -298,7 +298,7 @@ class CustomerKlaimController extends Controller
     {
         $tgl_pasang = date('Y-m-d', strtotime($request->waktu_pemasangan));
 
-        $dateExp = strtotime('+90 days', strtotime($tgl_pasang));
+        $dateExp = strtotime('+180 days', strtotime($tgl_pasang));
         $dateExps = date('d-m-Y', $dateExp);
 
         $paymentDate = now();
@@ -425,41 +425,64 @@ class CustomerKlaimController extends Controller
 
     public function update(Request $request , $id)
     {
-        $this->validate($request, [
-            'garansi_photo' => ['required', 'array'],
-            'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
-        ]);
+
+        $tgl_pasang = date('Y-m-d', strtotime($request->waktu_pemasangan));
+
+        $dateExp = strtotime('+180 days', strtotime($tgl_pasang));
+        $dateExps = date('d-m-Y', $dateExp);
+
+        $paymentDate = now();
+        $paymentDate = date('Y-m-d', strtotime($paymentDate));
+        //echo $paymentDate; // echos today!
+        $contractDateBegin = date('Y-m-d', strtotime($tgl_pasang));
+        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+
+        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                $berlaku_s ='Berlaku';
+        }else{
+            if($paymentDate <= $contractDateEnd){
+
+                $berlaku_s ='Berlaku';
+            }else{
+                $berlaku_s ='Expired';
+            }
+        }
+
+        if($berlaku_s == 'Expired'){
+            return redirect()->route('klaim.edit', $id)->with('error', ' Tanggal Pemasangan Sudah Expired');
+        }
+        // END CEK VALIDASI
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
-        $garansiFoto = count($request->garansi_photo);
+        $klaimFoto = count($request->klaim_photo);
 
         $dataOrder = Order::where('id', $id)->first();
 
-        $garansi_fill = [
+        $klaim_fill = [
             'customer_id'           => $dataOrder->customer_id,
             'no_nota'               => $dataOrder->nomor_nota,
             'tanggal_nota'          => $dataOrder->tanggal_nota,
             'tanggal_pemasangan'    => $tgl_pasang,
             'waktu_pemasangan'      => $request->waktu_pemasangan,
         ];
-        $garansi_data = CustomerGaransis::create($garansi_fill);
+        $klaim_data = CustomerGaransis::create($klaim_fill);
 
         $thumbnail = null;
-        if ($request->hasFile('garansi_photo')) {
+        if ($request->hasFile('klaim_photo')) {
 
-            $garansiFoto = count($request->garansi_photo);
+            $klaimFoto = count($request->klaim_photo);
 
-            for ($x=0; $x<$garansiFoto; $x++){
+            for ($x=0; $x<$klaimFoto; $x++){
 
-                $file = $request->garansi_photo[$x];
+                $file = $request->klaim_photo[$x];
 
                 $urutan = $x;
 
-                $thumbnail = (new MediaRepository())->storeByGaransi(
+                $thumbnail = (new MediaRepository())->storeByKlaim(
                     $file,
-                    'images/garansi/',
-                    'garansi images',
+                    'images/klaim/',
+                    'klaim images',
                     'image',
                     $urutan
                 );
@@ -488,12 +511,12 @@ class CustomerKlaimController extends Controller
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
                 $bukti_foto = [
-                    'garansi_id'            => $garansi_data->id,
+                    'klaim_id'            => $klaim_data->id,
                     'klaim_id'              => '0',
-                    'customer_id'           => $garansi_data->customer_id,
+                    'customer_id'           => $klaim_data->customer_id,
                     'foto_id'               => $thumbnail->id,
                     'kode_foto'             => $thumbnail->name,
-                    'created_ny'            => $garansi_data->customer_id
+                    'created_ny'            => $klaim_data->customer_id
                 ];
                 CustomerBuktiFotos::create($bukti_foto);
             }
