@@ -48,7 +48,8 @@
                                         <th rowspan="2"> Nomor Nota </th>
                                         <th rowspan="2"> Nama Barang </th>
                                         <th rowspan="2" width="2%"> Qty </th>
-                                        <th colspan="2"> Terproteksi Hingga </th>
+                                        <th rowspan="2"> Terproteksi </th>
+                                        <th colspan="2"> Waktu & Tanggal Pemasangan </th>
                                         <th rowspan="2"> Tambah Proteksi</th>
                                         <th rowspan="2" class="text-center"> Foto Pemasangan</th>
                                         <th rowspan="2"> Status</th>
@@ -57,7 +58,7 @@
 
                                     <tr>
                                         <th width="10%">TANGGAL</th>
-                                        <th width="10%">HM</th>
+                                        <th width="10%">WAKTU</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -167,6 +168,10 @@
                     {
                         data: 'qty',
                         name: 'qty',
+                    },
+                    {
+                        data: 'terproteksi',
+                        name: 'terproteksi',
                     },
                     {
                         data: 'terproteksi',

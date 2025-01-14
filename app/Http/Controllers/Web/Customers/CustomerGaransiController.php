@@ -217,10 +217,11 @@ class CustomerGaransiController extends Controller
                         $roles   = $user_id['roles'][0]->name;
                     }
 
-                    $kode_coupon = Coupon::where('order_id', $row->id)->first();
+                    // $kode_coupon = Coupon::where('order_id', $row->id)->first();
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
                     if($roles=='root'){
-                        if($row->order_status == 'Diproses'){
+                        if($garansi->status == 'Diproses'){
                             $button .= '
                                 <a href="'.route('garansi.disetujui', $row->id) .'"
                                     class="btn btn-primary py-1 px-2">
@@ -234,9 +235,9 @@ class CustomerGaransiController extends Controller
                                 </a>';
                         }
 
-                        if($row->order_status == 'Disetujui'){
+                        if($garansi->status == 'Disetujui'){
                             $result = '<span class="text-success"><b>Disetujui</b></span>';
-                        }else if($row->order_status == 'Ditolak'){
+                        }else if($garansi->status == 'Ditolak'){
                             $result = '<span class="text-danger"><b>Ditolak</b></span>';
                         }else{
                             $result = '<span class=""> - </span>';
@@ -475,6 +476,11 @@ class CustomerGaransiController extends Controller
                 'order_status' => 'Disetujui',
             ));
 
+        $order = DB::table('orders')->where('id', $id)->first();
+
+        DB::table('customer_garanses')->where('id', $order->garansi_id)->update(array(
+            'status' => 'Disetujui',
+        ));
         $kode_coupon = Coupon::where('is_pakai', '0')->first();
         DB::table('coupons')->where('id', $kode_coupon->id)->update(array(
             'order_id' => $id,
