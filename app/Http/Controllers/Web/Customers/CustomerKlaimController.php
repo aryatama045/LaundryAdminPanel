@@ -103,7 +103,9 @@ class CustomerKlaimController extends Controller
                 })
                 ->addColumn('terproteksi', function ($row) {
                     $result = '-';
-                    if($row->order_status == 'Disetujui'){
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+
+                    if($garansi->status  == 'Disetujui'){
 
                         $websetting = WebSetting::first();
 
@@ -129,15 +131,12 @@ class CustomerKlaimController extends Controller
                             }else{
                                 $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
                             }
-
                         }
-
                         $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
 
-
-                    }else if($row->order_status == 'Diproses'){
+                    }else if($garansi->status  == 'Diproses'){
                         $result = '<span class="text-grey"><b>Diproses</b></span>';
-                    }else if($row->order_status == 'Ditolak'){
+                    }else if($garansi->status  == 'Ditolak'){
                         $result = '<span class="text-danger"><b>Ditolak</b></span>';
                     }else{
                         $result = '<span class=""> - </span>';
