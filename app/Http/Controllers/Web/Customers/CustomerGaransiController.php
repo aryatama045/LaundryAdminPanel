@@ -56,7 +56,9 @@ class CustomerGaransiController extends Controller
                 ->addColumn('img', function ($row) {
                     $img = ' -- ';
 
-                    $bukti = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
+                    $bukti      = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                    $waktu      = $garansi->waktu_pemasangan;
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -71,7 +73,7 @@ class CustomerGaransiController extends Controller
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a><br>
 
-                        '.$get_media->name.'
+                        '. $this->kode_smp($waktu) .'
 
                         ';
                     }
@@ -194,7 +196,7 @@ class CustomerGaransiController extends Controller
                     $tambah_proteksi = '';
                     if($row->order_status == '-'){
                         $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
-                    }else if($row->order_status == 'Diproses'){
+                    }else if($row->order_status == 'Diproses' || $row->order_status == 'Disetujui'){
                         $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
                     }else{
                         $tambah_proteksi .= '';
@@ -722,5 +724,30 @@ class CustomerGaransiController extends Controller
     {
         (new UserRepository())->toggleStatus($user);
         return back()->with('success','Status update successfully');
+    }
+
+    public function kode_smp($date)
+    {
+
+        $jam            =  date('H',strtotime($date));
+        $menit          =  date('i',strtotime($date));
+
+
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        shuffle($data_kode);
+        $kode        = implode("",$data_kode);
+
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3','L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
+
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2);
+
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
+
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2;
+
+
+        return $foto_bukti;
     }
 }
