@@ -186,10 +186,16 @@ class CustomerKlaimController extends Controller
                 ->addColumn('klaim_proteksi', function ($row) {
 
                     $klaim_proteksi = '';
-                    if($row->order_status == '-'){
-                        $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
-                    }else if($row->order_status == 'Diproses' || $row->order_status == 'Disetujui'){
-                        $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
+                    $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
+
+                    if($klaim){
+                        if($klaim->status == '-' || $klaim->status == ''){
+                            $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
+                        }else if($klaim->status == 'Proses' || $klaim->status == 'Disetujui'){
+                            $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
+                        }else{
+                            $klaim_proteksi .= '';
+                        }
                     }else{
                         $klaim_proteksi .= '';
                     }
