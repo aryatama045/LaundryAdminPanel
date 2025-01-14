@@ -58,7 +58,7 @@ class CustomerKlaimController extends Controller
                 ->addColumn('img', function ($row) {
                     $img = ' -- ';
 
-                    $bukti = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
+                    $bukti = CustomerBuktiFotos::where('klaim_id', $row->klaim_id)->first();
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -71,7 +71,9 @@ class CustomerKlaimController extends Controller
                         onclick=gambar(' . json_encode($array) . ')>
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
-                        center center;"></span></a>';
+                        center center;"></span></a>
+                        '.$get_media->name.'
+                        ';
                     }
 
                     return $img;
