@@ -197,13 +197,13 @@ class CustomerKlaimController extends Controller
                         }
                     }else{
                         if($row->order_status == 'Disetujui'){
-                            $result .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                            $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
                         }else if($row->order_status == 'Diproses'){
-                            $result .= '</br><span class="text-grey"><b>Diproses</b></span>';
+                            $button .= '</br><span class="text-grey"><b>Diproses</b></span>';
                         }else if($row->order_status == 'Ditolak'){
-                            $result .= '</br><span class="text-danger"><b>Ditolak</b></span>';
+                            $button .= '</br><span class="text-danger"><b>Ditolak</b></span>';
                         }else{
-                            $result .= '</br><span class=""> - </span>';
+                            $button .= '</br><span class=""> - </span>';
                         }
                     }
 
