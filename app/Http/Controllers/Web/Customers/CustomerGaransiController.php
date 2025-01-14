@@ -69,7 +69,11 @@ class CustomerGaransiController extends Controller
                         onclick=gambar(' . json_encode($array) . ')>
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
-                        center center;"></span></a>';
+                        center center;"></span></a><br>
+
+                        '.$get_media->name.'
+
+                        ';
                     }
 
                     return $img;
