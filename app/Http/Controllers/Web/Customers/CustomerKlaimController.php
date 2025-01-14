@@ -110,42 +110,49 @@ class CustomerKlaimController extends Controller
                     $result = '-';
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                    if($garansi->status  == 'Disetujui'){
+                    if($garansi){
 
-                        $websetting = WebSetting::first();
+                        if($garansi->status  == 'Disetujui'){
 
-                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                            $websetting = WebSetting::first();
 
-                        $masa_berlaku = $websetting->masa_berlaku;
+                            $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
-                        $dateExps = date('d-m-Y', $dateExp);
+                            $masa_berlaku = $websetting->masa_berlaku;
 
-                        $paymentDate = now();
-                        $paymentDate = date('Y-m-d', strtotime($paymentDate));
-                        //echo $paymentDate; // echos today!
-                        $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-                        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+                            $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+                            $dateExps = date('d-m-Y', $dateExp);
 
-                        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                        }else{
-                            if($paymentDate <= $contractDateEnd){
+                            $paymentDate = now();
+                            $paymentDate = date('Y-m-d', strtotime($paymentDate));
+                            //echo $paymentDate; // echos today!
+                            $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                            $contractDateEnd = date('Y-m-d', strtotime($dateExps));
 
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                            if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                                    $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
                             }else{
-                                $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
-                            }
-                        }
-                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+                                if($paymentDate <= $contractDateEnd){
 
-                    }else if($garansi->status  == 'Diproses'){
-                        $result = '<span class="text-grey"><b>Diproses</b></span>';
-                    }else if($garansi->status  == 'Ditolak'){
-                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                                    $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                                }else{
+                                    $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+                                }
+                            }
+                            $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+
+                        }else if($garansi->status  == 'Diproses'){
+                            $result = '<span class="text-grey"><b>Diproses</b></span>';
+                        }else if($garansi->status  == 'Ditolak'){
+                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $result = '<span class=""> - </span>';
+                        }
+
                     }else{
                         $result = '<span class=""> - </span>';
                     }
+
                     return $result;
 
                 })
