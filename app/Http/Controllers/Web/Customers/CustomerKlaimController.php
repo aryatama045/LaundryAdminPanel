@@ -426,9 +426,13 @@ class CustomerKlaimController extends Controller
     public function update(Request $request , $id)
     {
 
+        $websetting = WebSetting::first();
+
+        $masa_berlaku = $websetting->masa_berlaku;
+
         $tgl_pasang = date('Y-m-d', strtotime($request->waktu_pemasangan));
 
-        $dateExp = strtotime('+180 days', strtotime($tgl_pasang));
+        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($tgl_pasang));
         $dateExps = date('d-m-Y', $dateExp);
 
         $paymentDate = now();
