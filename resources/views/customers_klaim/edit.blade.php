@@ -1,79 +1,231 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<style>
+    input#tanggal {
+        display: inline-block;
+        position: relative;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+</style>
+
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
                     <div class="w-100">
-                        <h2 class="float-left">{{ __('Edit'). ' '. __('Customer') }}</h2>
+                        <h2 class="float-left">{{ __('Tambah'). ' '. __('Proteksi') }} - {{ $order->nama_barang }}</h2>
                         <div class="text-right">
-                            <a class="btn btn-light" href="{{ route('customer.index') }}"> {{ __('Back') }} </a>
+                            <a class="btn btn-light" href="{{ route('garansi.index') }}"> {{ __('Back') }} </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form @role('root|admin') @can('customer.update') action="{{ route('customer.update', $customer->id) }}" @endcan @endrole method="POST" enctype="multipart/form-data"> @csrf
-                        @method('put')
+                    <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf @method('put')
                         <div class="row">
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('First_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') ?? $customer->user->first_name }}" placeholder="First name">
-                                @error('first_name')
+                            <!-- nomor_nota -->
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for=""><b>{{ __('Nomor Nota') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="nomor_nota" value="{{ $order->nomor_nota }}" readonly>
+                                @error('nomor_nota')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Last_Name') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') ?? $customer->user->last_name }}" placeholder="Last name">
-                                @error('last_name')
+                        </div>
+
+                        <div class="row">
+                            <!-- nama_barang -->
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for=""><b>{{ __('Nama Barang') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="text" class="form-control" name="nama_barang" value="{{ $order->nama_barang }}" readonly>
+                                @error('nama_barang')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Mobile_number') }} <strong class="text-danger">*</strong></label>
-                                <input type="text" class="form-control" name="mobile" value="{{ old('mobile') ?? $customer->user->mobile}}" placeholder="Mobile">
-                                @error('mobile')
+                        </div>
+
+                        <!-- Qty -->
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for=""><b>{{ __('Qty') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="number" class="form-control" id="qty" name="qty" min="1" max="{{ $order->qty }}"
+                                        value="{{ $order->qty }}" onkeyup=imposeMinMax(this)>
+                                <a href="#" class="text-success mt-1" data-toggle="tooltip" title="Qty tidak boleh lebih dari yang tertera pada nota.">
+                                    (?)Cara Pengisian Qty?</a>
+                                @error('qty')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Email') }}</label>
-                                <input type="text" class="form-control" name="email" value="{{ old('email') ?? $customer->user->email }}" placeholder="Email">
-                                @error('email')
+                        </div>
+
+                        <!-- Pemasangan -->
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-4">
+                                <label for=""><b>{{ __('Tanggal & Waktu Pemasangan') }}</b> <strong class="text-danger">*</strong></label>
+                                <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
+                                    value="{{ $garansi?->waktu_garansi }}" >
+                                @error('waktu_pemasangan')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            @if (request()->routeIs('customer.create'))
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Password') }} <strong class="text-danger">*</strong></label>
-                                <input type="password" class="form-control" name="password" placeholder="******">
-                                @error('password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-12 col-md-8 mb-2">
+                                <label><b>{{ __('Bukti Foto') }}</b> </label>
+                                <span hidden name="add" class="float-right btn btn-primary btn-sm default add">
+                                    <i class="fa fa-plus"></i> Tambah
+                                </span>
+
+                                <div class="item_table mt-3" id="item_table">
+                                    <div class="input-group input-group-sm mb-3" id="dtTgl">
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="image/*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <div class="col-12 col-md-6 mb-2">
-                                <label for="">{{ __('Confirm_Password') }}</label>
-                                <input type="password" class="form-control" name="password_confirmation" placeholder="******">
+
+                            <div class="col-12 col-md-8 mb-2">
+                                <label><b>{{ __('Bukti Video') }}</b> </label>
+                                <span hidden name="add" class="float-right btn btn-primary btn-sm default add">
+                                    <i class="fa fa-plus"></i> Tambah
+                                </span>
+
+                                <div class="item_table mt-3" id="item_table">
+                                    <div class="input-group input-group-sm mb-3" id="dtTgl">
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+
                             </div>
-                            @endif
-                            <div class="col-12 col-md-6 mb-2 py-2">
-                                <label for="">{{ __('Profile_Photo') }}</label>
-                                <input type="file" class="form-control-file" name="profile_photo">
-                            </div>
-                           @can('customer.update')
-                           <div class="col-12 col-md-6 mb-2 py-2">
-                               <label for=""></label>
-                               <button class="btn btn-primary w-100 mt-2 @role('visitor') visitorMessage @endrole">{{ __('Submit') }}</button>
-                            </div>
-                            @endcan
                         </div>
+
+                        <hr class="mt-6">
+                            <button class="float-left btn btn-primary">{{ __('Submit') }}</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
+
+@push('scripts')
+    <script>
+        function imposeMinMax(el){
+            if(el.value != ""){
+                if(parseInt(el.value) < parseInt(el.min)){
+                    el.value = el.min;
+                    Swal.fire({
+                        title: 'Qty Tidak Boleh Kurang, dari nilai nota',
+                        type: 'warning',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#00B894',
+                        // cancelButtonColor: '#d33',
+                        // confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    })
+                }
+                if(parseInt(el.value) > parseInt(el.max)){
+                    el.value = el.max;
+                    Swal.fire({
+                        title: 'Qty Tidak Boleh Lebih, dari nilai nota',
+                        type: 'warning',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#00B894',
+                        // cancelButtonColor: '#d33',
+                        // confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    })
+                }
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            var count = 1;
+
+            function add_input_field(count) {
+
+                var html = '';
+
+                if (count > 1) {
+
+                    html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
+                        '<input style="height:100% !important" type="file" accept="image/*" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                }
+                var remove_button = '';
+
+                if (count > 1) {
+                    remove_button = '<div class="input-group-append"><span style="height:100% !important" name="remove" class="btn btn-danger default remove" id="inputGroup-sizing-sm"><i class="fa fa-trash"></i>  Hapus</span></div>';
+                }
+
+                html += remove_button +
+                            '</div>';
+
+                return html;
+
+            }
+
+            $('#item_table').prepend(add_input_field(1));
+
+
+            $(document).on('click', '.add', function() {
+                count++;
+                $('#item_table').prepend(add_input_field(count));
+            });
+
+            $(document).on('click', '.remove', function() {
+                const element = document.getElementById("dtTgl");
+                element.remove();
+                // $(this).closest('tr').remove();
+            });
+
+
+        });
+    </script>
+
+@endpush

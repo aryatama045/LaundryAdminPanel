@@ -408,9 +408,19 @@ class CustomerKlaimController extends Controller
         return redirect()->route('klaim.index')->with('success', 'Klaim create successfully');
     }
 
-    public function edit(Customer $customer)
+    public function edit222(Customer $customer)
     {
         return view('customers_klaim.edit', compact('customer'));
+    }
+
+    public function edit($id)
+    {
+
+        $order      = Order::where('id', $id)->first();
+
+        $garansi    = CustomerGaransis::where('id', $order->garansi_id)->first();
+
+        return view('customers_klaim.edit', compact('order','garansi'));
     }
 
     public function update(Request $request, Customer $customer)
