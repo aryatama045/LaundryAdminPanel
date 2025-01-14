@@ -173,8 +173,14 @@ class CustomerKlaimController extends Controller
                 })
 
                 ->addColumn('status', function ($row) use ($request) {
+                    $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
 
-                    $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
+                    if($klaim){
+                        $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
+                    }else{
+                        $result = '-';
+                    }
+
                     return $result;
                 })
                 ->addColumn('action', function ($row) {
