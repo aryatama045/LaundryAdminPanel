@@ -91,8 +91,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 mb-4">
                                 <label for=""><b>{{ __('Tanggal & Waktu Pemasangan') }}</b> <strong class="text-danger">*</strong></label>
-                                <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan"
-                                    value="{{ $garansi?->waktu_garansi }}" >
+                                <input type="datetime-local" class="form-control" id="tanggal" name="waktu_pemasangan">
                                 @error('waktu_pemasangan')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -110,7 +109,7 @@
 
                                 <div class="item_table mt-3" id="item_table">
                                     <div class="input-group input-group-sm mb-3" id="dtTgl">
-                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="image/*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="klaim_photo[]" accept="image/*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
 
@@ -125,7 +124,7 @@
 
                                 <div class="item_table mt-3" id="item_table">
                                     <div class="input-group input-group-sm mb-3" id="dtTgl">
-                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="klaim_photo[]" accept="*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
 
@@ -195,7 +194,7 @@
                 if (count > 1) {
 
                     html += ' <div class="input-group input-group-sm mb-3" id="dtTgl">'+
-                        '<input style="height:100% !important" type="file" accept="image/*" multiple="" class="form-control" name="garansi_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
+                        '<input style="height:100% !important" type="file" accept="image/*" multiple="" class="form-control" name="klaim_photo[]" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">';
                 }
                 var remove_button = '';
 

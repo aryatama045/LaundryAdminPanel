@@ -423,18 +423,89 @@ class CustomerKlaimController extends Controller
         return view('customers_klaim.edit', compact('order','garansi'));
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request , $id)
     {
-        $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'nullable|string',
-            'mobile' => "required|numeric|unique:users,mobile," . $customer->user->id,
-            'email' => "required|unique:users,email," . $customer->user->id,
-            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png',
+        $this->validate($request, [
+            'garansi_photo' => ['required', 'array'],
+            'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
         ]);
-        (new UserRepository())->updateProfileByRequest($request, $customer->user);
 
-        return redirect()->route('customer.index')->with('success', 'Customer Update successfully');
+        $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
+
+        $garansiFoto = count($request->garansi_photo);
+
+        $dataOrder = Order::where('id', $id)->first();
+
+        $garansi_fill = [
+            'customer_id'           => $dataOrder->customer_id,
+            'no_nota'               => $dataOrder->nomor_nota,
+            'tanggal_nota'          => $dataOrder->tanggal_nota,
+            'tanggal_pemasangan'    => $tgl_pasang,
+            'waktu_pemasangan'      => $request->waktu_pemasangan,
+        ];
+        $garansi_data = CustomerGaransis::create($garansi_fill);
+
+        $thumbnail = null;
+        if ($request->hasFile('garansi_photo')) {
+
+            $garansiFoto = count($request->garansi_photo);
+
+            for ($x=0; $x<$garansiFoto; $x++){
+
+                $file = $request->garansi_photo[$x];
+
+                $urutan = $x;
+
+                $thumbnail = (new MediaRepository())->storeByGaransi(
+                    $file,
+                    'images/garansi/',
+                    'garansi images',
+                    'image',
+                    $urutan
+                );
+
+                $img = Image::read(storage_path('app/public/' . $thumbnail->path));
+
+                $tanggal        = date('d/m/Y');
+                $date           = now()->toDateTimeString();
+                $jam            =  date('H',strtotime($date));
+                $menit          =  date('i',strtotime($date));
+                $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
+                $text_wtr2 = 'Tanggal '.$tanggal;
+
+
+                $logo = public_path('logo.png');
+                $img->place($logo, 'center', 15, 15);
+
+                $img->text($text_wtr1, 450, 100, function($font) {
+                    $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    $font->size(24);
+                    $font->color('#d71717');
+                    $font->align('center');
+                    $font->valign('bottom');
+                });
+
+                $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+
+                $bukti_foto = [
+                    'garansi_id'            => $garansi_data->id,
+                    'klaim_id'              => '0',
+                    'customer_id'           => $garansi_data->customer_id,
+                    'foto_id'               => $thumbnail->id,
+                    'kode_foto'             => $thumbnail->name,
+                    'created_ny'            => $garansi_data->customer_id
+                ];
+                CustomerBuktiFotos::create($bukti_foto);
+            }
+        }
+
+        $orderUpdate = array(
+            'order_status'  => 'Diproses',
+            'garansi_id'    => $garansi_data->id,
+        );
+        Order::where('id', $id)->update($orderUpdate);
+
+        return redirect()->route('garansi.index')->with('success', 'Data successfully send, Admin Sedang Proses !!');
     }
 
     public function proses_action(Request $request, $id)
