@@ -75,7 +75,7 @@ class CustomerKlaimController extends Controller
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>
-                        '. kode_smp($waktu).'
+                        '. $this->kode_smp($waktu) .'
                         ';
                     }
 
@@ -493,7 +493,7 @@ class CustomerKlaimController extends Controller
 
     public function kode_smp($date)
     {
-        dd($date);
+
         if($date == NULL){
             $date       = now()->toDateTimeString();
         }
