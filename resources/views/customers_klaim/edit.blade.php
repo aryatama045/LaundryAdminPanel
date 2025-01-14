@@ -42,14 +42,14 @@
             <div class="card">
                 <div class="card-header">
                     <div class="w-100">
-                        <h2 class="float-left">{{ __('Tambah'). ' '. __('Proteksi') }} - {{ $order->nama_barang }}</h2>
+                        <h2 class="float-left">{{ __('Klaim'). ' '. __('Proteksi') }} - {{ $order->nama_barang }}</h2>
                         <div class="text-right">
-                            <a class="btn btn-light" href="{{ route('garansi.index') }}"> {{ __('Back') }} </a>
+                            <a class="btn btn-light" href="{{ route('klaim.index') }}"> {{ __('Back') }} </a>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('klaim.update', $order->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('put')
                         <div class="row">
                             <!-- nomor_nota -->

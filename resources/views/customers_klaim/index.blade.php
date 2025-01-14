@@ -19,9 +19,9 @@
                         @endrole
 
                         @role('customer')
-                        <a href="{{ route('klaim.create') }}" class="btn btn-primary">
+                        <!-- <a href="{{ route('klaim.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Klaims') }}
-                        </a>
+                        </a> -->
                         @endrole
                     </div>
 
