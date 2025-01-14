@@ -183,6 +183,19 @@ class CustomerKlaimController extends Controller
 
                     return $result;
                 })
+                ->addColumn('klaim_proteksi', function ($row) {
+
+                    $klaim_proteksi = '';
+                    if($row->order_status == '-'){
+                        $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
+                    }else if($row->order_status == 'Diproses' || $row->order_status == 'Disetujui'){
+                        $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
+                    }else{
+                        $klaim_proteksi .= '';
+                    }
+
+                    return $klaim_proteksi;
+                })
                 ->addColumn('action', function ($row) {
                     $button = '';
                     $roles   = '';
@@ -242,7 +255,7 @@ class CustomerKlaimController extends Controller
 
                     return $button;
                 })
-                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','tanggal_rusak','waktu_rusak','tambah_proteksi','img','status'])
+                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','tanggal_rusak','waktu_rusak','klaim_proteksi','img','status'])
                 ->make(true);
         }
 
