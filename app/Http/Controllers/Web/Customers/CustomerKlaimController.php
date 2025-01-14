@@ -150,7 +150,7 @@ class CustomerKlaimController extends Controller
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
                     $waktu = $klaim->waktu_pemasangan;
                     if($waktu){
-                        $result =  date('H:i:s',strtotime($klaim->waktu_pemasangan));
+                        $result =  date('H:i',strtotime($klaim->waktu_pemasangan));
                     }else{
                         $result = '-';
                     }

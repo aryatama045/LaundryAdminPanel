@@ -104,7 +104,7 @@ class CustomerGaransiController extends Controller
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
                     $waktu = $garansi->waktu_pemasangan;
                     if($waktu){
-                        $result =  date('H:i:s',strtotime($garansi->waktu_pemasangan));
+                        $result =  date('H:i',strtotime($garansi->waktu_pemasangan));
                     }else{
                         $result = '-';
                     }
