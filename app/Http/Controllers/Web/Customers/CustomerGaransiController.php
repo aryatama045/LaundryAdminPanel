@@ -124,7 +124,9 @@ class CustomerGaransiController extends Controller
 
                 ->addColumn('terproteksi', function ($row) {
                     $result = '-';
-                    if($row->order_status == 'Disetujui'){
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+
+                    if($garansi->status  == 'Disetujui'){
 
                         $websetting = WebSetting::first();
 
@@ -156,16 +158,15 @@ class CustomerGaransiController extends Controller
                         $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
 
 
-                    }else if($row->order_status == 'Diproses'){
+                    }else if($garansi->status  == 'Diproses'){
                         $result = '<span class="text-grey"><b>Diproses</b></span>';
-                    }else if($row->order_status == 'Ditolak'){
+                    }else if($garansi->status  == 'Ditolak'){
                         $result = '<span class="text-danger"><b>Ditolak</b></span>';
                     }else{
                         $result = '<span class=""> - </span>';
                     }
                     return $result;
 
-                    return $terproteksi;
                 })
                 ->addColumn('tambah_proteksi', function ($row) {
 
