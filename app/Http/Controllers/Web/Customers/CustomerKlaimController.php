@@ -38,7 +38,6 @@ class CustomerKlaimController extends Controller
     public function index(Request $request)
     {
 
-
         if ($request->ajax()) {
             $roles   = '';
             $user_id = auth()->user();
@@ -193,12 +192,12 @@ class CustomerKlaimController extends Controller
                 ->make(true);
         }
 
-        $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+        // $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
 
-        return view('customers_garansi.index', compact('garansis'));
+        return view('customers_klaim.index');
     }
 
-    public function index22()
+    public function index22aa()
     {
         $dataklaims = (new CustomerKlaimRepository())->getAllOrFindBySearch();
 
