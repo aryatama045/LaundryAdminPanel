@@ -471,7 +471,7 @@ class CustomerKlaimController extends Controller
         $klaim_fill = [
             'no_tracking'           => $kode_tracking,
             'customer_id'           => $order->customer_id,
-            'no_nota'          => $order->no_nota,
+            'no_nota'               => $order->no_nota,
             'tanggal_nota'          => $order->tanggal_nota,
             'tanggal_pemasangan'    => $tgl_pasang,
             'waktu_pemasangan'      => $request->waktu_pemasangan,
