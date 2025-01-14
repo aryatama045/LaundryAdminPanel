@@ -492,7 +492,7 @@ class CustomerKlaimController extends Controller
 
     public function kode_smp($date)
     {
-
+        dd($date);
 
         $jam            =  date('h',strtotime($date));
         $menit          =  date('i',strtotime($date));
