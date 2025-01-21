@@ -55,7 +55,7 @@
                                                     }else{
                                                         $nomor_retur = "<a href='javascript:void(0)'
                                                         id='show-user'
-                                                        data-url='{{ route('order.dataRetur', $order->id) }}'
+                                                        data-url='{{ route(order.dataRetur, $order->id) }}'
                                                         class='edit btn btn-primary btn-sm'>Retur Add</a>";
                                                     }
                                                 ?>
