@@ -132,13 +132,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
-                            href="{{ route('order.index') }}">
-                            <i class="fa fa-shopping-cart text-orange"></i>
-                            <span class="nav-link-text">{{ __('Data Retur') }}</span>
-                        </a>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
@@ -155,6 +148,13 @@
                             href="{{ route('coupon.index') }}">
                             <i class="fa fa-percentage"></i>
                             <span class="nav-link-text">{{ __('Data Kode') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
+                            href="{{ route('order.index') }}">
+                            <i class="fa fa-shopping-cart text-orange"></i>
+                            <span class="nav-link-text">{{ __('Data Retur') }}</span>
                         </a>
                     </li>
 
