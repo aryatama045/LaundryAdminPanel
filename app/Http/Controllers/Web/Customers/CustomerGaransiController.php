@@ -179,19 +179,26 @@ class CustomerGaransiController extends Controller
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
                     $tambah_proteksi = '';
-                    if($garansi){
-                        if($garansi->status == '-' || $garansi->status == ''){
-                            $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$garansi->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
-                        }else if($garansi->status == 'Diproses' || $garansi->status == 'Disetujui'){
-                            $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
-                        }else if($garansi->status == 'Ditolak'){
-                            $tambah_proteksi .= '<span class="text-danger"><b>Ditolak</b></span>';
+                    if($row->qty > 0){
+
+                        if($garansi){
+                            if($garansi->status == '-' || $garansi->status == ''){
+                                $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$garansi->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
+                            }else if($garansi->status == 'Diproses' || $garansi->status == 'Disetujui'){
+                                $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
+                            }else if($garansi->status == 'Ditolak'){
+                                $tambah_proteksi .= '<span class="text-danger"><b>Ditolak</b></span>';
+                            }else{
+                                $tambah_proteksi .= '';
+                            }
+
                         }else{
                             $tambah_proteksi .= '';
                         }
-
                     }else{
-                        $tambah_proteksi .= '';
+
+                        $tambah_proteksi .= 'Tidak Ada Qty';
+
                     }
 
                     return $tambah_proteksi;
