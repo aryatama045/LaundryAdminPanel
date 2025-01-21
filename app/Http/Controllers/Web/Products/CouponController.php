@@ -55,9 +55,13 @@ class CouponController extends Controller
         return view('coupon.edit', compact('coupon'));
     }
 
-    public function update(CouponRequest $request, Coupon $coupon)
+    public function update(Request $request)
     {
-        (new CouponRepository())->updateByRequest($request, $coupon);
+        // (new CouponRepository())->updateByRequest($request, $coupon);
+        Coupon::updateOrCreate(
+            [   'id' => $request->coupon_id ],
+            [   'code' => $request->code ]
+        );
 
         return redirect()->route('coupon.index')->with('success', 'Coupon is updated successfully.');
     }
