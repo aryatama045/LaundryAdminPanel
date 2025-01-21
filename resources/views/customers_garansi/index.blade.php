@@ -19,6 +19,18 @@
                             <i class="fa fa-plus"></i> {{ __('New'). ' '.__(' Garansi') }}
                         </a>
                         @endrole --}}
+                        <div class="d-flex justify-content-end">
+                            @role('root')
+                            <ul class="nav mb-2 nav-pills justify-content-end">
+                                <li class="nav-item ml-2 mr-md-0">
+                                    <a class="btn btn-info" data-effect="effect-super-scaled"
+                                        data-toggle="modal" href="#modal_import">
+                                        <i class="fa fa-upload"></i> Import
+                                    </a>
+                                </li>
+                            </ul>
+                            @endrole
+                        </div>
                     </div>
 
                     <div class="col-md-6 mt-3 mb-2">

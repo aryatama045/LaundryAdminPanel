@@ -8,20 +8,9 @@
                 <div class="card">
                     <div class="card-header py-2 d-flex align-items-center justify-content-between">
                         <h2 class="card-title m-0">
-                            Data Pembelian
+                            Data Retur
                         </h2>
-                        <div class="d-flex justify-content-end">
-                            @role('root')
-                            <ul class="nav mb-2 nav-pills justify-content-end">
-                                <li class="nav-item ml-2 mr-md-0">
-                                    <a class="btn btn-info" data-effect="effect-super-scaled"
-                                        data-toggle="modal" href="#modal_import">
-                                        <i class="fa fa-upload"></i> Import
-                                    </a>
-                                </li>
-                            </ul>
-                            @endrole
-                        </div>
+
                     </div>
                     <div class="card-body pt-2">
                         <div class="table-responsive">
