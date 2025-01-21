@@ -205,7 +205,13 @@ class CustomerGaransiController extends Controller
                 })
 
                 ->addColumn('status', function ($row) use ($request) {
-                    $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                    if($garansi ){
+                        $result = '<span class="text-success"><i class="fa fa-check-circle"></i></span>';
+                    }else{
+                        $result = '';
+                    }
+
                     return $result;
                 })
                 ->addColumn('action', function ($row) {
