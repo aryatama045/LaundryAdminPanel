@@ -27,6 +27,7 @@
                                         <th scope="col">Satuan</th>
                                         <th scope="col">No. Retur</th>
                                         <th scope="col">Alasan Retur</th>
+                                        <th scope="col">Tanggal Retur</th>
                                         <th scope="col">Approval Retur</th>
                                         @role('root')
                                             <th hidden scope="col" class="px-2">{{ __('Actions') }}</th>
@@ -37,7 +38,7 @@
                                     @foreach ($orders as $order)
                                         <tr class="">
                                             <td class="py-1">
-                                                {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
+                                                {{ \Carbon\Carbon::parse($order->created_at)->format('d/m/Y') }}
                                             </td>
                                             <td class="py-1">
                                                 {{ \Carbon\Carbon::parse($order->tanggal_nota)->format('d/m/Y') }}
@@ -67,7 +68,8 @@
 
                                                 <?php } ?>
                                             </td>
-                                            <td class="py-1"> </td>
+                                            <td class="py-1"> {{ $order->alasan_retur }} </td>
+                                            <td class="py-1"> {{ \Carbon\Carbon::parse($order->tanggal_retur)->format('d/m/Y') }} </td>
                                             <td class="py-1"> {{ $order->order_status }} </td>
                                             @role('root')
                                                 <td hidden class="p-1 ">
