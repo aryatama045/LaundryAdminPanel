@@ -193,7 +193,7 @@ class CustomerGaransiController extends Controller
                             }
 
                         }else{
-                            $tambah_proteksi .= '';
+                            $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
                         }
                     }else{
 
