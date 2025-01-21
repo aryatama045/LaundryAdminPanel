@@ -38,9 +38,14 @@ class CouponController extends Controller
         return view('coupon.create');
     }
 
-    public function store(CouponRequest $request)
+    public function store(Request $request)
     {
-        (new CouponRepository())->storeByRequest($request);
+        // (new CouponRepository())->storeByRequest($request);
+
+        Coupon::updateOrCreate(
+            [   'id' => $request->coupon_id ],
+            [   'code' => $request->code ]
+        );
 
         return redirect()->route('coupon.index')->with('success', 'Code is added successfully.');
     }
