@@ -50,8 +50,9 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function getDataRetur($id)
+    public function data_retur($id)
     {
+        dd($id);
         $retur = Order::find($id);
         return response()->json($retur);
     }
