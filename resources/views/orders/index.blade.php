@@ -49,17 +49,14 @@
                                             <td class="py-1">{{ $order->qty }}</td>
                                             <td class="py-1">{{ $order->satuan }}</td>
                                             <td class="py-1">
-                                                <?php
-                                                    if($order->nomor_retur != NULL){
-                                                        $nomor_retur = $order->nomor_retur;
-                                                    }else{
-                                                        $nomor_retur = "<a href='javascript:void(0)'
-                                                        id='show-user'
-                                                        data-url='{{ route(order.dataRetur, $order->id) }}'
-                                                        class='edit btn btn-primary btn-sm'>Retur Add</a>";
-                                                    }
-                                                ?>
-                                                {!! $nomor_retur !!}
+                                                <?php if($order->nomor_retur != NULL){
+                                                    echo $nomor_retur = $order->nomor_retur;
+                                                }else{ ?>
+
+                                                <a href="javascript:void(0)"
+                                                    id="show-user" data-url="{{ route('order.dataRetur', $order->id) }}"
+                                                    class='edit btn btn-primary btn-sm'>Retur Add</a>
+                                                <?php } ?>
                                             </td>
                                             <td class="py-1"> </td>
                                             <td class="py-1"> {{ $order->order_status }} </td>
