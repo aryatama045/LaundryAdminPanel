@@ -53,9 +53,16 @@
                                                     echo $nomor_retur = $order->nomor_retur;
                                                 }else{ ?>
 
-                                                <a href="javascript:void(0)"
-                                                    id="show-user" data-url="{{ route('order.dataRetur', $order->id) }}"
-                                                    class='edit btn btn-primary btn-sm'>Retur Add</a>
+                                                    @role('admin')
+                                                        <a href="javascript:void(0)"
+                                                        id="show-user" data-url="{{ route('order.dataRetur', $order->id) }}"
+                                                        class='edit btn btn-primary btn-sm'>Retur Add</a>
+                                                    @endrole
+
+                                                    @role('customer')
+                                                        -
+                                                    @endrole
+
                                                 <?php } ?>
                                             </td>
                                             <td class="py-1"> </td>
