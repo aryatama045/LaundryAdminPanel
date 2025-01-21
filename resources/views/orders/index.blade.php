@@ -157,7 +157,7 @@ $(document).ready(function() {
 
     $('body').on('click', '.editProduct', function () {
         var order_id = $(this).data('id');
-        $.get("{{ route('order.getDataRetur'."+ order_id+") }}" , function (data) {
+        $.get("{{ route('orders.index') }}" +'/' + order_id +'/data_retur', function (data) {
 
             $('#modelHeading').html("Retur");
 
