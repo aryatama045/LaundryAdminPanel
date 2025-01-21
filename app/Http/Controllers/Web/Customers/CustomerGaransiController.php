@@ -85,6 +85,10 @@ class CustomerGaransiController extends Controller
 
                     return $img;
                 })
+                ->addColumn('created_at', function ($row) {
+                    $created_at = $row->created_at == '' ? '-' : date('d-m-Y', strtotime($row->created_at));
+                    return $created_at;
+                })
                 ->addColumn('tanggal_nota', function ($row) {
                     $tanggal_nota = $row->tanggal_nota == '' ? '-' : date('d-m-Y', strtotime($row->tanggal_nota));
                     return $tanggal_nota;
@@ -272,7 +276,7 @@ class CustomerGaransiController extends Controller
 
                     return $button;
                 })
-                ->rawColumns(['action','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','waktu','tanggal','tambah_proteksi','img','status'])
+                ->rawColumns(['action','created_at','tanggal_nota','nomor_nota','nama_customer','nama_barang','qty','terproteksi','waktu','tanggal','tambah_proteksi','img','status'])
                 ->make(true);
         }
 

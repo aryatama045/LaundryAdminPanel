@@ -56,6 +56,7 @@
                                 <thead>
                                     <tr>
                                         <th rowspan="2" width="3%"> No. </th>
+                                        <th rowspan="2" width="10%"> Tanggal </th>
                                         <th rowspan="2" width="10%"> Tanggal Nota </th>
                                         <th rowspan="2"> Nomor Nota </th>
                                         <th rowspan="2"> Nama </th>
@@ -199,6 +200,10 @@
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
                         searchable: false
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at',
                     },
                     {
                         data: 'tanggal_nota',
