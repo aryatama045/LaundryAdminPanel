@@ -189,9 +189,8 @@ class CustomerGaransiController extends Controller
                             }else{
                                 $tambah_proteksi .= '';
                             }
-
                         }else{
-                            $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$garansi->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
+                            $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
                         }
                     }else{
 
