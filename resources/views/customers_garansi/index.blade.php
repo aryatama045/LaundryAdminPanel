@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center py-2 justify-content-between">
                     @role('root')
-                        <h2 class="card-title m-0">{{ __('All'). ' '.__('Garansi') }}</h2>
+                        <h2 class="card-title m-0">Customer Saya</h2>
                     @endrole
 
                     @role('customer')
