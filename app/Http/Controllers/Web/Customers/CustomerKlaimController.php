@@ -201,14 +201,18 @@ class CustomerKlaimController extends Controller
                     $klaim_proteksi = '';
                     $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
 
-                    if($klaim){
-                        if($klaim->status == 'Proses' || $klaim->status == 'Disetujui'){
-                            $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
+                    if($row->qty > 0){
+                        if($klaim){
+                            if($klaim->status == 'Proses' || $klaim->status == 'Disetujui'){
+                                $klaim_proteksi .= '<span class="text-grey text-center"><b>Sudah Klaim</b></span>';
+                            }else{
+                                $klaim_proteksi .= '-';
+                            }
                         }else{
-                            $klaim_proteksi .= '-';
+                            $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
                         }
                     }else{
-                        $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
+                        $klaim_proteksi .= 'Tidak Ada Qty';
                     }
 
                     return $klaim_proteksi;
