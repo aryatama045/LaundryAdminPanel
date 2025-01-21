@@ -53,7 +53,10 @@
                                                     if($order->nomor_retur != NULL){
                                                         $nomor_retur = $order->nomor_retur;
                                                     }else{
-                                                        $nomor_retur = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$order->id.'" data-original-title="Retur Add" class="edit btn btn-primary btn-sm editProduct">Retur Add</a>';
+                                                        $nomor_retur = "<a href='javascript:void(0)'
+                                                        data-id='{{$order->id}}'
+                                                        data-url='{{ route('order.dataRetur', $order->id) }}'
+                                                        class='edit btn btn-primary btn-sm editProduct'>Retur Add</a>";
                                                     }
                                                 ?>
                                                 {!! $nomor_retur !!}
@@ -156,9 +159,9 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.editProduct', function () {
-        var order_id = $(this).data('id');
-        alert(order_id);
-        $.get("{{ route('order.index') }}"+'/' + order_id +'/dataRetur', function (data) {
+
+        var userURL = $(this).data('url');
+        $.get(userURL, function (data) {
 
             $('#modelHeading').html("Retur");
 
