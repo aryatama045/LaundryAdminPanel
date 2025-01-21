@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                     <div class="col-8 m-auto">
-                        <form @can('coupon.store') @role('root|admin') action="{{ route('coupon.store') }}" @endrole @endcan method="POST"> @csrf
+                        <form action="{{ route('coupon.store') }}"  method="POST"> @csrf
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <label class="mb-1">Code</label>
