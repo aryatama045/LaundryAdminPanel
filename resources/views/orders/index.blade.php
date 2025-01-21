@@ -149,7 +149,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nomor_retur" class="col-sm-6 control-label">Nomor Nota</label>
+                        <label for="nomor_retur" class="col-sm-6 control-label">Nomor Retur</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" name="nomor_retur" placeholder="Enter Nomor retur"required="" >
                         </div>
