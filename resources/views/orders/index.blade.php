@@ -56,6 +56,7 @@
                                                         $nomor_retur = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$order->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
                                                     }
                                                 ?>
+                                                {{ $nomor_retur }}
                                             </td>
                                             <td class="py-1"> </td>
                                             <td class="py-1"> {{ $order->order_status }} </td>
