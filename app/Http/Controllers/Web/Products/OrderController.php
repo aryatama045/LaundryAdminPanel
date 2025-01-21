@@ -54,7 +54,7 @@ class OrderController extends Controller
     {
 
         $retur = Order::find($id);
-        dd($retur);
+
         return response()->json($retur);
     }
 
