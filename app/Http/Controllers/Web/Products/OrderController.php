@@ -50,6 +50,12 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
+    public function getDataRetur($id)
+    {
+        $retur = Order::find($id);
+        return response()->json($retur);
+    }
+
     public function show(Order $order)
     {
         $quantity = 0;

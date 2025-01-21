@@ -48,7 +48,15 @@
                                             <td class="py-1">{{ $order->nama_barang }}</td>
                                             <td class="py-1">{{ $order->qty }}</td>
                                             <td class="py-1">{{ $order->satuan }}</td>
-                                            <td class="py-1"> </td>
+                                            <td class="py-1">
+                                                <?php
+                                                    if($order->nomor_retur != NULL){
+                                                        $nomor_retur = $order->nomor_retur;
+                                                    }else{
+                                                        $nomor_retur = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$order->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                                                    }
+                                                ?>
+                                            </td>
                                             <td class="py-1"> </td>
                                             <td class="py-1"> {{ $order->order_status }} </td>
                                             @role('root')
@@ -77,4 +85,93 @@
     </div>
 
 
+
+
+<div class="modal fade" id="ajaxModel" aria-hidden="true">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="modelHeading"></h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="productForm" name="productForm" class="form-horizontal">
+
+                    <input type="hidden" name="order_id" id="order_id">
+
+                    <div class="form-group">
+                        <label for="nomor_nota" class="col-sm-2 control-label">Nomor Nota</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="nomor_nota" name="nomor_nota" placeholder="Enter Input" value="" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal_nota" class="col-sm-2 control-label">Tanggal Nota</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="tanggal_nota" name="tanggal_nota" placeholder="Enter Input" value="" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_barang" class="col-sm-2 control-label">Nama Barang</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Enter Input" value="" maxlength="50" required="">
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+$(function () {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('body').on('click', '.editProduct', function () {
+        var order_id = $(this).data('id');
+        $.get("{{ route('order.index') }}" +'/' + order_id +'/getDataRetur', function (data) {
+
+            $('#modelHeading').html("Retur");
+
+            $('#saveBtn').val("edit-user");
+
+            $('#ajaxModel').modal('show');
+
+            $('#order_id').val(data.id);
+
+            $('#name').val(data.name);
+
+            $('#detail').val(data.detail);
+
+        });
+    });
+
+});
+
+</script>
 @endsection
