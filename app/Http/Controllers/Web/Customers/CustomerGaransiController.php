@@ -58,7 +58,12 @@ class CustomerGaransiController extends Controller
 
                     $bukti      = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    $waktu      = $garansi->waktu_pemasangan;
+                    if($garansi){
+                        $waktu      = $this->kode_smp($garansi->waktu_pemasangan);
+                    }else{
+                        $waktu      = '';
+                    }
+                    
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -73,7 +78,7 @@ class CustomerGaransiController extends Controller
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a><br>
 
-                        '. $this->kode_smp($waktu) .'
+                        '. $waktu .'
 
                         ';
                     }
@@ -102,8 +107,8 @@ class CustomerGaransiController extends Controller
                 })
                 ->addColumn('waktu', function ($row) {
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    $waktu = $garansi->waktu_pemasangan;
-                    if($waktu){
+
+                    if($garansi){
                         $result =  date('H:i',strtotime($garansi->waktu_pemasangan));
                     }else{
                         $result = '-';
@@ -113,8 +118,7 @@ class CustomerGaransiController extends Controller
                 })
                 ->addColumn('tanggal', function ($row) {
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    $tanggal = $garansi->tanggal_pemasangan;
-                    if($tanggal){
+                    if($garansi){
                         $result =  date('d-m-Y', strtotime($garansi->tanggal_pemasangan));
                     }else{
                         $result = '-';
@@ -126,44 +130,46 @@ class CustomerGaransiController extends Controller
                     $result = '-';
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                    if($garansi->status  == 'Disetujui'){
+                    if($garansi){
+                        if($garansi->status  == 'Disetujui'){
 
-                        $websetting = WebSetting::first();
+                            $websetting = WebSetting::first();
 
-                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                            $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                        $masa_berlaku = $websetting->masa_berlaku;
+                            $masa_berlaku = $websetting->masa_berlaku;
 
-                        $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
-                        $dateExps = date('d-m-Y', $dateExp);
+                            $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+                            $dateExps = date('d-m-Y', $dateExp);
 
-                        $paymentDate = now();
-                        $paymentDate = date('Y-m-d', strtotime($paymentDate));
-                        //echo $paymentDate; // echos today!
-                        $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
-                        $contractDateEnd = date('Y-m-d', strtotime($dateExps));
+                            $paymentDate = now();
+                            $paymentDate = date('Y-m-d', strtotime($paymentDate));
+                            //echo $paymentDate; // echos today!
+                            $contractDateBegin = date('Y-m-d', strtotime($garansi->tanggal_pemasangan));
+                            $contractDateEnd = date('Y-m-d', strtotime($dateExps));
 
-                        if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
-                        }else{
-                            if($paymentDate <= $contractDateEnd){
-
-                                $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                            if (($paymentDate >= $contractDateBegin) && ($paymentDate <= $contractDateEnd)){
+                                    $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
                             }else{
-                                $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+                                if($paymentDate <= $contractDateEnd){
+
+                                    $berlaku_s ='<span class="badge badge-success"> Berlaku : '.now()->diffInDays($dateExps).' Hari </span> <br>';
+                                }else{
+                                    $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
+                                }
+
                             }
 
+                            $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+
+
+                        }else if($garansi->status  == 'Diproses'){
+                            $result = '<span class="text-grey"><b>Diproses</b></span>';
+                        }else if($garansi->status  == 'Ditolak'){
+                            $result = '<span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $result = '<span class=""> - </span>';
                         }
-
-                        $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
-
-
-                    }else if($garansi->status  == 'Diproses'){
-                        $result = '<span class="text-grey"><b>Diproses</b></span>';
-                    }else if($garansi->status  == 'Ditolak'){
-                        $result = '<span class="text-danger"><b>Ditolak</b></span>';
-                    }else{
-                        $result = '<span class=""> - </span>';
                     }
                     return $result;
 
@@ -198,24 +204,29 @@ class CustomerGaransiController extends Controller
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
                     if($roles=='root'){
-                        if($garansi->status == 'Diproses'){
-                            $button .= '
-                                <a href="'.route('garansi.disetujui', $row->id) .'"
-                                    class="btn btn-primary py-1 px-2">
-                                    Disetujui
-                                </a>';
 
-                            $button .= ' </br> </br>
-                                <a href="'.route('garansi.ditolak', $row->id) .'"
-                                    class="btn btn-danger py-1 px-2">
-                                    Ditolak
-                                </a>';
-                        }
+                        if($garansi){
+                            if($garansi->status == 'Diproses'){
+                                $button .= '
+                                    <a href="'.route('garansi.disetujui', $row->id) .'"
+                                        class="btn btn-primary py-1 px-2">
+                                        Disetujui
+                                    </a>';
 
-                        if($garansi->status == 'Disetujui'){
-                            $button .= '<span class="text-success"><b>Disetujui</b></span>';
-                        }else if($garansi->status == 'Ditolak'){
-                            $button .= '<span class="text-danger"><b>Ditolak</b></span>';
+                                $button .= ' </br> </br>
+                                    <a href="'.route('garansi.ditolak', $row->id) .'"
+                                        class="btn btn-danger py-1 px-2">
+                                        Ditolak
+                                    </a>';
+                            }
+
+                            if($garansi->status == 'Disetujui'){
+                                $button .= '<span class="text-success"><b>Disetujui</b></span>';
+                            }else if($garansi->status == 'Ditolak'){
+                                $button .= '<span class="text-danger"><b>Ditolak</b></span>';
+                            }else{
+                                $button .= '<span class=""> - </span>';
+                            }
                         }else{
                             $button .= '<span class=""> - </span>';
                         }
@@ -224,16 +235,20 @@ class CustomerGaransiController extends Controller
                         //     $button .= ($kode_coupon)?$kode_coupon->code:'Tidak ada kode';
                         // }
                     }else{
-
-                        if($garansi->status == 'Disetujui'){
-                            $button .= '<span class="text-success"><b>Disetujui</b></span>';
-                        }else if($garansi->status == 'Diproses'){
-                            $button .= '<span class="text-info"><b>Diproses</b></span>';
-                        }else if($garansi->status == 'Ditolak'){
-                            $button .= '<span class="text-danger"><b>Ditolak</b></span>';
+                        if($garansi){
+                            if($garansi->status == 'Disetujui'){
+                                $button .= '<span class="text-success"><b>Disetujui</b></span>';
+                            }else if($garansi->status == 'Diproses'){
+                                $button .= '<span class="text-info"><b>Diproses</b></span>';
+                            }else if($garansi->status == 'Ditolak'){
+                                $button .= '<span class="text-danger"><b>Ditolak</b></span>';
+                            }else{
+                                $button .= '<span class=""> - </span>';
+                            }
                         }else{
                             $button .= '<span class=""> - </span>';
                         }
+
                     }
 
                     return $button;

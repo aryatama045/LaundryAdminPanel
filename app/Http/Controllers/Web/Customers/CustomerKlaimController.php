@@ -46,7 +46,7 @@ class CustomerKlaimController extends Controller
                 $roles   = $user_id['roles'][0]->name;
             }
 
-            if($roles == 'root' ){
+            if($roles == 'root' || $roles == 'admin' ){
                 $data = Order::get();
             }else{
                 // $data = Order::where('customer_id', $user_id->id)->Where('klaim_id','!=','')->get();
@@ -223,7 +223,7 @@ class CustomerKlaimController extends Controller
 
                     $kode_coupon = Coupon::where('order_id', $row->id)->first();
 
-                    if($roles=='root'){
+                    if($roles=='root' || $roles=='admin'){
                         $klaim    = CustomerKlaims::where('id', $row->klaim_id)->first();
                         if($klaim){
                             if($klaim->status == 'Proses'){
