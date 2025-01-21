@@ -103,6 +103,34 @@
                     <input type="hidden" name="order_id" id="order_id">
 
                     <div class="form-group">
+                        <label for="nomor_nota" class="col-sm-6 control-label">Nomor Nota</label>
+                        <div class="col-sm-12">
+                            <input disabled type="text" class="form-control" id="nomor_nota" name="nomor_nota" placeholder="Enter Input" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal_nota" class="col-sm-6 control-label">Tanggal Nota</label>
+                        <div class="col-sm-12">
+                            <input type="text" disabled class="form-control" id="tanggal_nota" name="tanggal_nota" placeholder="Enter Input" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_customer" class="col-sm-6 control-label">Nama Customer</label>
+                        <div class="col-sm-12">
+                            <input type="text" disabled class="form-control" id="nama_customer" name="nama_customer" placeholder="Enter Input" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_barang" class="col-sm-6 control-label">Nama Barang</label>
+                        <div class="col-sm-12">
+                            <input disabled type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Enter Input" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="nomor_retur" class="col-sm-6 control-label">Nomor Nota</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" name="nomor_retur" placeholder="Enter Nomor retur"required="" >
@@ -112,48 +140,16 @@
                     <div class="form-group">
                         <label class="col-sm-6 control-label">Alasan Retur</label>
                         <div class="col-sm-12">
-                            <textarea id="alasan_retur" name="alasan_retur" required="" placeholder="Enter Details" class="form-control"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nomor_nota" class="col-sm-6 control-label">Nomor Nota</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nomor_nota" name="nomor_nota" placeholder="Enter Input" >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tanggal_nota" class="col-sm-6 control-label">Tanggal Nota</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="tanggal_nota" name="tanggal_nota" placeholder="Enter Input" >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nama_customer" class="col-sm-6 control-label">Nama Customer</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nama_customer" name="nama_customer" placeholder="Enter Input" >
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nama_barang" class="col-sm-6 control-label">Nama Barang</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Enter Input" >
+                            <textarea id="alasan_retur" name="alasan_retur" required="" placeholder="Enter Alasan" class="form-control"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="qty" class="col-sm-6 control-label">Qty Barang</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Input" >
-                            <br>
                             <p id="elem_qty"></p>
                         </div>
                     </div>
-
-
 
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save</button>
