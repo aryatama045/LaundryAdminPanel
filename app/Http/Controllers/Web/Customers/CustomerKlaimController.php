@@ -503,7 +503,7 @@ class CustomerKlaimController extends Controller
 
                 $urutan = $x;
 
-                $thumbnail = (new MediaRepository())->storeByKlaim(
+                $thumbnail = (new MediaRepository())->updateByKlaim(
                     $file,
                     'images/klaim/',
                     'klaim images',
@@ -535,8 +535,7 @@ class CustomerKlaimController extends Controller
                 $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
                 $bukti_foto = [
-                    'klaim_id'            => $klaim_data->id,
-                    'klaim_id'              => '0',
+                    'klaim_id'              => $klaim_data->id,
                     'customer_id'           => $klaim_data->customer_id,
                     'foto_id'               => $thumbnail->id,
                     'kode_foto'             => $thumbnail->name,
