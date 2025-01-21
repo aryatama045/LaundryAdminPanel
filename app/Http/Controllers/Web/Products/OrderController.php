@@ -108,7 +108,7 @@ class OrderController extends Controller
             'qty_retur'     => $request->qty,
             'tanggal_retur' => date('Y-m-d H:i:s'),
             'is_retur'      => '1',
-            'order_status'  => 'Diretur',
+            'order_status'  => 'Retur',
         ));
 
         return redirect()->route('order.index')->with('success', 'Retur successfully');
