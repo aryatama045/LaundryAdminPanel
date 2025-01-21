@@ -101,12 +101,14 @@ class OrderController extends Controller
     public function retur_action(Request $request)
     {
         $id = $request->order_id;
-        dd($id, $request);
 
         DB::table('orders')->where('id', $id)->update(array(
             'nomor_retur'   => $request->nomor_retur,
             'alasan_retur'  => $request->alasan_retur,
-            'order_status'  => $request->status,
+            'qty_retur'     => $request->qty,
+            'tanggal_retur' => date('Y-m-d H:i:s'),
+            'is_retur'      => '1',
+            'order_status'  => 'Diretur',
         ));
 
         return redirect()->route('order.index')->with('success', 'Retur successfully');
