@@ -23,6 +23,7 @@
                                         <th scope="col">Nama Customer</th>
                                         <th scope="col">Nama Barang</th>
                                         <th scope="col">Qty</th>
+                                        <th scope="col">Qty Retur</th>
                                         <th scope="col">Satuan</th>
                                         <th scope="col">No. Retur</th>
                                         <th scope="col">Alasan Retur</th>
@@ -47,6 +48,7 @@
                                             </td>
                                             <td class="py-1">{{ $order->nama_barang }}</td>
                                             <td class="py-1">{{ $order->qty }}</td>
+                                            <td class="py-1">{{ $order->qty_retur }}</td>
                                             <td class="py-1">{{ $order->satuan }}</td>
                                             <td class="py-1">
                                                 <?php if($order->nomor_retur != NULL){
