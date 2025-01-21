@@ -53,8 +53,15 @@
                                             <td class="py-1">{{ $order->satuan }}</td>
                                             <td class="py-1">
                                                 <?php if($order->nomor_retur != NULL){
-                                                    echo $nomor_retur = $order->nomor_retur;
-                                                }else{ ?>
+                                                    echo $nomor_retur = $order->nomor_retur; ?>
+
+                                                    @role('admin')
+                                                        <br><a href="javascript:void(0)"
+                                                        id="show-user" data-url="{{ route('order.dataRetur', $order->id) }}"
+                                                        class='edit btn btn-primary btn-sm'>Retur Add</a>
+                                                    @endrole
+
+                                                <?php }else{ ?>
 
                                                     @role('admin')
                                                         <a href="javascript:void(0)"
