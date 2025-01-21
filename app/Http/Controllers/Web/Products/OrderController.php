@@ -102,9 +102,15 @@ class OrderController extends Controller
     {
         $id = $request->order_id;
 
+        $getOrder = DB::table('orders')->where('id', $id)->first();
+
+        $qty_sisa = $getOrder->qty - $request->qty;
+
+
         DB::table('orders')->where('id', $id)->update(array(
             'nomor_retur'   => $request->nomor_retur,
             'alasan_retur'  => $request->alasan_retur,
+            'qty'           => $qty_sisa,
             'qty_retur'     => $request->qty,
             'tanggal_retur' => date('Y-m-d H:i:s'),
             'is_retur'      => '1',
