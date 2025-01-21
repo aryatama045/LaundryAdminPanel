@@ -211,7 +211,7 @@ Route::get('/orders/{order}/print/labels', [OrderController::class, 'printLabels
 Route::get('/orders/{order}/print/invoice', [OrderController::class, 'printInvioce'])
     ->name('order.print.invioce');
 
-Route::get('/orders/{order}/get-data-retur', [OrderController::class, 'dataRetur'])->name('order.getDataRetur');
+Route::get('/orders/{order}/data-retur', [OrderController::class, 'dataRetur'])->name('order.dataRetur');
 
 //Order Imports
 Route::post('/orders/imports', [OrderController::class, 'imports']);
