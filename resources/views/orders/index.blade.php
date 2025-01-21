@@ -53,7 +53,7 @@
                                                     if($order->nomor_retur != NULL){
                                                         $nomor_retur = $order->nomor_retur;
                                                     }else{
-                                                        $nomor_retur = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$order->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                                                        $nomor_retur = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$order->id.'" data-original-title="Retur Add" class="edit btn btn-primary btn-sm editProduct">Retur Add</a>';
                                                     }
                                                 ?>
                                                 {{ $nomor_retur }}
