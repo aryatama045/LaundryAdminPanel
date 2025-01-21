@@ -98,8 +98,8 @@
 
             <div class="modal-body">
 
-                <form id="productForm" name="productForm" class="form-horizontal">
-
+                <form  action="{{ route('orders.retur_action') }}"   method="POST" class="form-horizontal">
+                    @csrf
                     <input type="hidden" name="order_id" id="order_id">
 
                     <div class="form-group">

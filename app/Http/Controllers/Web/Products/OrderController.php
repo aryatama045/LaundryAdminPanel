@@ -98,6 +98,20 @@ class OrderController extends Controller
         return back()->with('success', 'Status updated successfully');
     }
 
+    public function retur_action(Request $request)
+    {
+        $id = $request->order_id;
+        dd($id, $request);
+
+        DB::table('orders')->where('id', $id)->update(array(
+            'nomor_retur'   => $request->nomor_retur,
+            'alasan_retur'  => $request->alasan_retur,
+            'order_status'  => $request->status,
+        ));
+
+        return redirect()->route('order.index')->with('success', 'Retur successfully');
+    }
+
     public function orderPaid(Order $order)
     {
         $order->update([
