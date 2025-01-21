@@ -20,14 +20,13 @@
                 </div>
                 <div class="card-body">
                     <div class="col-8 m-auto">
-                        <form @role('root|admin') @can('coupon.update') action="{{ route('coupon.update', $coupon->id) }}" @endcan @endrole method="POST"> @csrf @method('put')
+                        <form  action="{{ route('coupon.update', $coupon->id) }}"  method="POST">
+                            @csrf @method('put')
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <label class="mb-1">Code</label>
                                     <x-input name="code" type="text" value="{{ $coupon->code }}" placeholder="code"/>
                                 </div>
-
-                                
 
                                 <div class="col-12">
                                     <div class="row">

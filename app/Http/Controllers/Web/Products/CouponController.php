@@ -55,11 +55,11 @@ class CouponController extends Controller
         return view('coupon.edit', compact('coupon'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // (new CouponRepository())->updateByRequest($request, $coupon);
         Coupon::updateOrCreate(
-            [   'id' => $request->coupon_id ],
+            [   'id' => $id ],
             [   'code' => $request->code ]
         );
 
