@@ -63,7 +63,7 @@ class CustomerGaransiController extends Controller
                     }else{
                         $waktu      = '';
                     }
-                    
+
 
                     if($bukti){
                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
@@ -176,11 +176,20 @@ class CustomerGaransiController extends Controller
                 })
                 ->addColumn('tambah_proteksi', function ($row) {
 
+                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+
                     $tambah_proteksi = '';
-                    if($row->order_status == '-'){
-                        $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
-                    }else if($row->order_status == 'Diproses' || $row->order_status == 'Disetujui'){
-                        $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
+                    if($garansi){
+                        if($garansi->status == '-' || $garansi->status == ''){
+                            $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$garansi->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
+                        }else if($garansi->status == 'Diproses' || $garansi->status == 'Disetujui'){
+                            $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
+                        }else if($garansi->status == 'Ditolak'){
+                            $tambah_proteksi .= '<span class="text-danger"><b>Ditolak</b></span>';
+                        }else{
+                            $tambah_proteksi .= '';
+                        }
+
                     }else{
                         $tambah_proteksi .= '';
                     }
