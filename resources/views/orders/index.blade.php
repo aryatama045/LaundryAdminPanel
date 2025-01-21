@@ -54,9 +54,9 @@
                                                         $nomor_retur = $order->nomor_retur;
                                                     }else{
                                                         $nomor_retur = "<a href='javascript:void(0)'
-                                                        data-id='{{$order->id}}'
+                                                        id='show-user'
                                                         data-url='{{ route('order.dataRetur', $order->id) }}'
-                                                        class='edit btn btn-primary btn-sm editProduct'>Retur Add</a>";
+                                                        class='edit btn btn-primary btn-sm'>Retur Add</a>";
                                                     }
                                                 ?>
                                                 {!! $nomor_retur !!}
@@ -91,7 +91,7 @@
 
 
 
-<div class="modal fade" id="ajaxModel" aria-hidden="true">
+<div class="modal fade" id="userShowModal" aria-hidden="true">
 
     <div class="modal-dialog">
 
@@ -148,37 +148,22 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript">
 
-$(document).ready(function() {
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('body').on('click', '.editProduct', function () {
-
-        var userURL = $(this).data('url');
-        $.get(userURL, function (data) {
-
-            $('#modelHeading').html("Retur");
-
-            $('#saveBtn').val("edit-user");
-
-            $('#ajaxModel').modal('show');
-
-            $('#order_id').val(data.id);
-
-            $('#name').val(data.name);
-
-            $('#detail').val(data.detail);
+            /* When click show user */
+            $('body').on('click', '#show-user', function () {
+                var userURL = $(this).data('url');
+                $.get(userURL, function (data) {
+                    $('#userShowModal').modal('show');
+                    $('#user-id').text(data.id);
+                    $('#user-name').text(data.name);
+                    $('#user-email').text(data.email);
+                })
+            });
 
         });
-    });
+    </script>
 
-});
-
-</script>
 @endpush
