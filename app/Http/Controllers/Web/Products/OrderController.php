@@ -198,7 +198,7 @@ class OrderController extends Controller
                 $getUser = $this->userRepo->findByContact($val2['nama_customer']);
 
                 if(!$getUser){
-                    $id_customer = '-';
+                    $id_customer = '0';
                 }else{
                     $id_customer = $getUser->id;
                 }
