@@ -52,8 +52,9 @@ class OrderController extends Controller
 
     public function dataRetur($id)
     {
-        dd($id);
+
         $retur = Order::find($id);
+        dd($retur);
         return response()->json($retur);
     }
 
