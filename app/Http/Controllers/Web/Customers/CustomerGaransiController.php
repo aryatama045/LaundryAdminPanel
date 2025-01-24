@@ -282,7 +282,7 @@ class CustomerGaransiController extends Controller
 
         // $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
 
-        return view('customers_garansi.index', compact('garansis'));
+        return view('customers_garansi.index');
     }
 
     // <tbody>
