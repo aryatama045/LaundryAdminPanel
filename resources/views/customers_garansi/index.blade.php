@@ -20,7 +20,7 @@
                         </a>
                         @endrole --}}
                         <div class="d-flex justify-content-end">
-                            @role('root')
+                            @role('root|admin')
                             <ul class="nav mb-2 nav-pills justify-content-end">
                                 <li class="nav-item ml-2 mr-md-0">
                                     <a class="btn btn-info" data-effect="effect-super-scaled"
