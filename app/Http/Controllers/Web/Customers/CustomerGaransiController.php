@@ -44,7 +44,7 @@ class CustomerGaransiController extends Controller
                 $roles   = $user_id['roles'][0]->name;
             }
 
-            if($roles == 'root' ){
+            if($roles == 'root' || $roles == 'admin' ){
                 $data = Order::get();
             }else{
                 $data = Order::where('customer_id', $user_id->id)->get();
