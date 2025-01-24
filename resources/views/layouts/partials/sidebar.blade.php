@@ -131,6 +131,22 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
+                            href="{{ route('coupon.index') }}">
+                            <i class="fa fa-percentage"></i>
+                            <span class="nav-link-text">{{ __('Data Kode') }}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
+                            href="{{ route('order.index') }}">
+                            <i class="fa fa-shopping-cart text-orange"></i>
+                            <span class="nav-link-text">{{ __('Data Retur') }}</span>
+                        </a>
+                    </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
@@ -142,20 +158,24 @@
                 @endrole
 
                 @role('admin')
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('coupon.*') ? 'active' : '' }}"
-                            href="{{ route('coupon.index') }}">
-                            <i class="fa fa-percentage"></i>
-                            <span class="nav-link-text">{{ __('Data Kode') }}</span>
+
+
+                <li class="nav-item">
+                        <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
+                            href="{{ route('banner.promotional') }}">
+                            <i class="fas fa-image text-dark"></i>
+                            <span class="nav-link-text">{{ __('Banners') }}</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}"
-                            href="{{ route('order.index') }}">
-                            <i class="fa fa-shopping-cart text-orange"></i>
-                            <span class="nav-link-text">{{ __('Data Retur') }}</span>
+                        <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
+                            href="{{ route('garansi.index') }}">
+                            <i class="fa fa-file text-blue"></i>
+                            <span class="nav-link-text">{{ __('Customer Saya') }} </span>
                         </a>
                     </li>
+
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('klaim.*') ? 'active' : '' }}"
