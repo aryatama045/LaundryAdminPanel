@@ -226,7 +226,7 @@ class CustomerGaransiController extends Controller
                     // $kode_coupon = Coupon::where('order_id', $row->id)->first();
                     $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                    if($roles=='root'){
+                    if($roles=='root' || $roles=='admin'){
 
                         if($garansi){
                             if($garansi->status == 'Diproses'){
