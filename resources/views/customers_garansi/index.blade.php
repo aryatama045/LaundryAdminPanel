@@ -134,7 +134,7 @@
                         <li>Barang Garansi = YA / TIDAK   *untuk menentukan status barang bergaransi atau tidak</li>
 
                         <li>Nama Perusahaan Sesuaikan dengan nama perusahan customer yang di daftarkan pada website
-                        agar data bisa syncron dengan benar, silahkan cek di <a href="{{ route('customer.index') }}" class="nav-link-text">Data Customer</a> </li>
+                        agar data bisa syncron dengan benar, silahkan cek di <a href="{{ route('customer.index') }}" class="btn btn-sm btn-success  ">Data Customer</a> </li>
 
                         <li>Untuk penginputan banyak barang yang NOMOR NOTA sama, inputan dibawahnya DISAMAKAN NOMOR NOTANYA</li>
 
