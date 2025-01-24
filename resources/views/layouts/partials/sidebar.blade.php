@@ -112,7 +112,9 @@
                         </li> -->
                 @endrole
 
-                @can('banner.promotional')
+
+                @role('root')
+
                     <li class="nav-item">
                         <a class="nav-link  {{ request()->routeIs('banner.promotional') ? 'active' : '' }}"
                             href="{{ route('banner.promotional') }}">
@@ -120,9 +122,6 @@
                             <span class="nav-link-text">{{ __('Banners') }}</span>
                         </a>
                     </li>
-                @endcan
-
-                @role('root')
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('garansi.*') ? 'active' : '' }}"
@@ -273,7 +272,7 @@
                     </li>
                 @endcan
 
-                @role('root|visitor')
+                @role('root')
                     <li hidden class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
                             href="{{ route('admin.index') }}">
