@@ -51,6 +51,7 @@
                                         <th rowspan="2" width="10%"> Tanggal </th>
                                         <th rowspan="2" width="10%"> Tanggal Nota </th>
                                         <th rowspan="2"> Nomor Nota </th>
+                                        <th rowspan="2"> Nama Customer </th>
                                         <th rowspan="2"> Nama Barang </th>
                                         <th rowspan="2" width="2%"> Qty </th>
                                         <th rowspan="2"> Terproteksi</th>
@@ -169,6 +170,10 @@
                     {
                         data: 'nomor_nota',
                         name: 'nomor_nota',
+                    },
+                    {
+                        data: 'nama_customer',
+                        name: 'nama_customer',
                     },
                     {
                         data: 'nama_barang',
