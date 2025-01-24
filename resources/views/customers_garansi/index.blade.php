@@ -106,7 +106,7 @@
 
 
 <!-- Modal Import -->
-<div class="modal bd-example-modal-lg fade" data-backdrop="static" id="modal_import">
+<div class="modal modal-lg fade" data-backdrop="static" id="modal_import">
     <div class="modal-dialog modal-dia modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
 
