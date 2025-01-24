@@ -122,9 +122,20 @@
                 </div>
 
                 <div class="form-group">
-
                     <a href="{{ asset('public/Import-order.xls') }}" class="btn btn-sm btn-success mb-2"><i class="far fa-save"></i> Download Template</a>
                 </div>
+
+                <p>
+                    Note :
+                    1. Barang Garansi = YA / TIDAK   *untuk menentukan status barang bergaransi atau tidak
+                    2. Nama Perusahaan Sesuaikan dengan nama perusahan customer yang di daftarkan
+                    agar data bisa syncron dengan benar
+                    3. Untuk penginputan banyak barang yang NOMOR NOTA sama,
+                        inputan dibawahnya DISAMAKAN NOMOR NOTANYA
+                    4. DATA INI HANYA CONTOH SILAHKAN DI HAPUS ISINYA DARI BARIS 2  HEADER JANGAN DIHAPUS
+                        , DAN INPUT SESUAI DENGAN DATA YANG BENAR
+
+                </p>
             </div>
 
             <div class="card-footer">

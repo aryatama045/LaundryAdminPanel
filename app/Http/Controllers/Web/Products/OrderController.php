@@ -219,11 +219,14 @@ class OrderController extends Controller
                     'nama_barang'       => $val2['nama_barang'],
                     'qty'               => $val2['qty'],
                     'satuan'            => $val2['satuan'],
-                    'part_number'       => $val2['part_number']
+                    'part_number'       => $val2['part_number'],
+                    'barang_garansi'    => $val2['barang_garansi'],
                 );
                 // $order->save();
 
-                Order::create($data_order);
+                // Order::create($data_order);
+
+                Order::updateOrCreate($data_order);
 
                 array_push($data, $data_order);
 
