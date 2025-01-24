@@ -6,7 +6,8 @@ return [
         'admin',
         'customer',
         'visitor',
-        'driver'
+        'driver',
+        'adminp2b'
     ],
     'permissions' => [
         'root' => ['root', 'admin', 'visitor'],
