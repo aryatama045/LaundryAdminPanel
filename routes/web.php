@@ -100,37 +100,6 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notification.index');
     Route::post('/send-notifications', [NotificationController::class, 'sendNotification'])->name('notification.send');
 
-    // Customer routes
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
-    Route::get('/customers/{customer}/show', [CustomerController::class, 'show'])->name('customer.show');
-    Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
-    Route::post('/customers', [CustomerController::class, 'store'])->name('customer.store');
-    Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
-    Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customer.update');
-
-    // Route::get('/customer/{customer}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
-
-    Route::get('/user/{user}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('user.status.toggle');
-
-
-    // Garansi routes
-    Route::get('/garansi', [CustomerGaransiController::class, 'index'])->name('garansi.index');
-
-    Route::get('/garansi/{garansi}/show', [CustomerGaransiController::class, 'show'])->name('garansi.show');
-    Route::get('/garansi/create', [CustomerGaransiController::class, 'create'])->name('garansi.create');
-    Route::post('/garansi', [CustomerGaransiController::class, 'store'])->name('garansi.store');
-    Route::post('/garansi/{garansi}/proses', [CustomerGaransiController::class, 'proses_action'])->name('garansi.proses_action');
-
-    Route::get('/garansi/{garansi}/disetujui', [CustomerGaransiController::class, 'disetujui'])->name('garansi.disetujui');
-    Route::get('/garansi/{garansi}/ditolak', [CustomerGaransiController::class, 'ditolak'])->name('garansi.ditolak');
-
-
-    Route::get('/garansi/{garansi}/edit', [CustomerGaransiController::class, 'edit'])->name('garansi.edit');
-    Route::put('/garansi/{garansi}', [CustomerGaransiController::class, 'update'])->name('garansi.update');
-    Route::get('/garansi/{garansi}/delete', [CustomerGaransiController::class, 'delete'])->name('garansi.delete');
-
-
-
 
 
 
@@ -157,16 +126,6 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
         Route::post('/products/{product}/sub-product/store', 'store')->name('product.subproduct.store');
         Route::put('/products/{product}/sub-product/update', 'update')->name('product.subproduct.update');
     });
-
-    // Banner Routes
-    Route::get('/web-banners', [BannerController::class, 'index'])->name('banner.index');
-    Route::get('/mobile-banners', [BannerController::class, 'getPromotional'])->name('banner.promotional');
-    Route::post('/banners', [BannerController::class, 'store'])->name('banner.store');
-    Route::get('/banners/{banner}/edit', [BannerController::class, 'edit'])->name('banner.edit');
-    Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banner.update');
-    Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
-    Route::get('/banners/{banner}/toggle-status', [BannerController::class, 'toggleActivationStatus'])
-        ->name('banner.status.toggle');
 
 
 
@@ -196,6 +155,50 @@ Route::middleware(['auth', 'role:admin|visitor|customer|root', 'permission_check
         Route::put('/schedules/{orderSchedule}/update', 'update')->name('schedule.update');
     });
 });
+
+
+    // Banner Routes
+    Route::get('/web-banners', [BannerController::class, 'index'])->name('banner.index');
+    Route::get('/mobile-banners', [BannerController::class, 'getPromotional'])->name('banner.promotional');
+    Route::post('/banners', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/banners/{banner}/edit', [BannerController::class, 'edit'])->name('banner.edit');
+    Route::put('/banners/{banner}', [BannerController::class, 'update'])->name('banner.update');
+    Route::delete('/banners/{banner}', [BannerController::class, 'destroy'])->name('banner.destroy');
+    Route::get('/banners/{banner}/toggle-status', [BannerController::class, 'toggleActivationStatus'])
+        ->name('banner.status.toggle');
+
+
+
+ // Customer routes
+ Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
+ Route::get('/customers/{customer}/show', [CustomerController::class, 'show'])->name('customer.show');
+ Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
+ Route::post('/customers', [CustomerController::class, 'store'])->name('customer.store');
+ Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+ Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customer.update');
+
+ // Route::get('/customer/{customer}/delete', [CustomerController::class, 'delete'])->name('customer.delete');
+
+ Route::get('/user/{user}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('user.status.toggle');
+
+
+ // Garansi routes
+ Route::get('/garansi', [CustomerGaransiController::class, 'index'])->name('garansi.index');
+
+ Route::get('/garansi/{garansi}/show', [CustomerGaransiController::class, 'show'])->name('garansi.show');
+ Route::get('/garansi/create', [CustomerGaransiController::class, 'create'])->name('garansi.create');
+ Route::post('/garansi', [CustomerGaransiController::class, 'store'])->name('garansi.store');
+ Route::post('/garansi/{garansi}/proses', [CustomerGaransiController::class, 'proses_action'])->name('garansi.proses_action');
+
+ Route::get('/garansi/{garansi}/disetujui', [CustomerGaransiController::class, 'disetujui'])->name('garansi.disetujui');
+ Route::get('/garansi/{garansi}/ditolak', [CustomerGaransiController::class, 'ditolak'])->name('garansi.ditolak');
+
+
+ Route::get('/garansi/{garansi}/edit', [CustomerGaransiController::class, 'edit'])->name('garansi.edit');
+ Route::put('/garansi/{garansi}', [CustomerGaransiController::class, 'update'])->name('garansi.update');
+ Route::get('/garansi/{garansi}/delete', [CustomerGaransiController::class, 'delete'])->name('garansi.delete');
+
+
 
 
 // Route::get('/garansi/getdata', [CustomerGaransiController::class, 'getDataGaransi'])->name('garansi.getdata');
