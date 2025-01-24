@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Web\Customers;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\Repositories\MediaRepository;
-use App\Repositories\CustomerGaransiRepository;
+// use App\Repositories\CustomerGaransiRepository;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use App\Models\Customer;
@@ -280,7 +280,7 @@ class CustomerGaransiController extends Controller
                 ->make(true);
         }
 
-        $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
+        // $garansis = (new CustomerGaransiRepository())->getAllOrFindBySearch();
 
         return view('customers_garansi.index', compact('garansis'));
     }
