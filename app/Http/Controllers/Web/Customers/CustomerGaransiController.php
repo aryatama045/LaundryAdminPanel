@@ -55,6 +55,7 @@ class CustomerGaransiController extends Controller
                 ->addIndexColumn()
                 ->addColumn('img', function ($row) {
                     $img = ' -- ';
+                    $bukti     = '';
 
                     if($row->garansi_id){
                         $bukti      = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
