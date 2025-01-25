@@ -213,7 +213,12 @@ class CustomerKlaimController extends Controller
                                 $klaim_proteksi .= '-';
                             }
                         }else{
-                            $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
+                            if($row->barang_garansi == 'YA'){
+                                $klaim_proteksi .= '<span class="text-success text-center"><a href="'. route('klaim.edit',$row->id) .'"><b>Klik Disini Klaim</b></a></span>';
+                            }else{
+                                $klaim_proteksi .= '<span class="text-grey text-center"><b>Tidak Ada Garansi</b></span>';
+                            }
+                            
                         }
                     }else{
                         $klaim_proteksi .= 'Tidak Ada Qty';
