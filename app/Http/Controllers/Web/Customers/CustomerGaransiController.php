@@ -185,6 +185,8 @@ class CustomerGaransiController extends Controller
                     $tambah_proteksi = '';
                     if($row->qty > 0){
 
+                        
+
                         if($garansi){
                             if($garansi->status == 'Diproses' || $garansi->status == 'Disetujui'){
                                 $tambah_proteksi .= '<span class="text-grey text-center"><b>Sudah Mendapat Proteksi</b></span>';
@@ -194,7 +196,12 @@ class CustomerGaransiController extends Controller
                                 $tambah_proteksi .= '';
                             }
                         }else{
-                            $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
+                            if($row->barang_garansi == 'YA'){
+                                $tambah_proteksi .= '<span class="text-success text-center"><a href="'. route('garansi.edit',$row->id) .'"><b>Klik Disini Tambah Proteksi</b></a></span>';
+                            }else{
+                                $tambah_proteksi .= '<span class="text-grey text-center"><b>Tidak Ada Garansi</b></span>';
+                            }
+                            
                         }
                     }else{
 
