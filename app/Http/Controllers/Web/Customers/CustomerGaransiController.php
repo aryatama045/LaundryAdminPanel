@@ -58,13 +58,12 @@ class CustomerGaransiController extends Controller
 
                     if($row->garansi_id){
                         $bukti      = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)->first();
-                    }
-
-                    $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
-                    if($garansi){
-                        $waktu      = $this->kode_smp($garansi->waktu_pemasangan);
-                    }else{
-                        $waktu      = '';
+                        $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
+                        if($garansi){
+                            $waktu      = $this->kode_smp($garansi->waktu_pemasangan);
+                        }else{
+                            $waktu      = '';
+                        }
                     }
 
 
