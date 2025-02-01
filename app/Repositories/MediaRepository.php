@@ -202,7 +202,7 @@ class MediaRepository extends Repository
             'src' =>  $file->getClientOriginalName(),
             'extension' => $extension,
             'path' => $path,
-            'description' => $description,
+            'description' => 'video',
         ]);
     }
 
