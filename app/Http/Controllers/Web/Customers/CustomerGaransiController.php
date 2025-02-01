@@ -255,7 +255,7 @@ class CustomerGaransiController extends Controller
                                     if($bukti){
                                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
                     
-                                        $button .= '
+                                        $button .= '</br> </br>
                                         <a href="'. Storage::url($get_media->path) .'"
                                             class="btn btn-primary py-1 px-2">
                                             Download Video
