@@ -110,7 +110,7 @@
 
                                 <div class="item_table mt-3" id="item_table">
                                     <div class="input-group input-group-sm mb-3" id="dtTgl">
-                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="image/*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" >
                                     </div>
                                 </div>
 
@@ -122,7 +122,7 @@
 
                                 <div class=" mt-3"  >
                                     <div class="input-group input-group-sm mb-3" >
-                                        <input style="height:100% !important" type="file"  class="form-control" name="garansi_video"   >
+                                        <input style="height:100% !important" type="file"  class="form-control" name="garansi_photo[]"   >
                                     </div>
                                 </div>
                                 <div class="form-group">
