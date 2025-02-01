@@ -166,7 +166,7 @@ class MediaRepository extends Repository
     }
 
 
-    public function updateByGaransiVideo(UploadedFile $file,string $path, string $type = null, Media $media): Media
+    public function updateByGaransiVideo(UploadedFile $file,string $path, string $type = null ): Media
     {
         $date           = now()->toDateTimeString();
         $jam            =  date('h',strtotime($date));
@@ -191,9 +191,10 @@ class MediaRepository extends Repository
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
-        if(!$type){
-            $type =  $extension;
-        }
+        // if(!$type){
+        //     $type =  $extension;
+        // }
+        $type =  'video';
 
         return $this->model()::create([
             'type' => $type,
