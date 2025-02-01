@@ -667,34 +667,7 @@ class CustomerGaransiController extends Controller
         //     'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
         // ]);
 
-        $file_video = $request->garansi_video;
-
-        $thumbnail_video = null;
-        if ($file_video) {
-            $file_video = $request->garansi_video;
-            
-            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
-                $file_video,
-                'images/garansi/',
-                'garansi images'
-            );
-
-            dd($file_video, 'oke');
-            $bukti_video = [
-                'garansi_id'            => $garansi_data->id,
-                'klaim_id'              => '0',
-                'customer_id'           => $garansi_data->customer_id,
-                'foto_id'               => $thumbnail_video->id,
-                'kode_foto'             => $thumbnail_video->name,
-                'created_by'            => $garansi_data->customer_id
-            ];
-            CustomerBuktiFotos::create($bukti_video);
-        }
-
-        dd($file_video, 'false');
-
-
-
+        
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
         $garansiFoto = count($request->garansi_photo);
@@ -765,7 +738,28 @@ class CustomerGaransiController extends Controller
         }
 
 
-        
+        $file_video = $request->garansi_video;
+
+        $thumbnail_video = null;
+        if ($file_video) {
+            $file_video = $request->garansi_video;
+            
+            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
+                $file_video,
+                'images/garansi/',
+                'garansi images'
+            );
+
+            $bukti_video = [
+                'garansi_id'            => $garansi_data->id,
+                'klaim_id'              => '0',
+                'customer_id'           => $garansi_data->customer_id,
+                'foto_id'               => $thumbnail_video->id,
+                'kode_foto'             => $thumbnail_video->name,
+                'created_by'            => $garansi_data->customer_id
+            ];
+            CustomerBuktiFotos::create($bukti_video);
+        }
 
         $orderUpdate = array(
             'order_status'  => 'Diproses',
