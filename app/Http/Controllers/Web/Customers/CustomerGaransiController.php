@@ -740,6 +740,7 @@ class CustomerGaransiController extends Controller
         $thumbnail_video = null;
         if ($request->hasFile('garansi_video')) {
             $file_video = $request->garansi_video;
+            dd($file_video);
             $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
                 $file_video,
                 'images/garansi/',
