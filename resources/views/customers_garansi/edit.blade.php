@@ -122,7 +122,7 @@
 
                                 <div class=" mt-3"  >
                                     <div class="input-group input-group-sm mb-3" >
-                                        <input style="height:100% !important" type="file"  class="form-control" name="garansi_photo[]"   >
+                                        <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]"   >
                                     </div>
                                 </div>
                                 <div class="form-group">

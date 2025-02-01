@@ -737,6 +737,26 @@ class CustomerGaransiController extends Controller
         }
 
 
+        // $thumbnail_video = null;
+        // if ($request->hasFile('garansi_video')) {
+        //     $file_video = $request->garansi_video;
+        //     $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
+        //         $file_video,
+        //         'images/garansi/',
+        //         'garansi images',
+        //         'image',
+        //         ''
+        //     );
+        //     $bukti_video = [
+        //         'garansi_id'            => $garansi_data->id,
+        //         'klaim_id'              => '0',
+        //         'customer_id'           => $garansi_data->customer_id,
+        //         'foto_id'               => $thumbnail_video->id,
+        //         'kode_foto'             => $thumbnail_video->name,
+        //         'created_ny'            => $garansi_data->customer_id
+        //     ];
+        //     CustomerBuktiFotos::create($bukti_video);
+        // }
 
         $orderUpdate = array(
             'order_status'  => 'Diproses',
