@@ -161,7 +161,9 @@
                         })
                     },
                     complete: function (xhr) {
-                        alert('File has uploaded successfully!');                    }
+                        alert('File has uploaded successfully!'); 
+                        window.location.href = "{{ route('garansi.index')}}";
+                    }
                 });
             });
         });
