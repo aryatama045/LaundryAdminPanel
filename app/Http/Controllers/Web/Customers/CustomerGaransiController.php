@@ -667,6 +667,11 @@ class CustomerGaransiController extends Controller
         //     'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
         // ]);
 
+        $file_video = $request->garansi_video;
+        dd($file_video);
+
+
+
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
         $garansiFoto = count($request->garansi_photo);
