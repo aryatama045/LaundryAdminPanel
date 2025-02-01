@@ -166,7 +166,7 @@
                             title: 'File has uploaded successfully!',
                             type: 'success',
                             icon: 'success',
-                            showCancelButton: true,
+                            showCancelButton: false,
                             confirmButtonColor: '#00B894',
                             // cancelButtonColor: '#d33',
                             // confirmButtonText: 'Yes, delete it!'
