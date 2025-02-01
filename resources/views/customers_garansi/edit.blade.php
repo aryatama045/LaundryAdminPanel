@@ -172,7 +172,8 @@
                             // confirmButtonText: 'Yes, delete it!'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = url;
+                                // window.location.href = url;
+                                window.location.href = "{{ route('garansi.index')}}";
                             }
                         })
                         // window.location.href = "{{ route('garansi.index')}}";
