@@ -161,7 +161,20 @@
                         })
                     },
                     complete: function (xhr) {
-                        alert('File has uploaded successfully!'); 
+                        // alert('File has uploaded successfully!'); 
+                        Swal.fire({
+                            title: 'File has uploaded successfully!',
+                            type: 'success',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#00B894',
+                            // cancelButtonColor: '#d33',
+                            // confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = url;
+                            }
+                        })
                         // window.location.href = "{{ route('garansi.index')}}";
                     }
                 });
