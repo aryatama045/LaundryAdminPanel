@@ -246,6 +246,24 @@ class CustomerGaransiController extends Controller
                                         Disetujui
                                     </a>';
 
+                                $bukti     = '';
+
+                                if($row->garansi_id){
+                                    $bukti      = CustomerBuktiFotos::where('garansi_id', $row->garansi_id)
+                                                    ->where('type', 'video')->first();
+
+                                    if($bukti){
+                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+                    
+                                        $button .= '
+                                        <a href="'. Storage::url($get_media->path) .'"
+                                            class="btn btn-primary py-1 px-2">
+                                            Download Video
+                                        </a>';
+                                    }
+                                    
+                                }
+            
                                 $button .= ' </br> </br>
                                     <a href="'.route('garansi.ditolak', $row->id) .'"
                                         class="btn btn-danger py-1 px-2">
@@ -756,6 +774,7 @@ class CustomerGaransiController extends Controller
                 'customer_id'           => $garansi_data->customer_id,
                 'foto_id'               => $thumbnail_video->id,
                 'kode_foto'             => $thumbnail_video->name,
+                'type'                  => 'video',
                 'created_by'            => $garansi_data->customer_id
             ];
             CustomerBuktiFotos::create($bukti_video);
