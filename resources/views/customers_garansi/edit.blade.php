@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="fileUploadForm" action="{{ route('garansi.update', $order->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf @method('put')
                         <div class="row">
                             <!-- nomor_nota -->
@@ -119,13 +119,15 @@
 
                             <div class="col-12 col-md-8 mb-2">
                                 <label><b>{{ __('Bukti Video') }}</b> </label>
-                                <span hidden name="add" class="float-right btn btn-primary btn-sm default add">
-                                    <i class="fa fa-plus"></i> Tambah
-                                </span>
 
                                 <div class="item_table mt-3" id="item_table">
                                     <div class="input-group input-group-sm mb-3" id="dtTgl">
                                         <input style="height:100% !important" type="file" multiple="" class="form-control" name="garansi_photo[]" accept="*" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
                                     </div>
                                 </div>
 
@@ -144,6 +146,27 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                $('#fileUploadForm').ajaxForm({
+                    beforeSend: function () {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        $('.progress .progress-bar').css("width", percentage+'%', function() {
+                        return $(this).attr("aria-valuenow", percentage) + "%";
+                        })
+                    },
+                    complete: function (xhr) {
+                        alert('File has uploaded successfully!');                    }
+                });
+            });
+        });
+    </script>
+
     <script>
         function imposeMinMax(el){
             if(el.value != ""){
