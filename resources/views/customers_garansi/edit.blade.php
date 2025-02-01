@@ -162,7 +162,7 @@
                     },
                     complete: function (xhr) {
                         alert('File has uploaded successfully!'); 
-                        window.location.href = "{{ route('garansi.index')}}";
+                        // window.location.href = "{{ route('garansi.index')}}";
                     }
                 });
             });
