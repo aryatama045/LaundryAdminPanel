@@ -703,24 +703,24 @@ class CustomerGaransiController extends Controller
 
                 // $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
-                // $tanggal        = date('d/m/Y');
-                // $date           = now()->toDateTimeString();
-                // $jam            =  date('H',strtotime($date));
-                // $menit          =  date('i',strtotime($date));
-                // $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
-                // $text_wtr2 = 'Tanggal '.$tanggal;
+                    // $tanggal        = date('d/m/Y');
+                    // $date           = now()->toDateTimeString();
+                    // $jam            =  date('H',strtotime($date));
+                    // $menit          =  date('i',strtotime($date));
+                    // $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
+                    // $text_wtr2 = 'Tanggal '.$tanggal;
 
 
-                // $logo = public_path('logo.png');
-                // $img->place($logo, 'center', 15, 15);
+                    // $logo = public_path('logo.png');
+                    // $img->place($logo, 'center', 15, 15);
 
-                // $img->text($text_wtr1, 450, 100, function($font) {
-                //     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
-                //     $font->size(24);
-                //     $font->color('#d71717');
-                //     $font->align('center');
-                //     $font->valign('bottom');
-                // });
+                    // $img->text($text_wtr1, 450, 100, function($font) {
+                    //     $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    //     $font->size(24);
+                    //     $font->color('#d71717');
+                    //     $font->align('center');
+                    //     $font->valign('bottom');
+                    // });
 
                 // $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
@@ -734,6 +734,28 @@ class CustomerGaransiController extends Controller
                 ];
                 CustomerBuktiFotos::create($bukti_foto);
             }
+        }
+
+
+        $thumbnail_video = null;
+        if ($request->hasFile('garansi_video')) {
+            $file_video = $request->garansi_video;
+            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
+                $file_video,
+                'images/garansi/',
+                'garansi images',
+                'image',
+                ''
+            );
+            $bukti_video = [
+                'garansi_id'            => $garansi_data->id,
+                'klaim_id'              => '0',
+                'customer_id'           => $garansi_data->customer_id,
+                'foto_id'               => $thumbnail_video->id,
+                'kode_foto'             => $thumbnail_video->name,
+                'created_ny'            => $garansi_data->customer_id
+            ];
+            CustomerBuktiFotos::create($bukti_video);
         }
 
         $orderUpdate = array(

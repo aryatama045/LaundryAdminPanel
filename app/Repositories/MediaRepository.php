@@ -164,6 +164,46 @@ class MediaRepository extends Repository
     }
 
 
+    public function updateByGaransiVideo(UploadedFile $file,string $path, string $type = null, Media $media): Media
+    {
+        $date           = now()->toDateTimeString();
+        $jam            =  date('h',strtotime($date));
+        $menit          =  date('i',strtotime($date));
+        $originalName   = $file->getClientOriginalName();
+        $extension      = pathinfo($originalName, PATHINFO_EXTENSION);
+        // $extension      = $file->extension();
+
+        $data_kode  = ['M','E','T','A','L','I','N','D','O','P'];
+        shuffle($data_kode);
+        $kode       = implode("",$data_kode);
+
+        $data_kode2  = array('M' => '0', 'E'=>'1', 'T' => '2', 'A' =>'3',
+				'L' =>'4', 'I' =>'5','N' =>'6','D' =>'7', 'O' =>'8','P' =>'9');
+
+        $jam1 = array_search(substr($jam,0,1 ), $data_kode2);
+        $jam2 = array_search(substr($jam,1,1 ), $data_kode2);
+
+        $menit1 = array_search(substr($menit,0,1 ), $data_kode2);
+        $menit2 = array_search(substr($menit,1,1 ), $data_kode2);
+
+        $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
+
+        $path = Storage::put('/'. trim($path, '/'), $file, 'public');
+        if(!$type){
+            $type =  $extension;
+        }
+
+        return $this->model()::create([
+            'type' => $type,
+            'name' => $foto_bukti,
+            'src' =>  $file->getClientOriginalName(),
+            'extension' => $extension,
+            'path' => $path,
+            'description' => $description,
+        ]);
+    }
+
+
 
 
 
