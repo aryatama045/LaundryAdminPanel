@@ -680,12 +680,14 @@ class CustomerGaransiController extends Controller
             'tanggal_pemasangan'    => $tgl_pasang,
             'waktu_pemasangan'      => $request->waktu_pemasangan,
         ];
-        $garansi_data = CustomerGaransis::create($garansi_fill);
+        // $garansi_data = CustomerGaransis::create($garansi_fill);
 
         $thumbnail = null;
         if ($request->hasFile('garansi_photo')) {
 
             $garansiFoto = count($request->garansi_photo);
+
+            dd($garansiFoto);
 
             for ($x=0; $x<$garansiFoto; $x++){
 
