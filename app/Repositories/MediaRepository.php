@@ -126,11 +126,11 @@ class MediaRepository extends Repository
         $foto_bukti = 'SMP_'.$kode.'_'.$jam1.$jam2.'X'.$menit1.$menit2.'.'.$extension;
 
         $path = Storage::put('/'. trim($path, '/'), $file, 'public');
-        // if(!$type){
-        //     $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif']) ? 'image' : $extension;
-        // }
+        if(!$type){
+            $type = in_array($extension, ['jpg', 'png', 'jpeg', 'gif', 'mp4', 'avi']) ? 'image' : $extension;
+        }
         
-        $type = $extension;
+        // $type = $extension;
 
 
         return $this->model()::create([
