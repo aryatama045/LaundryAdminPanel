@@ -662,10 +662,10 @@ class CustomerGaransiController extends Controller
 
     public function update(Request $request , $id)
     {
-        $this->validate($request, [
-            'garansi_photo' => ['required', 'array'],
-            'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
-        ]);
+        // $this->validate($request, [
+        //     'garansi_photo' => ['required', 'array'],
+        //     'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
+        // ]);
 
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
