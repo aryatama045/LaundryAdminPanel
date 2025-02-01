@@ -668,7 +668,30 @@ class CustomerGaransiController extends Controller
         // ]);
 
         $file_video = $request->garansi_video;
-        dd($file_video);
+
+        $thumbnail_video = null;
+        if ($request->hasFile('garansi_video')) {
+            $file_video = $request->garansi_video;
+            
+            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
+                $file_video,
+                'images/garansi/',
+                'garansi images'
+            );
+
+            dd($file_video, 'oke');
+            $bukti_video = [
+                'garansi_id'            => $garansi_data->id,
+                'klaim_id'              => '0',
+                'customer_id'           => $garansi_data->customer_id,
+                'foto_id'               => $thumbnail_video->id,
+                'kode_foto'             => $thumbnail_video->name,
+                'created_by'            => $garansi_data->customer_id
+            ];
+            CustomerBuktiFotos::create($bukti_video);
+        }
+
+        dd($file_video, 'false');
 
 
 
@@ -742,26 +765,7 @@ class CustomerGaransiController extends Controller
         }
 
 
-        $thumbnail_video = null;
-        if ($request->hasFile('garansi_video')) {
-            $file_video = $request->garansi_video;
-            dd($file_video);
-            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
-                $file_video,
-                'images/garansi/',
-                'garansi images'
-            );
-
-            $bukti_video = [
-                'garansi_id'            => $garansi_data->id,
-                'klaim_id'              => '0',
-                'customer_id'           => $garansi_data->customer_id,
-                'foto_id'               => $thumbnail_video->id,
-                'kode_foto'             => $thumbnail_video->name,
-                'created_by'            => $garansi_data->customer_id
-            ];
-            CustomerBuktiFotos::create($bukti_video);
-        }
+        
 
         $orderUpdate = array(
             'order_status'  => 'Diproses',
