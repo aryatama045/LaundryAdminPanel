@@ -246,6 +246,24 @@ class CustomerKlaimController extends Controller
                                         Disetujui
                                     </a>';
 
+                                $bukti     = '';
+
+                                if($row->klaim_id){
+                                    $bukti      = CustomerBuktiFotos::where('klaim_id', $row->klaim_id)
+                                                    ->where('type', 'video')->first();
+
+                                    if($bukti){
+                                        $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
+
+                                        $button .= '</br> </br>
+                                        <a href="'. Storage::url($get_media->path) .'"
+                                            class="btn btn-primary py-1 px-2">
+                                            Download Video
+                                        </a>';
+                                    }
+
+                                }
+
                                 $button .= ' </br> </br>
                                     <a href="'.route('klaim.ditolak', $row->id) .'"
                                         class="btn btn-danger py-1 px-2">
