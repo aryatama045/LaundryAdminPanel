@@ -46,6 +46,7 @@ class WebSettingController extends Controller
                 'road' => $request->road,
                 'area' => $request->area,
                 'mobile' => $request->mobile,
+                'masa_berlaku' => $request->masa_berlaku,
                 'currency' => $request->currency
             ]
         );
