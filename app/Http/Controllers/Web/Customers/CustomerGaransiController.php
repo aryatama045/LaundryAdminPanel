@@ -188,7 +188,7 @@ class CustomerGaransiController extends Controller
                     $tambah_proteksi = '';
                     if($row->qty > 0){
 
-                        
+
 
                         if($garansi){
                             if($garansi->status == 'Diproses' || $garansi->status == 'Disetujui'){
@@ -204,7 +204,7 @@ class CustomerGaransiController extends Controller
                             }else{
                                 $tambah_proteksi .= '<span class="text-grey text-center"><b>Tidak Ada Garansi</b></span>';
                             }
-                            
+
                         }
                     }else{
 
@@ -254,16 +254,16 @@ class CustomerGaransiController extends Controller
 
                                     if($bukti){
                                         $get_media = DB::table('media')->where('id', $bukti->foto_id)->first();
-                    
+
                                         $button .= '</br> </br>
                                         <a href="'. Storage::url($get_media->path) .'"
                                             class="btn btn-primary py-1 px-2">
                                             Download Video
                                         </a>';
                                     }
-                                    
+
                                 }
-            
+
                                 $button .= ' </br> </br>
                                     <a href="'.route('garansi.ditolak', $row->id) .'"
                                         class="btn btn-danger py-1 px-2">
@@ -685,7 +685,6 @@ class CustomerGaransiController extends Controller
         //     'garansi_photo.*' => ['required', 'mimes:jpg,jpeg,png,webp'],
         // ]);
 
-        
         $tgl_pasang = date('Y-m-d',strtotime($request->waktu_pemasangan));
 
         $garansiFoto = count($request->garansi_photo);
@@ -761,7 +760,7 @@ class CustomerGaransiController extends Controller
         $thumbnail_video = null;
         if ($file_video) {
             $file_video = $request->garansi_video;
-            
+
             $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
                 $file_video,
                 'images/garansi/',

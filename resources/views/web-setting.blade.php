@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label class="mb-0 text-dark"><b>Default Masa Berlaku /hari</b></label>
-                                        <input type="text" name="mobile" class="form-control"
+                                        <input type="text" name="masa_berlaku" class="form-control"
                                             value="{{ $websetting?->masa_berlaku }}" required>
                                     </div>
 
