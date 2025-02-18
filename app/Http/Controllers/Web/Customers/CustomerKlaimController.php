@@ -257,7 +257,7 @@ class CustomerKlaimController extends Controller
 
                                         $button .= '</br> </br>
                                         <a href="'. Storage::url($get_media->path) .'"
-                                            class="btn btn-primary py-1 px-2">
+                                            target="_blank" class="btn btn-primary py-1 px-2">
                                             Download Video
                                         </a>';
                                     }
