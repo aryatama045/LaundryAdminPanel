@@ -218,7 +218,7 @@ class CustomerKlaimController extends Controller
                             }else{
                                 $klaim_proteksi .= '<span class="text-grey text-center"><b>Tidak Ada Garansi</b></span>';
                             }
-                            
+
                         }
                     }else{
                         $klaim_proteksi .= 'Tidak Ada Qty';
@@ -524,28 +524,28 @@ class CustomerKlaimController extends Controller
                     $urutan
                 );
 
-                $img = Image::read(storage_path('app/public/' . $thumbnail->path));
+                // $img = Image::read(storage_path('app/public/' . $thumbnail->path));
 
-                $tanggal        = date('d/m/Y');
-                $date           = now()->toDateTimeString();
-                $jam            =  date('H',strtotime($date));
-                $menit          =  date('i',strtotime($date));
-                $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
-                $text_wtr2 = 'Tanggal '.$tanggal;
+                    //     $tanggal        = date('d/m/Y');
+                    //     $date           = now()->toDateTimeString();
+                    //     $jam            =  date('H',strtotime($date));
+                    //     $menit          =  date('i',strtotime($date));
+                    //     $text_wtr1 = 'Pukul  '.$jam.':'.$menit.'   Tanggal '.$tanggal;
+                    //     $text_wtr2 = 'Tanggal '.$tanggal;
 
 
-                $logo = public_path('logo.png');
-                $img->place($logo, 'center', 15, 15);
+                    //     $logo = public_path('logo.png');
+                    //     $img->place($logo, 'center', 15, 15);
 
-                $img->text($text_wtr1, 450, 100, function($font) {
-                    $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
-                    $font->size(24);
-                    $font->color('#d71717');
-                    $font->align('center');
-                    $font->valign('bottom');
-                });
+                    //     $img->text($text_wtr1, 450, 100, function($font) {
+                    //         $font->file(public_path('rabbit.ttf'));   //LOAD FONT-NYA JIKA ADA, SILAHKAN DOWNLOAD SENDIRI
+                    //         $font->size(24);
+                    //         $font->color('#d71717');
+                    //         $font->align('center');
+                    //         $font->valign('bottom');
+                    //     });
 
-                $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
+                // $img->save(storage_path('app/public/' . $thumbnail->path)); //DAN SIMPAN JUGA KE DALAM FOLDER YG SAMA
 
                 $bukti_foto = [
                     'klaim_id'              => $klaim_data->id,
@@ -556,6 +556,30 @@ class CustomerKlaimController extends Controller
                 ];
                 CustomerBuktiFotos::create($bukti_foto);
             }
+        }
+
+        $file_video = $request->klaim_video;
+
+        $thumbnail_video = null;
+        if ($file_video) {
+            $file_video = $request->klaim_video;
+
+            $thumbnail_video = (new MediaRepository())->updateByGaransiVideo(
+                $file_video,
+                'images/klaim/',
+                'klaim images'
+            );
+
+            $bukti_video = [
+                'garansi_id'            => '0',
+                'klaim_id'              => $klaim_data->id,
+                'customer_id'           => $klaim_data->customer_id,
+                'foto_id'               => $thumbnail_video->id,
+                'kode_foto'             => $thumbnail_video->name,
+                'type'                  => 'video',
+                'created_by'            => $klaim_data->customer_id
+            ];
+            CustomerBuktiFotos::create($bukti_video);
         }
 
         $orderUpdate = array(
