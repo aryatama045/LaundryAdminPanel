@@ -81,7 +81,7 @@ class CustomerGaransiController extends Controller
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a><br>
 
-                        '. $waktu .'
+                        '. $get_media->src .'
 
                         ';
                     }

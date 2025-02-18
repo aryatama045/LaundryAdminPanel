@@ -80,7 +80,7 @@ class CustomerKlaimController extends Controller
                         <span class="avatar avatar-lg cover-image text-center"
                         style="background: url(&quot;' . Storage::url($get_media->path) . '&quot;)
                         center center;"></span></a>
-                        '. $waktu .'
+                        '. $get_media->src .'
                         ';
                     }
 
