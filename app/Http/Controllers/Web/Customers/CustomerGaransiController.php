@@ -146,7 +146,7 @@ class CustomerGaransiController extends Controller
 
                             $masa_berlaku = $websetting->masa_berlaku;
 
-                            $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->tanggal_pemasangan));
+                            $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->waktu_pemasangan));
                             $dateExps = date('d-m-Y', $dateExp);
 
                             $paymentDate = now();
