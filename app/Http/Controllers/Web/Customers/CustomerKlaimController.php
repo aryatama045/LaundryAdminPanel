@@ -125,7 +125,7 @@ class CustomerKlaimController extends Controller
                             $masa_berlaku = $websetting->masa_berlaku;
 
                             $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->waktu_pemasangan));
-                            $dateExps = date('d-m-Y h:i:s', $dateExp);
+                            $dateExps = date('d-m-Y H:i:s', $dateExp);
 
                             $paymentDate = now();
                             $paymentDate = date('Y-m-d', strtotime($paymentDate));
