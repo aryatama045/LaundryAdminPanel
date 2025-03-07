@@ -107,7 +107,7 @@
 
             <div class="modal-body">
 
-                <form  action="{{ route('klaim.klaim_action') }}"   method="POST" class="form-horizontal">
+                <form  action="{{ route('klaim.klaim-action') }}"   method="POST" class="form-horizontal">
                     @csrf
                     <input type="hidden" name="garansi_id" id="garansi_id">
 
