@@ -336,8 +336,6 @@ class CustomerKlaimController extends Controller
     {
         $id = $request->garansi_id;
 
-        dd($request);
-
         DB::table('customer_garanses')->where('id', $id)->update(array(
             'tambah_hari'   => $request->tambah_hari,
         ));
