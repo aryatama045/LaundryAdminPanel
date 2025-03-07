@@ -145,6 +145,10 @@ class CustomerKlaimController extends Controller
                             }
                             $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>';
 
+                            $result .= '<br><a href="javascript:void(0)"
+                                id="show-user" data-url="'.route("klaim.add_Garansi", $row->garansi_id ).'"
+                                class="edit btn btn-primary btn-sm">Add Garansi</a>';
+
                         }else if($garansi->status  == 'Diproses'){
                             $result = '<span class="text-grey"><b>Diproses</b></span>';
                         }else if($garansi->status  == 'Ditolak'){
@@ -157,9 +161,7 @@ class CustomerKlaimController extends Controller
                         $result = '<span class=""> - </span>';
                     }
 
-                    $result .= '<br><a href="javascript:void(0)"
-                                id="show-user" data-url="'.route("klaim.add_Garansi", $row->garansi_id ).'"
-                                class="edit btn btn-primary btn-sm">Add Garansi</a>';
+                    
                     
 
                     return $result;
