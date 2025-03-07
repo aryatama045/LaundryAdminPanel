@@ -229,7 +229,7 @@ Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name(
 
 
 // Klaim routes
-Route::get('/klaim/{klaim}/add-garansi', [CustomerKlaimController::class, 'addGaransi'])->name('klaim.addGaransi');
+Route::get('/klaim/{klaim}/add-garansi', [CustomerKlaimController::class, 'addGaransi'])->name('klaim.add_Garansi');
 Route::post('/klaim/klaim-action', [CustomerKlaimController::class, 'klaim_action'])->name('klaim.klaim_action');
 
 Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');

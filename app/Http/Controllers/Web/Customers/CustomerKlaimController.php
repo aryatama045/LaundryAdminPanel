@@ -158,7 +158,7 @@ class CustomerKlaimController extends Controller
                     }
 
                     $result .= '<br><a href="javascript:void(0)"
-                                id="show-user" data-url="'.route("klaim.addGaransi", $row->garansi_id ) .'"
+                                id="show-user" data-url="'.route("klaim.add_Garansi", $row->garansi_id ).'"
                                 class="edit btn btn-primary btn-sm">Add Garansi</a>';
                     
 
