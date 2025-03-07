@@ -318,8 +318,7 @@
                 $.get(userURL, function (data) {
                     $('#userShowModal').modal('show');
                     elem_qty ="";
-                    elem_qty += '<input type="number" class="form-control" id="qty" name="tambah_hari" min="1"  +
-                        'value="1" ';
+                    elem_qty += '<input type="number" class="form-control" id="qty" name="tambah_hari" min="1" value="1" ';
                     document.getElementById("elem_qty").innerHTML = elem_qty;
 
                     $('#garansi_id').val(data.id);
