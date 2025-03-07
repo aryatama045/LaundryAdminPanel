@@ -218,6 +218,8 @@ Route::post('/orders/retur-action', [OrderController::class, 'retur_action'])->n
 
 Route::get('/orders/{order}/data-retur', [OrderController::class, 'dataRetur'])->name('order.dataRetur');
 
+
+
 //Order Imports
 Route::post('/orders/imports', [OrderController::class, 'imports']);
 
@@ -227,6 +229,9 @@ Route::get('/orders/{order}/paid', [OrderController::class, 'orderPaid'])->name(
 
 
 // Klaim routes
+Route::get('/klaim/{klaim}/add-garansi', [CustomerKlaimController::class, 'addGaransi'])->name('order.addGaransi');
+Route::post('/klaim/klaim-action', [CustomerKlaimController::class, 'klaim_action'])->name('order.klaim_action');
+
 Route::get('/klaim', [CustomerKlaimController::class, 'index'])->name('klaim.index');
 Route::get('/klaim/{klaim}/show', [CustomerKlaimController::class, 'show'])->name('klaim.show');
 Route::get('/klaim/{klaim}/proses', [CustomerKlaimController::class, 'show'])->name('klaim.proses');

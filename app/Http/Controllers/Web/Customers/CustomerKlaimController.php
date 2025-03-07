@@ -122,7 +122,7 @@ class CustomerKlaimController extends Controller
 
                             $garansi    = CustomerGaransis::where('id', $row->garansi_id)->first();
 
-                            $masa_berlaku = $websetting->masa_berlaku;
+                            $masa_berlaku = $websetting->masa_berlaku + $garansi->tambah_hari;
 
                             $dateExp = strtotime('+'.$masa_berlaku.' days', strtotime($garansi->waktu_pemasangan));
                             $dateExps = date('d-m-Y H:i:s', $dateExp);
@@ -143,7 +143,7 @@ class CustomerKlaimController extends Controller
                                     $berlaku_s ='<span class="badge badge-danger"> Berlaku : Expired </span> <br>';
                                 }
                             }
-                            $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>'  ;
+                            $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>';
 
                         }else if($garansi->status  == 'Diproses'){
                             $result = '<span class="text-grey"><b>Diproses</b></span>';
@@ -156,6 +156,11 @@ class CustomerKlaimController extends Controller
                     }else{
                         $result = '<span class=""> - </span>';
                     }
+
+                    $result .= '<br><a href="javascript:void(0)"
+                                id="show-user" data-url="'.route("klaim.addGaransi", $row->garansi_id ) .'"
+                                class="edit btn btn-primary btn-sm">Add Garansi</a>';
+                    
 
                     return $result;
 
@@ -310,6 +315,36 @@ class CustomerKlaimController extends Controller
 
 
         return view('customers_klaim.index');
+    }
+
+    public function addGaransi($id)
+    {
+
+        $retur = CustomerKlaims::find($id);
+
+        return response()->json($retur);
+    }
+    
+    public function klaim_action(Request $request)
+    {
+        $id = $request->order_id;
+
+        $getOrder = DB::table('orders')->where('id', $id)->first();
+
+        $qty_sisa = $getOrder->qty - $request->qty;
+
+
+        DB::table('orders')->where('id', $id)->update(array(
+            'nomor_retur'   => $request->nomor_retur,
+            'alasan_retur'  => $request->alasan_retur,
+            'qty'           => $qty_sisa,
+            'qty_retur'     => $request->qty,
+            'tanggal_retur' => date('Y-m-d H:i:s'),
+            'is_retur'      => '1',
+            'order_status'  => 'Disetujui',
+        ));
+
+        return redirect()->route('order.index')->with('success', 'Retur successfully');
     }
 
     public function index22aa()

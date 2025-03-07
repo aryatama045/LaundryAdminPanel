@@ -50,13 +50,7 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function dataRetur($id)
-    {
-
-        $retur = Order::find($id);
-
-        return response()->json($retur);
-    }
+    
 
     public function show(Order $order)
     {
@@ -98,6 +92,14 @@ class OrderController extends Controller
         return back()->with('success', 'Status updated successfully');
     }
 
+    public function dataRetur($id)
+    {
+
+        $retur = Order::find($id);
+
+        return response()->json($retur);
+    }
+    
     public function retur_action(Request $request)
     {
         $id = $request->order_id;

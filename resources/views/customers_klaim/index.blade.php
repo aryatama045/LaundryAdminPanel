@@ -96,6 +96,43 @@
         </div>
     </div>
 
+    
+<div class="modal fade" id="userShowModal" aria-hidden="true">
+
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modelHeading"></h4>
+            </div>
+
+            <div class="modal-body">
+
+                <form  action="{{ route('klaim.klaim_action') }}"   method="POST" class="form-horizontal">
+                    @csrf
+                    <input type="hidden" name="garansi_id" id="garansi_id">
+
+                    <div class="form-group">
+                        <label for="qty" class="col-sm-6 control-label">Tambah Hari</label>
+                        <div class="col-sm-12">
+                            <p id="elem_qty"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 @endsection
 
 
@@ -269,6 +306,27 @@
                 $("#outputImgG").attr("src", "{{url('/images/dummy/dummy-placeholder.png')}}");
             }
         }
+    </script>
+
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            /* When click show user */
+            $('body').on('click', '#show-user', function () {
+                var userURL = $(this).data('url');
+                $.get(userURL, function (data) {
+                    $('#userShowModal').modal('show');
+                    elem_qty ="";
+                    elem_qty += '<input type="number" class="form-control" id="qty" name="tambah_hari" min="1"  +
+                        'value="1" ';
+                    document.getElementById("elem_qty").innerHTML = elem_qty;
+
+                    $('#garansi_id').val(data.id);
+                })
+            });
+
+        });
     </script>
 @endpush
 
