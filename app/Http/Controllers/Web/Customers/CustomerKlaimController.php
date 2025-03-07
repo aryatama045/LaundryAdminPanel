@@ -162,8 +162,6 @@ class CustomerKlaimController extends Controller
                     }
 
                     
-                    
-
                     return $result;
 
                 })
@@ -322,31 +320,20 @@ class CustomerKlaimController extends Controller
     public function addGaransi($id)
     {
 
-        $retur = CustomerKlaims::find($id);
+        $retur    = CustomerGaransis::where('id', $id)->first();
 
         return response()->json($retur);
     }
     
     public function klaim_action(Request $request)
     {
-        $id = $request->order_id;
+        $id = $request->garansi_id;
 
-        $getOrder = DB::table('orders')->where('id', $id)->first();
-
-        $qty_sisa = $getOrder->qty - $request->qty;
-
-
-        DB::table('orders')->where('id', $id)->update(array(
-            'nomor_retur'   => $request->nomor_retur,
-            'alasan_retur'  => $request->alasan_retur,
-            'qty'           => $qty_sisa,
-            'qty_retur'     => $request->qty,
-            'tanggal_retur' => date('Y-m-d H:i:s'),
-            'is_retur'      => '1',
-            'order_status'  => 'Disetujui',
+        DB::table('customer_garanses')->where('id', $id)->update(array(
+            'tambah_hari'   => $request->tambah_hari,
         ));
 
-        return redirect()->route('order.index')->with('success', 'Retur successfully');
+        return redirect()->route('klaim.index')->with('success', 'Tambah Garansi successfully');
     }
 
     public function index22aa()
