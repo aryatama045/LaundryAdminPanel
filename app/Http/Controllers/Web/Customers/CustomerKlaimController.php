@@ -145,9 +145,11 @@ class CustomerKlaimController extends Controller
                             }
                             $result =  $berlaku_s .'</br>  Sampai :<small>'.$dateExps.'</small>';
 
-                            $result .= '<br><a href="javascript:void(0)"
-                                id="show-user" data-url="'.route("klaim.add_Garansi", $row->garansi_id ).'"
-                                class="edit btn btn-primary btn-sm">Add Garansi</a>';
+                            if($roles=='root' || $roles=='admin'){
+                                $result .= '<br><a href="javascript:void(0)"
+                                    id="show-user" data-url="'.route("klaim.add_Garansi", $row->garansi_id ).'"
+                                    class="edit btn btn-primary btn-sm">Add Garansi</a>';
+                            }
 
                         }else if($garansi->status  == 'Diproses'){
                             $result = '<span class="text-grey"><b>Diproses</b></span>';
@@ -328,6 +330,8 @@ class CustomerKlaimController extends Controller
     public function klaim_action(Request $request)
     {
         $id = $request->garansi_id;
+
+        dd($request);
 
         DB::table('customer_garanses')->where('id', $id)->update(array(
             'tambah_hari'   => $request->tambah_hari,

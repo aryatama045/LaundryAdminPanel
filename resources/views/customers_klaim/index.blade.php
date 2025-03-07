@@ -109,7 +109,7 @@
 
                 <form  action="{{ route('klaim.klaim_action') }}"   method="POST" class="form-horizontal">
                     @csrf
-                    <input type="hidden" name="garansi_id" id="garansi_id">
+                    <input type="hidden" name="garansi_id"  id="garansi_id">
 
                     <div class="form-group">
                         <label for="qty" class="col-sm-6 control-label">Tambah Hari Garansi</label>
