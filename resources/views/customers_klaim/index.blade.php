@@ -112,9 +112,9 @@
                     <input type="hidden" name="garansi_id" id="garansi_id">
 
                     <div class="form-group">
-                        <label for="qty" class="col-sm-6 control-label">Tambah Hari</label>
+                        <label for="qty" class="col-sm-6 control-label">Tambah Hari Garansi</label>
                         <div class="col-sm-12">
-                            <p id="elem_qty"></p>
+                            <input type="text" class="form-control" name="tambah_hari" value="1" required="" >
                         </div>
                     </div>
 
